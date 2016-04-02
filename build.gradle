@@ -9,7 +9,8 @@
 plugins {
 	id 'java'
 	id 'eclipse'
-	id 'maven'
+//  id 'maven' // comment this in and the next line out for populating to a local Maven repository for testing purposes
+    id 'com.github.oehme.sobula.bintray-release' version '0.6.7'
 }
 
 task wrapper(type: Wrapper) {
@@ -32,15 +33,21 @@ def version="${uposVersion}.0" // the last part after dot is the build/release v
 ///////////////////////////////////////////////////////////////////////////////
 
 repositories {
-    maven {
-        url "file:$localTestFileRepositoryDir"
-    }
     jcenter()
+    if (project.plugins.hasPlugin('maven')) 
+    { // evaluates only at development environment, not at travis-ci.org
+	    maven {
+	        url "file:$localTestFileRepositoryDir"
+	    }
+	}
 }
 
 dependencies {
-	compile "org.javapos:javapos-contracts:$uposVersion.+"
-	compile "org.javapos:jcl:2.2.0"
+    compile 'org.javapos:javapos-contracts:0.1.+' // for testing purposes
+    compile "org.javapos:javapos-config-loader:0.0.+"  //  for testing purposes
+
+//	compile "org.javapos:javapos-contracts:$uposVersion.+" // for production, later on
+//	compile "org.javapos:javapos-config-loader:2.2.0"  // for production, later on
 }
 
 
@@ -74,22 +81,43 @@ jar {
 // Artifact Upload
 ///////////////////////////////////////////////////////////////////////////////
 
-artifacts {
-	archives jar
-}
+if (project.plugins.hasPlugin('com.github.oehme.sobula.bintray-release')) 
+{ // evaluates only on travis-ci.org for releasing
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file:$localTestFileRepositoryDir")
-            pom.artifactId = artifactName
-            pom.groupId = groupId
-            pom.version = version
+    group = "org.javapos"
+    description = "JavaPOS Device Controls Library"
+     
+    contacts {
+        "builder@javapos.org" {
+            moniker "JavaPOS Working Group"
+            roles "owner"
+            github "JavaPOSWorkingGroup"
         }
     }
+    
+    bintray.user = "javaposworkinggroup"
+    bintray.pkg.version.mavenCentralSync.user = "kuniss"
+    bintray.pkg.version.mavenCentralSync.sync = false
 }
 
+if (project.plugins.hasPlugin('maven')) 
+{ // evaluates only at development environment, not at travis-ci.org
 
+	artifacts {
+		archives jar
+	}
+	
+	uploadArchives {
+	    repositories {
+	        mavenDeployer {
+	            repository(url: "file:$localTestFileRepositoryDir")
+	            pom.artifactId = artifactName
+	            pom.groupId = groupId
+	            pom.version = version
+	        }
+	    }
+	}
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,32 +127,36 @@ uploadArchives {
 // The following is for importing the source code initially; it does not take 
 // part of a release build
   
-// javaposImportDir must be defined in the gradle.properties file
-def javaposSourceZipFile ="$javaposImportDir/JavaPOS-$uposVersion-Source-20010529.zip"
+if (project.hasProperty('javaposImportDir')) 
+{ // evaluate only at development environment, not at travis-ci.org
 
-task importSources {
-	description = 'Copies the sources from an official JavaPOS source distribution archive into this projectout of the current version of the project.'
+	// javaposImportDir must be defined in the gradle.properties file
+	def javaposSourceZipFile ="$javaposImportDir/JavaPOS-$uposVersion-Source-20010529.zip"
 	
-	doLast {
-		assert file(javaposSourceZipFile).exists(), "import archive '$javaposSourceZipFile' does not exist"
-		copy {
-			from (zipTree(javaposSourceZipFile)) {
-				exclude 'jpos/services/**'
-				exclude 'jpos/events/**'
-				exclude 'jpos/*Const.java'
-				exclude 'jpos/JposException.java'
-				exclude 'jpos/BaseControl.java'
-
-				exclude '**/*.stub' // will be copied later on to src/main/resources, see below
+	task importSources {
+		description = 'Copies the sources from an official JavaPOS source distribution archive into this projectout of the current version of the project.'
+		
+		doLast {
+			assert file(javaposSourceZipFile).exists(), "import archive '$javaposSourceZipFile' does not exist"
+			copy {
+				from (zipTree(javaposSourceZipFile)) {
+					exclude 'jpos/services/**'
+					exclude 'jpos/events/**'
+					exclude 'jpos/*Const.java'
+					exclude 'jpos/JposException.java'
+					exclude 'jpos/BaseControl.java'
+	
+					exclude '**/*.stub' // will be copied later on to src/main/resources, see below
+				}
+				into "src/main/java"
 			}
-			into "src/main/java"
-		}
-		copy {
-			includeEmptyDirs = false
-			from (zipTree(javaposSourceZipFile)) {
-				include '**/*.stub'
+			copy {
+				includeEmptyDirs = false
+				from (zipTree(javaposSourceZipFile)) {
+					include '**/*.stub'
+				}
+				into "src/main/resources"
 			}
-			into "src/main/resources"
 		}
 	}
 }
