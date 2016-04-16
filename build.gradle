@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.javapos:javapos-contracts:0.1.11' // for testing purposes
+    compile 'org.javapos:javapos-contracts:0.1.12' // for testing purposes
     compile "org.javapos:javapos-config-loader:0.0.3"  //  for testing purposes
 
 //	compile "org.javapos:javapos-contracts:$uposVersion.+" // for production, later on
