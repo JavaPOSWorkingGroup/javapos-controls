@@ -144,7 +144,7 @@ if (project.hasProperty('javaposImportDir'))
 					exclude 'jpos/*Const.java'
 					exclude 'jpos/JposException.java'
 					exclude 'jpos/BaseControl.java'
-					exclude 'jpos/*Control1?.java' 
+					exclude 'jpos/*Control1*.java' 
 	
 					exclude '**/*.stub' // will be copied later on to src/main/resources, see below
 				}
