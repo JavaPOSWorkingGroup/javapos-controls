@@ -51,6 +51,8 @@ public class MSRBeanInfo
         makeProperty("CapJISTwo"),
         makeProperty("CapPowerReporting"),
         makeProperty("CapTransmitSentinels"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AccountNumber"),

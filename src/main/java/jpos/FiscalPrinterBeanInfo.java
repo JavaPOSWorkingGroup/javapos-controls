@@ -102,6 +102,8 @@ public class FiscalPrinterBeanInfo
         makeProperty("CapPostPreLine"),
         makeProperty("CapSetCurrency"),
         makeProperty("CapTotalizerType"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AmountDecimalPlace"),

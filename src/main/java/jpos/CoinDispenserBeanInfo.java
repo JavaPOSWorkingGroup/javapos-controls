@@ -50,6 +50,8 @@ public class CoinDispenserBeanInfo
         makeProperty("CapJamSensor"),
         makeProperty("CapNearEmptySensor"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("DispenserStatus"),

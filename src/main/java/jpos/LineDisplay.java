@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// LineDisplay.java - A JavaPOS 1.7.2 device control
+// LineDisplay.java - A JavaPOS 1.8.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class LineDisplay
   extends BaseJposControl
-  implements LineDisplayControl17, JposConst
+  implements LineDisplayControl18, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -42,6 +42,7 @@ public class LineDisplay
   protected LineDisplayService15 service15;
   protected LineDisplayService16 service16;
   protected LineDisplayService17 service17;
+  protected LineDisplayService18 service18;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -54,7 +55,7 @@ public class LineDisplay
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS LineDisplay Device Control";
-    deviceControlVersion = deviceVersion17;
+    deviceControlVersion = deviceVersion18;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -64,6 +65,7 @@ public class LineDisplay
     //service15 = null;
     //service16 = null;
     //service17 = null;
+    //service18 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -524,6 +526,70 @@ public class LineDisplay
     try
     {
       return service17.getCapScreenMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -2168,6 +2234,102 @@ public class LineDisplay
     }
   }
 
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -2193,6 +2355,7 @@ public class LineDisplay
       service15 = null;
       service16 = null;
       service17 = null;
+      service18 = null;
     }
     else
     {
@@ -2278,6 +2441,20 @@ public class LineDisplay
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement LineDisplayService17 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion18)
+      {
+        try
+        {
+          service18 = (LineDisplayService18)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement LineDisplayService18 interface",
                                   e);
         }
       }

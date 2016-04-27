@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// FiscalPrinter.java - A JavaPOS 1.7.2 device control
+// FiscalPrinter.java - A JavaPOS 1.8.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class FiscalPrinter
   extends BaseJposControl
-  implements FiscalPrinterControl17, JposConst
+  implements FiscalPrinterControl18, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -41,6 +41,7 @@ public class FiscalPrinter
   protected FiscalPrinterService15 service15;
   protected FiscalPrinterService16 service16;
   protected FiscalPrinterService17 service17;
+  protected FiscalPrinterService18 service18;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -55,7 +56,7 @@ public class FiscalPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS FiscalPrinter Device Control";
-    deviceControlVersion = deviceVersion17;
+    deviceControlVersion = deviceVersion18;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -64,6 +65,7 @@ public class FiscalPrinter
     //service15 = null;
     //service16 = null;
     //service17 = null;
+    //service18 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1547,6 +1549,70 @@ public class FiscalPrinter
     try
     {
       return service16.getCapTotalizerType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -4900,6 +4966,102 @@ public class FiscalPrinter
     }
   }
 
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.8.0
+    if(serviceVersion < deviceVersion18)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.8.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -4924,6 +5086,7 @@ public class FiscalPrinter
       service15 = null;
       service16 = null;
       service17 = null;
+      service18 = null;
     }
     else
     {
@@ -4995,6 +5158,20 @@ public class FiscalPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement FiscalPrinterService17 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion18)
+      {
+        try
+        {
+          service18 = (FiscalPrinterService18)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement FiscalPrinterService18 interface",
                                   e);
         }
       }

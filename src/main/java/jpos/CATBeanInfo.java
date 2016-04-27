@@ -61,6 +61,8 @@ public class CATBeanInfo
         makeProperty("CapTaxOthers"),
         makeProperty("CapTransactionNumber"),
         makeProperty("CapTrainingMode"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AccountNumber"),

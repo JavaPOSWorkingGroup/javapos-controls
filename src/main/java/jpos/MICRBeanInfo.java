@@ -48,6 +48,8 @@ public class MICRBeanInfo
         // Capabilities
         makeProperty("CapValidationDevice"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AutoDisable"),

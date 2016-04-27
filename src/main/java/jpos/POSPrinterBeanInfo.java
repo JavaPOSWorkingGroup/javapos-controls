@@ -105,6 +105,8 @@ public class POSPrinterBeanInfo
         makeProperty("CapSlpCartridgeSensor"),
         makeProperty("CapSlpColor"),
         makeProperty("CapMapCharacterSet"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AsyncMode"),

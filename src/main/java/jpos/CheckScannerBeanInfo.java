@@ -58,6 +58,8 @@ public class CheckScannerBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStoreImageFiles"),
         makeProperty("CapValidationDevice"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AutoDisable"),

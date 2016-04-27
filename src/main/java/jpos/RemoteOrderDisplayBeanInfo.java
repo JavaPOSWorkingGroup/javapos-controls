@@ -52,6 +52,8 @@ public class RemoteOrderDisplayBeanInfo
         makeProperty("CapTouch"),
         makeProperty("CapTransaction"),
         makeProperty("CapMapCharacterSet"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AsyncMode"),

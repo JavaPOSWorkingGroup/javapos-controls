@@ -50,6 +50,8 @@ public class HardTotalsBeanInfo
         makeProperty("CapSingleFile"),
         makeProperty("CapTransactions"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("FreeData"),

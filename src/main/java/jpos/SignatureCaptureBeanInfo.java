@@ -50,6 +50,8 @@ public class SignatureCaptureBeanInfo
         makeProperty("CapRealTimeData"),
         makeProperty("CapUserTerminated"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AutoDisable"),

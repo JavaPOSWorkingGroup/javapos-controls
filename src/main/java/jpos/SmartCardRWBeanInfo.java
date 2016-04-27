@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// KeylockBeanInfo.java - Bean information for the JavaPOS Keylock
+// SmartCardRWBeanInfo.java - Bean information for the JavaPOS SmartCardRW
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class KeylockBeanInfo
+public class SmartCardRWBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.Keylock.class);
+    return new BeanDescriptor(jpos.SmartCardRW.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.Keylock.class);
+    return new PropertyDescriptor(propertyName, jpos.SmartCardRW.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,15 +46,33 @@ public class KeylockBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
+        makeProperty("CapCardErrorDetection"),
+        makeProperty("CapFreeMemory"),
+        makeProperty("CapMultipleFiles"),
+        makeProperty("CapInterfaceMode"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapSCPresentSensor"),
+        makeProperty("CapSCSlots"),
+        makeProperty("CapSCTypes"),
         makeProperty("CapStatisticsReporting"),
+        makeProperty("CapTransmissionProtocol"),
         makeProperty("CapUpdateStatistics"),
 
         // Properties
-        makeProperty("KeyPosition"),
-        makeProperty("PositionCount"),
+        makeProperty("DataCount"),
+        makeProperty("DataEventEnabled"),
+        makeProperty("FreeMemory"),
+        makeProperty("InterfaceMode"),
+        makeProperty("MemorySegments"),
+        makeProperty("OutputID"),
         makeProperty("PowerNotify"),
-        makeProperty("PowerState")
+        makeProperty("PowerState"),
+        makeProperty("SCPresentSensor"),
+        makeProperty("SCSlot"),
+        makeProperty("SCType"),
+        makeProperty("TotalMemorySize"),
+        makeProperty("TransactionInProgress"),
+        makeProperty("TransmissionProtocol")
       };
 
       return properties;
@@ -69,7 +87,7 @@ public class KeylockBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.Keylock.class,
+    return new EventSetDescriptor(jpos.SmartCardRW.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -81,7 +99,10 @@ public class KeylockBeanInfo
     {
       EventSetDescriptor[] events =
       {
+        makeEvent("Data"),
         makeEvent("DirectIO"),
+        makeEvent("Error"),
+        makeEvent("OutputComplete"),
         makeEvent("StatusUpdate")
       };
 

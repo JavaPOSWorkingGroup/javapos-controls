@@ -48,6 +48,8 @@ public class BumpBarBeanInfo
         // Capabilities
         makeProperty("CapPowerReporting"),
         makeProperty("CapTone"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AsyncMode"),

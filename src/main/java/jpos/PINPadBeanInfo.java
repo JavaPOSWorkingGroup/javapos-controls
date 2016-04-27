@@ -52,6 +52,8 @@ public class PINPadBeanInfo
         makeProperty("CapMACCalculation"),
         makeProperty("CapPowerReporting"),
         makeProperty("CapTone"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AccountNumber"),

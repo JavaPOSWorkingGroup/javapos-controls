@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// BumpBar.java - A JavaPOS 1.8.0 device control
+// SmartCardRW.java - A JavaPOS 1.8.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,20 +28,15 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class BumpBar
+public class SmartCardRW
   extends BaseJposControl
-  implements BumpBarControl18, JposConst
+  implements SmartCardRWControl18, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected BumpBarService13 service13;
-  protected BumpBarService14 service14;
-  protected BumpBarService15 service15;
-  protected BumpBarService16 service16;
-  protected BumpBarService17 service17;
-  protected BumpBarService18 service18;
+  protected SmartCardRWService18 service18;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -53,19 +48,14 @@ public class BumpBar
   // Constructor
   //--------------------------------------------------------------------------
 
-  public BumpBar()
+  public SmartCardRW()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS BumpBar Device Control";
+    deviceControlDescription = "JavaPOS SmartCardRW Device Control";
     deviceControlVersion = deviceVersion18;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
     //service18 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
@@ -79,7 +69,7 @@ public class BumpBar
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public int getCapPowerReporting()
+  public boolean getCapCardErrorDetection()
     throws JposException
   {
     // Make sure control is opened
@@ -91,7 +81,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
+      return service18.getCapCardErrorDetection();
     }
     catch(JposException je)
     {
@@ -104,7 +94,7 @@ public class BumpBar
     }
   }
 
-  public boolean getCapTone()
+  public boolean getCapFreeMemory()
     throws JposException
   {
     // Make sure control is opened
@@ -116,7 +106,157 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getCapTone();
+      return service18.getCapFreeMemory();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapMultipleFiles()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapMultipleFiles();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapInterfaceMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapInterfaceMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapPowerReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapSCPresentSensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapSCPresentSensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapSCSlots()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapSCSlots();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapSCTypes()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapSCTypes();
     }
     catch(JposException je)
     {
@@ -138,17 +278,35 @@ public class BumpBar
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
+      return service18.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapTransmissionProtocol()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service18.getCapStatisticsReporting();
+      return service18.getCapTransmissionProtocol();
     }
     catch(JposException je)
     {
@@ -168,13 +326,6 @@ public class BumpBar
     if(!bOpen)
     {
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
     }
 
     // Perform the operation
@@ -198,231 +349,6 @@ public class BumpBar
   // Properties
   //--------------------------------------------------------------------------
 
-  public boolean getAsyncMode()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getAsyncMode();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setAsyncMode(boolean asyncMode)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setAsyncMode(asyncMode);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getAutoToneDuration()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getAutoToneDuration();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setAutoToneDuration(int autoToneDuration)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setAutoToneDuration(autoToneDuration);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getAutoToneFrequency()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getAutoToneFrequency();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setAutoToneFrequency(int autoToneFrequency)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setAutoToneFrequency(autoToneFrequency);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getBumpBarDataCount()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getBumpBarDataCount();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getCurrentUnitID()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCurrentUnitID();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setCurrentUnitID(int currentUnitID)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setCurrentUnitID(currentUnitID);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
   public int getDataCount()
     throws JposException
   {
@@ -435,7 +361,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getDataCount();
+      return service18.getDataCount();
     }
     catch(JposException je)
     {
@@ -460,7 +386,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getDataEventEnabled();
+      return service18.getDataEventEnabled();
     }
     catch(JposException je)
     {
@@ -485,7 +411,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.setDataEventEnabled(dataEventEnabled);
+      service18.setDataEventEnabled(dataEventEnabled);
     }
     catch(JposException je)
     {
@@ -498,7 +424,7 @@ public class BumpBar
     }
   }
 
-  public String getErrorString()
+  public int getFreeMemory()
     throws JposException
   {
     // Make sure control is opened
@@ -510,7 +436,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getErrorString();
+      return service18.getFreeMemory();
     }
     catch(JposException je)
     {
@@ -523,7 +449,7 @@ public class BumpBar
     }
   }
 
-  public int getErrorUnits()
+  public int getInterfaceMode()
     throws JposException
   {
     // Make sure control is opened
@@ -535,7 +461,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getErrorUnits();
+      return service18.getInterfaceMode();
     }
     catch(JposException je)
     {
@@ -548,7 +474,7 @@ public class BumpBar
     }
   }
 
-  public String getEventString()
+  public void setInterfaceMode(int interfaceMode)
     throws JposException
   {
     // Make sure control is opened
@@ -560,7 +486,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getEventString();
+      service18.setInterfaceMode(interfaceMode);
     }
     catch(JposException je)
     {
@@ -573,7 +499,7 @@ public class BumpBar
     }
   }
 
-  public int getEventUnitID()
+  public int getMemorySegments()
     throws JposException
   {
     // Make sure control is opened
@@ -585,57 +511,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getEventUnitID();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getEventUnits()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getEventUnits();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getKeys()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getKeys();
+      return service18.getMemorySegments();
     }
     catch(JposException je)
     {
@@ -660,7 +536,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getOutputID();
+      return service18.getOutputID();
     }
     catch(JposException je)
     {
@@ -685,7 +561,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service18.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -710,7 +586,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service18.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -735,7 +611,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service18.getPowerState();
     }
     catch(JposException je)
     {
@@ -748,7 +624,7 @@ public class BumpBar
     }
   }
 
-  public int getTimeout()
+  public boolean getSCPresentSensor()
     throws JposException
   {
     // Make sure control is opened
@@ -760,7 +636,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getTimeout();
+      return service18.getSCPresentSensor();
     }
     catch(JposException je)
     {
@@ -773,7 +649,7 @@ public class BumpBar
     }
   }
 
-  public void setTimeout(int timeout)
+  public int getSCSlot()
     throws JposException
   {
     // Make sure control is opened
@@ -785,7 +661,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.setTimeout(timeout);
+      return service18.getSCSlot();
     }
     catch(JposException je)
     {
@@ -798,7 +674,7 @@ public class BumpBar
     }
   }
 
-  public int getUnitsOnline()
+  public void setSCSlot(int scSlot)
     throws JposException
   {
     // Make sure control is opened
@@ -810,7 +686,107 @@ public class BumpBar
     // Perform the operation
     try
     {
-      return service13.getUnitsOnline();
+      service18.setSCSlot(scSlot);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getSCType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getSCType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTotalMemorySize()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getTotalMemorySize();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getTransactionInProgress()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getTransactionInProgress();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTransmissionProtocol()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getTransmissionProtocol();
     }
     catch(JposException je)
     {
@@ -828,7 +804,7 @@ public class BumpBar
   // Methods
   //--------------------------------------------------------------------------
 
-  public void bumpBarSound(int units, int frequency, int duration, int numberOfCycles, int interSoundWait)
+  public void beginInsertion(int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -840,7 +816,32 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.bumpBarSound(units, frequency, duration, numberOfCycles, interSoundWait);
+      service18.beginInsertion(timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void beginRemoval(int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.beginRemoval(timeout);
     }
     catch(JposException je)
     {
@@ -865,7 +866,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.clearInput();
+      service18.clearInput();
     }
     catch(JposException je)
     {
@@ -890,7 +891,7 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.clearOutput();
+      service18.clearOutput();
     }
     catch(JposException je)
     {
@@ -903,7 +904,7 @@ public class BumpBar
     }
   }
 
-  public void setKeyTranslation(int units, int scanCode, int logicalKey)
+  public void endInsertion()
     throws JposException
   {
     // Make sure control is opened
@@ -915,7 +916,57 @@ public class BumpBar
     // Perform the operation
     try
     {
-      service13.setKeyTranslation(units, scanCode, logicalKey);
+      service18.endInsertion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void endRemoval()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.endRemoval();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readData(int action, int count, String[] data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.readData(action, count, data);
     }
     catch(JposException je)
     {
@@ -935,13 +986,6 @@ public class BumpBar
     if(!bOpen)
     {
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
     }
 
     // Perform the operation
@@ -969,13 +1013,6 @@ public class BumpBar
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
@@ -1001,17 +1038,35 @@ public class BumpBar
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
+      service18.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void writeData(int action, int count, String data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service18.updateStatistics(statisticsBuffer);
+      service18.writeData(action, count, data);
     }
     catch(JposException je)
     {
@@ -1032,7 +1087,7 @@ public class BumpBar
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new BumpBarCallbacks();
+    return new SmartCardRWCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -1043,97 +1098,22 @@ public class BumpBar
     if(service == null)
     {
 
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
       service18 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (BumpBarService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (BumpBarService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (BumpBarService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (BumpBarService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (BumpBarService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService17 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion18)
       {
         try
         {
-          service18 = (BumpBarService18)service;
+          service18 = (SmartCardRWService18)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement BumpBarService18 interface",
+                                  "Service does not fully implement SmartCardRWService18 interface",
                                   e);
         }
       }
@@ -1231,17 +1211,17 @@ public class BumpBar
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class BumpBarCallbacks
+  protected class SmartCardRWCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)BumpBar.this;
+      return (BaseControl)SmartCardRW.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(BumpBar.this.dataListeners)
+      synchronized(SmartCardRW.this.dataListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < dataListeners.size(); x++)
@@ -1253,7 +1233,7 @@ public class BumpBar
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(BumpBar.this.directIOListeners)
+      synchronized(SmartCardRW.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -1265,7 +1245,7 @@ public class BumpBar
 
     public void fireErrorEvent(ErrorEvent e)
     {
-      synchronized(BumpBar.this.errorListeners)
+      synchronized(SmartCardRW.this.errorListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < errorListeners.size(); x++)
@@ -1277,7 +1257,7 @@ public class BumpBar
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
     {
-      synchronized(BumpBar.this.outputCompleteListeners)
+      synchronized(SmartCardRW.this.outputCompleteListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < outputCompleteListeners.size(); x++)
@@ -1289,7 +1269,7 @@ public class BumpBar
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(BumpBar.this.statusUpdateListeners)
+      synchronized(SmartCardRW.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)

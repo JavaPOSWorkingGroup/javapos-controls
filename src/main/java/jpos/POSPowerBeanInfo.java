@@ -52,6 +52,8 @@ public class POSPowerBeanInfo
         makeProperty("CapQuickCharge"),
         makeProperty("CapShutdownPOS"),
         makeProperty("CapUPSChargeState"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("EnforcedShutdownDelayTime"),

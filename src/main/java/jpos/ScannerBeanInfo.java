@@ -47,6 +47,8 @@ public class ScannerBeanInfo
       {
         // Capabilities
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AutoDisable"),

@@ -49,6 +49,8 @@ public class ToneIndicatorBeanInfo
         makeProperty("CapPitch"),
         makeProperty("CapVolume"),
         makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("AsyncMode"),

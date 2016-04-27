@@ -52,6 +52,8 @@ public class ScaleBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapTareWeight"),
         makeProperty("CapZeroScale"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
         makeProperty("MaximumWeight"),
