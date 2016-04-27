@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// PointCardRW.java - A JavaPOS 1.8.0 device control
+// PointCardRW.java - A JavaPOS 1.8.2 device control
 //
 //------------------------------------------------------------------------------
 
