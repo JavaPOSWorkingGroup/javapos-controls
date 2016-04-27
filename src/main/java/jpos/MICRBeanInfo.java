@@ -50,6 +50,8 @@ public class MICRBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AutoDisable"),

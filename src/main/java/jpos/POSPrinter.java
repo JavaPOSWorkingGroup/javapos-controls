@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSPrinter.java - A JavaPOS 1.8.2 device control
+// POSPrinter.java - A JavaPOS 1.9.1 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class POSPrinter
   extends BaseJposControl
-  implements POSPrinterControl18, JposConst
+  implements POSPrinterControl19, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -43,6 +43,7 @@ public class POSPrinter
   protected POSPrinterService16 service16;
   protected POSPrinterService17 service17;
   protected POSPrinterService18 service18;
+  protected POSPrinterService19 service19;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -57,7 +58,7 @@ public class POSPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS POSPrinter Device Control";
-    deviceControlVersion = deviceVersion18;
+    deviceControlVersion = deviceVersion19;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -68,6 +69,7 @@ public class POSPrinter
     //service16 = null;
     //service17 = null;
     //service18 = null;
+    //service19 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1676,6 +1678,166 @@ public class POSPrinter
     try
     {
       return service18.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapConcurrentPageMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapConcurrentPageMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapRecPageMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapRecPageMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSlpPageMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapSlpPageMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapUpdateFirmware();
     }
     catch(JposException je)
     {
@@ -3851,6 +4013,390 @@ public class POSPrinter
     }
   }
 
+  public String getPageModeArea()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModeArea();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPageModeDescriptor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModeDescriptor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPageModeHorizontalPosition()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModeHorizontalPosition();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPageModeHorizontalPosition(int position)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.setPageModeHorizontalPosition(position);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getPageModePrintArea()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModePrintArea();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPageModePrintArea(String area)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.setPageModePrintArea(area);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPageModePrintDirection()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModePrintDirection();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPageModePrintDirection(int direction)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.setPageModePrintDirection(direction);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPageModeStation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModeStation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPageModeStation(int station)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.setPageModeStation(station);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPageModeVerticalPosition()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getPageModeVerticalPosition();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPageModeVerticalPosition(int position)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.setPageModeVerticalPosition(position);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -4416,6 +4962,134 @@ public class POSPrinter
     }
   }
 
+  public void clearPrintArea()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.clearPrintArea();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void compareFirmwareVersion(String firmwareFileName, int[] result)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void pageModePrint(int control)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.pageModePrint(control);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateFirmware(String firmwareFileName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -4442,6 +5116,7 @@ public class POSPrinter
       service16 = null;
       service17 = null;
       service18 = null;
+      service19 = null;
     }
     else
     {
@@ -4541,6 +5216,20 @@ public class POSPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement POSPrinterService18 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion19)
+      {
+        try
+        {
+          service19 = (POSPrinterService19)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement POSPrinterService19 interface",
                                   e);
         }
       }

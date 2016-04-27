@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashDrawer.java - A JavaPOS 1.8.2 device control
+// CashDrawer.java - A JavaPOS 1.9.1 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CashDrawer
   extends BaseJposControl
-  implements CashDrawerControl18, JposConst
+  implements CashDrawerControl19, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -43,6 +43,7 @@ public class CashDrawer
   protected CashDrawerService16 service16;
   protected CashDrawerService17 service17;
   protected CashDrawerService18 service18;
+  protected CashDrawerService19 service19;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -55,7 +56,7 @@ public class CashDrawer
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CashDrawer Device Control";
-    deviceControlVersion = deviceVersion18;
+    deviceControlVersion = deviceVersion19;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -66,6 +67,7 @@ public class CashDrawer
     //service16 = null;
     //service17 = null;
     //service18 = null;
+    //service19 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -216,6 +218,70 @@ public class CashDrawer
     try
     {
       return service18.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapUpdateFirmware();
     }
     catch(JposException je)
     {
@@ -505,6 +571,70 @@ public class CashDrawer
     }
   }
 
+  public void compareFirmwareVersion(String firmwareFileName, int[] result)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateFirmware(String firmwareFileName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -531,6 +661,7 @@ public class CashDrawer
       service16 = null;
       service17 = null;
       service18 = null;
+      service19 = null;
     }
     else
     {
@@ -630,6 +761,20 @@ public class CashDrawer
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CashDrawerService18 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion19)
+      {
+        try
+        {
+          service19 = (CashDrawerService19)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CashDrawerService19 interface",
                                   e);
         }
       }

@@ -54,6 +54,8 @@ public class RemoteOrderDisplayBeanInfo
         makeProperty("CapMapCharacterSet"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AsyncMode"),

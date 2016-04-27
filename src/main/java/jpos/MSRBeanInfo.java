@@ -53,6 +53,8 @@ public class MSRBeanInfo
         makeProperty("CapTransmitSentinels"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AccountNumber"),

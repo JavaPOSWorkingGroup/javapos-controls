@@ -54,6 +54,14 @@ public class POSPowerBeanInfo
         makeProperty("CapUPSChargeState"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapBatteryCapacityRemaining"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapRestartPOS"),
+        makeProperty("CapStandbyPOS"),
+        makeProperty("CapSuspendPOS"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapVariableBatteryCriticallyLowThreshold"),
+        makeProperty("CapVariableBatteryLowThreshold"),
 
         // Properties
         makeProperty("EnforcedShutdownDelayTime"),
@@ -62,7 +70,11 @@ public class POSPowerBeanInfo
         makeProperty("PowerState"),
         makeProperty("QuickChargeMode"),
         makeProperty("QuickChargeTime"),
-        makeProperty("UPSChargeState")
+        makeProperty("UPSChargeState"),
+        makeProperty("BatteryCapacityRemaining"),
+        makeProperty("BatteryCriticallyLowThreshold"),
+        makeProperty("BatteryLowThreshold"),
+        makeProperty("PowerSource")
       };
 
       return properties;

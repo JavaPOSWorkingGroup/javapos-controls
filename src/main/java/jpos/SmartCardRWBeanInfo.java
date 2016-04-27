@@ -47,30 +47,27 @@ public class SmartCardRWBeanInfo
       {
         // Capabilities
         makeProperty("CapCardErrorDetection"),
-        makeProperty("CapFreeMemory"),
-        makeProperty("CapMultipleFiles"),
         makeProperty("CapInterfaceMode"),
+        makeProperty("CapIsoEmvMode"),
         makeProperty("CapPowerReporting"),
         makeProperty("CapSCPresentSensor"),
         makeProperty("CapSCSlots"),
-        makeProperty("CapSCTypes"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapTransmissionProtocol"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("FreeMemory"),
         makeProperty("InterfaceMode"),
-        makeProperty("MemorySegments"),
+        makeProperty("IsoEmvMode"),
         makeProperty("OutputID"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
         makeProperty("SCPresentSensor"),
         makeProperty("SCSlot"),
-        makeProperty("SCType"),
-        makeProperty("TotalMemorySize"),
         makeProperty("TransactionInProgress"),
         makeProperty("TransmissionProtocol")
       };

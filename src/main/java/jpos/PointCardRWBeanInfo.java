@@ -66,6 +66,8 @@ public class PointCardRWBeanInfo
         makeProperty("CapMapCharacterSet"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("CardState"),

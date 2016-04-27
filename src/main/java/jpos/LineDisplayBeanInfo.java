@@ -64,6 +64,8 @@ public class LineDisplayBeanInfo
         makeProperty("CapScreenMode"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("CharacterSet"),

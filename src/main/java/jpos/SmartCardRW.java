@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// SmartCardRW.java - A JavaPOS 1.8.2 device control
+// SmartCardRW.java - A JavaPOS 1.9.1 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,13 +30,14 @@ import jpos.loader.*;
 
 public class SmartCardRW
   extends BaseJposControl
-  implements SmartCardRWControl18, JposConst
+  implements SmartCardRWControl19, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
   protected SmartCardRWService18 service18;
+  protected SmartCardRWService19 service19;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -52,11 +53,12 @@ public class SmartCardRW
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS SmartCardRW Device Control";
-    deviceControlVersion = deviceVersion18;
+    deviceControlVersion = deviceVersion19;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service18 = null;
+    //service19 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -94,56 +96,6 @@ public class SmartCardRW
     }
   }
 
-  public boolean getCapFreeMemory()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapFreeMemory();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapMultipleFiles()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapMultipleFiles();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
   public int getCapInterfaceMode()
     throws JposException
   {
@@ -157,6 +109,31 @@ public class SmartCardRW
     try
     {
       return service18.getCapInterfaceMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapIsoEmvMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service18.getCapIsoEmvMode();
     }
     catch(JposException je)
     {
@@ -244,31 +221,6 @@ public class SmartCardRW
     }
   }
 
-  public int getCapSCTypes()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapSCTypes();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
   public boolean getCapStatisticsReporting()
     throws JposException
   {
@@ -332,6 +284,70 @@ public class SmartCardRW
     try
     {
       return service18.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapUpdateFirmware();
     }
     catch(JposException je)
     {
@@ -424,31 +440,6 @@ public class SmartCardRW
     }
   }
 
-  public int getFreeMemory()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getFreeMemory();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
   public int getInterfaceMode()
     throws JposException
   {
@@ -499,7 +490,7 @@ public class SmartCardRW
     }
   }
 
-  public int getMemorySegments()
+  public int getIsoEmvMode()
     throws JposException
   {
     // Make sure control is opened
@@ -511,7 +502,32 @@ public class SmartCardRW
     // Perform the operation
     try
     {
-      return service18.getMemorySegments();
+      return service18.getIsoEmvMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setIsoEmvMode(int isoEmvMode)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service18.setIsoEmvMode(isoEmvMode);
     }
     catch(JposException je)
     {
@@ -624,7 +640,7 @@ public class SmartCardRW
     }
   }
 
-  public boolean getSCPresentSensor()
+  public int getSCPresentSensor()
     throws JposException
   {
     // Make sure control is opened
@@ -687,56 +703,6 @@ public class SmartCardRW
     try
     {
       service18.setSCSlot(scSlot);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getSCType()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getSCType();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getTotalMemorySize()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getTotalMemorySize();
     }
     catch(JposException je)
     {
@@ -954,7 +920,7 @@ public class SmartCardRW
     }
   }
 
-  public void readData(int action, int count, String[] data)
+  public void readData(int action, int[] count, String[] data)
     throws JposException
   {
     // Make sure control is opened
@@ -1079,6 +1045,70 @@ public class SmartCardRW
     }
   }
 
+  public void compareFirmwareVersion(String firmwareFileName, int[] result)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateFirmware(String firmwareFileName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1099,6 +1129,7 @@ public class SmartCardRW
     {
 
       service18 = null;
+      service19 = null;
     }
     else
     {
@@ -1114,6 +1145,20 @@ public class SmartCardRW
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement SmartCardRWService18 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion19)
+      {
+        try
+        {
+          service19 = (SmartCardRWService19)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement SmartCardRWService19 interface",
                                   e);
         }
       }

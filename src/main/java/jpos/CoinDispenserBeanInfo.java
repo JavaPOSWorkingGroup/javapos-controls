@@ -52,6 +52,8 @@ public class CoinDispenserBeanInfo
         makeProperty("CapPowerReporting"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("DispenserStatus"),

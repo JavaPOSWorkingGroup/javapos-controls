@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MSR.java - A JavaPOS 1.8.2 device control
+// MSR.java - A JavaPOS 1.9.1 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class MSR
   extends BaseJposControl
-  implements MSRControl18, JposConst
+  implements MSRControl19, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -43,6 +43,7 @@ public class MSR
   protected MSRService16 service16;
   protected MSRService17 service17;
   protected MSRService18 service18;
+  protected MSRService19 service19;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -57,7 +58,7 @@ public class MSR
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MSR Device Control";
-    deviceControlVersion = deviceVersion18;
+    deviceControlVersion = deviceVersion19;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -68,6 +69,7 @@ public class MSR
     //service16 = null;
     //service17 = null;
     //service18 = null;
+    //service19 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -270,6 +272,70 @@ public class MSR
     try
     {
       return service18.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service19.getCapUpdateFirmware();
     }
     catch(JposException je)
     {
@@ -1255,6 +1321,70 @@ public class MSR
     }
   }
 
+  public void compareFirmwareVersion(String firmwareFileName, int[] result)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateFirmware(String firmwareFileName)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.9.0
+    if(serviceVersion < deviceVersion19)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.9.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service19.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1281,6 +1411,7 @@ public class MSR
       service16 = null;
       service17 = null;
       service18 = null;
+      service19 = null;
     }
     else
     {
@@ -1380,6 +1511,20 @@ public class MSR
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MSRService18 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion19)
+      {
+        try
+        {
+          service19 = (MSRService19)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MSRService19 interface",
                                   e);
         }
       }

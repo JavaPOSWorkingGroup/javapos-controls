@@ -107,6 +107,11 @@ public class POSPrinterBeanInfo
         makeProperty("CapMapCharacterSet"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateStatistics"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapConcurrentPageMode"),
+        makeProperty("CapRecPageMode"),
+        makeProperty("CapSlpPageMode"),
+        makeProperty("CapUpdateFirmware"),
 
         // Properties
         makeProperty("AsyncMode"),
@@ -166,7 +171,15 @@ public class POSPrinterBeanInfo
         makeProperty("SlpPrintSide"),
         makeProperty("MapCharacterSet"),
         makeProperty("RecBitmapRotationList"),
-        makeProperty("SlpBitmapRotationList")
+        makeProperty("SlpBitmapRotationList"),
+        makeProperty("PageModeArea"),
+        makeProperty("PageModeDescriptor"),
+        makeProperty("PageModeHorizontalPosition"),
+        makeProperty("PageModePrintArea"),
+        makeProperty("PageModePrintDirection"),
+        makeProperty("PageModeStation"),
+        makeProperty("PageModeVerticalPosition"),
+
       };
 
       return properties;
