@@ -8,7 +8,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// RemoteOrderDisplayBeanInfo.java - Bean information for the JavaPOS RemoteOrderDisplay
+// CheckScannerBeanInfo.java - Bean information for the JavaPOS CheckScanner
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -18,18 +18,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class RemoteOrderDisplayBeanInfo
+public class CheckScannerBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.RemoteOrderDisplay.class);
+    return new BeanDescriptor(jpos.CheckScanner.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.RemoteOrderDisplay.class);
+    return new PropertyDescriptor(propertyName, jpos.CheckScanner.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -39,42 +39,41 @@ public class RemoteOrderDisplayBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
+        makeProperty("CapAutoGenerateFileID"),
+        makeProperty("CapAutoGenerateImageTagData"),
+        makeProperty("CapAutoSize"),
+        makeProperty("CapColor"),
+        makeProperty("CapConcurrentMICR"),
+        makeProperty("CapDefineCropArea"),
+        makeProperty("CapImageFormat"),
+        makeProperty("CapImageTagData"),
+        makeProperty("CapMICRDevice"),
         makeProperty("CapPowerReporting"),
-        makeProperty("CapSelectCharacterSet"),
-        makeProperty("CapTone"),
-        makeProperty("CapTouch"),
-        makeProperty("CapTransaction"),
-        makeProperty("CapMapCharacterSet"),
+        makeProperty("CapStoreImageFiles"),
+        makeProperty("CapValidationDevice"),
 
         // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AutoToneDuration"),
-        makeProperty("AutoToneFrequency"),
-        makeProperty("CharacterSet"),
-        makeProperty("CharacterSetList"),
-        makeProperty("Clocks"),
-        makeProperty("CurrentUnitID"),
+        makeProperty("AutoDisable"),
+        makeProperty("Color"),
+        makeProperty("ConcurrentMICR"),
+        makeProperty("CropAreaCount"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("ErrorString"),
-        makeProperty("ErrorUnits"),
-        makeProperty("EventString"),
-        makeProperty("EventType"),
-        makeProperty("EventUnitID"),
-        makeProperty("EventUnits"),
-        makeProperty("OutputID"),
+        makeProperty("DocumentHeight"),
+        makeProperty("DocumentWidth"),
+        makeProperty("FileID"),
+        makeProperty("FileIndex"),
+        makeProperty("ImageData"),
+        makeProperty("ImageFormat"),
+        makeProperty("ImageMemoryStatus"),
+        makeProperty("ImageTagData"),
+        makeProperty("MapMode"),
+        makeProperty("MaxCropArea"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
-        makeProperty("SystemClocks"),
-        makeProperty("SystemVideoSaveBuffers"),
-        makeProperty("Timeout"),
-        makeProperty("UnitsOnline"),
-        makeProperty("VideoDataCount"),
-        makeProperty("VideoMode"),
-        makeProperty("VideoModesList"),
-        makeProperty("VideoSaveBuffers"),
-        makeProperty("MapCharacterSet"),
-
+        makeProperty("Quality"),
+        makeProperty("QualityList"),
+        makeProperty("RemainingImagesEstimate")
       };
 
       return properties;
@@ -89,7 +88,7 @@ public class RemoteOrderDisplayBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.RemoteOrderDisplay.class,
+    return new EventSetDescriptor(jpos.CheckScanner.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -104,7 +103,6 @@ public class RemoteOrderDisplayBeanInfo
         makeEvent("Data"),
         makeEvent("DirectIO"),
         makeEvent("Error"),
-        makeEvent("OutputComplete"),
         makeEvent("StatusUpdate")
       };
 

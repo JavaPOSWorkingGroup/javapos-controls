@@ -1,10 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-//
-// The JavaPOS library source code is now under the CPL license, which 
-// is an OSS Apache-like license. The complete license is located at:
-//    http://www.ibm.com/developerworks/library/os-cpl.html
-//
-//////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
 //
 // THIS SOFTWARE IS PROVIDED AS IS. THE JAVAPOS WORKING GROUP MAKES NO
@@ -59,19 +52,11 @@ public class LineDisplayBeanInfo
         makeProperty("CapCustomGlyph"),
         makeProperty("CapReadBack"),
         makeProperty("CapReverse"),
+        makeProperty("CapBitmap"),
+        makeProperty("CapMapCharacterSet"),
+        makeProperty("CapScreenMode"),
 
         // Properties
-        makeProperty("CheckHealthText"),
-        makeProperty("Claimed"),
-        makeProperty("DeviceControlDescription"),
-        makeProperty("DeviceControlVersion"),
-        makeProperty("DeviceEnabled"),
-        makeProperty("DeviceServiceDescription"),
-        makeProperty("DeviceServiceVersion"),
-        makeProperty("FreezeEvents"),
-        makeProperty("PhysicalDeviceDescription"),
-        makeProperty("PhysicalDeviceName"),
-        makeProperty("State"),
         makeProperty("CharacterSet"),
         makeProperty("CharacterSetList"),
         makeProperty("Columns"),
@@ -96,7 +81,12 @@ public class LineDisplayBeanInfo
         makeProperty("CursorType"),
         makeProperty("CustomGlyphList"),
         makeProperty("GlyphHeight"),
-        makeProperty("GlyphWidth")
+        makeProperty("GlyphWidth"),
+        makeProperty("MapCharacterSet"),
+        makeProperty("MaximumX"),
+        makeProperty("MaximumY"),
+        makeProperty("ScreenMode"),
+        makeProperty("ScreenModeList")
       };
 
       return properties;

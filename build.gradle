@@ -24,7 +24,7 @@ task wrapper(type: Wrapper) {
 
 def artifactName = 'javapos-controls'
 def groupId='org.javapos'
-def uposVersion = '1.6'
+def uposVersion = '1.7'
 def version="${uposVersion}.0" // the last part after dot is the build/release version
 
 
@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-	compile "org.javapos:javapos-contracts:${uposVersion}.[0,)"
+	compile "org.javapos:javapos-contracts:${uposVersion}.0"
 	compile "org.javapos:javapos-config-loader:2.2.0"
 }
 
@@ -127,7 +127,7 @@ if (project.hasProperty('javaposImportDir'))
 { // evaluate only at development environment, not at travis-ci.org
 
 	// javaposImportDir must be defined in the gradle.properties file
-	def javaposSourceZipFile ="$javaposImportDir/JavaPOS-$uposVersion-Source-20010529.zip"
+	def javaposSourceZipFile ="$javaposImportDir/JavaPOS-$uposVersion-Source-20020821.zip"
 	
 	task importSources {
 		description = 'Copies the sources from an official JavaPOS source distribution archive into this projectout of the current version of the project.'
@@ -142,6 +142,12 @@ if (project.hasProperty('javaposImportDir'))
 					exclude 'jpos/JposException.java'
 					exclude 'jpos/BaseControl.java'
 					exclude 'jpos/*Control1*.java' 
+					// since JavaPOS 1.7 JCL source are in the source archive; we will exclude them
+					exclude 'jpos/config/**' 
+					exclude 'jpos/loader/**'
+					exclude 'jpos/profile/**'
+					exclude 'jpos/res/**'
+					exclude 'jpos/util/**'
 	
 					exclude '**/*.stub' // will be copied later on to src/main/resources, see below
 				}

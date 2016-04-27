@@ -8,7 +8,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// RemoteOrderDisplayBeanInfo.java - Bean information for the JavaPOS RemoteOrderDisplay
+// MotionSensorBeanInfo.java - Bean information for the JavaPOS MotionSensor
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -18,18 +18,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class RemoteOrderDisplayBeanInfo
+public class MotionSensorBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.RemoteOrderDisplay.class);
+    return new BeanDescriptor(jpos.MotionSensor.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.RemoteOrderDisplay.class);
+    return new PropertyDescriptor(propertyName, jpos.MotionSensor.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -40,40 +40,12 @@ public class RemoteOrderDisplayBeanInfo
       {
         // Capabilities
         makeProperty("CapPowerReporting"),
-        makeProperty("CapSelectCharacterSet"),
-        makeProperty("CapTone"),
-        makeProperty("CapTouch"),
-        makeProperty("CapTransaction"),
-        makeProperty("CapMapCharacterSet"),
 
         // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AutoToneDuration"),
-        makeProperty("AutoToneFrequency"),
-        makeProperty("CharacterSet"),
-        makeProperty("CharacterSetList"),
-        makeProperty("Clocks"),
-        makeProperty("CurrentUnitID"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("ErrorString"),
-        makeProperty("ErrorUnits"),
-        makeProperty("EventString"),
-        makeProperty("EventType"),
-        makeProperty("EventUnitID"),
-        makeProperty("EventUnits"),
-        makeProperty("OutputID"),
+        makeProperty("Motion"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
-        makeProperty("SystemClocks"),
-        makeProperty("SystemVideoSaveBuffers"),
         makeProperty("Timeout"),
-        makeProperty("UnitsOnline"),
-        makeProperty("VideoDataCount"),
-        makeProperty("VideoMode"),
-        makeProperty("VideoModesList"),
-        makeProperty("VideoSaveBuffers"),
-        makeProperty("MapCharacterSet"),
 
       };
 
@@ -89,7 +61,7 @@ public class RemoteOrderDisplayBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.RemoteOrderDisplay.class,
+    return new EventSetDescriptor(jpos.MotionSensor.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -101,10 +73,7 @@ public class RemoteOrderDisplayBeanInfo
     {
       EventSetDescriptor[] events =
       {
-        makeEvent("Data"),
         makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
         makeEvent("StatusUpdate")
       };
 

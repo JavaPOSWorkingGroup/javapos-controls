@@ -1,10 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-//
-// The JavaPOS library source code is now under the CPL license, which 
-// is an OSS Apache-like license. The complete license is located at:
-//    http://www.ibm.com/developerworks/library/os-cpl.html
-//
-//////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
 //
 // THIS SOFTWARE IS PROVIDED AS IS. THE JAVAPOS WORKING GROUP MAKES NO
@@ -51,17 +44,6 @@ public class CashDrawerBeanInfo
         makeProperty("CapStatusMultiDrawerDetect"),
 
         // Properties
-        makeProperty("CheckHealthText"),
-        makeProperty("Claimed"),
-        makeProperty("DeviceControlDescription"),
-        makeProperty("DeviceControlVersion"),
-        makeProperty("DeviceEnabled"),
-        makeProperty("DeviceServiceDescription"),
-        makeProperty("DeviceServiceVersion"),
-        makeProperty("FreezeEvents"),
-        makeProperty("PhysicalDeviceDescription"),
-        makeProperty("PhysicalDeviceName"),
-        makeProperty("State"),
         makeProperty("DrawerOpened"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState")

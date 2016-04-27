@@ -10,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashDrawer.java - A JavaPOS 1.7.0 device control
+// MotionSensor.java - A JavaPOS 1.7.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -21,20 +21,15 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class CashDrawer
+public class MotionSensor
   extends BaseJposControl
-  implements CashDrawerControl17, JposConst
+  implements MotionSensorControl17, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected CashDrawerService12 service12;
-  protected CashDrawerService13 service13;
-  protected CashDrawerService14 service14;
-  protected CashDrawerService15 service15;
-  protected CashDrawerService16 service16;
-  protected CashDrawerService17 service17;
+  protected MotionSensorService17 service17;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -43,19 +38,14 @@ public class CashDrawer
   // Constructor
   //--------------------------------------------------------------------------
 
-  public CashDrawer()
+  public MotionSensor()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS CashDrawer Device Control";
+    deviceControlDescription = "JavaPOS MotionSensor Device Control";
     deviceControlVersion = deviceVersion17;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service12 = null;
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
     //service17 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
@@ -66,31 +56,6 @@ public class CashDrawer
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public boolean getCapStatus()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getCapStatus();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
   public int getCapPowerReporting()
     throws JposException
   {
@@ -100,49 +65,10 @@ public class CashDrawer
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapStatusMultiDrawerDetect()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service15.getCapStatusMultiDrawerDetect();
+      return service17.getCapPowerReporting();
     }
     catch(JposException je)
     {
@@ -160,7 +86,7 @@ public class CashDrawer
   // Properties
   //--------------------------------------------------------------------------
 
-  public boolean getDrawerOpened()
+  public boolean getMotion()
     throws JposException
   {
     // Make sure control is opened
@@ -172,7 +98,7 @@ public class CashDrawer
     // Perform the operation
     try
     {
-      return service12.getDrawerOpened();
+      return service17.getMotion();
     }
     catch(JposException je)
     {
@@ -194,17 +120,10 @@ public class CashDrawer
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service17.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -226,17 +145,10 @@ public class CashDrawer
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service17.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -258,17 +170,60 @@ public class CashDrawer
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
+      return service17.getPowerState();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTimeout()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service17.getTimeout();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTimeout(int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service17.setTimeout(timeout);
     }
     catch(JposException je)
     {
@@ -286,7 +241,7 @@ public class CashDrawer
   // Methods
   //--------------------------------------------------------------------------
 
-  public void openDrawer()
+  public void waitForMotion(int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -298,32 +253,7 @@ public class CashDrawer
     // Perform the operation
     try
     {
-      service12.openDrawer();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void waitForDrawerClose(int beepTimeout, int beepFrequency, int beepDuration, int beepDelay)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service12.waitForDrawerClose(beepTimeout, beepFrequency, beepDuration, beepDelay);
+      service17.waitForMotion(timeout);
     }
     catch(JposException je)
     {
@@ -344,7 +274,7 @@ public class CashDrawer
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new CashDrawerCallbacks();
+    return new MotionSensorCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -355,97 +285,22 @@ public class CashDrawer
     if(service == null)
     {
 
-      service12 = null;
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
       service17 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion12)
-      {
-        try
-        {
-          service12 = (CashDrawerService12)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService12 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (CashDrawerService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (CashDrawerService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (CashDrawerService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (CashDrawerService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService16 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion17)
       {
         try
         {
-          service17 = (CashDrawerService17)service;
+          service17 = (MotionSensorService17)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashDrawerService17 interface",
+                                  "Service does not fully implement MotionSensorService17 interface",
                                   e);
         }
       }
@@ -495,12 +350,12 @@ public class CashDrawer
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class CashDrawerCallbacks
+  protected class MotionSensorCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)CashDrawer.this;
+      return (BaseControl)MotionSensor.this;
     }
 
     public void fireDataEvent(DataEvent e)
@@ -509,7 +364,7 @@ public class CashDrawer
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(CashDrawer.this.directIOListeners)
+      synchronized(MotionSensor.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -529,7 +384,7 @@ public class CashDrawer
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(CashDrawer.this.statusUpdateListeners)
+      synchronized(MotionSensor.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)

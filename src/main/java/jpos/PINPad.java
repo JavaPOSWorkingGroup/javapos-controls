@@ -1,10 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-//
-// The JavaPOS library source code is now under the CPL license, which 
-// is an OSS Apache-like license. The complete license is located at:
-//    http://www.ibm.com/developerworks/library/os-cpl.html
-//
-//////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
 //
 // This software is provided "AS IS".  The JavaPOS working group (including
@@ -17,7 +10,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// PINPad.java - A JavaPOS 1.6.0 device control
+// PINPad.java - A JavaPOS 1.7.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -29,1459 +22,1560 @@ import java.util.Vector;
 import jpos.loader.*;
 
 public class PINPad
-   implements PINPadControl16, JposConst
+  extends BaseJposControl
+  implements PINPadControl17, JposConst
 {
-    //--------------------------------------------------------------------------
-    // Variables
-    //--------------------------------------------------------------------------
-
-    // Static Data
-    protected static final String deviceControlDescription =
-                                    "JavaPOS PINPad Device Control";
-    protected static final int    deviceControlVersion = 1006000; // 1.6.0
-    protected static final int    deviceVersion13 = 1003000; // 1.3.0
-    protected static final int    deviceVersion14 = 1004000; // 1.4.0
-    protected static final int    deviceVersion15 = 1005000; // 1.5.0
-    protected static final int    deviceVersion16 = 1006000; // 1.6.0
-
-    // Instance Data
-    protected JposServiceConnection serviceConnection;
-    protected int serviceVersion;
-    protected PINPadService13 service13;
-    protected PINPadService14 service14;
-    protected PINPadService15 service15;
-    protected PINPadService16 service16;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector errorListeners;
-    protected Vector statusUpdateListeners;
-
-    //--------------------------------------------------------------------------
-    // Constructor
-    //--------------------------------------------------------------------------
-
-    public PINPad()
-    {
-        serviceConnection = null;
-        service13 = null;
-        service14 = null;
-        service15 = null;
-        service16 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        errorListeners = new Vector();
-        statusUpdateListeners = new Vector();
-    }
-
-    //--------------------------------------------------------------------------
-    // Capabilities
-    //--------------------------------------------------------------------------
-
-    public int getCapDisplay()
-        throws JposException
+  //--------------------------------------------------------------------------
+  // Variables
+  //--------------------------------------------------------------------------
+
+  protected PINPadService13 service13;
+  protected PINPadService14 service14;
+  protected PINPadService15 service15;
+  protected PINPadService16 service16;
+  protected PINPadService17 service17;
+  protected Vector dataListeners;
+  protected Vector directIOListeners;
+  protected Vector errorListeners;
+  protected Vector statusUpdateListeners;
+
+
+  //--------------------------------------------------------------------------
+  // Constructor
+  //--------------------------------------------------------------------------
+
+  public PINPad()
+  {
+    // Initialize base class instance data
+    deviceControlDescription = "JavaPOS PINPad Device Control";
+    deviceControlVersion = deviceVersion17;
+
+    // Initialize instance data. Initializations are commented out for
+    // efficiency if the Java default is correct.
+    //service13 = null;
+    //service14 = null;
+    //service15 = null;
+    //service16 = null;
+    //service17 = null;
+    dataListeners = new Vector();
+    directIOListeners = new Vector();
+    errorListeners = new Vector();
+    statusUpdateListeners = new Vector();
+  }
+
+
+  //--------------------------------------------------------------------------
+  // Capabilities
+  //--------------------------------------------------------------------------
+
+  public int getCapDisplay()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getCapDisplay();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getCapLanguage()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getCapLanguage();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getCapDisplay();
     }
-
-    public boolean getCapKeyboard()
-        throws JposException
+    catch(JposException je)
     {
-        try
-        {
-            return service13.getCapKeyboard();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw je;
     }
-
-    public boolean getCapMACCalculation()
-        throws JposException
+    catch(Exception e)
     {
-        try
-        {
-            return service13.getCapMACCalculation();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public int getCapPowerReporting()
-        throws JposException
+  public int getCapLanguage()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getCapPowerReporting();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public boolean getCapTone()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getCapTone();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getCapLanguage();
     }
-
-    //--------------------------------------------------------------------------
-    // Properties
-    //--------------------------------------------------------------------------
-
-    public String getCheckHealthText()
-        throws JposException
+    catch(JposException je)
     {
-        try
-        {
-            return service13.getCheckHealthText();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw je;
     }
-
-    public boolean getClaimed()
-        throws JposException
+    catch(Exception e)
     {
-        try
-        {
-            return service13.getClaimed();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getDeviceControlDescription()
+  public boolean getCapKeyboard()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        return deviceControlDescription;
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getDeviceControlVersion()
+    // Perform the operation
+    try
     {
-        return deviceControlVersion;
+      return service13.getCapKeyboard();
     }
-
-    public boolean getDeviceEnabled()
-        throws JposException
+    catch(JposException je)
     {
-        try
-        {
-            return service13.getDeviceEnabled();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw je;
     }
-
-    public void setDeviceEnabled(boolean deviceEnabled)
-        throws JposException
+    catch(Exception e)
     {
-        try
-        {
-            service13.setDeviceEnabled(deviceEnabled);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getDeviceServiceDescription()
-        throws JposException
+  public boolean getCapMACCalculation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getDeviceServiceDescription();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getDeviceServiceVersion()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getDeviceServiceVersion();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getCapMACCalculation();
     }
-
-    public boolean getFreezeEvents()
-        throws JposException
+    catch(JposException je)
     {
-        try
-        {
-            return service13.getFreezeEvents();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw je;
     }
-
-    public void setFreezeEvents(boolean freezeEvents)
-        throws JposException
+    catch(Exception e)
     {
-        try
-        {
-            service13.setFreezeEvents(freezeEvents);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getPhysicalDeviceDescription()
-        throws JposException
+  public int getCapPowerReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getPhysicalDeviceDescription();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public String getPhysicalDeviceName()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getPhysicalDeviceName();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public int getState()
+  public boolean getCapTone()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getState();
-        }
-        catch(Exception e)
-        {
-            return JPOS_S_CLOSED;
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public String getAccountNumber()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getAccountNumber();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getCapTone();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
+
 
-    public void setAccountNumber(String accountNumber)
-        throws JposException
+  //--------------------------------------------------------------------------
+  // Properties
+  //--------------------------------------------------------------------------
+
+  public String getAccountNumber()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.setAccountNumber(accountNumber);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public String getAdditionalSecurityInformation()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getAdditionalSecurityInformation();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getAccountNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public long getAmount()
-        throws JposException
+  public void setAccountNumber(String accountNumber)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getAmount();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setAmount(long amount)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setAmount(amount);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.setAccountNumber(accountNumber);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getAvailableLanguagesList()
-        throws JposException
+  public String getAdditionalSecurityInformation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getAvailableLanguagesList();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public String getAvailablePromptsList()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getAvailablePromptsList();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getAdditionalSecurityInformation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public int getDataCount()
-        throws JposException
+  public long getAmount()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getDataCount();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public boolean getDataEventEnabled()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getDataEventEnabled();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getAmount();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public void setDataEventEnabled(boolean dataEventEnabled)
-        throws JposException
+  public void setAmount(long amount)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.setDataEventEnabled(dataEventEnabled);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public String getEncryptedPIN()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getEncryptedPIN();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.setAmount(amount);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public int getMaximumPINLength()
-        throws JposException
+  public String getAvailableLanguagesList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getMaximumPINLength();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setMaximumPINLength(int maximumPINLength)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setMaximumPINLength(maximumPINLength);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getAvailableLanguagesList();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getMerchantID()
-        throws JposException
+  public String getAvailablePromptsList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getMerchantID();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setMerchantID(String merchantID)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setMerchantID(merchantID);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getAvailablePromptsList();
+    }
+    catch(JposException je)
+    {
+      throw je;
     }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public int getMinimumPINLength()
-        throws JposException
+  public int getDataCount()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getMinimumPINLength();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setMinimumPINLength(int minimumPINLength)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setMinimumPINLength(minimumPINLength);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getDataCount();
     }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public boolean getPINEntryEnabled()
-        throws JposException
+  public boolean getDataEventEnabled()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getPINEntryEnabled();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getPowerNotify()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getPowerNotify();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getDataEventEnabled();
+    }
+    catch(JposException je)
+    {
+      throw je;
     }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public void setPowerNotify(int powerNotify)
-        throws JposException
+  public void setDataEventEnabled(boolean dataEventEnabled)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.setPowerNotify(powerNotify);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getPowerState()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getPowerState();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.setDataEventEnabled(dataEventEnabled);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public int getPrompt()
-        throws JposException
+  public String getEncryptedPIN()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getPrompt();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setPrompt(int propmpt)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setPrompt(propmpt);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getEncryptedPIN();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public String getPromptLanguage()
-        throws JposException
+  public int getMaximumPINLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getPromptLanguage();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setPromptLanguage(String promptLanguage)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setPromptLanguage(promptLanguage);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service13.getMaximumPINLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
     }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public String getTerminalID()
-        throws JposException
+  public void setMaximumPINLength(int maximumPINLength)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getTerminalID();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setTerminalID(String terminalID)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setTerminalID(terminalID);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.setMaximumPINLength(maximumPINLength);
     }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public byte[] getTrack1Data()
-        throws JposException
+  public String getMerchantID()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getTrack1Data();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getMerchantID();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setMerchantID(String merchantID)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setMerchantID(merchantID);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getMinimumPINLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getMinimumPINLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setMinimumPINLength(int minimumPINLength)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setMinimumPINLength(minimumPINLength);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getPINEntryEnabled()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getPINEntryEnabled();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPowerNotify()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getPowerNotify();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPowerNotify(int powerNotify)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setPowerNotify(powerNotify);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPowerState()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getPowerState();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPrompt()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getPrompt();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPrompt(int propmpt)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setPrompt(propmpt);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getPromptLanguage()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getPromptLanguage();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPromptLanguage(String promptLanguage)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setPromptLanguage(promptLanguage);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getTerminalID()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getTerminalID();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTerminalID(String terminalID)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setTerminalID(terminalID);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack1Data()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getTrack1Data();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTrack1Data(byte[] track1Data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setTrack1Data(track1Data);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack2Data()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getTrack2Data();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTrack2Data(byte[] track2Data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setTrack2Data(track2Data);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack3Data()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getTrack3Data();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTrack3Data(byte[] track3Data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setTrack3Data(track3Data);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTransactionType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service13.getTransactionType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTransactionType(int transactionType)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service13.setTransactionType(transactionType);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getTrack4Data()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.5.0
+    if(serviceVersion < deviceVersion15)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.5.0 compliant.");
     }
 
-    public void setTrack1Data(byte[] track1Data)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.setTrack1Data(track1Data);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      return service15.getTrack4Data();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public byte[] getTrack2Data()
-        throws JposException
+  public void setTrack4Data(byte[] track4Data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            return service13.getTrack2Data();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void setTrack2Data(byte[] track2Data)
-        throws JposException
+    // Make sure service supports at least version 1.5.0
+    if(serviceVersion < deviceVersion15)
     {
-        try
-        {
-            service13.setTrack2Data(track2Data);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.5.0 compliant.");
     }
 
-    public byte[] getTrack3Data()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getTrack3Data();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service15.setTrack4Data(track4Data);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
+
 
-    public void setTrack3Data(byte[] track3Data)
-        throws JposException
+  //--------------------------------------------------------------------------
+  // Methods
+  //--------------------------------------------------------------------------
+
+  public void beginEFTTransaction(String PINPadSystem, int transactionHost)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.setTrack3Data(track3Data);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public int getTransactionType()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            return service13.getTransactionType();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.beginEFTTransaction(PINPadSystem, transactionHost);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public void setTransactionType(int transactionType)
-        throws JposException
+  public void clearInput()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.setTransactionType(transactionType);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public byte[] getTrack4Data()
-        throws JposException
+    // Perform the operation
+    try
     {
-        // Attempt call to service if:
-        //   1. The service supports the necessary service interface version
-        //   2. The service is not open (this insures we fire the correct exception)
-        if((service13 == null) || (serviceVersion >= deviceVersion15))
-        {
-            try
-            {
-                return service15.getTrack4Data();
-            }
-            catch(JposException je)
-            {
-                throw je;
-            }
-            catch(Exception e)
-            {
-                throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-            }
-        }
-        else
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Service does not support the PINPadControl15 interface");
-        }
+      service13.clearInput();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public void setTrack4Data(byte[] track4Data)
-        throws JposException
+  public void computeMAC(String inMsg, String[] outMsg)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        // Attempt call to service if:
-        //   1. The service supports the necessary service interface version
-        //   2. The service is not open (this insures we fire the correct exception)
-        if((service13 == null) || (serviceVersion >= deviceVersion15))
-        {
-            try
-            {
-                service15.setTrack4Data(track4Data);
-            }
-            catch(JposException je)
-            {
-                throw je;
-            }
-            catch(Exception e)
-            {
-                throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-            }
-        }
-        else
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Service does not support the PINPadControl15 interface");
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    //--------------------------------------------------------------------------
-    // Methods
-    //--------------------------------------------------------------------------
+    // Perform the operation
+    try
+    {
+      service13.computeMAC(inMsg, outMsg);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-    public void claim(int timeout)
-        throws JposException
+  public void enablePINEntry()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.claim(timeout);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public synchronized void close()
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.close();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED,
-                                    "Service not open",
-                                    e);
-        }
+      service13.enablePINEntry();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-        try
-        {
-            serviceConnection.disconnect();
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Unable to free service connection",
-                                    e);
-        }
-        finally
-        {
-            service13 = null;
-            service14 = null;
-            service15 = null;
-            service16 = null;
-        }
+  public void endEFTTransaction(int completionCode)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public void checkHealth(int level)
-        throws JposException
+    // Perform the operation
+    try
     {
-        try
-        {
-            service13.checkHealth(level);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      service13.endEFTTransaction(completionCode);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
     }
+  }
 
-    public void directIO(int command, int[] data, Object object)
-        throws JposException
+  public void updateKey(int keyNum, String key)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
     {
-        try
-        {
-            service13.directIO(command, data, object);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    public synchronized void open(String logicalDeviceName)
-        throws JposException
+    // Perform the operation
+    try
     {
-        // Make sure the control is not already open
-        if(service13 != null)
-        {
-            throw new JposException(JPOS_E_ILLEGAL,
-                                    "Device control already open");
-        }
+      service13.updateKey(keyNum, key);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-        // Use JCL to get a connection to the device service
-        try
-        {
-            serviceConnection = JposServiceLoader.findService(logicalDeviceName);
-            serviceConnection.connect();
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Could not connect to service",
-                                    e);
-        }
+  public void verifyMAC(String message)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
 
-        // Get an instance of the minimum service level supported
-        try
-        {
-            service13 = (PINPadService13)serviceConnection.getService();
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Could not get service instance",
-                                    e);
-        }
+    // Perform the operation
+    try
+    {
+      service13.verifyMAC(message);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
-        // Get service version
-        try
-        {
-            serviceVersion = service13.getDeviceServiceVersion();
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_NOSERVICE,
-                                    "Could not get service version information",
-                                    e);
-        }
 
-        // Make sure that the service actually conforms to the interfaces it
-        // claims to.
-        if(serviceVersion >= deviceVersion14)
-        {
-            try
-            {
-                service14 = (PINPadService14)service13;
-            }
-            catch(Exception e)
-            {
-                throw new JposException(JPOS_E_NOSERVICE,
-                                        "Service does not fully implement PINPadDevice14 interface",
-                                        e);
-            }
-        }
+  //--------------------------------------------------------------------------
+  // Framework Methods
+  //--------------------------------------------------------------------------
 
-        if(serviceVersion >= deviceVersion15)
-        {
-            try
-            {
-                service15 = (PINPadService15)service13;
-            }
-            catch(Exception e)
-            {
-                throw new JposException(JPOS_E_NOSERVICE,
-                                        "Service does not fully implement PINPadDevice15 interface",
-                                        e);
-            }
-        }
+  // Create an EventCallbacks interface implementation object for this Control
+  protected EventCallbacks createEventCallbacks()
+  {
+    return new PINPadCallbacks();
+  }
 
-        if(serviceVersion >= deviceVersion16)
-        {
-            try
-            {
-                service16 = (PINPadService16)service13;
-            }
-            catch(Exception e)
-            {
-                throw new JposException(JPOS_E_NOSERVICE,
-                                        "Service does not fully implement PINPadDevice16 interface",
-                                        e);
-            }
-        }
+  // Store the reference to the Device Service
+  protected void setDeviceService(BaseService service, int nServiceVersion)
+    throws JposException
+  {
+    // Special case: service == null to free references
+    if(service == null)
+    {
 
-        // Create callback subclass and attach it to the device service
-        PINPadCallbacks callbacks = this.new PINPadCallbacks();
-        service13.open(logicalDeviceName, callbacks);
+      service13 = null;
+      service14 = null;
+      service15 = null;
+      service16 = null;
+      service17 = null;
     }
-
-    public void release()
-        throws JposException
+    else
     {
+      // Make sure that the service actually conforms to the interfaces it
+      // claims to.
+      if(serviceVersion >= deviceVersion13)
+      {
         try
-        {
-            service13.release();
-        }
-        catch(JposException je)
         {
-            throw je;
+          service13 = (PINPadService13)service;
         }
         catch(Exception e)
         {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService13 interface",
+                                  e);
         }
-    }
+      }
 
-    public void beginEFTTransaction(String PINPadSystem, int transactionHost)
-        throws JposException
-    {
+      if(serviceVersion >= deviceVersion14)
+      {
         try
-        {
-            service13.beginEFTTransaction(PINPadSystem, transactionHost);
-        }
-        catch(JposException je)
         {
-            throw je;
+          service14 = (PINPadService14)service;
         }
         catch(Exception e)
         {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService14 interface",
+                                  e);
         }
-    }
+      }
 
-    public void clearInput()
-        throws JposException
-    {
+      if(serviceVersion >= deviceVersion15)
+      {
         try
-        {
-            service13.clearInput();
-        }
-        catch(JposException je)
         {
-            throw je;
+          service15 = (PINPadService15)service;
         }
         catch(Exception e)
         {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService15 interface",
+                                  e);
         }
-    }
+      }
 
-    public void computeMAC(String inMsg, String[] outMsg)
-        throws JposException
-    {
+      if(serviceVersion >= deviceVersion16)
+      {
         try
-        {
-            service13.computeMAC(inMsg, outMsg);
-        }
-        catch(JposException je)
         {
-            throw je;
+          service16 = (PINPadService16)service;
         }
         catch(Exception e)
         {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService16 interface",
+                                  e);
         }
-    }
+      }
 
-    public void enablePINEntry()
-        throws JposException
-    {
+      if(serviceVersion >= deviceVersion17)
+      {
         try
-        {
-            service13.enablePINEntry();
-        }
-        catch(JposException je)
         {
-            throw je;
+          service17 = (PINPadService17)service;
         }
         catch(Exception e)
         {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService17 interface",
+                                  e);
         }
+      }
+
     }
+  }
+
 
-    public void endEFTTransaction(int completionCode)
-        throws JposException
+  //--------------------------------------------------------------------------
+  // Event Listener Methods
+  //--------------------------------------------------------------------------
+
+  public void addDataListener(DataListener l)
+  {
+    synchronized(dataListeners)
     {
-        try
-        {
-            service13.endEFTTransaction(completionCode);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      dataListeners.addElement(l);
     }
+  }
 
-    public void updateKey(int keyNum, String key)
-        throws JposException
+  public void removeDataListener(DataListener l)
+  {
+    synchronized(dataListeners)
     {
-        try
-        {
-            service13.updateKey(keyNum, key);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      dataListeners.removeElement(l);
     }
+  }
 
-    public void verifyMAC(String message)
-        throws JposException
+  public void addDirectIOListener(DirectIOListener l)
+  {
+    synchronized(directIOListeners)
     {
-        try
-        {
-            service13.verifyMAC(message);
-        }
-        catch(JposException je)
-        {
-            throw je;
-        }
-        catch(Exception e)
-        {
-            throw new JposException(JPOS_E_CLOSED, "Control not opened", e);
-        }
+      directIOListeners.addElement(l);
     }
-
-    //--------------------------------------------------------------------------
-    // Event Listener Methods
-    //--------------------------------------------------------------------------
+  }
 
-    public void addDataListener(DataListener l)
+  public void removeDirectIOListener(DirectIOListener l)
+  {
+    synchronized(directIOListeners)
     {
-        synchronized(dataListeners)
-        {
-            dataListeners.addElement(l);
-        }
+      directIOListeners.removeElement(l);
     }
+  }
 
-    public void removeDataListener(DataListener l)
+  public void addErrorListener(ErrorListener l)
+  {
+    synchronized(errorListeners)
     {
-        synchronized(dataListeners)
-        {
-            dataListeners.removeElement(l);
-        }
+      errorListeners.addElement(l);
     }
+  }
 
-    public void addDirectIOListener(DirectIOListener l)
+  public void removeErrorListener(ErrorListener l)
+  {
+    synchronized(errorListeners)
     {
-        synchronized(directIOListeners)
-        {
-            directIOListeners.addElement(l);
-        }
+      errorListeners.removeElement(l);
     }
+  }
 
-    public void removeDirectIOListener(DirectIOListener l)
+  public void addStatusUpdateListener(StatusUpdateListener l)
+  {
+    synchronized(statusUpdateListeners)
     {
-        synchronized(directIOListeners)
-        {
-            directIOListeners.removeElement(l);
-        }
+      statusUpdateListeners.addElement(l);
     }
+  }
 
-    public void addErrorListener(ErrorListener l)
+  public void removeStatusUpdateListener(StatusUpdateListener l)
+  {
+    synchronized(statusUpdateListeners)
     {
-        synchronized(errorListeners)
-        {
-            errorListeners.addElement(l);
-        }
+      statusUpdateListeners.removeElement(l);
     }
+  }
+
+
+  //--------------------------------------------------------------------------
+  // EventCallbacks inner class
+  //--------------------------------------------------------------------------
 
-    public void removeErrorListener(ErrorListener l)
+  protected class PINPadCallbacks
+    implements EventCallbacks
+  {
+    public BaseControl getEventSource()
     {
-        synchronized(errorListeners)
-        {
-            errorListeners.removeElement(l);
-        }
+      return (BaseControl)PINPad.this;
     }
 
-    public void addStatusUpdateListener(StatusUpdateListener l)
+    public void fireDataEvent(DataEvent e)
     {
-        synchronized(statusUpdateListeners)
+      synchronized(PINPad.this.dataListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < dataListeners.size(); x++)
         {
-            statusUpdateListeners.addElement(l);
+          ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
         }
+      }
     }
 
-    public void removeStatusUpdateListener(StatusUpdateListener l)
+    public void fireDirectIOEvent(DirectIOEvent e)
     {
-        synchronized(statusUpdateListeners)
+      synchronized(PINPad.this.directIOListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < directIOListeners.size(); x++)
         {
-            statusUpdateListeners.removeElement(l);
+          ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
         }
+      }
     }
 
-    //--------------------------------------------------------------------------
-    // EventCallbacks inner class
-    //--------------------------------------------------------------------------
-    protected class PINPadCallbacks implements EventCallbacks
+    public void fireErrorEvent(ErrorEvent e)
     {
-        public BaseControl getEventSource()
-        {
-            return (BaseControl)PINPad.this;
-        }
-
-        public void fireDataEvent(DataEvent e)
-        {
-            synchronized(PINPad.this.dataListeners)
-            {
-                // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                    ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
-                }
-            }
-        }
-
-        public void fireDirectIOEvent(DirectIOEvent e)
+      synchronized(PINPad.this.errorListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < errorListeners.size(); x++)
         {
-            synchronized(PINPad.this.directIOListeners)
-            {
-                // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                    ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
-                }
-            }
+          ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
         }
-
-        public void fireErrorEvent(ErrorEvent e)
-        {
-            synchronized(PINPad.this.errorListeners)
-            {
-                // deliver the event to all registered listeners
-                for(int x = 0; x < errorListeners.size(); x++)
-                {
-                    ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
-                }
-            }
-        }
+      }
+    }
 
-        public void fireOutputCompleteEvent(OutputCompleteEvent e)
-        {
-        }
+    public void fireOutputCompleteEvent(OutputCompleteEvent e)
+    {
+    }
 
-        public void fireStatusUpdateEvent(StatusUpdateEvent e)
+    public void fireStatusUpdateEvent(StatusUpdateEvent e)
+    {
+      synchronized(PINPad.this.statusUpdateListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < statusUpdateListeners.size(); x++)
         {
-            synchronized(PINPad.this.statusUpdateListeners)
-            {
-                // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                    ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
-                }
-            }
+          ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
         }
+      }
     }
+  }
 }
