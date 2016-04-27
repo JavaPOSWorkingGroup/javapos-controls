@@ -1,3 +1,10 @@
+//////////////////////////////////////////////////////////////////////
+//
+// The JavaPOS library source code is now under the CPL license, which 
+// is an OSS Apache-like license. The complete license is located at:
+//    http://www.ibm.com/developerworks/library/os-cpl.html
+//
+//////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
 //
 // This software is provided "AS IS".  The JavaPOS working group (including
@@ -10,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// SignatureCapture.java - A JavaPOS 1.7.0 device control
+// SignatureCapture.java - A JavaPOS 1.7.2 device control
 //
 //------------------------------------------------------------------------------
 

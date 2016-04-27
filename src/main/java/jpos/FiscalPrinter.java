@@ -1,3 +1,10 @@
+//////////////////////////////////////////////////////////////////////
+//
+// The JavaPOS library source code is now under the CPL license, which 
+// is an OSS Apache-like license. The complete license is located at:
+//    http://www.ibm.com/developerworks/library/os-cpl.html
+//
+//////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
 //
 // This software is provided "AS IS".  The JavaPOS working group (including
@@ -10,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// FiscalPrinter.java - A JavaPOS 1.7.0 device control
+// FiscalPrinter.java - A JavaPOS 1.7.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -3306,6 +3313,38 @@ public class FiscalPrinter
     try
     {
       service16.setTotalizerType(totalizerType);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getAmountDecimalPlaces()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.7.0
+    if(serviceVersion < deviceVersion17)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.7.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service17.getAmountDecimalPlaces();
     }
     catch(JposException je)
     {
