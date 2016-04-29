@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// SignatureCapture.java - A JavaPOS 1.11.0 device control
+// BillDispenser.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,27 +28,16 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class SignatureCapture
+public class BillDispenser
   extends BaseJposControl
-  implements SignatureCaptureControl111, JposConst
+  implements BillDispenserControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected SignatureCaptureService12 service12;
-  protected SignatureCaptureService13 service13;
-  protected SignatureCaptureService14 service14;
-  protected SignatureCaptureService15 service15;
-  protected SignatureCaptureService16 service16;
-  protected SignatureCaptureService17 service17;
-  protected SignatureCaptureService18 service18;
-  protected SignatureCaptureService19 service19;
-  protected SignatureCaptureService110 service110;
-  protected SignatureCaptureService111 service111;
-  protected Vector dataListeners;
+  protected BillDispenserService111 service111;
   protected Vector directIOListeners;
-  protected Vector errorListeners;
   protected Vector statusUpdateListeners;
 
 
@@ -56,27 +45,16 @@ public class SignatureCapture
   // Constructor
   //--------------------------------------------------------------------------
 
-  public SignatureCapture()
+  public BillDispenser()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS SignatureCapture Device Control";
+    deviceControlDescription = "JavaPOS BillDispenser Device Control";
     deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service12 = null;
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
-    //service18 = null;
-    //service19 = null;
-    //service110 = null;
     //service111 = null;
-    dataListeners = new Vector();
     directIOListeners = new Vector();
-    errorListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
 
@@ -85,7 +63,7 @@ public class SignatureCapture
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public boolean getCapDisplay()
+  public boolean getCapCompareFirmwareVersion()
     throws JposException
   {
     // Make sure control is opened
@@ -97,7 +75,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getCapDisplay();
+      return service111.getCapCompareFirmwareVersion();
     }
     catch(JposException je)
     {
@@ -110,7 +88,7 @@ public class SignatureCapture
     }
   }
 
-  public boolean getCapRealTimeData()
+  public boolean getCapDiscrepancy()
     throws JposException
   {
     // Make sure control is opened
@@ -122,7 +100,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getCapRealTimeData();
+      return service111.getCapDiscrepancy();
     }
     catch(JposException je)
     {
@@ -135,7 +113,7 @@ public class SignatureCapture
     }
   }
 
-  public boolean getCapUserTerminated()
+  public boolean getCapEmptySensor()
     throws JposException
   {
     // Make sure control is opened
@@ -147,7 +125,57 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getCapUserTerminated();
+      return service111.getCapEmptySensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapJamSensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapJamSensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapNearEmptySensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapNearEmptySensor();
     }
     catch(JposException je)
     {
@@ -169,17 +197,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
+      return service111.getCapPowerReporting();
     }
     catch(JposException je)
     {
@@ -201,81 +222,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service18.getCapStatisticsReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapUpdateStatistics()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapUpdateStatistics();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapCompareFirmwareVersion()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service19.getCapCompareFirmwareVersion();
+      return service111.getCapStatisticsReporting();
     }
     catch(JposException je)
     {
@@ -297,17 +247,35 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      return service111.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service19.getCapUpdateFirmware();
+      return service111.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -325,7 +293,7 @@ public class SignatureCapture
   // Properties
   //--------------------------------------------------------------------------
 
-  public boolean getAutoDisable()
+  public boolean getAsyncMode()
     throws JposException
   {
     // Make sure control is opened
@@ -337,7 +305,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getAutoDisable();
+      return service111.getAsyncMode();
     }
     catch(JposException je)
     {
@@ -350,7 +318,7 @@ public class SignatureCapture
     }
   }
 
-  public void setAutoDisable(boolean autoDisable)
+  public void setAsyncMode(boolean asyncMode)
     throws JposException
   {
     // Make sure control is opened
@@ -362,7 +330,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      service12.setAutoDisable(autoDisable);
+      service111.setAsyncMode(asyncMode);
     }
     catch(JposException je)
     {
@@ -375,7 +343,7 @@ public class SignatureCapture
     }
   }
 
-  public int getDataCount()
+  public int getAsyncResultCode()
     throws JposException
   {
     // Make sure control is opened
@@ -387,7 +355,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getDataCount();
+      return service111.getAsyncResultCode();
     }
     catch(JposException je)
     {
@@ -400,7 +368,7 @@ public class SignatureCapture
     }
   }
 
-  public boolean getDataEventEnabled()
+  public int getAsyncResultCodeExtended()
     throws JposException
   {
     // Make sure control is opened
@@ -412,7 +380,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getDataEventEnabled();
+      return service111.getAsyncResultCodeExtended();
     }
     catch(JposException je)
     {
@@ -425,7 +393,7 @@ public class SignatureCapture
     }
   }
 
-  public void setDataEventEnabled(boolean dataEventEnabled)
+  public String getCurrencyCashList()
     throws JposException
   {
     // Make sure control is opened
@@ -437,7 +405,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      service12.setDataEventEnabled(dataEventEnabled);
+      return service111.getCurrencyCashList();
     }
     catch(JposException je)
     {
@@ -450,7 +418,7 @@ public class SignatureCapture
     }
   }
 
-  public int getMaximumX()
+  public String getCurrencyCode()
     throws JposException
   {
     // Make sure control is opened
@@ -462,7 +430,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getMaximumX();
+      return service111.getCurrencyCode();
     }
     catch(JposException je)
     {
@@ -475,7 +443,7 @@ public class SignatureCapture
     }
   }
 
-  public int getMaximumY()
+  public void setCurrencyCode(String currencyCode)
     throws JposException
   {
     // Make sure control is opened
@@ -487,7 +455,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getMaximumY();
+      service111.setCurrencyCode(currencyCode);
     }
     catch(JposException je)
     {
@@ -500,7 +468,7 @@ public class SignatureCapture
     }
   }
 
-  public java.awt.Point[] getPointArray()
+  public String getCurrencyCodeList()
     throws JposException
   {
     // Make sure control is opened
@@ -512,7 +480,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getPointArray();
+      return service111.getCurrencyCodeList();
     }
     catch(JposException je)
     {
@@ -525,7 +493,7 @@ public class SignatureCapture
     }
   }
 
-  public byte[] getRawData()
+  public int getCurrentExit()
     throws JposException
   {
     // Make sure control is opened
@@ -537,7 +505,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getRawData();
+      return service111.getCurrentExit();
     }
     catch(JposException je)
     {
@@ -550,7 +518,7 @@ public class SignatureCapture
     }
   }
 
-  public boolean getRealTimeDataEnabled()
+  public void setCurrentExit(int currentExit)
     throws JposException
   {
     // Make sure control is opened
@@ -562,7 +530,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      return service12.getRealTimeDataEnabled();
+      service111.setCurrentExit(currentExit);
     }
     catch(JposException je)
     {
@@ -575,7 +543,7 @@ public class SignatureCapture
     }
   }
 
-  public void setRealTimeDataEnabled(boolean realTimeDataEnabled)
+  public int getDeviceExits()
     throws JposException
   {
     // Make sure control is opened
@@ -587,7 +555,57 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      service12.setRealTimeDataEnabled(realTimeDataEnabled);
+      return service111.getDeviceExits();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getDeviceStatus()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getDeviceStatus();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getExitCashList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getExitCashList();
     }
     catch(JposException je)
     {
@@ -609,17 +627,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service111.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -641,17 +652,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service111.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -673,17 +677,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service111.getPowerState();
     }
     catch(JposException je)
     {
@@ -701,7 +698,7 @@ public class SignatureCapture
   // Methods
   //--------------------------------------------------------------------------
 
-  public void beginCapture(String formName)
+  public void adjustCashCounts(String cashCounts)
     throws JposException
   {
     // Make sure control is opened
@@ -713,7 +710,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      service12.beginCapture(formName);
+      service111.adjustCashCounts(cashCounts);
     }
     catch(JposException je)
     {
@@ -726,7 +723,7 @@ public class SignatureCapture
     }
   }
 
-  public void clearInput()
+  public void clearOutput()
     throws JposException
   {
     // Make sure control is opened
@@ -738,128 +735,7 @@ public class SignatureCapture
     // Perform the operation
     try
     {
-      service12.clearInput();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void endCapture()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service12.endCapture();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.resetStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void retrieveStatistics(String[] statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.retrieveStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.updateStatistics(statisticsBuffer);
+      service111.clearOutput();
     }
     catch(JposException je)
     {
@@ -881,17 +757,110 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service111.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void dispenseCash(String cashCounts)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.compareFirmwareVersion(firmwareFileName, result);
+      service111.dispenseCash(cashCounts);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readCashCounts(String[] cashCounts, boolean[] discrepancy)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.readCashCounts(cashCounts, discrepancy);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.retrieveStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -913,17 +882,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service19.updateFirmware(firmwareFileName);
+      service111.updateFirmware(firmwareFileName);
     }
     catch(JposException je)
     {
@@ -936,7 +898,7 @@ public class SignatureCapture
     }
   }
 
-  public void clearInputProperties()
+  public void updateStatistics(String statisticsBuffer)
     throws JposException
   {
     // Make sure control is opened
@@ -945,17 +907,10 @@ public class SignatureCapture
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.10.0
-    if(serviceVersion < deviceVersion110)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.10.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service110.clearInputProperties();
+      service111.updateStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -976,7 +931,7 @@ public class SignatureCapture
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new SignatureCaptureCallbacks();
+    return new BillDispenserCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -987,157 +942,22 @@ public class SignatureCapture
     if(service == null)
     {
 
-      service12 = null;
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
-      service18 = null;
-      service19 = null;
-      service110 = null;
       service111 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion12)
-      {
-        try
-        {
-          service12 = (SignatureCaptureService12)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService12 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (SignatureCaptureService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (SignatureCaptureService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (SignatureCaptureService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (SignatureCaptureService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (SignatureCaptureService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService17 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion18)
-      {
-        try
-        {
-          service18 = (SignatureCaptureService18)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService18 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion19)
-      {
-        try
-        {
-          service19 = (SignatureCaptureService19)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService19 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion110)
-      {
-        try
-        {
-          service110 = (SignatureCaptureService110)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService110 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion111)
       {
         try
         {
-          service111 = (SignatureCaptureService111)service;
+          service111 = (BillDispenserService111)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement SignatureCaptureService111 interface",
+                                  "Service does not fully implement BillDispenserService111 interface",
                                   e);
         }
       }
@@ -1149,22 +969,6 @@ public class SignatureCapture
   //--------------------------------------------------------------------------
   // Event Listener Methods
   //--------------------------------------------------------------------------
-
-  public void addDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.addElement(l);
-    }
-  }
-
-  public void removeDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.removeElement(l);
-    }
-  }
 
   public void addDirectIOListener(DirectIOListener l)
   {
@@ -1179,22 +983,6 @@ public class SignatureCapture
     synchronized(directIOListeners)
     {
       directIOListeners.removeElement(l);
-    }
-  }
-
-  public void addErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.addElement(l);
-    }
-  }
-
-  public void removeErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.removeElement(l);
     }
   }
 
@@ -1219,29 +1007,21 @@ public class SignatureCapture
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class SignatureCaptureCallbacks
+  protected class BillDispenserCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)SignatureCapture.this;
+      return (BaseControl)BillDispenser.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(SignatureCapture.this.dataListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < dataListeners.size(); x++)
-        {
-          ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
-        }
-      }
     }
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(SignatureCapture.this.directIOListeners)
+      synchronized(BillDispenser.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -1253,14 +1033,6 @@ public class SignatureCapture
 
     public void fireErrorEvent(ErrorEvent e)
     {
-      synchronized(SignatureCapture.this.errorListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < errorListeners.size(); x++)
-        {
-          ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
-        }
-      }
     }
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
@@ -1269,7 +1041,7 @@ public class SignatureCapture
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(SignatureCapture.this.statusUpdateListeners)
+      synchronized(BillDispenser.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)

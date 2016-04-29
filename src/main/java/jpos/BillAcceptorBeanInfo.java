@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// CashChangerBeanInfo.java - Bean information for the JavaPOS CashChanger
+// BillAcceptorBeanInfo.java - Bean information for the JavaPOS BillAcceptor
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class CashChangerBeanInfo
+public class BillAcceptorBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.CashChanger.class);
+    return new BeanDescriptor(jpos.BillAcceptor.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.CashChanger.class);
+    return new PropertyDescriptor(propertyName, jpos.BillAcceptor.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,37 +46,20 @@ public class CashChangerBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
-        makeProperty("CapDiscrepancy"),
-        makeProperty("CapEmptySensor"),
-        makeProperty("CapFullSensor"),
-        makeProperty("CapNearEmptySensor"),
-        makeProperty("CapNearFullSensor"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapDeposit"),
-        makeProperty("CapDepositDataEvent"),
-        makeProperty("CapPauseDeposit"),
-        makeProperty("CapRepayDeposit"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapDiscrepancy"),
+        makeProperty("CapFullSensor"),
         makeProperty("CapJamSensor"),
+        makeProperty("CapNearFullSensor"),
+        makeProperty("CapPauseDeposit"),
+        makeProperty("CapPowerReporting"),
         makeProperty("CapRealTimeData"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AsyncResultCode"),
-        makeProperty("AsyncResultCodeExtended"),
-        makeProperty("CurrencyCashList"),
         makeProperty("CurrencyCode"),
-        makeProperty("CurrencyCodeList"),
-        makeProperty("CurrentExit"),
-        makeProperty("DeviceExits"),
-        makeProperty("DeviceStatus"),
-        makeProperty("ExitCashList"),
-        makeProperty("FullStatus"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
         makeProperty("DepositAmount"),
@@ -84,10 +67,11 @@ public class CashChangerBeanInfo
         makeProperty("DepositCodeList"),
         makeProperty("DepositCounts"),
         makeProperty("DepositStatus"),
-        makeProperty("CurrentService"),
+        makeProperty("FullStatus"),
+        makeProperty("PowerNotify"),
+        makeProperty("PowerState"),
         makeProperty("RealTimeDataEnabled"),
-        makeProperty("ServiceCount"),
-        makeProperty("ServiceIndex")
+
       };
 
       return properties;
@@ -102,7 +86,7 @@ public class CashChangerBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.CashChanger.class,
+    return new EventSetDescriptor(jpos.BillAcceptor.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");

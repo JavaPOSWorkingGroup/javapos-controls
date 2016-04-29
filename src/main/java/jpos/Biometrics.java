@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Biometrics.java - A JavaPOS 1.10.0 device control
+// Biometrics.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,13 +30,14 @@ import jpos.loader.*;
 
 public class Biometrics
   extends BaseJposControl
-  implements BiometricsControl110, JposConst
+  implements BiometricsControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
   protected BiometricsService110 service110;
+  protected BiometricsService111 service111;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -51,11 +52,12 @@ public class Biometrics
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Biometrics Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service110 = null;
+    //service111 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1127,7 +1129,7 @@ public class Biometrics
     }
   }
 
-  public void identify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] referenceBIRPopulation, byte[] candidateRanking, int timeout)
+  public void identify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[][] referenceBIRPopulation, int[][] candidateRanking, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1152,7 +1154,7 @@ public class Biometrics
     }
   }
 
-  public void identifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[] referenceBIRPopulation, byte[] candidateRanking)
+  public void identifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[][] referenceBIRPopulation, int[][] candidateRanking)
     throws JposException
   {
     // Make sure control is opened
@@ -1177,7 +1179,7 @@ public class Biometrics
     }
   }
 
-  public void processPrematchData(byte[] capturedBIR, byte[] prematchDataBIR, byte[] processedBIR)
+  public void processPrematchData(byte[] capturedBIR, byte[] prematchDataBIR, byte[][] processedBIR)
     throws JposException
   {
     // Make sure control is opened
@@ -1302,7 +1304,7 @@ public class Biometrics
     }
   }
 
-  public void verify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] referenceBIR, byte[] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[] payload, int timeout)
+  public void verify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] referenceBIR, byte[][] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[][] payload, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1327,7 +1329,7 @@ public class Biometrics
     }
   }
 
-  public void verifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[] referenceBIR, byte[] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[] payload)
+  public void verifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[] referenceBIR, byte[][] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[][] payload)
     throws JposException
   {
     // Make sure control is opened
@@ -1372,6 +1374,7 @@ public class Biometrics
     {
 
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -1387,6 +1390,20 @@ public class Biometrics
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement BiometricsService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (BiometricsService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement BiometricsService111 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashChanger.java - A JavaPOS 1.10.0 device control
+// CashChanger.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CashChanger
   extends BaseJposControl
-  implements CashChangerControl110, JposConst
+  implements CashChangerControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class CashChanger
   protected CashChangerService18 service18;
   protected CashChangerService19 service19;
   protected CashChangerService110 service110;
+  protected CashChangerService111 service111;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
   protected Vector dataListeners;
@@ -58,7 +59,7 @@ public class CashChanger
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CashChanger Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -71,6 +72,7 @@ public class CashChanger
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
     dataListeners = new Vector();
@@ -482,6 +484,70 @@ public class CashChanger
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapJamSensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapJamSensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapRealTimeData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapRealTimeData();
     }
     catch(JposException je)
     {
@@ -1201,6 +1267,198 @@ public class CashChanger
     }
   }
 
+  public int getCurrentService()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCurrentService();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setCurrentServuce(int currentService)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.setCurrentServuce(currentService);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getRealTimeDataEnabled()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getRealTimeDataEnabled();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setRealTimeDataEnabled(boolean bEnabled)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.setRealTimeDataEnabled(bEnabled);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getServiceCount()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getServiceCount();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getServiceIndex()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getServiceIndex();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1601,6 +1859,38 @@ public class CashChanger
     }
   }
 
+  public void adjustCashCounts(String cashCounts)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.adjustCashCounts(cashCounts);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1629,6 +1919,7 @@ public class CashChanger
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -1756,6 +2047,20 @@ public class CashChanger
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CashChangerService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (CashChangerService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CashChangerService111 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// SmartCardRW.java - A JavaPOS 1.10.0 device control
+// SmartCardRW.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class SmartCardRW
   extends BaseJposControl
-  implements SmartCardRWControl110, JposConst
+  implements SmartCardRWControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -39,6 +39,7 @@ public class SmartCardRW
   protected SmartCardRWService18 service18;
   protected SmartCardRWService19 service19;
   protected SmartCardRWService110 service110;
+  protected SmartCardRWService111 service111;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -54,13 +55,14 @@ public class SmartCardRW
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS SmartCardRW Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1165,6 +1167,7 @@ public class SmartCardRW
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -1208,6 +1211,20 @@ public class SmartCardRW
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement SmartCardRWService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (SmartCardRWService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement SmartCardRWService111 interface",
                                   e);
         }
       }

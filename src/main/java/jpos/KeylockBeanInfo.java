@@ -51,12 +51,14 @@ public class KeylockBeanInfo
         makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
         makeProperty("CapUpdateFirmware"),
+        makeProperty("CapKeylockType"),
 
         // Properties
         makeProperty("KeyPosition"),
         makeProperty("PositionCount"),
         makeProperty("PowerNotify"),
-        makeProperty("PowerState")
+        makeProperty("PowerState"),
+        makeProperty("ElectronicKeyValue")
       };
 
       return properties;

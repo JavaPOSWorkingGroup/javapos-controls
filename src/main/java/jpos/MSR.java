@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MSR.java - A JavaPOS 1.10.0 device control
+// MSR.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class MSR
   extends BaseJposControl
-  implements MSRControl110, JposConst
+  implements MSRControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class MSR
   protected MSRService18 service18;
   protected MSRService19 service19;
   protected MSRService110 service110;
+  protected MSRService111 service111;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -59,7 +60,7 @@ public class MSR
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MSR Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -72,6 +73,7 @@ public class MSR
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1547,7 +1549,7 @@ public class MSR
     }
   }
 
-  public void writeTracks(String data, int timeout)
+  public void writeTracks(byte[][] data, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1607,6 +1609,7 @@ public class MSR
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -1734,6 +1737,20 @@ public class MSR
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MSRService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (MSRService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MSRService111 interface",
                                   e);
         }
       }

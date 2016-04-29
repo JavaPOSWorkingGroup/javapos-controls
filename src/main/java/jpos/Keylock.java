@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Keylock.java - A JavaPOS 1.10.0 device control
+// Keylock.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Keylock
   extends BaseJposControl
-  implements KeylockControl110, JposConst
+  implements KeylockControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class Keylock
   protected KeylockService18 service18;
   protected KeylockService19 service19;
   protected KeylockService110 service110;
+  protected KeylockService111 service111;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -57,7 +58,7 @@ public class Keylock
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Keylock Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class Keylock
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -239,6 +241,38 @@ public class Keylock
     }
   }
 
+  public int getCapKeylockType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getCapKeylockType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Properties
@@ -378,6 +412,38 @@ public class Keylock
     try
     {
       return service13.getPowerState();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public byte[] getElectronicKeyValue()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service111.getElectronicKeyValue();
     }
     catch(JposException je)
     {
@@ -608,6 +674,7 @@ public class Keylock
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -735,6 +802,20 @@ public class Keylock
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement KeylockService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (KeylockService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement KeylockService111 interface",
                                   e);
         }
       }

@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// CashChangerBeanInfo.java - Bean information for the JavaPOS CashChanger
+// ImageScannerBeanInfo.java - Bean information for the JavaPOS ImageScanner
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class CashChangerBeanInfo
+public class ImageScannerBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.CashChanger.class);
+    return new BeanDescriptor(jpos.ImageScanner.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.CashChanger.class);
+    return new PropertyDescriptor(propertyName, jpos.ImageScanner.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,48 +46,39 @@ public class CashChangerBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
-        makeProperty("CapDiscrepancy"),
-        makeProperty("CapEmptySensor"),
-        makeProperty("CapFullSensor"),
-        makeProperty("CapNearEmptySensor"),
-        makeProperty("CapNearFullSensor"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapDeposit"),
-        makeProperty("CapDepositDataEvent"),
-        makeProperty("CapPauseDeposit"),
-        makeProperty("CapRepayDeposit"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapAim"),
         makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapDecodeData"),
+        makeProperty("CapHostTriggered"),
+        makeProperty("CapIlluminate"),
+        makeProperty("CapImageData"),
+        makeProperty("CapImageQuality"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateFirmware"),
-        makeProperty("CapJamSensor"),
-        makeProperty("CapRealTimeData"),
+        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapVideoData"),
 
         // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AsyncResultCode"),
-        makeProperty("AsyncResultCodeExtended"),
-        makeProperty("CurrencyCashList"),
-        makeProperty("CurrencyCode"),
-        makeProperty("CurrencyCodeList"),
-        makeProperty("CurrentExit"),
-        makeProperty("DeviceExits"),
-        makeProperty("DeviceStatus"),
-        makeProperty("ExitCashList"),
-        makeProperty("FullStatus"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
+        makeProperty("AimMode"),
+        makeProperty("AutoDisable"),
+        makeProperty("BitsPerPixel"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("DepositAmount"),
-        makeProperty("DepositCashList"),
-        makeProperty("DepositCodeList"),
-        makeProperty("DepositCounts"),
-        makeProperty("DepositStatus"),
-        makeProperty("CurrentService"),
-        makeProperty("RealTimeDataEnabled"),
-        makeProperty("ServiceCount"),
-        makeProperty("ServiceIndex")
+        makeProperty("FrameData"),
+        makeProperty("FrameType"),
+        makeProperty("IlluminateMode"),
+        makeProperty("ImageHeight"),
+        makeProperty("ImageLength"),
+        makeProperty("ImageMode"),
+        makeProperty("ImageQuality"),
+        makeProperty("ImageType"),
+        makeProperty("ImageWidth"),
+        makeProperty("PowerNotify"),
+        makeProperty("PowerState"),
+        makeProperty("VideoCount"),
+        makeProperty("VideoRate"),
+
       };
 
       return properties;
@@ -102,7 +93,7 @@ public class CashChangerBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.CashChanger.class,
+    return new EventSetDescriptor(jpos.ImageScanner.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -116,6 +107,7 @@ public class CashChangerBeanInfo
       {
         makeEvent("Data"),
         makeEvent("DirectIO"),
+        makeEvent("Error"),
         makeEvent("StatusUpdate")
       };
 

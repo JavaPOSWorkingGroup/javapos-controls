@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CoinDispenser.java - A JavaPOS 1.10.0 device control
+// CoinDispenser.java - A JavaPOS 1.11.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CoinDispenser
   extends BaseJposControl
-  implements CoinDispenserControl110, JposConst
+  implements CoinDispenserControl111, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class CoinDispenser
   protected CoinDispenserService18 service18;
   protected CoinDispenserService19 service19;
   protected CoinDispenserService110 service110;
+  protected CoinDispenserService111 service111;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -57,7 +58,7 @@ public class CoinDispenser
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CoinDispenser Device Control";
-    deviceControlVersion = deviceVersion110;
+    deviceControlVersion = deviceVersion111;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class CoinDispenser
     //service18 = null;
     //service19 = null;
     //service110 = null;
+    //service111 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -630,6 +632,70 @@ public class CoinDispenser
     }
   }
 
+  public void adjustCashCounts(String cashCounts)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.adjustCashCounts(cashCounts);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readCashCounts(String[] cashCounts, boolean[] discrepancy)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.11.0
+    if(serviceVersion < deviceVersion111)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.11.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service111.readCashCounts(cashCounts, discrepancy);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -658,6 +724,7 @@ public class CoinDispenser
       service18 = null;
       service19 = null;
       service110 = null;
+      service111 = null;
     }
     else
     {
@@ -785,6 +852,20 @@ public class CoinDispenser
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CoinDispenserService110 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion111)
+      {
+        try
+        {
+          service111 = (CoinDispenserService111)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CoinDispenserService111 interface",
                                   e);
         }
       }

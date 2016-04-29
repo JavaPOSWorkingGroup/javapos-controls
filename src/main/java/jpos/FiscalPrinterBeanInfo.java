@@ -106,6 +106,7 @@ public class FiscalPrinterBeanInfo
         makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
         makeProperty("CapUpdateFirmware"),
+        makeProperty("CapPositiveSubtotalAdjustment"),
 
         // Properties
         makeProperty("AmountDecimalPlace"),
