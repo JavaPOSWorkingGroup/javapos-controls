@@ -27,6 +27,9 @@ def groupId='org.javapos'
 def uposVersion = '1.11'
 version="${uposVersion}.0" // the last part after dot is the build/release version
 
+// dependency versions
+def javaposContractsVersion = "$uposVersion.0"
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Build Dependencies
@@ -43,7 +46,7 @@ repositories {
 }
 
 dependencies {
-	compile "org.javapos:javapos-contracts:$version"
+	compile "org.javapos:javapos-contracts:$javaposContractsVersion"
 	compile "org.javapos:javapos-config-loader:2.2.0"
 }
 
