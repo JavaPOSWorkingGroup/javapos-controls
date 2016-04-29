@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MICR.java - A JavaPOS 1.9.1 device control
+// MICR.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class MICR
   extends BaseJposControl
-  implements MICRControl19, JposConst
+  implements MICRControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -44,6 +44,7 @@ public class MICR
   protected MICRService17 service17;
   protected MICRService18 service18;
   protected MICRService19 service19;
+  protected MICRService110 service110;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -58,7 +59,7 @@ public class MICR
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MICR Device Control";
-    deviceControlVersion = deviceVersion19;
+    deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class MICR
     //service17 = null;
     //service18 = null;
     //service19 = null;
+    //service110 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1007,6 +1009,38 @@ public class MICR
     }
   }
 
+  public void clearInputProperties()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.clearInputProperties();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1034,6 +1068,7 @@ public class MICR
       service17 = null;
       service18 = null;
       service19 = null;
+      service110 = null;
     }
     else
     {
@@ -1147,6 +1182,20 @@ public class MICR
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MICRService19 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion110)
+      {
+        try
+        {
+          service110 = (MICRService110)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MICRService110 interface",
                                   e);
         }
       }

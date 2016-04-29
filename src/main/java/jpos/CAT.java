@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CAT.java - A JavaPOS 1.9.1 device control
+// CAT.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CAT
   extends BaseJposControl
-  implements CATControl19, JposConst
+  implements CATControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -42,6 +42,7 @@ public class CAT
   protected CATService17 service17;
   protected CATService18 service18;
   protected CATService19 service19;
+  protected CATService110 service110;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -56,7 +57,7 @@ public class CAT
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CAT Device Control";
-    deviceControlVersion = deviceVersion19;
+    deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -66,6 +67,7 @@ public class CAT
     //service17 = null;
     //service18 = null;
     //service19 = null;
+    //service110 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1884,6 +1886,7 @@ public class CAT
       service17 = null;
       service18 = null;
       service19 = null;
+      service110 = null;
     }
     else
     {
@@ -1969,6 +1972,20 @@ public class CAT
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CATService19 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion110)
+      {
+        try
+        {
+          service110 = (CATService110)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CATService110 interface",
                                   e);
         }
       }

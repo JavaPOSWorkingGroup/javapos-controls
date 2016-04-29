@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MSR.java - A JavaPOS 1.9.1 device control
+// MSR.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class MSR
   extends BaseJposControl
-  implements MSRControl19, JposConst
+  implements MSRControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -44,6 +44,7 @@ public class MSR
   protected MSRService17 service17;
   protected MSRService18 service18;
   protected MSRService19 service19;
+  protected MSRService110 service110;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -58,7 +59,7 @@ public class MSR
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MSR Device Control";
-    deviceControlVersion = deviceVersion19;
+    deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class MSR
     //service17 = null;
     //service18 = null;
     //service19 = null;
+    //service110 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -336,6 +338,38 @@ public class MSR
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapWritableTracks()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service110.getCapWritableTracks();
     }
     catch(JposException je)
     {
@@ -1195,6 +1229,102 @@ public class MSR
     }
   }
 
+  public int getEncodingMaxLength()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service110.getEncodingMaxLength();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTracksToWrite()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service110.getTracksToWrite();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTracksToWrite(int tracks)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.setTracksToWrite(tracks);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1385,6 +1515,70 @@ public class MSR
     }
   }
 
+  public void clearInputProperties()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.clearInputProperties();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void writeTracks(String data, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.writeTracks(data, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1412,6 +1606,7 @@ public class MSR
       service17 = null;
       service18 = null;
       service19 = null;
+      service110 = null;
     }
     else
     {
@@ -1525,6 +1720,20 @@ public class MSR
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MSRService19 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion110)
+      {
+        try
+        {
+          service110 = (MSRService110)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MSRService110 interface",
                                   e);
         }
       }

@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// MSRBeanInfo.java - Bean information for the JavaPOS MSR
+// BiometricsBeanInfo.java - Bean information for the JavaPOS Biometrics
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class MSRBeanInfo
+public class BiometricsBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.MSR.class);
+    return new BeanDescriptor(jpos.Biometrics.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.MSR.class);
+    return new PropertyDescriptor(propertyName, jpos.Biometrics.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,45 +46,36 @@ public class MSRBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
-        makeProperty("CapISO"),
-        makeProperty("CapJISOne"),
-        makeProperty("CapJISTwo"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTransmitSentinels"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapPrematchData"),
+        makeProperty("CapRawSensorData"),
+        makeProperty("CapRealTimeData"),
+        makeProperty("CapSensorColor"),
+        makeProperty("CapSensorOrientation"),
+        makeProperty("CapSensorType"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapTemplateAdaptation"),
         makeProperty("CapUpdateFirmware"),
-        makeProperty("CapWritableTracks"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
-        makeProperty("AccountNumber"),
+        makeProperty("Algorithm"),
+        makeProperty("AlgorithmList"),
         makeProperty("AutoDisable"),
+        makeProperty("BIR"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("DecodeData"),
-        makeProperty("ErrorReportingType"),
-        makeProperty("ExpirationDate"),
-        makeProperty("FirstName"),
-        makeProperty("MiddleInitial"),
-        makeProperty("ParseDecodeData"),
-        makeProperty("ServiceCode"),
-        makeProperty("Suffix"),
-        makeProperty("Surname"),
-        makeProperty("Title"),
-        makeProperty("Track1Data"),
-        makeProperty("Track1DiscretionaryData"),
-        makeProperty("Track2Data"),
-        makeProperty("Track2DiscretionaryData"),
-        makeProperty("Track3Data"),
-        makeProperty("TracksToRead"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
-        makeProperty("Track4Data"),
-        makeProperty("TransmitSentinels"),
-        makeProperty("EncodingMaxLength"),
-        makeProperty("TracksToWrite"),
-
+        makeProperty("RawSensorData"),
+        makeProperty("RealTimeDataEnabled"),
+        makeProperty("SensorBPP"),
+        makeProperty("SensorColor"),
+        makeProperty("SensorHeight"),
+        makeProperty("SensorOrientation"),
+        makeProperty("SensorType"),
+        makeProperty("SensorWidth")
       };
 
       return properties;
@@ -99,7 +90,7 @@ public class MSRBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.MSR.class,
+    return new EventSetDescriptor(jpos.Biometrics.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");

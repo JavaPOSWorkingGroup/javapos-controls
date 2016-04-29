@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// RemoteOrderDisplay.java - A JavaPOS 1.10.0 device control
+// Biometrics.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,26 +28,18 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class RemoteOrderDisplay
+public class Biometrics
   extends BaseJposControl
-  implements RemoteOrderDisplayControl110, JposConst
+  implements BiometricsControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected RemoteOrderDisplayService13 service13;
-  protected RemoteOrderDisplayService14 service14;
-  protected RemoteOrderDisplayService15 service15;
-  protected RemoteOrderDisplayService16 service16;
-  protected RemoteOrderDisplayService17 service17;
-  protected RemoteOrderDisplayService18 service18;
-  protected RemoteOrderDisplayService19 service19;
-  protected RemoteOrderDisplayService110 service110;
+  protected BiometricsService110 service110;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
-  protected Vector outputCompleteListeners;
   protected Vector statusUpdateListeners;
 
 
@@ -55,26 +47,18 @@ public class RemoteOrderDisplay
   // Constructor
   //--------------------------------------------------------------------------
 
-  public RemoteOrderDisplay()
+  public Biometrics()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS RemoteOrderDisplay Device Control";
+    deviceControlDescription = "JavaPOS Biometrics Device Control";
     deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
-    //service18 = null;
-    //service19 = null;
     //service110 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
-    outputCompleteListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
 
@@ -82,6 +66,31 @@ public class RemoteOrderDisplay
   //--------------------------------------------------------------------------
   // Capabilities
   //--------------------------------------------------------------------------
+
+  public boolean getCapCompareFirmwareVersion()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service110.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
 
   public int getCapPowerReporting()
     throws JposException
@@ -95,7 +104,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
+      return service110.getCapPowerReporting();
     }
     catch(JposException je)
     {
@@ -108,7 +117,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapSelectCharacterSet()
+  public boolean getCapPrematchData()
     throws JposException
   {
     // Make sure control is opened
@@ -120,7 +129,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getCapSelectCharacterSet();
+      return service110.getCapPrematchData();
     }
     catch(JposException je)
     {
@@ -133,7 +142,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapTone()
+  public boolean getCapRawSensorData()
     throws JposException
   {
     // Make sure control is opened
@@ -145,7 +154,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getCapTone();
+      return service110.getCapRawSensorData();
     }
     catch(JposException je)
     {
@@ -158,7 +167,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapTouch()
+  public boolean getCapRealTimeData()
     throws JposException
   {
     // Make sure control is opened
@@ -170,7 +179,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getCapTouch();
+      return service110.getCapRealTimeData();
     }
     catch(JposException je)
     {
@@ -183,7 +192,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapTransaction()
+  public int getCapSensorColor()
     throws JposException
   {
     // Make sure control is opened
@@ -195,7 +204,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getCapTransaction();
+      return service110.getCapSensorColor();
     }
     catch(JposException je)
     {
@@ -208,7 +217,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapMapCharacterSet()
+  public int getCapSensorOrientation()
     throws JposException
   {
     // Make sure control is opened
@@ -217,17 +226,35 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.7.0
-    if(serviceVersion < deviceVersion17)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.7.0 compliant.");
+      return service110.getCapSensorOrientation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapSensorType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service17.getCapMapCharacterSet();
+      return service110.getCapSensorType();
     }
     catch(JposException je)
     {
@@ -249,17 +276,10 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service18.getCapStatisticsReporting();
+      return service110.getCapStatisticsReporting();
     }
     catch(JposException je)
     {
@@ -272,7 +292,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getCapUpdateStatistics()
+  public boolean getCapTemplateAdaptation()
     throws JposException
   {
     // Make sure control is opened
@@ -281,49 +301,10 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service18.getCapUpdateStatistics();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapCompareFirmwareVersion()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service19.getCapCompareFirmwareVersion();
+      return service110.getCapTemplateAdaptation();
     }
     catch(JposException je)
     {
@@ -345,17 +326,35 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      return service110.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service19.getCapUpdateFirmware();
+      return service110.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -373,7 +372,7 @@ public class RemoteOrderDisplay
   // Properties
   //--------------------------------------------------------------------------
 
-  public boolean getAsyncMode()
+  public int getAlgorithm()
     throws JposException
   {
     // Make sure control is opened
@@ -385,7 +384,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getAsyncMode();
+      return service110.getAlgorithm();
     }
     catch(JposException je)
     {
@@ -398,7 +397,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setAsyncMode(boolean asyncMode)
+  public void setAlgorithm(int algorithm)
     throws JposException
   {
     // Make sure control is opened
@@ -410,7 +409,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setAsyncMode(asyncMode);
+      service110.setAlgorithm(algorithm);
     }
     catch(JposException je)
     {
@@ -423,7 +422,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getAutoToneDuration()
+  public String getAlgorithmList()
     throws JposException
   {
     // Make sure control is opened
@@ -435,7 +434,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getAutoToneDuration();
+      return service110.getAlgorithmList();
     }
     catch(JposException je)
     {
@@ -448,7 +447,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setAutoToneDuration(int autoToneDuration)
+  public boolean getAutoDisable()
     throws JposException
   {
     // Make sure control is opened
@@ -460,7 +459,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setAutoToneDuration(autoToneDuration);
+      return service110.getAutoDisable();
     }
     catch(JposException je)
     {
@@ -473,7 +472,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getAutoToneFrequency()
+  public void setAutoDisable(boolean autoDisable)
     throws JposException
   {
     // Make sure control is opened
@@ -485,7 +484,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getAutoToneFrequency();
+      service110.setAutoDisable(autoDisable);
     }
     catch(JposException je)
     {
@@ -498,7 +497,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setAutoToneFrequency(int autoToneFrequency)
+  public byte[] getBIR()
     throws JposException
   {
     // Make sure control is opened
@@ -510,132 +509,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setAutoToneFrequency(autoToneFrequency);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getCharacterSet()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCharacterSet();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public String getCharacterSetList()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCharacterSetList();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getClocks()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getClocks();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getCurrentUnitID()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCurrentUnitID();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setCurrentUnitID(int currentUnitID)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setCurrentUnitID(currentUnitID);
+      return service110.getBIR();
     }
     catch(JposException je)
     {
@@ -660,7 +534,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getDataCount();
+      return service110.getDataCount();
     }
     catch(JposException je)
     {
@@ -685,7 +559,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getDataEventEnabled();
+      return service110.getDataEventEnabled();
     }
     catch(JposException je)
     {
@@ -710,207 +584,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setDataEventEnabled(dataEventEnabled);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public String getErrorString()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getErrorString();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getErrorUnits()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getErrorUnits();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public String getEventString()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getEventString();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getEventType()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getEventType();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setEventType(int eventType)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setEventType(eventType);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getEventUnitID()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getEventUnitID();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getEventUnits()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getEventUnits();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getOutputID()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getOutputID();
+      service110.setDataEventEnabled(dataEventEnabled);
     }
     catch(JposException je)
     {
@@ -935,7 +609,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service110.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -960,7 +634,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service110.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -985,7 +659,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service110.getPowerState();
     }
     catch(JposException je)
     {
@@ -998,7 +672,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getSystemClocks()
+  public byte[] getRawSensorData()
     throws JposException
   {
     // Make sure control is opened
@@ -1010,7 +684,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getSystemClocks();
+      return service110.getRawSensorData();
     }
     catch(JposException je)
     {
@@ -1023,7 +697,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getSystemVideoSaveBuffers()
+  public boolean getRealTimeDataEnabled()
     throws JposException
   {
     // Make sure control is opened
@@ -1035,7 +709,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getSystemVideoSaveBuffers();
+      return service110.getRealTimeDataEnabled();
     }
     catch(JposException je)
     {
@@ -1048,7 +722,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getTimeout()
+  public void setRealTimeDataEnabled(boolean enabled)
     throws JposException
   {
     // Make sure control is opened
@@ -1060,7 +734,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getTimeout();
+      service110.setRealTimeDataEnabled(enabled);
     }
     catch(JposException je)
     {
@@ -1073,7 +747,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setTimeout(int timeout)
+  public int getSensorBPP()
     throws JposException
   {
     // Make sure control is opened
@@ -1085,7 +759,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setTimeout(timeout);
+      return service110.getSensorBPP();
     }
     catch(JposException je)
     {
@@ -1098,7 +772,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getUnitsOnline()
+  public int getSensorColor()
     throws JposException
   {
     // Make sure control is opened
@@ -1110,7 +784,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getUnitsOnline();
+      return service110.getSensorColor();
     }
     catch(JposException je)
     {
@@ -1123,7 +797,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getVideoDataCount()
+  public void setSensorColor(int color)
     throws JposException
   {
     // Make sure control is opened
@@ -1135,7 +809,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getVideoDataCount();
+      service110.setSensorColor(color);
     }
     catch(JposException je)
     {
@@ -1148,7 +822,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getVideoMode()
+  public int getSensorHeight()
     throws JposException
   {
     // Make sure control is opened
@@ -1160,7 +834,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getVideoMode();
+      return service110.getSensorHeight();
     }
     catch(JposException je)
     {
@@ -1173,7 +847,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setVideoMode(int videoMode)
+  public int getSensorOrientation()
     throws JposException
   {
     // Make sure control is opened
@@ -1185,7 +859,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.setVideoMode(videoMode);
+      return service110.getSensorOrientation();
     }
     catch(JposException je)
     {
@@ -1198,7 +872,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public String getVideoModesList()
+  public void setSensorOrientation(int orientation)
     throws JposException
   {
     // Make sure control is opened
@@ -1210,7 +884,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getVideoModesList();
+      service110.setSensorOrientation(orientation);
     }
     catch(JposException je)
     {
@@ -1223,7 +897,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public int getVideoSaveBuffers()
+  public int getSensorType()
     throws JposException
   {
     // Make sure control is opened
@@ -1235,7 +909,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      return service13.getVideoSaveBuffers();
+      return service110.getSensorType();
     }
     catch(JposException je)
     {
@@ -1248,7 +922,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public boolean getMapCharacterSet()
+  public void setSensorType(int type)
     throws JposException
   {
     // Make sure control is opened
@@ -1257,17 +931,10 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.7.0
-    if(serviceVersion < deviceVersion17)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.7.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service17.getMapCharacterSet();
+      service110.setSensorType(type);
     }
     catch(JposException je)
     {
@@ -1280,7 +947,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void setMapCharacterSet(boolean mapCharacterSet)
+  public int getSensorWidth()
     throws JposException
   {
     // Make sure control is opened
@@ -1289,17 +956,10 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.7.0
-    if(serviceVersion < deviceVersion17)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.7.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service17.setMapCharacterSet(mapCharacterSet);
+      return service110.getSensorWidth();
     }
     catch(JposException je)
     {
@@ -1317,6 +977,56 @@ public class RemoteOrderDisplay
   // Methods
   //--------------------------------------------------------------------------
 
+  public void beginEnrollCapture(byte[] referenceBIR, byte[] payload)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.beginEnrollCapture(referenceBIR, payload);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void beginVerifyCapture()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.beginVerifyCapture();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
   public void clearInput()
     throws JposException
   {
@@ -1329,7 +1039,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.clearInput();
+      service110.clearInput();
     }
     catch(JposException je)
     {
@@ -1342,7 +1052,7 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void clearOutput()
+  public void clearInputProperties()
     throws JposException
   {
     // Make sure control is opened
@@ -1354,503 +1064,7 @@ public class RemoteOrderDisplay
     // Perform the operation
     try
     {
-      service13.clearOutput();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void clearVideo(int units, int attribute)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.clearVideo(units, attribute);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void clearVideoRegion(int units, int row, int column, int height, int width, int attribute)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.clearVideoRegion(units, row, column, height, width, attribute);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void controlClock(int units, int function, int clockId, int hour, int min, int sec, int row, int column, int attribute, int mode)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.controlClock(units, function, clockId, hour, min, sec, row, column, attribute, mode);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void controlCursor(int units, int function)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.controlCursor(units, function);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void copyVideoRegion(int units, int row, int column, int height, int width, int targetRow, int targetColumn)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.copyVideoRegion(units, row, column, height, width, targetRow, targetColumn);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void displayData(int units, int row, int column, int attribute, String data)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.displayData(units, row, column, attribute, data);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void drawBox(int units, int row, int column, int height, int width, int attribute, int borderType)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.drawBox(units, row, column, height, width, attribute, borderType);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void freeVideoRegion(int units, int bufferId)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.freeVideoRegion(units, bufferId);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetVideo(int units)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.resetVideo(units);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void restoreVideoRegion(int units, int targetRow, int targetColumn, int bufferId)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.restoreVideoRegion(units, targetRow, targetColumn, bufferId);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void saveVideoRegion(int units, int row, int column, int height, int width, int bufferId)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.saveVideoRegion(units, row, column, height, width, bufferId);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void selectChararacterSet(int units, int characterSet)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.selectChararacterSet(units, characterSet);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setCursor(int units, int row, int column)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setCursor(units, row, column);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void transactionDisplay(int units, int function)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.transactionDisplay(units, function);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateVideoRegionAttribute(int units, int function, int row, int column, int height, int width, int attribute)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.updateVideoRegionAttribute(units, function, row, column, height, width, attribute);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void videoSound(int units, int frequency, int duration, int numberOfCycles, int interSoundWait)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.videoSound(units, frequency, duration, numberOfCycles, interSoundWait);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.resetStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void retrieveStatistics(String[] statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.retrieveStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.updateStatistics(statisticsBuffer);
+      service110.clearInputProperties();
     }
     catch(JposException je)
     {
@@ -1872,17 +1086,160 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service110.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void endCapture()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.compareFirmwareVersion(firmwareFileName, result);
+      service110.endCapture();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void identify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] referenceBIRPopulation, byte[] candidateRanking, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.identify(maxFARRequested, maxFRRRequested, FARPrecedence, referenceBIRPopulation, candidateRanking, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void identifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[] referenceBIRPopulation, byte[] candidateRanking)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.identifyMatch(maxFARRequested, maxFRRRequested, FARPrecedence, sampleBIR, referenceBIRPopulation, candidateRanking);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void processPrematchData(byte[] capturedBIR, byte[] prematchDataBIR, byte[] processedBIR)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.processPrematchData(capturedBIR, prematchDataBIR, processedBIR);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.retrieveStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -1904,17 +1261,85 @@ public class RemoteOrderDisplay
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service110.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.updateFirmware(firmwareFileName);
+      service110.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void verify(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] referenceBIR, byte[] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[] payload, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.verify(maxFARRequested, maxFRRRequested, FARPrecedence, referenceBIR, adaptedBIR, result, FARAchieved, FRRAchieved, payload, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void verifyMatch(int maxFARRequested, int maxFRRRequested, boolean FARPrecedence, byte[] sampleBIR, byte[] referenceBIR, byte[] adaptedBIR, boolean[] result, int[] FARAchieved, int[] FRRAchieved, byte[] payload)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.verifyMatch(maxFARRequested, maxFRRRequested, FARPrecedence, sampleBIR, referenceBIR, adaptedBIR, result, FARAchieved, FRRAchieved, payload);
     }
     catch(JposException je)
     {
@@ -1935,7 +1360,7 @@ public class RemoteOrderDisplay
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new RemoteOrderDisplayCallbacks();
+    return new BiometricsCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -1946,127 +1371,22 @@ public class RemoteOrderDisplay
     if(service == null)
     {
 
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
-      service18 = null;
-      service19 = null;
       service110 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (RemoteOrderDisplayService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (RemoteOrderDisplayService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (RemoteOrderDisplayService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (RemoteOrderDisplayService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (RemoteOrderDisplayService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService17 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion18)
-      {
-        try
-        {
-          service18 = (RemoteOrderDisplayService18)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService18 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion19)
-      {
-        try
-        {
-          service19 = (RemoteOrderDisplayService19)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService19 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion110)
       {
         try
         {
-          service110 = (RemoteOrderDisplayService110)service;
+          service110 = (BiometricsService110)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement RemoteOrderDisplayService110 interface",
+                                  "Service does not fully implement BiometricsService110 interface",
                                   e);
         }
       }
@@ -2127,22 +1447,6 @@ public class RemoteOrderDisplay
     }
   }
 
-  public void addOutputCompleteListener(OutputCompleteListener l)
-  {
-    synchronized(outputCompleteListeners)
-    {
-      outputCompleteListeners.addElement(l);
-    }
-  }
-
-  public void removeOutputCompleteListener(OutputCompleteListener l)
-  {
-    synchronized(outputCompleteListeners)
-    {
-      outputCompleteListeners.removeElement(l);
-    }
-  }
-
   public void addStatusUpdateListener(StatusUpdateListener l)
   {
     synchronized(statusUpdateListeners)
@@ -2164,17 +1468,17 @@ public class RemoteOrderDisplay
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class RemoteOrderDisplayCallbacks
+  protected class BiometricsCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)RemoteOrderDisplay.this;
+      return (BaseControl)Biometrics.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(RemoteOrderDisplay.this.dataListeners)
+      synchronized(Biometrics.this.dataListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < dataListeners.size(); x++)
@@ -2186,7 +1490,7 @@ public class RemoteOrderDisplay
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(RemoteOrderDisplay.this.directIOListeners)
+      synchronized(Biometrics.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -2198,7 +1502,7 @@ public class RemoteOrderDisplay
 
     public void fireErrorEvent(ErrorEvent e)
     {
-      synchronized(RemoteOrderDisplay.this.errorListeners)
+      synchronized(Biometrics.this.errorListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < errorListeners.size(); x++)
@@ -2210,19 +1514,11 @@ public class RemoteOrderDisplay
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
     {
-      synchronized(RemoteOrderDisplay.this.outputCompleteListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < outputCompleteListeners.size(); x++)
-        {
-          ((OutputCompleteListener)outputCompleteListeners.elementAt(x)).outputCompleteOccurred(e);
-        }
-      }
     }
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(RemoteOrderDisplay.this.statusUpdateListeners)
+      synchronized(Biometrics.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)

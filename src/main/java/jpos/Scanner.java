@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scanner.java - A JavaPOS 1.9.1 device control
+// Scanner.java - A JavaPOS 1.10.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Scanner
   extends BaseJposControl
-  implements ScannerControl19, JposConst
+  implements ScannerControl110, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -44,6 +44,7 @@ public class Scanner
   protected ScannerService17 service17;
   protected ScannerService18 service18;
   protected ScannerService19 service19;
+  protected ScannerService110 service110;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -58,7 +59,7 @@ public class Scanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scanner Device Control";
-    deviceControlVersion = deviceVersion19;
+    deviceControlVersion = deviceVersion110;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class Scanner
     //service17 = null;
     //service18 = null;
     //service19 = null;
+    //service110 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -782,6 +784,38 @@ public class Scanner
     }
   }
 
+  public void clearInputProperties()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.10.0
+    if(serviceVersion < deviceVersion110)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.10.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service110.clearInputProperties();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -809,6 +843,7 @@ public class Scanner
       service17 = null;
       service18 = null;
       service19 = null;
+      service110 = null;
     }
     else
     {
@@ -922,6 +957,20 @@ public class Scanner
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScannerService19 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion110)
+      {
+        try
+        {
+          service110 = (ScannerService110)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScannerService110 interface",
                                   e);
         }
       }

@@ -35,14 +35,15 @@ public abstract class BaseJposControl
   // Constants
   //--------------------------------------------------------------------------
 
-  protected static final int deviceVersion12 = 1002000; // 1.2.0
-  protected static final int deviceVersion13 = 1003000; // 1.3.0
-  protected static final int deviceVersion14 = 1004000; // 1.4.0
-  protected static final int deviceVersion15 = 1005000; // 1.5.0
-  protected static final int deviceVersion16 = 1006000; // 1.6.0
-  protected static final int deviceVersion17 = 1007000; // 1.7.0
-  protected static final int deviceVersion18 = 1008000; // 1.8.0
-  protected static final int deviceVersion19 = 1009000; // 1.9.0
+  protected static final int deviceVersion12  = 1002000; // 1.2.0
+  protected static final int deviceVersion13  = 1003000; // 1.3.0
+  protected static final int deviceVersion14  = 1004000; // 1.4.0
+  protected static final int deviceVersion15  = 1005000; // 1.5.0
+  protected static final int deviceVersion16  = 1006000; // 1.6.0
+  protected static final int deviceVersion17  = 1007000; // 1.7.0
+  protected static final int deviceVersion18  = 1008000; // 1.8.0
+  protected static final int deviceVersion19  = 1009000; // 1.9.0
+  protected static final int deviceVersion110 = 1010000; // 1.10.0
 
 
   //--------------------------------------------------------------------------

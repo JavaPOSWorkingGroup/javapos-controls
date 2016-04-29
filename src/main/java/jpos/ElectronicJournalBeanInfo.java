@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// MSRBeanInfo.java - Bean information for the JavaPOS MSR
+// ElectronicJournalBeanInfo.java - Bean information for the JavaPOS ElectronicJournal
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class MSRBeanInfo
+public class ElectronicJournalBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.MSR.class);
+    return new BeanDescriptor(jpos.ElectronicJournal.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.MSR.class);
+    return new PropertyDescriptor(propertyName, jpos.ElectronicJournal.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,44 +46,44 @@ public class MSRBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
-        makeProperty("CapISO"),
-        makeProperty("CapJISOne"),
-        makeProperty("CapJISTwo"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTransmitSentinels"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapAddMarker"),
         makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapErasableMedium"),
+        makeProperty("CapInitializeMedium"),
+        makeProperty("CapMediumIsAvailable"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapPrintContent"),
+        makeProperty("CapPrintContentFile"),
+        makeProperty("CapRetrieveCurrentMarker"),
+        makeProperty("CapRetrieveMarker"),
+        makeProperty("CapRetrieveMarkerByDateTime"),
+        makeProperty("CapRetrieveMarkersDateTime"),
+        makeProperty("CapStation"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapStorageEnabled"),
+        makeProperty("CapSuspendPrintContent"),
+        makeProperty("CapSuspendQueryContent"),
         makeProperty("CapUpdateFirmware"),
-        makeProperty("CapWritableTracks"),
+        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapWaterMark"),
 
         // Properties
-        makeProperty("AccountNumber"),
+        makeProperty("AsyncMode"),
         makeProperty("AutoDisable"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("DecodeData"),
-        makeProperty("ErrorReportingType"),
-        makeProperty("ExpirationDate"),
-        makeProperty("FirstName"),
-        makeProperty("MiddleInitial"),
-        makeProperty("ParseDecodeData"),
-        makeProperty("ServiceCode"),
-        makeProperty("Suffix"),
-        makeProperty("Surname"),
-        makeProperty("Title"),
-        makeProperty("Track1Data"),
-        makeProperty("Track1DiscretionaryData"),
-        makeProperty("Track2Data"),
-        makeProperty("Track2DiscretionaryData"),
-        makeProperty("Track3Data"),
-        makeProperty("TracksToRead"),
+        makeProperty("FlagWhenIdle"),
+        makeProperty("MediumFreeSpace"),
+        makeProperty("MediumID"),
+        makeProperty("MediumIsAvailable"),
+        makeProperty("MediumSize"),
+        makeProperty("OutputID"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
-        makeProperty("Track4Data"),
-        makeProperty("TransmitSentinels"),
-        makeProperty("EncodingMaxLength"),
-        makeProperty("TracksToWrite"),
+        makeProperty("Station"),
+        makeProperty("StorageEnabled"),
+        makeProperty("Suspended"),
+        makeProperty("WaterMark"),
 
       };
 
@@ -99,7 +99,7 @@ public class MSRBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.MSR.class,
+    return new EventSetDescriptor(jpos.ElectronicJournal.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -114,6 +114,7 @@ public class MSRBeanInfo
         makeEvent("Data"),
         makeEvent("DirectIO"),
         makeEvent("Error"),
+        makeEvent("OutputComplete"),
         makeEvent("StatusUpdate")
       };
 
