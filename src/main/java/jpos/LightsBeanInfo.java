@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// ImageScannerBeanInfo.java - Bean information for the JavaPOS ImageScanner
+// LightsBeanInfo.java - Bean information for the JavaPOS Lights
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class ImageScannerBeanInfo
+public class LightsBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.ImageScanner.class);
+    return new BeanDescriptor(jpos.Lights.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.ImageScanner.class);
+    return new PropertyDescriptor(propertyName, jpos.Lights.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,9 +46,19 @@ public class ImageScannerBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
+        makeProperty("CapAlarm"),
+        makeProperty("CapBlink"),
+        makeProperty("CapColor"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
-
+        makeProperty("MaxLights"),
+        makeProperty("PowerNotify"),
+        makeProperty("PowerState")
       };
 
       return properties;
@@ -63,7 +73,7 @@ public class ImageScannerBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.ImageScanner.class,
+    return new EventSetDescriptor(jpos.Lights.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -75,7 +85,8 @@ public class ImageScannerBeanInfo
     {
       EventSetDescriptor[] events =
       {
-
+        makeEvent("DirectIO"),
+        makeEvent("StatusUpdate")
       };
 
       return events;

@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// MSRBeanInfo.java - Bean information for the JavaPOS MSR
+// ElectronicValueRWBeanInfo.java - Bean information for the JavaPOS ElectronicValueRW
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class MSRBeanInfo
+public class ElectronicValueRWBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.MSR.class);
+    return new BeanDescriptor(jpos.ElectronicValueRW.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.MSR.class);
+    return new PropertyDescriptor(propertyName, jpos.ElectronicValueRW.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,66 +46,62 @@ public class MSRBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
-        makeProperty("CapISO"),
-        makeProperty("CapJISOne"),
-        makeProperty("CapJISTwo"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTransmitSentinels"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapActivateService"),
+        makeProperty("CapAddValue"),
+        makeProperty("CapCancelValue"),
+        makeProperty("CapCardSensor"),
         makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapDetectionControl"),
+        makeProperty("CapElectronicMoney"),
+        makeProperty("CapEnumerateCardServices"),
+        makeProperty("CapIndirectTransactionLog"),
+        makeProperty("CapLockTerminal"),
+        makeProperty("CapLogStatus"),
+        makeProperty("CapMediumID"),
+        makeProperty("CapPoint"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapRealTimeData"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapSubtractValue"),
+        makeProperty("CapTransaction"),
+        makeProperty("CapTransactionLog"),
+        makeProperty("CapUnlockTerminal"),
         makeProperty("CapUpdateFirmware"),
-        makeProperty("CapWritableTracks"),
-        makeProperty("CapCardAuthentication"),
-        makeProperty("CapDataEncryption"),
-        makeProperty("CapDeviceAuthentication"),
-        makeProperty("CapTrackDataMasking"),
+        makeProperty("CapUpdateKey"),
+        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapVoucher"),
+        makeProperty("CapWriteValue"),
 
         // Properties
         makeProperty("AccountNumber"),
+        makeProperty("AdditionalSecurityInformation"),
+        makeProperty("Amount"),
+        makeProperty("ApprovalCode"),
+        makeProperty("AsyncMode"),
         makeProperty("AutoDisable"),
+        makeProperty("Balance"),
+        makeProperty("BalanceOfPoint"),
+        makeProperty("CardServiceList"),
+        makeProperty("CurrentService"),
         makeProperty("DataCount"),
         makeProperty("DataEventEnabled"),
-        makeProperty("DecodeData"),
-        makeProperty("ErrorReportingType"),
+        makeProperty("DetectionControl"),
+        makeProperty("DetectionStatus"),
         makeProperty("ExpirationDate"),
-        makeProperty("FirstName"),
-        makeProperty("MiddleInitial"),
-        makeProperty("ParseDecodeData"),
-        makeProperty("ServiceCode"),
-        makeProperty("Suffix"),
-        makeProperty("Surname"),
-        makeProperty("Title"),
-        makeProperty("Track1Data"),
-        makeProperty("Track1DiscretionaryData"),
-        makeProperty("Track2Data"),
-        makeProperty("Track2DiscretionaryData"),
-        makeProperty("Track3Data"),
-        makeProperty("TracksToRead"),
+        makeProperty("LastUsedDate"),
+        makeProperty("LogStatus"),
+        makeProperty("MediumID"),
+        makeProperty("OutputID"),
+        makeProperty("Point"),
         makeProperty("PowerNotify"),
         makeProperty("PowerState"),
-        makeProperty("Track4Data"),
-        makeProperty("TransmitSentinels"),
-        makeProperty("EncodingMaxLength"),
-        makeProperty("TracksToWrite"),
-        makeProperty("AdditionalSecurityInformation"),
-        makeProperty("CardAuthenticationData"),
-        makeProperty("CardAuthenticationDataLength"),
-        makeProperty("CardPropertyList"),
-        makeProperty("CardType"),
-        makeProperty("CardTypeList"),
-        makeProperty("DataEncryptionAlgorithm"),
-        makeProperty("DeviceAuthenticated"),
-        makeProperty("DeviceAuthenticationProtocol"),
-        makeProperty("Track1EncryptedData"),
-        makeProperty("Track1EncryptedDataLength"),
-        makeProperty("Track2EncryptedData"),
-        makeProperty("Track2EncryptedDataLength"),
-        makeProperty("Track3EncryptedData"),
-        makeProperty("Track3EncryptedDataLength"),
-        makeProperty("Track4EncryptedData"),
-        makeProperty("Track4EncryptedDataLength"),
-        makeProperty("WriteCardType"),
+        makeProperty("ReaderWriterServiceList"),
+        makeProperty("SequenceNumber"),
+        makeProperty("SettledAmount"),
+        makeProperty("SettledPoint"),
+        makeProperty("TransactionLog"),
+        makeProperty("VoucherID"),
+        makeProperty("VoucherIDList"),
 
       };
 
@@ -121,7 +117,7 @@ public class MSRBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.MSR.class,
+    return new EventSetDescriptor(jpos.ElectronicValueRW.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -136,6 +132,7 @@ public class MSRBeanInfo
         makeEvent("Data"),
         makeEvent("DirectIO"),
         makeEvent("Error"),
+        makeEvent("OutputComplete"),
         makeEvent("StatusUpdate")
       };
 

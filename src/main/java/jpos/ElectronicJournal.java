@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicJournal.java - A JavaPOS 1.11.0 device control
+// ElectronicJournal.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ElectronicJournal
   extends BaseJposControl
-  implements ElectronicJournalControl111, JposConst
+  implements ElectronicJournalControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,7 @@ public class ElectronicJournal
 
   protected ElectronicJournalService110 service110;
   protected ElectronicJournalService111 service111;
+  protected ElectronicJournalService112 service112;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -53,12 +54,13 @@ public class ElectronicJournal
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ElectronicJournal Device Control";
-    deviceControlVersion = deviceVersion111;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service110 = null;
     //service111 = null;
+    //service112 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1777,6 +1779,7 @@ public class ElectronicJournal
 
       service110 = null;
       service111 = null;
+      service112 = null;
     }
     else
     {
@@ -1806,6 +1809,20 @@ public class ElectronicJournal
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ElectronicJournalService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (ElectronicJournalService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ElectronicJournalService112 interface",
                                   e);
         }
       }

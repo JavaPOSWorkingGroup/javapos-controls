@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// PINPad.java - A JavaPOS 1.11.0 device control
+// PINPad.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class PINPad
   extends BaseJposControl
-  implements PINPadControl111, JposConst
+  implements PINPadControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class PINPad
   protected PINPadService19 service19;
   protected PINPadService110 service110;
   protected PINPadService111 service111;
+  protected PINPadService112 service112;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -59,7 +60,7 @@ public class PINPad
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS PINPad Device Control";
-    deviceControlVersion = deviceVersion111;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -72,6 +73,7 @@ public class PINPad
     //service19 = null;
     //service110 = null;
     //service111 = null;
+    //service112 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1705,6 +1707,7 @@ public class PINPad
       service19 = null;
       service110 = null;
       service111 = null;
+      service112 = null;
     }
     else
     {
@@ -1832,6 +1835,20 @@ public class PINPad
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement PINPadService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (PINPadService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement PINPadService112 interface",
                                   e);
         }
       }

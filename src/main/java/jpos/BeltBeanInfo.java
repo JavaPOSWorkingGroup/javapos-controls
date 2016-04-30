@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// ImageScannerBeanInfo.java - Bean information for the JavaPOS ImageScanner
+// BeltBeanInfo.java - Bean information for the JavaPOS Belt
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -25,18 +25,18 @@ package jpos;
 import java.beans.*;
 import java.lang.reflect.*;
 
-public class ImageScannerBeanInfo
+public class BeltBeanInfo
   extends SimpleBeanInfo
 {
   public BeanDescriptor getBeanDescriptor()
   {
-    return new BeanDescriptor(jpos.ImageScanner.class);
+    return new BeanDescriptor(jpos.Belt.class);
   }
 
   public PropertyDescriptor makeProperty(String propertyName)
     throws IntrospectionException
   {
-    return new PropertyDescriptor(propertyName, jpos.ImageScanner.class);
+    return new PropertyDescriptor(propertyName, jpos.Belt.class);
   }
 
   public PropertyDescriptor[] getPropertyDescriptors()
@@ -46,9 +46,38 @@ public class ImageScannerBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
+        makeProperty("CapAutoStopBackward"),
+        makeProperty("CapAutoStopBackwardItemCount"),
+        makeProperty("CapAutoStopForward"),
+        makeProperty("CapAutoStopForwardItemCount"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapLightBarrierBackward"),
+        makeProperty("CapLightBarrierForward"),
+        makeProperty("CapMoveBackward"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapRealTimeData"),
+        makeProperty("CapSecurityFlapBackward"),
+        makeProperty("CapSecurityFlapForward"),
+        makeProperty("CapSpeedStepsBackward"),
+        makeProperty("CapSpeedStepsForward"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapUpdateStatistics"),
 
         // Properties
-
+        makeProperty("AutoStopBackward"),
+        makeProperty("AutoStopBackwardDelayTime"),
+        makeProperty("AutoStopBackwardItemCount"),
+        makeProperty("AutoStopForward"),
+        makeProperty("AutoStopForwardDelayTime"),
+        makeProperty("AutoStopForwardItemCount"),
+        makeProperty("LightBarrierBackwardInterrupted"),
+        makeProperty("LightBarrierForwardInterrupted"),
+        makeProperty("MotionStatus"),
+        makeProperty("PowerNotify"),
+        makeProperty("PowerState"),
+        makeProperty("SecurityFlapBackwardOpened"),
+        makeProperty("SecurityFlapForwardOpened")
       };
 
       return properties;
@@ -63,7 +92,7 @@ public class ImageScannerBeanInfo
     throws IntrospectionException, ClassNotFoundException
   {
     String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.ImageScanner.class,
+    return new EventSetDescriptor(jpos.Belt.class,
                                   eventName,
                                   Class.forName(listener),
                                   eventName + "Occurred");
@@ -75,7 +104,8 @@ public class ImageScannerBeanInfo
     {
       EventSetDescriptor[] events =
       {
-
+        makeEvent("DirectIO"),
+        makeEvent("StatusUpdate")
       };
 
       return events;

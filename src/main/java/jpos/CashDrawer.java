@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashDrawer.java - A JavaPOS 1.11.0 device control
+// CashDrawer.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CashDrawer
   extends BaseJposControl
-  implements CashDrawerControl111, JposConst
+  implements CashDrawerControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -46,6 +46,7 @@ public class CashDrawer
   protected CashDrawerService19 service19;
   protected CashDrawerService110 service110;
   protected CashDrawerService111 service111;
+  protected CashDrawerService112 service112;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -58,7 +59,7 @@ public class CashDrawer
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CashDrawer Device Control";
-    deviceControlVersion = deviceVersion111;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -72,6 +73,7 @@ public class CashDrawer
     //service19 = null;
     //service110 = null;
     //service111 = null;
+    //service112 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -668,6 +670,7 @@ public class CashDrawer
       service19 = null;
       service110 = null;
       service111 = null;
+      service112 = null;
     }
     else
     {
@@ -809,6 +812,20 @@ public class CashDrawer
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CashDrawerService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (CashDrawerService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CashDrawerService112 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashChanger.java - A JavaPOS 1.12.2 device control
+// ElectronicValueRW.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,56 +28,40 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class CashChanger
+public class ElectronicValueRW
   extends BaseJposControl
-  implements CashChangerControl112, JposConst
+  implements ElectronicValueRWControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected CashChangerService12 service12;
-  protected CashChangerService13 service13;
-  protected CashChangerService14 service14;
-  protected CashChangerService15 service15;
-  protected CashChangerService16 service16;
-  protected CashChangerService17 service17;
-  protected CashChangerService18 service18;
-  protected CashChangerService19 service19;
-  protected CashChangerService110 service110;
-  protected CashChangerService111 service111;
-  protected CashChangerService112 service112;
-  protected Vector directIOListeners;
-  protected Vector statusUpdateListeners;
+  protected ElectronicValueRWService112 service112;
   protected Vector dataListeners;
+  protected Vector directIOListeners;
+  protected Vector errorListeners;
+  protected Vector outputCompleteListeners;
+  protected Vector statusUpdateListeners;
 
 
   //--------------------------------------------------------------------------
   // Constructor
   //--------------------------------------------------------------------------
 
-  public CashChanger()
+  public ElectronicValueRW()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS CashChanger Device Control";
+    deviceControlDescription = "JavaPOS ElectronicValueRW Device Control";
     deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service12 = null;
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
-    //service18 = null;
-    //service19 = null;
-    //service110 = null;
-    //service111 = null;
     //service112 = null;
-    directIOListeners = new Vector();
-    statusUpdateListeners = new Vector();
     dataListeners = new Vector();
+    directIOListeners = new Vector();
+    errorListeners = new Vector();
+    outputCompleteListeners = new Vector();
+    statusUpdateListeners = new Vector();
   }
 
 
@@ -85,7 +69,7 @@ public class CashChanger
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public boolean getCapDiscrepancy()
+  public boolean getCapActivateService()
     throws JposException
   {
     // Make sure control is opened
@@ -97,7 +81,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCapDiscrepancy();
+      return service112.getCapActivateService();
     }
     catch(JposException je)
     {
@@ -110,7 +94,7 @@ public class CashChanger
     }
   }
 
-  public boolean getCapEmptySensor()
+  public boolean getCapAddValue()
     throws JposException
   {
     // Make sure control is opened
@@ -122,7 +106,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCapEmptySensor();
+      return service112.getCapAddValue();
     }
     catch(JposException je)
     {
@@ -135,7 +119,7 @@ public class CashChanger
     }
   }
 
-  public boolean getCapFullSensor()
+  public boolean getCapCancelValue()
     throws JposException
   {
     // Make sure control is opened
@@ -147,7 +131,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCapFullSensor();
+      return service112.getCapCancelValue();
     }
     catch(JposException je)
     {
@@ -160,7 +144,7 @@ public class CashChanger
     }
   }
 
-  public boolean getCapNearEmptySensor()
+  public int getCapCardSensor()
     throws JposException
   {
     // Make sure control is opened
@@ -172,256 +156,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCapNearEmptySensor();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapNearFullSensor()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getCapNearFullSensor();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getCapPowerReporting()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCapPowerReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapDeposit()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service15.getCapDeposit();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapDepositDataEvent()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service15.getCapDepositDataEvent();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapPauseDeposit()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service15.getCapPauseDeposit();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapRepayDeposit()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service15.getCapRepayDeposit();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapStatisticsReporting()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapStatisticsReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapUpdateStatistics()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapUpdateStatistics();
+      return service112.getCapCardSensor();
     }
     catch(JposException je)
     {
@@ -443,17 +178,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service19.getCapCompareFirmwareVersion();
+      return service112.getCapCompareFirmwareVersion();
     }
     catch(JposException je)
     {
@@ -466,7 +194,7 @@ public class CashChanger
     }
   }
 
-  public boolean getCapUpdateFirmware()
+  public int getCapDetectionControl()
     throws JposException
   {
     // Make sure control is opened
@@ -475,17 +203,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service19.getCapUpdateFirmware();
+      return service112.getCapDetectionControl();
     }
     catch(JposException je)
     {
@@ -498,7 +219,7 @@ public class CashChanger
     }
   }
 
-  public boolean getCapJamSensor()
+  public boolean getCapElectronicMoney()
     throws JposException
   {
     // Make sure control is opened
@@ -507,17 +228,185 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
+      return service112.getCapElectronicMoney();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapEnumerateCardServices()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service111.getCapJamSensor();
+      return service112.getCapEnumerateCardServices();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapIndirectTransactionLog()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapIndirectTransactionLog();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapLockTerminal()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapLockTerminal();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapLogStatus()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapLogStatus();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapMediumID()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapMediumID();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapPoint()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapPoint();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapPowerReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapPowerReporting();
     }
     catch(JposException je)
     {
@@ -539,17 +428,260 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
+      return service112.getCapRealTimeData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service111.getCapRealTimeData();
+      return service112.getCapStatisticsReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSubtractValue()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapSubtractValue();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapTransaction()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapTransaction();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapTransactionLog()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapTransactionLog();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUnlockTerminal()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapUnlockTerminal();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateFirmware()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateKey()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapUpdateKey();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapUpdateStatistics();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapVoucher()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapVoucher();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapWriteValue()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapWriteValue();
     }
     catch(JposException je)
     {
@@ -567,6 +699,181 @@ public class CashChanger
   // Properties
   //--------------------------------------------------------------------------
 
+  public String getAccountNumber()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getAccountNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getAdditionalSecurityInformation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getAdditionalSecurityInformation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setAdditionalSecurityInformation(String addSecInfo)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setAdditionalSecurityInformation(addSecInfo);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public long getAmount()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getAmount();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setAmount(long amount)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setAmount(amount);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getApprovalCode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getApprovalCode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setApprovalCode(String approvalCode)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setApprovalCode(approvalCode);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
   public boolean getAsyncMode()
     throws JposException
   {
@@ -579,7 +886,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getAsyncMode();
+      return service112.getAsyncMode();
     }
     catch(JposException je)
     {
@@ -604,7 +911,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      service12.setAsyncMode(asyncMode);
+      service112.setAsyncMode(asyncMode);
     }
     catch(JposException je)
     {
@@ -617,7 +924,7 @@ public class CashChanger
     }
   }
 
-  public int getAsyncResultCode()
+  public boolean getAutoDisable()
     throws JposException
   {
     // Make sure control is opened
@@ -629,7 +936,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getAsyncResultCode();
+      return service112.getAutoDisable();
     }
     catch(JposException je)
     {
@@ -642,7 +949,7 @@ public class CashChanger
     }
   }
 
-  public int getAsyncResultCodeExtended()
+  public void setAutoDisable(boolean autoDisable)
     throws JposException
   {
     // Make sure control is opened
@@ -654,7 +961,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getAsyncResultCodeExtended();
+      service112.setAutoDisable(autoDisable);
     }
     catch(JposException je)
     {
@@ -667,7 +974,7 @@ public class CashChanger
     }
   }
 
-  public String getCurrencyCashList()
+  public long getBalance()
     throws JposException
   {
     // Make sure control is opened
@@ -679,7 +986,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCurrencyCashList();
+      return service112.getBalance();
     }
     catch(JposException je)
     {
@@ -692,7 +999,7 @@ public class CashChanger
     }
   }
 
-  public String getCurrencyCode()
+  public long getBalanceOfPoint()
     throws JposException
   {
     // Make sure control is opened
@@ -704,7 +1011,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCurrencyCode();
+      return service112.getBalanceOfPoint();
     }
     catch(JposException je)
     {
@@ -717,7 +1024,7 @@ public class CashChanger
     }
   }
 
-  public void setCurrencyCode(String currencyCode)
+  public String getCardServiceList()
     throws JposException
   {
     // Make sure control is opened
@@ -729,7 +1036,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      service12.setCurrencyCode(currencyCode);
+      return service112.getCardServiceList();
     }
     catch(JposException je)
     {
@@ -742,7 +1049,7 @@ public class CashChanger
     }
   }
 
-  public String getCurrencyCodeList()
+  public String getCurrentService()
     throws JposException
   {
     // Make sure control is opened
@@ -754,7 +1061,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCurrencyCodeList();
+      return service112.getCurrentService();
     }
     catch(JposException je)
     {
@@ -767,7 +1074,7 @@ public class CashChanger
     }
   }
 
-  public int getCurrentExit()
+  public void setCurrentService(String currentService)
     throws JposException
   {
     // Make sure control is opened
@@ -779,228 +1086,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      return service12.getCurrentExit();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setCurrentExit(int currentExit)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service12.setCurrentExit(currentExit);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getDeviceExits()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getDeviceExits();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getDeviceStatus()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getDeviceStatus();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public String getExitCashList()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getExitCashList();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getFullStatus()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getFullStatus();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getPowerNotify()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getPowerNotify();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setPowerNotify(int powerNotify)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setPowerNotify(powerNotify);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getPowerState()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getPowerState();
+      service112.setCurrentService(currentService);
     }
     catch(JposException je)
     {
@@ -1022,17 +1108,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDataCount();
+      return service112.getDataCount();
     }
     catch(JposException je)
     {
@@ -1054,17 +1133,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDataEventEnabled();
+      return service112.getDataEventEnabled();
     }
     catch(JposException je)
     {
@@ -1086,17 +1158,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service15.setDataEventEnabled(dataEventEnabled);
+      service112.setDataEventEnabled(dataEventEnabled);
     }
     catch(JposException je)
     {
@@ -1109,7 +1174,7 @@ public class CashChanger
     }
   }
 
-  public int getDepositAmount()
+  public boolean getDetectionControl()
     throws JposException
   {
     // Make sure control is opened
@@ -1118,17 +1183,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDepositAmount();
+      return service112.getDetectionControl();
     }
     catch(JposException je)
     {
@@ -1141,7 +1199,7 @@ public class CashChanger
     }
   }
 
-  public String getDepositCashList()
+  public void setDetectionControl(boolean detectionControl)
     throws JposException
   {
     // Make sure control is opened
@@ -1150,17 +1208,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDepositCashList();
+      service112.setDetectionControl(detectionControl);
     }
     catch(JposException je)
     {
@@ -1173,7 +1224,7 @@ public class CashChanger
     }
   }
 
-  public String getDepositCodeList()
+  public int getDetectionStatus()
     throws JposException
   {
     // Make sure control is opened
@@ -1182,17 +1233,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDepositCodeList();
+      return service112.getDetectionStatus();
     }
     catch(JposException je)
     {
@@ -1205,7 +1249,7 @@ public class CashChanger
     }
   }
 
-  public String getDepositCounts()
+  public String getExpirationDate()
     throws JposException
   {
     // Make sure control is opened
@@ -1214,17 +1258,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDepositCounts();
+      return service112.getExpirationDate();
     }
     catch(JposException je)
     {
@@ -1237,7 +1274,7 @@ public class CashChanger
     }
   }
 
-  public int getDepositStatus()
+  public String getLastUsedDate()
     throws JposException
   {
     // Make sure control is opened
@@ -1246,17 +1283,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service15.getDepositStatus();
+      return service112.getLastUsedDate();
     }
     catch(JposException je)
     {
@@ -1269,7 +1299,7 @@ public class CashChanger
     }
   }
 
-  public int getCurrentService()
+  public int getLogStatus()
     throws JposException
   {
     // Make sure control is opened
@@ -1278,17 +1308,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service111.getCurrentService();
+      return service112.getLogStatus();
     }
     catch(JposException je)
     {
@@ -1301,7 +1324,7 @@ public class CashChanger
     }
   }
 
-  public void setCurrentService(int currentService)
+  public String getMediumID()
     throws JposException
   {
     // Make sure control is opened
@@ -1310,17 +1333,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service111.setCurrentService(currentService);
+      return service112.getMediumID();
     }
     catch(JposException je)
     {
@@ -1333,7 +1349,7 @@ public class CashChanger
     }
   }
 
-  public boolean getRealTimeDataEnabled()
+  public void setMediumID(String mediumID)
     throws JposException
   {
     // Make sure control is opened
@@ -1342,17 +1358,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service111.getRealTimeDataEnabled();
+      service112.setMediumID(mediumID);
     }
     catch(JposException je)
     {
@@ -1365,7 +1374,7 @@ public class CashChanger
     }
   }
 
-  public void setRealTimeDataEnabled(boolean bEnabled)
+  public int getOutputID()
     throws JposException
   {
     // Make sure control is opened
@@ -1374,17 +1383,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service111.setRealTimeDataEnabled(bEnabled);
+      return service112.getOutputID();
     }
     catch(JposException je)
     {
@@ -1397,7 +1399,7 @@ public class CashChanger
     }
   }
 
-  public int getServiceCount()
+  public long getPoint()
     throws JposException
   {
     // Make sure control is opened
@@ -1406,17 +1408,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service111.getServiceCount();
+      return service112.getPoint();
     }
     catch(JposException je)
     {
@@ -1429,7 +1424,7 @@ public class CashChanger
     }
   }
 
-  public int getServiceIndex()
+  public void setPoint(long point)
     throws JposException
   {
     // Make sure control is opened
@@ -1438,17 +1433,310 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
+      service112.setPoint(point);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPowerNotify()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service111.getServiceIndex();
+      return service112.getPowerNotify();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPowerNotify(int powerNotify)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setPowerNotify(powerNotify);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getPowerState()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getPowerState();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getReaderWriterServiceList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getReaderWriterServiceList();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getSequenceNumber()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getSequenceNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public long getSettledAmount()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getSettledAmount();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public long getSettledPoint()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getSettledPoint();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getTransactionLog()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getTransactionLog();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getVoucherID()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getVoucherID();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setVoucherID(String voucherID)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setVoucherID(voucherID);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public String getVoucherIDList()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getVoucherIDList();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setVoucherIDList(String voucherIDList)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.setVoucherIDList(voucherIDList);
     }
     catch(JposException je)
     {
@@ -1466,7 +1754,7 @@ public class CashChanger
   // Methods
   //--------------------------------------------------------------------------
 
-  public void dispenseCash(String cashCounts)
+  public void accessLog(int sequenceNumber, int type, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1478,7 +1766,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      service12.dispenseCash(cashCounts);
+      service112.accessLog(sequenceNumber, type, timeout);
     }
     catch(JposException je)
     {
@@ -1491,7 +1779,7 @@ public class CashChanger
     }
   }
 
-  public void dispenseChange(int amount)
+  public void activateService(int[] data, Object[] obj)
     throws JposException
   {
     // Make sure control is opened
@@ -1503,7 +1791,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      service12.dispenseChange(amount);
+      service112.activateService(data, obj);
     }
     catch(JposException je)
     {
@@ -1516,7 +1804,7 @@ public class CashChanger
     }
   }
 
-  public void readCashCounts(String[] cashCounts, boolean[] discrepancy)
+  public void addValue(int sequenceNumber, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1528,7 +1816,7 @@ public class CashChanger
     // Perform the operation
     try
     {
-      service12.readCashCounts(cashCounts, discrepancy);
+      service112.addValue(sequenceNumber, timeout);
     }
     catch(JposException je)
     {
@@ -1541,7 +1829,7 @@ public class CashChanger
     }
   }
 
-  public void beginDeposit()
+  public void beginDetection(int type, int timeout)
     throws JposException
   {
     // Make sure control is opened
@@ -1550,17 +1838,85 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
+      service112.beginDetection(type, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void beginRemoval(int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service15.beginDeposit();
+      service112.beginRemoval(timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void cancelValue(int sequenceNumber, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.cancelValue(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void captureCard()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.captureCard();
     }
     catch(JposException je)
     {
@@ -1582,17 +1938,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service15.clearInput();
+      service112.clearInput();
     }
     catch(JposException je)
     {
@@ -1605,7 +1954,7 @@ public class CashChanger
     }
   }
 
-  public void endDeposit(int success)
+  public void clearInputProperties()
     throws JposException
   {
     // Make sure control is opened
@@ -1614,17 +1963,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service15.endDeposit(success);
+      service112.clearInputProperties();
     }
     catch(JposException je)
     {
@@ -1637,7 +1979,7 @@ public class CashChanger
     }
   }
 
-  public void fixDeposit()
+  public void clearOutput()
     throws JposException
   {
     // Make sure control is opened
@@ -1646,145 +1988,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service15.fixDeposit();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void pauseDeposit(int control)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.5.0
-    if(serviceVersion < deviceVersion15)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.5.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service15.pauseDeposit(control);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.resetStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void retrieveStatistics(String[] statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.retrieveStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.updateStatistics(statisticsBuffer);
+      service112.clearOutput();
     }
     catch(JposException je)
     {
@@ -1806,17 +2013,260 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service112.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void endDetection()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.compareFirmwareVersion(firmwareFileName, result);
+      service112.endDetection();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void endRemoval()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.endRemoval();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void enumerateCardServices()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.enumerateCardServices();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void lockTerminal()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.lockTerminal();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readValue(int sequenceNumber, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.readValue(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void subtractValue(int sequenceNumber, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.subtractValue(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void transactionAccess(int control)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.transactionAccess(control);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void unlockTerminal()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.unlockTerminal();
     }
     catch(JposException je)
     {
@@ -1838,17 +2288,10 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service19.updateFirmware(firmwareFileName);
+      service112.updateFirmware(firmwareFileName);
     }
     catch(JposException je)
     {
@@ -1861,7 +2304,7 @@ public class CashChanger
     }
   }
 
-  public void adjustCashCounts(String cashCounts)
+  public void updateKey(int[] data, Object[] obj)
     throws JposException
   {
     // Make sure control is opened
@@ -1870,17 +2313,60 @@ public class CashChanger
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.11.0
-    if(serviceVersion < deviceVersion111)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.11.0 compliant.");
+      service112.updateKey(data, obj);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service111.adjustCashCounts(cashCounts);
+      service112.updateStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void writeValue(int sequenceNumber, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.writeValue(sequenceNumber, timeout);
     }
     catch(JposException je)
     {
@@ -1901,7 +2387,7 @@ public class CashChanger
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new CashChangerCallbacks();
+    return new ElectronicValueRWCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -1912,172 +2398,22 @@ public class CashChanger
     if(service == null)
     {
 
-      service12 = null;
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
-      service18 = null;
-      service19 = null;
-      service110 = null;
-      service111 = null;
       service112 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion12)
-      {
-        try
-        {
-          service12 = (CashChangerService12)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService12 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (CashChangerService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (CashChangerService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (CashChangerService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (CashChangerService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (CashChangerService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService17 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion18)
-      {
-        try
-        {
-          service18 = (CashChangerService18)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService18 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion19)
-      {
-        try
-        {
-          service19 = (CashChangerService19)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService19 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion110)
-      {
-        try
-        {
-          service110 = (CashChangerService110)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService110 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion111)
-      {
-        try
-        {
-          service111 = (CashChangerService111)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService111 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion112)
       {
         try
         {
-          service112 = (CashChangerService112)service;
+          service112 = (ElectronicValueRWService112)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement CashChangerService112 interface",
+                                  "Service does not fully implement ElectronicValueRWService112 interface",
                                   e);
         }
       }
@@ -2089,6 +2425,22 @@ public class CashChanger
   //--------------------------------------------------------------------------
   // Event Listener Methods
   //--------------------------------------------------------------------------
+
+  public void addDataListener(DataListener l)
+  {
+    synchronized(dataListeners)
+    {
+      dataListeners.addElement(l);
+    }
+  }
+
+  public void removeDataListener(DataListener l)
+  {
+    synchronized(dataListeners)
+    {
+      dataListeners.removeElement(l);
+    }
+  }
 
   public void addDirectIOListener(DirectIOListener l)
   {
@@ -2103,6 +2455,38 @@ public class CashChanger
     synchronized(directIOListeners)
     {
       directIOListeners.removeElement(l);
+    }
+  }
+
+  public void addErrorListener(ErrorListener l)
+  {
+    synchronized(errorListeners)
+    {
+      errorListeners.addElement(l);
+    }
+  }
+
+  public void removeErrorListener(ErrorListener l)
+  {
+    synchronized(errorListeners)
+    {
+      errorListeners.removeElement(l);
+    }
+  }
+
+  public void addOutputCompleteListener(OutputCompleteListener l)
+  {
+    synchronized(outputCompleteListeners)
+    {
+      outputCompleteListeners.addElement(l);
+    }
+  }
+
+  public void removeOutputCompleteListener(OutputCompleteListener l)
+  {
+    synchronized(outputCompleteListeners)
+    {
+      outputCompleteListeners.removeElement(l);
     }
   }
 
@@ -2122,38 +2506,22 @@ public class CashChanger
     }
   }
 
-  public void addDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.addElement(l);
-    }
-  }
-
-  public void removeDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.removeElement(l);
-    }
-  }
-
 
   //--------------------------------------------------------------------------
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class CashChangerCallbacks
+  protected class ElectronicValueRWCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)CashChanger.this;
+      return (BaseControl)ElectronicValueRW.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(CashChanger.this.dataListeners)
+      synchronized(ElectronicValueRW.this.dataListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < dataListeners.size(); x++)
@@ -2165,7 +2533,7 @@ public class CashChanger
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(CashChanger.this.directIOListeners)
+      synchronized(ElectronicValueRW.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -2177,15 +2545,31 @@ public class CashChanger
 
     public void fireErrorEvent(ErrorEvent e)
     {
+      synchronized(ElectronicValueRW.this.errorListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < errorListeners.size(); x++)
+        {
+          ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
+        }
+      }
     }
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
     {
+      synchronized(ElectronicValueRW.this.outputCompleteListeners)
+      {
+        // deliver the event to all registered listeners
+        for(int x = 0; x < outputCompleteListeners.size(); x++)
+        {
+          ((OutputCompleteListener)outputCompleteListeners.elementAt(x)).outputCompleteOccurred(e);
+        }
+      }
     }
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(CashChanger.this.statusUpdateListeners)
+      synchronized(ElectronicValueRW.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)
