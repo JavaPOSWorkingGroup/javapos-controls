@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ItemDispenser.java - A JavaPOS 1.13.0 device control
+// ItemDispenser.java - A JavaPOS 1.13.4 device control
 //
 //------------------------------------------------------------------------------
 
@@ -203,31 +203,6 @@ public class ItemDispenser
     try
     {
       return service112.getCapPowerReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapRealTimeData()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service112.getCapRealTimeData();
     }
     catch(JposException je)
     {

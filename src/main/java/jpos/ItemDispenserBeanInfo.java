@@ -52,7 +52,6 @@ public class ItemDispenserBeanInfo
         makeProperty("CapJamSensor"),
         makeProperty("CapNearEmptySensor"),
         makeProperty("CapPowerReporting"),
-        makeProperty("CapRealTimeData"),
         makeProperty("CapStatisticsReporting"),
         makeProperty("CapUpdateFirmware"),
         makeProperty("CapUpdateStatistics"),

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Belt.java - A JavaPOS 1.13.0 device control
+// Belt.java - A JavaPOS 1.13.4 device control
 //
 //------------------------------------------------------------------------------
 
@@ -365,7 +365,7 @@ public class Belt
     }
   }
 
-  public boolean getCapSpeedStepsBackward()
+  public int getCapSpeedStepsBackward()
     throws JposException
   {
     // Make sure control is opened
@@ -390,7 +390,7 @@ public class Belt
     }
   }
 
-  public boolean getCapSpeedStepsForward()
+  public int getCapSpeedStepsForward()
     throws JposException
   {
     // Make sure control is opened

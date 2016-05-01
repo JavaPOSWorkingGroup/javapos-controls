@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CAT.java - A JavaPOS 1.13.0 device control
+// CAT.java - A JavaPOS 1.13.4 device control
 //
 //------------------------------------------------------------------------------
 
@@ -1369,6 +1369,38 @@ public class CAT
     try
     {
       return service19.getSettledAmount();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getOutputID()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getOutputID();
     }
     catch(JposException je)
     {

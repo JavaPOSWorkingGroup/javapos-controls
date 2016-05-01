@@ -90,7 +90,8 @@ public class CATBeanInfo
         makeProperty("PaymentMedia"),
         makeProperty("Balance"),
         makeProperty("LogStatus"),
-        makeProperty("SettledAmount")
+        makeProperty("SettledAmount"),
+        makeProperty("OutputID")
       };
 
       return properties;

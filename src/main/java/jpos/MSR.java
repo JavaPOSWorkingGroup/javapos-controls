@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MSR.java - A JavaPOS 1.13.0 device control
+// MSR.java - A JavaPOS 1.13.4 device control
 //
 //------------------------------------------------------------------------------
 
@@ -2501,6 +2501,38 @@ public class MSR
     try
     {
       service112.updateKey(key, keyName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveDeviceAuthenticationData(byte[][] challenge)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service113.retrieveDeviceAuthenticationData(challenge);
     }
     catch(JposException je)
     {

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicValueRW.java - A JavaPOS 1.13.0 device control
+// ElectronicValueRW.java - A JavaPOS 1.13.4 device control
 //
 //------------------------------------------------------------------------------
 

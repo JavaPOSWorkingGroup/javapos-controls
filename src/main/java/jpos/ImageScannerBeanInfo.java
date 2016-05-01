@@ -46,8 +46,38 @@ public class ImageScannerBeanInfo
       PropertyDescriptor[] properties =
       {
         // Capabilities
+        makeProperty("CapAim"),
+        makeProperty("CapCompareFirmwareVersion"),
+        makeProperty("CapDecodeData"),
+        makeProperty("CapHostTriggered"),
+        makeProperty("CapIlluminate"),
+        makeProperty("CapImageData"),
+        makeProperty("CapImageQuality"),
+        makeProperty("CapPowerReporting"),
+        makeProperty("CapStatisticsReporting"),
+        makeProperty("CapUpdateFirmware"),
+        makeProperty("CapUpdateStatistics"),
+        makeProperty("CapVideoData"),
 
         // Properties
+        makeProperty("AimMode"),
+        makeProperty("AutoDisable"),
+        makeProperty("BitsPerPixel"),
+        makeProperty("DataCount"),
+        makeProperty("DataEventEnabled"),
+        makeProperty("FrameData"),
+        makeProperty("FrameType"),
+        makeProperty("IlluminateMode"),
+        makeProperty("ImageHeight"),
+        makeProperty("ImageLength"),
+        makeProperty("ImageMode"),
+        makeProperty("ImageQuality"),
+        makeProperty("ImageType"),
+        makeProperty("ImageWidth"),
+        makeProperty("PowerNotify"),
+        makeProperty("PowerState"),
+        makeProperty("VideoCount"),
+        makeProperty("VideoRate"),
 
       };
 
@@ -75,7 +105,10 @@ public class ImageScannerBeanInfo
     {
       EventSetDescriptor[] events =
       {
-
+        makeEvent("Data"),
+        makeEvent("DirectIO"),
+        makeEvent("Error"),
+        makeEvent("StatusUpdate")
       };
 
       return events;
