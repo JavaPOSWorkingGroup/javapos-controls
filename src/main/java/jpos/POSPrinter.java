@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSPrinter.java - A JavaPOS 1.12.2 device control
+// POSPrinter.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class POSPrinter
   extends BaseJposControl
-  implements POSPrinterControl112, JposConst
+  implements POSPrinterControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -47,6 +47,7 @@ public class POSPrinter
   protected POSPrinterService110 service110;
   protected POSPrinterService111 service111;
   protected POSPrinterService112 service112;
+  protected POSPrinterService113 service113;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -61,7 +62,7 @@ public class POSPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS POSPrinter Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -76,6 +77,7 @@ public class POSPrinter
     //service110 = null;
     //service111 = null;
     //service112 = null;
+    //service113 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1844,6 +1846,70 @@ public class POSPrinter
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapRecRuledLine()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getCapRecRuledLine();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapSlpRuledLine()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getCapSlpRuledLine();
     }
     catch(JposException je)
     {
@@ -5128,6 +5194,38 @@ public class POSPrinter
     }
   }
 
+  public void drawRuledLine(int station, String positionList, int lineDirection, int lineWidth, int lineStyle, int lineColor)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service113.drawRuledLine(station, positionList, lineDirection, lineWidth, lineStyle, lineColor);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -5158,6 +5256,7 @@ public class POSPrinter
       service110 = null;
       service111 = null;
       service112 = null;
+      service113 = null;
     }
     else
     {
@@ -5313,6 +5412,20 @@ public class POSPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement POSPrinterService112 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion113)
+      {
+        try
+        {
+          service113 = (POSPrinterService113)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement POSPrinterService113 interface",
                                   e);
         }
       }

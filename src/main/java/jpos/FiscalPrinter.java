@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// FiscalPrinter.java - A JavaPOS 1.12.2 device control
+// FiscalPrinter.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class FiscalPrinter
   extends BaseJposControl
-  implements FiscalPrinterControl112, JposConst
+  implements FiscalPrinterControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -46,6 +46,7 @@ public class FiscalPrinter
   protected FiscalPrinterService110 service110;
   protected FiscalPrinterService111 service111;
   protected FiscalPrinterService112 service112;
+  protected FiscalPrinterService113 service113;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -60,7 +61,7 @@ public class FiscalPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS FiscalPrinter Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -74,6 +75,7 @@ public class FiscalPrinter
     //service110 = null;
     //service111 = null;
     //service112 = null;
+    //service113 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -5387,6 +5389,7 @@ public class FiscalPrinter
       service110 = null;
       service111 = null;
       service112 = null;
+      service113 = null;
     }
     else
     {
@@ -5528,6 +5531,20 @@ public class FiscalPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement FiscalPrinterService112 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion113)
+      {
+        try
+        {
+          service113 = (FiscalPrinterService113)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement FiscalPrinterService113 interface",
                                   e);
         }
       }

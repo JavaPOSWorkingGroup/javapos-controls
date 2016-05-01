@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ToneIndicator.java - A JavaPOS 1.12.2 device control
+// ToneIndicator.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ToneIndicator
   extends BaseJposControl
-  implements ToneIndicatorControl112, JposConst
+  implements ToneIndicatorControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -47,6 +47,7 @@ public class ToneIndicator
   protected ToneIndicatorService110 service110;
   protected ToneIndicatorService111 service111;
   protected ToneIndicatorService112 service112;
+  protected ToneIndicatorService113 service113;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -61,7 +62,7 @@ public class ToneIndicator
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ToneIndicator Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -76,6 +77,7 @@ public class ToneIndicator
     //service110 = null;
     //service111 = null;
     //service112 = null;
+    //service113 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -285,6 +287,38 @@ public class ToneIndicator
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapMelody()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getCapMelody();
     }
     catch(JposException je)
     {
@@ -823,6 +857,134 @@ public class ToneIndicator
     }
   }
 
+  public int getMelodyType()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getMelodyType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setMelodyType(int melodyType)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service113.setMelodyType(melodyType);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getMelodyVolume()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getMelodyVolume();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setMelodyVolume(int melodyVolume)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service113.setMelodyVolume(melodyVolume);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1093,6 +1255,7 @@ public class ToneIndicator
       service110 = null;
       service111 = null;
       service112 = null;
+      service113 = null;
     }
     else
     {
@@ -1248,6 +1411,20 @@ public class ToneIndicator
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ToneIndicatorService112 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion113)
+      {
+        try
+        {
+          service113 = (ToneIndicatorService113)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ToneIndicatorService113 interface",
                                   e);
         }
       }

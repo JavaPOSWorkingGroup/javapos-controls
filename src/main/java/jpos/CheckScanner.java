@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CheckScanner.java - A JavaPOS 1.12.2 device control
+// CheckScanner.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CheckScanner
   extends BaseJposControl
-  implements CheckScannerControl112, JposConst
+  implements CheckScannerControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -42,6 +42,7 @@ public class CheckScanner
   protected CheckScannerService110 service110;
   protected CheckScannerService111 service111;
   protected CheckScannerService112 service112;
+  protected CheckScannerService113 service113;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -56,7 +57,7 @@ public class CheckScanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CheckScanner Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -66,6 +67,7 @@ public class CheckScanner
     //service110 = null;
     //service111 = null;
     //service112 = null;
+    //service113 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1960,6 +1962,7 @@ public class CheckScanner
       service110 = null;
       service111 = null;
       service112 = null;
+      service113 = null;
     }
     else
     {
@@ -2045,6 +2048,20 @@ public class CheckScanner
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CheckScannerService112 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion113)
+      {
+        try
+        {
+          service113 = (CheckScannerService113)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CheckScannerService113 interface",
                                   e);
         }
       }

@@ -112,6 +112,8 @@ public class POSPrinterBeanInfo
         makeProperty("CapRecPageMode"),
         makeProperty("CapSlpPageMode"),
         makeProperty("CapUpdateFirmware"),
+        makeProperty("CapRecRuledLine"),
+        makeProperty("CapSlpRuledLine"),
 
         // Properties
         makeProperty("AsyncMode"),

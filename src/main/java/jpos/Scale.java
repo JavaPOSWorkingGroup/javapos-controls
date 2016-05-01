@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.12.2 device control
+// Scale.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Scale
   extends BaseJposControl
-  implements ScaleControl112, JposConst
+  implements ScaleControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -47,6 +47,7 @@ public class Scale
   protected ScaleService110 service110;
   protected ScaleService111 service111;
   protected ScaleService112 service112;
+  protected ScaleService113 service113;
   protected Vector directIOListeners;
   protected Vector dataListeners;
   protected Vector errorListeners;
@@ -61,7 +62,7 @@ public class Scale
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scale Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -76,6 +77,7 @@ public class Scale
     //service110 = null;
     //service111 = null;
     //service112 = null;
+    //service113 = null;
     directIOListeners = new Vector();
     dataListeners = new Vector();
     errorListeners = new Vector();
@@ -1095,6 +1097,70 @@ public class Scale
     }
   }
 
+  public boolean getZeroValid()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service113.getZeroValid();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setZeroValid(boolean zeroValid)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.13.0
+    if(serviceVersion < deviceVersion113)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.13.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service113.setZeroValid(zeroValid);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1411,6 +1477,7 @@ public class Scale
       service110 = null;
       service111 = null;
       service112 = null;
+      service113 = null;
     }
     else
     {
@@ -1566,6 +1633,20 @@ public class Scale
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScaleService112 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion113)
+      {
+        try
+        {
+          service113 = (ScaleService113)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScaleService113 interface",
                                   e);
         }
       }
