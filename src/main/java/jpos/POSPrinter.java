@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSPrinter.java - A JavaPOS 1.11.0 device control
+// POSPrinter.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class POSPrinter
   extends BaseJposControl
-  implements POSPrinterControl111, JposConst
+  implements POSPrinterControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -46,6 +46,7 @@ public class POSPrinter
   protected POSPrinterService19 service19;
   protected POSPrinterService110 service110;
   protected POSPrinterService111 service111;
+  protected POSPrinterService112 service112;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -60,7 +61,7 @@ public class POSPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS POSPrinter Device Control";
-    deviceControlVersion = deviceVersion111;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -74,6 +75,7 @@ public class POSPrinter
     //service19 = null;
     //service110 = null;
     //service111 = null;
+    //service112 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -5155,6 +5157,7 @@ public class POSPrinter
       service19 = null;
       service110 = null;
       service111 = null;
+      service112 = null;
     }
     else
     {
@@ -5296,6 +5299,20 @@ public class POSPrinter
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement POSPrinterService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (POSPrinterService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement POSPrinterService112 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// BillDispenser.java - A JavaPOS 1.11.0 device control
+// BillDispenser.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,13 +30,14 @@ import jpos.loader.*;
 
 public class BillDispenser
   extends BaseJposControl
-  implements BillDispenserControl111, JposConst
+  implements BillDispenserControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
   protected BillDispenserService111 service111;
+  protected BillDispenserService112 service112;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -49,11 +50,12 @@ public class BillDispenser
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS BillDispenser Device Control";
-    deviceControlVersion = deviceVersion111;
+    deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service111 = null;
+    //service112 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -943,6 +945,7 @@ public class BillDispenser
     {
 
       service111 = null;
+      service112 = null;
     }
     else
     {
@@ -958,6 +961,20 @@ public class BillDispenser
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement BillDispenserService111 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion112)
+      {
+        try
+        {
+          service112 = (BillDispenserService112)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement BillDispenserService112 interface",
                                   e);
         }
       }

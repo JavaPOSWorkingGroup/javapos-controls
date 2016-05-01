@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.12.2 device control
+// Belt.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,28 +28,16 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class Scale
+public class Belt
   extends BaseJposControl
-  implements ScaleControl112, JposConst
+  implements BeltControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected ScaleService12 service12;
-  protected ScaleService13 service13;
-  protected ScaleService14 service14;
-  protected ScaleService15 service15;
-  protected ScaleService16 service16;
-  protected ScaleService17 service17;
-  protected ScaleService18 service18;
-  protected ScaleService19 service19;
-  protected ScaleService110 service110;
-  protected ScaleService111 service111;
-  protected ScaleService112 service112;
+  protected BeltService112 service112;
   protected Vector directIOListeners;
-  protected Vector dataListeners;
-  protected Vector errorListeners;
   protected Vector statusUpdateListeners;
 
 
@@ -57,28 +45,16 @@ public class Scale
   // Constructor
   //--------------------------------------------------------------------------
 
-  public Scale()
+  public Belt()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS Scale Device Control";
+    deviceControlDescription = "JavaPOS Belt Device Control";
     deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service12 = null;
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
-    //service18 = null;
-    //service19 = null;
-    //service110 = null;
-    //service111 = null;
     //service112 = null;
     directIOListeners = new Vector();
-    dataListeners = new Vector();
-    errorListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
 
@@ -87,7 +63,7 @@ public class Scale
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public boolean getCapDisplay()
+  public boolean getCapAutoStopBackward()
     throws JposException
   {
     // Make sure control is opened
@@ -99,7 +75,7 @@ public class Scale
     // Perform the operation
     try
     {
-      return service12.getCapDisplay();
+      return service112.getCapAutoStopBackward();
     }
     catch(JposException je)
     {
@@ -112,7 +88,7 @@ public class Scale
     }
   }
 
-  public boolean getCapDisplayText()
+  public boolean getCapAutoStopBackwardItemCount()
     throws JposException
   {
     // Make sure control is opened
@@ -121,17 +97,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getCapDisplayText();
+      return service112.getCapAutoStopBackwardItemCount();
     }
     catch(JposException je)
     {
@@ -144,7 +113,7 @@ public class Scale
     }
   }
 
-  public boolean getCapPriceCalculating()
+  public boolean getCapAutoStopForward()
     throws JposException
   {
     // Make sure control is opened
@@ -153,17 +122,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getCapPriceCalculating();
+      return service112.getCapAutoStopForward();
     }
     catch(JposException je)
     {
@@ -176,7 +138,7 @@ public class Scale
     }
   }
 
-  public int getCapPowerReporting()
+  public boolean getCapAutoStopForwardItemCount()
     throws JposException
   {
     // Make sure control is opened
@@ -185,145 +147,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapTareWeight()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCapTareWeight();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapZeroScale()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getCapZeroScale();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapStatisticsReporting()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapStatisticsReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapUpdateStatistics()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapUpdateStatistics();
+      return service112.getCapAutoStopForwardItemCount();
     }
     catch(JposException je)
     {
@@ -345,17 +172,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service19.getCapCompareFirmwareVersion();
+      return service112.getCapCompareFirmwareVersion();
     }
     catch(JposException je)
     {
@@ -368,7 +188,7 @@ public class Scale
     }
   }
 
-  public boolean getCapStatusUpdate()
+  public boolean getCapLightBarrierBackward()
     throws JposException
   {
     // Make sure control is opened
@@ -377,17 +197,235 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      return service112.getCapLightBarrierBackward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapLightBarrierForward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service19.getCapStatusUpdate();
+      return service112.getCapLightBarrierForward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapMoveBackward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapMoveBackward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getCapPowerReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapRealTimeData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapRealTimeData();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSecurityFlapBackward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapSecurityFlapBackward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSecurityFlapForward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapSecurityFlapForward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSpeedStepsBackward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapSpeedStepsBackward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSpeedStepsForward()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapSpeedStepsForward();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapStatisticsReporting()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapStatisticsReporting();
     }
     catch(JposException je)
     {
@@ -409,17 +447,35 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      return service112.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service19.getCapUpdateFirmware();
+      return service112.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -437,7 +493,7 @@ public class Scale
   // Properties
   //--------------------------------------------------------------------------
 
-  public int getMaximumWeight()
+  public boolean getAutoStopBackward()
     throws JposException
   {
     // Make sure control is opened
@@ -449,7 +505,7 @@ public class Scale
     // Perform the operation
     try
     {
-      return service12.getMaximumWeight();
+      return service112.getAutoStopBackward();
     }
     catch(JposException je)
     {
@@ -462,7 +518,7 @@ public class Scale
     }
   }
 
-  public int getWeightUnit()
+  public void setAutoStopBackward(boolean autoStop)
     throws JposException
   {
     // Make sure control is opened
@@ -474,7 +530,7 @@ public class Scale
     // Perform the operation
     try
     {
-      return service12.getWeightUnit();
+      service112.setAutoStopBackward(autoStop);
     }
     catch(JposException je)
     {
@@ -487,7 +543,7 @@ public class Scale
     }
   }
 
-  public boolean getAsyncMode()
+  public int getAutoStopBackwardDelayTime()
     throws JposException
   {
     // Make sure control is opened
@@ -496,17 +552,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getAsyncMode();
+      return service112.getAutoStopBackwardDelayTime();
     }
     catch(JposException je)
     {
@@ -519,7 +568,7 @@ public class Scale
     }
   }
 
-  public void setAsyncMode(boolean asyncMode)
+  public void setAutoStopBackwardDelayTime(int delayTime)
     throws JposException
   {
     // Make sure control is opened
@@ -528,17 +577,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setAsyncMode(asyncMode);
+      service112.setAutoStopBackwardDelayTime(delayTime);
     }
     catch(JposException je)
     {
@@ -551,7 +593,7 @@ public class Scale
     }
   }
 
-  public boolean getAutoDisable()
+  public int getAutoStopBackwardItemCount()
     throws JposException
   {
     // Make sure control is opened
@@ -560,17 +602,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getAutoDisable();
+      return service112.getAutoStopBackwardItemCount();
     }
     catch(JposException je)
     {
@@ -583,7 +618,7 @@ public class Scale
     }
   }
 
-  public void setAutoDisable(boolean autoDisable)
+  public boolean getAutoStopForward()
     throws JposException
   {
     // Make sure control is opened
@@ -592,17 +627,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setAutoDisable(autoDisable);
+      return service112.getAutoStopForward();
     }
     catch(JposException je)
     {
@@ -615,7 +643,7 @@ public class Scale
     }
   }
 
-  public int getDataCount()
+  public void setAutoStopForward(boolean autoStop)
     throws JposException
   {
     // Make sure control is opened
@@ -624,17 +652,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getDataCount();
+      service112.setAutoStopForward(autoStop);
     }
     catch(JposException je)
     {
@@ -647,7 +668,7 @@ public class Scale
     }
   }
 
-  public boolean getDataEventEnabled()
+  public int getAutoStopForwardDelayTime()
     throws JposException
   {
     // Make sure control is opened
@@ -656,17 +677,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getDataEventEnabled();
+      return service112.getAutoStopForwardDelayTime();
     }
     catch(JposException je)
     {
@@ -679,7 +693,7 @@ public class Scale
     }
   }
 
-  public void setDataEventEnabled(boolean dataEventEnabled)
+  public void setAutoStopForwardDelayTime(int delayTime)
     throws JposException
   {
     // Make sure control is opened
@@ -688,17 +702,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setDataEventEnabled(dataEventEnabled);
+      service112.setAutoStopForwardDelayTime(delayTime);
     }
     catch(JposException je)
     {
@@ -711,7 +718,7 @@ public class Scale
     }
   }
 
-  public int getMaxDisplayTextChars()
+  public int getAutoStopForwardItemCount()
     throws JposException
   {
     // Make sure control is opened
@@ -720,17 +727,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getMaxDisplayTextChars();
+      return service112.getAutoStopForwardItemCount();
     }
     catch(JposException je)
     {
@@ -743,7 +743,7 @@ public class Scale
     }
   }
 
-  public long getSalesPrice()
+  public boolean getLightBarrierBackwardInterrupted()
     throws JposException
   {
     // Make sure control is opened
@@ -752,17 +752,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getSalesPrice();
+      return service112.getLightBarrierBackwardInterrupted();
     }
     catch(JposException je)
     {
@@ -775,7 +768,7 @@ public class Scale
     }
   }
 
-  public int getTareWeight()
+  public boolean getLightBarrierForwardInterrupted()
     throws JposException
   {
     // Make sure control is opened
@@ -784,17 +777,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getTareWeight();
+      return service112.getLightBarrierForwardInterrupted();
     }
     catch(JposException je)
     {
@@ -807,7 +793,7 @@ public class Scale
     }
   }
 
-  public void setTareWeight(int tareWeight)
+  public int getMotionStatus()
     throws JposException
   {
     // Make sure control is opened
@@ -816,81 +802,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setTareWeight(tareWeight);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public long getUnitPrice()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service13.getUnitPrice();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setUnitPrice(long unitPrice)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.setUnitPrice(unitPrice);
+      return service112.getMotionStatus();
     }
     catch(JposException je)
     {
@@ -912,17 +827,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service112.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -944,17 +852,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service112.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -976,17 +877,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service112.getPowerState();
     }
     catch(JposException je)
     {
@@ -999,7 +893,7 @@ public class Scale
     }
   }
 
-  public int getScaleLiveWeight()
+  public boolean getSecurityFlapBackwardOpened()
     throws JposException
   {
     // Make sure control is opened
@@ -1008,17 +902,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service19.getScaleLiveWeight();
+      return service112.getSecurityFlapBackwardOpened();
     }
     catch(JposException je)
     {
@@ -1031,7 +918,7 @@ public class Scale
     }
   }
 
-  public int getStatusNotify()
+  public boolean getSecurityFlapForwardOpened()
     throws JposException
   {
     // Make sure control is opened
@@ -1040,49 +927,10 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service19.getStatusNotify();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setStatusNotify(int statusNotify)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service19.setStatusNotify(statusNotify);
+      return service112.getSecurityFlapForwardOpened();
     }
     catch(JposException je)
     {
@@ -1100,7 +948,7 @@ public class Scale
   // Methods
   //--------------------------------------------------------------------------
 
-  public void readWeight(int[] weightData, int timeout)
+  public void adjustItemCount(int direction, int count)
     throws JposException
   {
     // Make sure control is opened
@@ -1112,199 +960,7 @@ public class Scale
     // Perform the operation
     try
     {
-      service12.readWeight(weightData, timeout);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void clearInput()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.clearInput();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void displayText(String data)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.displayText(data);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void zeroScale()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service13.zeroScale();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.resetStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void retrieveStatistics(String[] statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.retrieveStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.updateStatistics(statisticsBuffer);
+      service112.adjustItemCount(direction, count);
     }
     catch(JposException je)
     {
@@ -1326,17 +982,185 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service112.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void moveBackward(int speed)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.compareFirmwareVersion(firmwareFileName, result);
+      service112.moveBackward(speed);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void moveForward(int speed)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.moveForward(speed);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetBelt()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.resetBelt();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetItemCount(int direction)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.resetItemCount(direction);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.retrieveStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void stopBelt()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.stopBelt();
     }
     catch(JposException je)
     {
@@ -1358,17 +1182,35 @@ public class Scale
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service112.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.updateFirmware(firmwareFileName);
+      service112.updateStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -1389,7 +1231,7 @@ public class Scale
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new ScaleCallbacks();
+    return new BeltCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -1400,172 +1242,22 @@ public class Scale
     if(service == null)
     {
 
-      service12 = null;
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
-      service18 = null;
-      service19 = null;
-      service110 = null;
-      service111 = null;
       service112 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion12)
-      {
-        try
-        {
-          service12 = (ScaleService12)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService12 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (ScaleService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (ScaleService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (ScaleService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (ScaleService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (ScaleService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService17 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion18)
-      {
-        try
-        {
-          service18 = (ScaleService18)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService18 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion19)
-      {
-        try
-        {
-          service19 = (ScaleService19)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService19 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion110)
-      {
-        try
-        {
-          service110 = (ScaleService110)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService110 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion111)
-      {
-        try
-        {
-          service111 = (ScaleService111)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService111 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion112)
       {
         try
         {
-          service112 = (ScaleService112)service;
+          service112 = (BeltService112)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ScaleService112 interface",
+                                  "Service does not fully implement BeltService112 interface",
                                   e);
         }
       }
@@ -1594,38 +1286,6 @@ public class Scale
     }
   }
 
-  public void addDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.addElement(l);
-    }
-  }
-
-  public void removeDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.removeElement(l);
-    }
-  }
-
-  public void addErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.addElement(l);
-    }
-  }
-
-  public void removeErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.removeElement(l);
-    }
-  }
-
   public void addStatusUpdateListener(StatusUpdateListener l)
   {
     synchronized(statusUpdateListeners)
@@ -1647,29 +1307,21 @@ public class Scale
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class ScaleCallbacks
+  protected class BeltCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)Scale.this;
+      return (BaseControl)Belt.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(Scale.this.dataListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < dataListeners.size(); x++)
-        {
-          ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
-        }
-      }
     }
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(Scale.this.directIOListeners)
+      synchronized(Belt.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -1681,14 +1333,6 @@ public class Scale
 
     public void fireErrorEvent(ErrorEvent e)
     {
-      synchronized(Scale.this.errorListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < errorListeners.size(); x++)
-        {
-          ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
-        }
-      }
     }
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
@@ -1697,7 +1341,7 @@ public class Scale
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(Scale.this.statusUpdateListeners)
+      synchronized(Belt.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)

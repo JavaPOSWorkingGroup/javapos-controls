@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSKeyboard.java - A JavaPOS 1.12.2 device control
+// ItemDispenser.java - A JavaPOS 1.12.2 device control
 //
 //------------------------------------------------------------------------------
 
@@ -28,28 +28,16 @@ import jpos.services.*;
 import java.util.Vector;
 import jpos.loader.*;
 
-public class POSKeyboard
+public class ItemDispenser
   extends BaseJposControl
-  implements POSKeyboardControl112, JposConst
+  implements ItemDispenserControl112, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected POSKeyboardService12 service12;
-  protected POSKeyboardService13 service13;
-  protected POSKeyboardService14 service14;
-  protected POSKeyboardService15 service15;
-  protected POSKeyboardService16 service16;
-  protected POSKeyboardService17 service17;
-  protected POSKeyboardService18 service18;
-  protected POSKeyboardService19 service19;
-  protected POSKeyboardService110 service110;
-  protected POSKeyboardService111 service111;
-  protected POSKeyboardService112 service112;
-  protected Vector dataListeners;
+  protected ItemDispenserService112 service112;
   protected Vector directIOListeners;
-  protected Vector errorListeners;
   protected Vector statusUpdateListeners;
 
 
@@ -57,28 +45,16 @@ public class POSKeyboard
   // Constructor
   //--------------------------------------------------------------------------
 
-  public POSKeyboard()
+  public ItemDispenser()
   {
     // Initialize base class instance data
-    deviceControlDescription = "JavaPOS POSKeyboard Device Control";
+    deviceControlDescription = "JavaPOS ItemDispenser Device Control";
     deviceControlVersion = deviceVersion112;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service12 = null;
-    //service13 = null;
-    //service14 = null;
-    //service15 = null;
-    //service16 = null;
-    //service17 = null;
-    //service18 = null;
-    //service19 = null;
-    //service110 = null;
-    //service111 = null;
     //service112 = null;
-    dataListeners = new Vector();
     directIOListeners = new Vector();
-    errorListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
 
@@ -87,7 +63,7 @@ public class POSKeyboard
   // Capabilities
   //--------------------------------------------------------------------------
 
-  public boolean getCapKeyUp()
+  public boolean getCapCompareFirmwareVersion()
     throws JposException
   {
     // Make sure control is opened
@@ -99,7 +75,107 @@ public class POSKeyboard
     // Perform the operation
     try
     {
-      return service12.getCapKeyUp();
+      return service112.getCapCompareFirmwareVersion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapEmptySensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapEmptySensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapIndividualSlotStatus()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapIndividualSlotStatus();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapJamSensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapJamSensor();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapNearEmptySensor()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service112.getCapNearEmptySensor();
     }
     catch(JposException je)
     {
@@ -121,17 +197,35 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
+      return service112.getCapPowerReporting();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapRealTimeData()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service13.getCapPowerReporting();
+      return service112.getCapRealTimeData();
     }
     catch(JposException je)
     {
@@ -153,81 +247,10 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service18.getCapStatisticsReporting();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapUpdateStatistics()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service18.getCapUpdateStatistics();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getCapCompareFirmwareVersion()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service19.getCapCompareFirmwareVersion();
+      return service112.getCapStatisticsReporting();
     }
     catch(JposException je)
     {
@@ -249,17 +272,35 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      return service112.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapUpdateStatistics()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      return service19.getCapUpdateFirmware();
+      return service112.getCapUpdateStatistics();
     }
     catch(JposException je)
     {
@@ -277,7 +318,7 @@ public class POSKeyboard
   // Properties
   //--------------------------------------------------------------------------
 
-  public boolean getAutoDisable()
+  public int getDispenserStatus()
     throws JposException
   {
     // Make sure control is opened
@@ -289,7 +330,7 @@ public class POSKeyboard
     // Perform the operation
     try
     {
-      return service12.getAutoDisable();
+      return service112.getDispenserStatus();
     }
     catch(JposException je)
     {
@@ -302,7 +343,7 @@ public class POSKeyboard
     }
   }
 
-  public void setAutoDisable(boolean autoDisable)
+  public int getMaxSlots()
     throws JposException
   {
     // Make sure control is opened
@@ -314,182 +355,7 @@ public class POSKeyboard
     // Perform the operation
     try
     {
-      service12.setAutoDisable(autoDisable);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getDataCount()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getDataCount();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public boolean getDataEventEnabled()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getDataEventEnabled();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setDataEventEnabled(boolean dataEventEnabled)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service12.setDataEventEnabled(dataEventEnabled);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getEventTypes()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getEventTypes();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void setEventTypes(int eventTypes)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      service12.setEventTypes(eventTypes);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getPOSKeyData()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getPOSKeyData();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public int getPOSKeyEventType()
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Perform the operation
-    try
-    {
-      return service12.getPOSKeyEventType();
+      return service112.getMaxSlots();
     }
     catch(JposException je)
     {
@@ -511,17 +377,10 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerNotify();
+      return service112.getPowerNotify();
     }
     catch(JposException je)
     {
@@ -543,17 +402,10 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      service13.setPowerNotify(powerNotify);
+      service112.setPowerNotify(powerNotify);
     }
     catch(JposException je)
     {
@@ -575,17 +427,10 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.3.0
-    if(serviceVersion < deviceVersion13)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.3.0 compliant.");
-    }
-
     // Perform the operation
     try
     {
-      return service13.getPowerState();
+      return service112.getPowerState();
     }
     catch(JposException je)
     {
@@ -603,7 +448,7 @@ public class POSKeyboard
   // Methods
   //--------------------------------------------------------------------------
 
-  public void clearInput()
+  public void adjustItemCount(int itemCount, int slotNumber)
     throws JposException
   {
     // Make sure control is opened
@@ -615,103 +460,7 @@ public class POSKeyboard
     // Perform the operation
     try
     {
-      service12.clearInput();
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void resetStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.resetStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void retrieveStatistics(String[] statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.retrieveStatistics(statisticsBuffer);
-    }
-    catch(JposException je)
-    {
-      throw je;
-    }
-    catch(Exception e)
-    {
-      throw new JposException(JPOS_E_FAILURE,
-                              "Unhandled exception from Device Service", e);
-    }
-  }
-
-  public void updateStatistics(String statisticsBuffer)
-    throws JposException
-  {
-    // Make sure control is opened
-    if(!bOpen)
-    {
-      throw new JposException(JPOS_E_CLOSED, "Control not opened");
-    }
-
-    // Make sure service supports at least version 1.8.0
-    if(serviceVersion < deviceVersion18)
-    {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.8.0 compliant.");
-    }
-
-    // Perform the operation
-    try
-    {
-      service18.updateStatistics(statisticsBuffer);
+      service112.adjustItemCount(itemCount, slotNumber);
     }
     catch(JposException je)
     {
@@ -733,17 +482,110 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service112.compareFirmwareVersion(firmwareFileName, result);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void dispenseItem(int[] numItem, int slotNumber)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.compareFirmwareVersion(firmwareFileName, result);
+      service112.dispenseItem(numItem, slotNumber);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void resetStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.resetStatistics(statisticsBuffer);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readItemCount(int[] itemCount, int slotNumber)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.readItemCount(itemCount, slotNumber);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveStatistics(String[] statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Perform the operation
+    try
+    {
+      service112.retrieveStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -765,17 +607,35 @@ public class POSKeyboard
       throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
-    // Make sure service supports at least version 1.9.0
-    if(serviceVersion < deviceVersion19)
+    // Perform the operation
+    try
     {
-      throw new JposException(JPOS_E_NOSERVICE,
-                              "Device Service is not 1.9.0 compliant.");
+      service112.updateFirmware(firmwareFileName);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void updateStatistics(String statisticsBuffer)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
     }
 
     // Perform the operation
     try
     {
-      service19.updateFirmware(firmwareFileName);
+      service112.updateStatistics(statisticsBuffer);
     }
     catch(JposException je)
     {
@@ -796,7 +656,7 @@ public class POSKeyboard
   // Create an EventCallbacks interface implementation object for this Control
   protected EventCallbacks createEventCallbacks()
   {
-    return new POSKeyboardCallbacks();
+    return new ItemDispenserCallbacks();
   }
 
   // Store the reference to the Device Service
@@ -807,172 +667,22 @@ public class POSKeyboard
     if(service == null)
     {
 
-      service12 = null;
-      service13 = null;
-      service14 = null;
-      service15 = null;
-      service16 = null;
-      service17 = null;
-      service18 = null;
-      service19 = null;
-      service110 = null;
-      service111 = null;
       service112 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion12)
-      {
-        try
-        {
-          service12 = (POSKeyboardService12)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService12 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion13)
-      {
-        try
-        {
-          service13 = (POSKeyboardService13)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService13 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion14)
-      {
-        try
-        {
-          service14 = (POSKeyboardService14)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService14 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion15)
-      {
-        try
-        {
-          service15 = (POSKeyboardService15)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService15 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion16)
-      {
-        try
-        {
-          service16 = (POSKeyboardService16)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService16 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion17)
-      {
-        try
-        {
-          service17 = (POSKeyboardService17)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService17 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion18)
-      {
-        try
-        {
-          service18 = (POSKeyboardService18)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService18 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion19)
-      {
-        try
-        {
-          service19 = (POSKeyboardService19)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService19 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion110)
-      {
-        try
-        {
-          service110 = (POSKeyboardService110)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService110 interface",
-                                  e);
-        }
-      }
-
-      if(serviceVersion >= deviceVersion111)
-      {
-        try
-        {
-          service111 = (POSKeyboardService111)service;
-        }
-        catch(Exception e)
-        {
-          throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService111 interface",
-                                  e);
-        }
-      }
-
       if(serviceVersion >= deviceVersion112)
       {
         try
         {
-          service112 = (POSKeyboardService112)service;
+          service112 = (ItemDispenserService112)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement POSKeyboardService112 interface",
+                                  "Service does not fully implement ItemDispenserService112 interface",
                                   e);
         }
       }
@@ -984,22 +694,6 @@ public class POSKeyboard
   //--------------------------------------------------------------------------
   // Event Listener Methods
   //--------------------------------------------------------------------------
-
-  public void addDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.addElement(l);
-    }
-  }
-
-  public void removeDataListener(DataListener l)
-  {
-    synchronized(dataListeners)
-    {
-      dataListeners.removeElement(l);
-    }
-  }
 
   public void addDirectIOListener(DirectIOListener l)
   {
@@ -1014,22 +708,6 @@ public class POSKeyboard
     synchronized(directIOListeners)
     {
       directIOListeners.removeElement(l);
-    }
-  }
-
-  public void addErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.addElement(l);
-    }
-  }
-
-  public void removeErrorListener(ErrorListener l)
-  {
-    synchronized(errorListeners)
-    {
-      errorListeners.removeElement(l);
     }
   }
 
@@ -1054,29 +732,21 @@ public class POSKeyboard
   // EventCallbacks inner class
   //--------------------------------------------------------------------------
 
-  protected class POSKeyboardCallbacks
+  protected class ItemDispenserCallbacks
     implements EventCallbacks
   {
     public BaseControl getEventSource()
     {
-      return (BaseControl)POSKeyboard.this;
+      return (BaseControl)ItemDispenser.this;
     }
 
     public void fireDataEvent(DataEvent e)
     {
-      synchronized(POSKeyboard.this.dataListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < dataListeners.size(); x++)
-        {
-          ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
-        }
-      }
     }
 
     public void fireDirectIOEvent(DirectIOEvent e)
     {
-      synchronized(POSKeyboard.this.directIOListeners)
+      synchronized(ItemDispenser.this.directIOListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < directIOListeners.size(); x++)
@@ -1088,14 +758,6 @@ public class POSKeyboard
 
     public void fireErrorEvent(ErrorEvent e)
     {
-      synchronized(POSKeyboard.this.errorListeners)
-      {
-        // deliver the event to all registered listeners
-        for(int x = 0; x < errorListeners.size(); x++)
-        {
-          ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
-        }
-      }
     }
 
     public void fireOutputCompleteEvent(OutputCompleteEvent e)
@@ -1104,7 +766,7 @@ public class POSKeyboard
 
     public void fireStatusUpdateEvent(StatusUpdateEvent e)
     {
-      synchronized(POSKeyboard.this.statusUpdateListeners)
+      synchronized(ItemDispenser.this.statusUpdateListeners)
       {
         // deliver the event to all registered listeners
         for(int x = 0; x < statusUpdateListeners.size(); x++)
