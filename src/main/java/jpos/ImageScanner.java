@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ImageScanner.java - A JavaPOS 1.12.2 device control
+// ImageScanner.java - A JavaPOS 1.13.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,13 +30,13 @@ import jpos.loader.*;
 
 public class ImageScanner
   extends BaseJposControl
-  implements ImageScannerControl112, JposConst
+  implements ImageScannerControl113, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
   //--------------------------------------------------------------------------
 
-  protected ImageScannerService112 service112;
+  protected ImageScannerService113 service113;
 
 
   //--------------------------------------------------------------------------
@@ -47,11 +47,11 @@ public class ImageScanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ImageScanner Device Control";
-    deviceControlVersion = deviceVersion112;
+    deviceControlVersion = deviceVersion113;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
-    //service112 = null;
+    //service113 = null;
   }
 
 
@@ -73,22 +73,22 @@ public class ImageScanner
     if(service == null)
     {
 
-      service112 = null;
+      service113 = null;
     }
     else
     {
       // Make sure that the service actually conforms to the interfaces it
       // claims to.
-      if(serviceVersion >= deviceVersion112)
+      if(serviceVersion >= deviceVersion113)
       {
         try
         {
-          service112 = (ImageScannerService112)service;
+          service113 = (ImageScannerService113)service;
         }
         catch(Exception e)
         {
           throw new JposException(JPOS_E_NOSERVICE,
-                                  "Service does not fully implement ImageScannerService112 interface",
+                                  "Service does not fully implement ImageScannerService113 interface",
                                   e);
         }
       }

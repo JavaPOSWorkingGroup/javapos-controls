@@ -53,6 +53,7 @@ public class ToneIndicatorBeanInfo
         makeProperty("CapUpdateStatistics"),
         makeProperty("CapCompareFirmwareVersion"),
         makeProperty("CapUpdateFirmware"),
+        makeProperty("CapMelody"),
 
         // Properties
         makeProperty("AsyncMode"),
@@ -65,7 +66,10 @@ public class ToneIndicatorBeanInfo
         makeProperty("Tone2Pitch"),
         makeProperty("Tone2Volume"),
         makeProperty("PowerNotify"),
-        makeProperty("PowerState")
+        makeProperty("PowerState"),
+        makeProperty("MelodyType"),
+        makeProperty("MelodyVolume"),
+
       };
 
       return properties;

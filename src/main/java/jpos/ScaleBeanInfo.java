@@ -73,6 +73,7 @@ public class ScaleBeanInfo
         makeProperty("PowerState"),
         makeProperty("ScaleLiveWeight"),
         makeProperty("StatusNotify"),
+        makeProperty("ZeroValid"),
 
       };
 
