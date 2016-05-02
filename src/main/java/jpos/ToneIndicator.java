@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ToneIndicator.java - A JavaPOS 1.13.4 device control
+// ToneIndicator.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ToneIndicator
   extends BaseJposControl
-  implements ToneIndicatorControl113, JposConst
+  implements ToneIndicatorControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class ToneIndicator
   protected ToneIndicatorService111 service111;
   protected ToneIndicatorService112 service112;
   protected ToneIndicatorService113 service113;
+  protected ToneIndicatorService114 service114;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -62,7 +63,7 @@ public class ToneIndicator
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ToneIndicator Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class ToneIndicator
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -1256,6 +1258,7 @@ public class ToneIndicator
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1425,6 +1428,20 @@ public class ToneIndicator
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ToneIndicatorService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (ToneIndicatorService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ToneIndicatorService114 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// RFIDScanner.java - A JavaPOS 1.13.4 device control
+// RFIDScanner.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class RFIDScanner
   extends BaseJposControl
-  implements RFIDScannerControl113, JposConst
+  implements RFIDScannerControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,7 @@ public class RFIDScanner
 
   protected RFIDScannerService112 service112;
   protected RFIDScannerService113 service113;
+  protected RFIDScannerService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -53,12 +54,13 @@ public class RFIDScanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS RFIDScanner Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1302,6 +1304,7 @@ public class RFIDScanner
 
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1331,6 +1334,20 @@ public class RFIDScanner
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement RFIDScannerService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (RFIDScannerService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement RFIDScannerService114 interface",
                                   e);
         }
       }

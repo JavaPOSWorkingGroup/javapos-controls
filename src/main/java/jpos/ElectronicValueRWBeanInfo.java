@@ -71,6 +71,8 @@ public class ElectronicValueRWBeanInfo
         makeProperty("CapUpdateStatistics"),
         makeProperty("CapVoucher"),
         makeProperty("CapWriteValue"),
+        makeProperty("CapPINDevice"),
+        makeProperty("TrainingMode"),
 
         // Properties
         makeProperty("AccountNumber"),
@@ -102,6 +104,8 @@ public class ElectronicValueRWBeanInfo
         makeProperty("TransactionLog"),
         makeProperty("VoucherID"),
         makeProperty("VoucherIDList"),
+        makeProperty("PINEntry"),
+        makeProperty("TrainingModeState"),
 
       };
 

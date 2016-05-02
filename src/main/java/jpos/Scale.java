@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.13.4 device control
+// Scale.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Scale
   extends BaseJposControl
-  implements ScaleControl113, JposConst
+  implements ScaleControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class Scale
   protected ScaleService111 service111;
   protected ScaleService112 service112;
   protected ScaleService113 service113;
+  protected ScaleService114 service114;
   protected Vector directIOListeners;
   protected Vector dataListeners;
   protected Vector errorListeners;
@@ -62,7 +63,7 @@ public class Scale
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scale Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class Scale
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     dataListeners = new Vector();
     errorListeners = new Vector();
@@ -422,6 +424,198 @@ public class Scale
     try
     {
       return service19.getCapUpdateFirmware();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapFreezeValue()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapFreezeValue();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapReadLiveWeightWithTare()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapReadLiveWeightWithTare();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSetPriceCalculationMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapSetPriceCalculationMode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSetUnitPriceWithWeightUnit()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapSetUnitPriceWithWeightUnit();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapSpecialTare()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapSpecialTare();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapTarePriority()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapTarePriority();
     }
     catch(JposException je)
     {
@@ -1161,6 +1355,38 @@ public class Scale
     }
   }
 
+  public int getMinimumWeight()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getMinimumWeight();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -1447,6 +1673,230 @@ public class Scale
     }
   }
 
+  public void doPriceCalculating(int[] weightValue, int[] tare, long[] unitPrice, long[] unitPriceX, int[] weightUnitX, int[] weightNumeratorX, int[] weightDenominatorX, long[] price, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.doPriceCalculating(weightValue, tare, unitPrice, unitPriceX, weightUnitX, weightNumeratorX, weightDenominatorX, price, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void freezeValue(int item, boolean freeze)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.freezeValue(item, freeze);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void readLiveWeightWithTare(int[] weightData, int[] tare, int timeout)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.readLiveWeightWithTare(weightData, tare, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPriceCalculationMode(int mode)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setPriceCalculationMode(mode);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setSpecialTare(int mode, int data)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setSpecialTare(mode, data);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTarePrioity(int priority)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setTarePrioity(priority);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setUnitPriceWithWeightUnit(long unitPrice, int weightUnit, int weightNumerator, int weightDenominator)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setUnitPriceWithWeightUnit(unitPrice, weightUnit, weightNumerator, weightDenominator);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -1478,6 +1928,7 @@ public class Scale
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1647,6 +2098,20 @@ public class Scale
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScaleService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (ScaleService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScaleService114 interface",
                                   e);
         }
       }

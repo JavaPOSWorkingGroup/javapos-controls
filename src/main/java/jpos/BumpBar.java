@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// BumpBar.java - A JavaPOS 1.13.4 device control
+// BumpBar.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class BumpBar
   extends BaseJposControl
-  implements BumpBarControl113, JposConst
+  implements BumpBarControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -47,6 +47,7 @@ public class BumpBar
   protected BumpBarService111 service111;
   protected BumpBarService112 service112;
   protected BumpBarService113 service113;
+  protected BumpBarService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -62,7 +63,7 @@ public class BumpBar
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS BumpBar Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -77,6 +78,7 @@ public class BumpBar
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1192,6 +1194,7 @@ public class BumpBar
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1347,6 +1350,20 @@ public class BumpBar
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement BumpBarService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (BumpBarService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement BumpBarService114 interface",
                                   e);
         }
       }

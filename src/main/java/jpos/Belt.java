@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Belt.java - A JavaPOS 1.13.4 device control
+// Belt.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Belt
   extends BaseJposControl
-  implements BeltControl113, JposConst
+  implements BeltControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,7 @@ public class Belt
 
   protected BeltService112 service112;
   protected BeltService113 service113;
+  protected BeltService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -50,12 +51,13 @@ public class Belt
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Belt Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -1246,6 +1248,7 @@ public class Belt
 
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1275,6 +1278,20 @@ public class Belt
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement BeltService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (BeltService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement BeltService114 interface",
                                   e);
         }
       }

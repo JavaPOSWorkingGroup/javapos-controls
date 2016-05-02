@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicValueRW.java - A JavaPOS 1.13.4 device control
+// ElectronicValueRW.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ElectronicValueRW
   extends BaseJposControl
-  implements ElectronicValueRWControl113, JposConst
+  implements ElectronicValueRWControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,11 +38,13 @@ public class ElectronicValueRW
 
   protected ElectronicValueRWService112 service112;
   protected ElectronicValueRWService113 service113;
+  protected ElectronicValueRWService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
   protected Vector statusUpdateListeners;
+  protected Vector transitionListeners;
 
 
   //--------------------------------------------------------------------------
@@ -53,17 +55,19 @@ public class ElectronicValueRW
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ElectronicValueRW Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
     statusUpdateListeners = new Vector();
+    transitionListeners = new Vector();
   }
 
 
@@ -684,6 +688,70 @@ public class ElectronicValueRW
     try
     {
       return service112.getCapWriteValue();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean getCapPINDevice()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getCapPINDevice();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public boolean CapTrainingMode()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.CapTrainingMode();
     }
     catch(JposException je)
     {
@@ -1751,6 +1819,134 @@ public class ElectronicValueRW
     }
   }
 
+  public int getPINEntry()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getPINEntry();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setPINEntry(int pinEntry)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setPINEntry(pinEntry);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public int getTrainingModeState()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service114.getTrainingModeState();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setTrainingModeState(int trainingModeState)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setTrainingModeState(trainingModeState);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Methods
@@ -2381,6 +2577,134 @@ public class ElectronicValueRW
     }
   }
 
+  public void clearParameterInformation()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.clearParameterInformation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void queryLastSuccessfulTransactionResult()
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.queryLastSuccessfulTransactionResult();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void retrieveResultInformation(String name, String[] value)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.retrieveResultInformation(name, value);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  public void setParameterInformation(String name, String value)
+    throws JposException
+  {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.14.0
+    if(serviceVersion < deviceVersion114)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+                              "Device Service is not 1.14.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service114.setParameterInformation(name, value);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+                              "Unhandled exception from Device Service", e);
+    }
+  }
+
 
   //--------------------------------------------------------------------------
   // Framework Methods
@@ -2402,6 +2726,7 @@ public class ElectronicValueRW
 
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -2431,6 +2756,20 @@ public class ElectronicValueRW
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ElectronicValueRWService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (ElectronicValueRWService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ElectronicValueRWService114 interface",
                                   e);
         }
       }
@@ -2520,6 +2859,22 @@ public class ElectronicValueRW
     synchronized(statusUpdateListeners)
     {
       statusUpdateListeners.removeElement(l);
+    }
+  }
+
+  public void addTransitionListener(TransitionListener l)
+  {
+    synchronized(transitionListeners)
+    {
+      transitionListeners.addElement(l);
+    }
+  }
+
+  public void removeTransitionListener(TransitionListener l)
+  {
+    synchronized(transitionListeners)
+    {
+      transitionListeners.removeElement(l);
     }
   }
 

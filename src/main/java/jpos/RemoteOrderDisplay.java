@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// RemoteOrderDisplay.java - A JavaPOS 1.13.4 device control
+// RemoteOrderDisplay.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class RemoteOrderDisplay
   extends BaseJposControl
-  implements RemoteOrderDisplayControl113, JposConst
+  implements RemoteOrderDisplayControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -47,6 +47,7 @@ public class RemoteOrderDisplay
   protected RemoteOrderDisplayService111 service111;
   protected RemoteOrderDisplayService112 service112;
   protected RemoteOrderDisplayService113 service113;
+  protected RemoteOrderDisplayService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -62,7 +63,7 @@ public class RemoteOrderDisplay
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS RemoteOrderDisplay Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -77,6 +78,7 @@ public class RemoteOrderDisplay
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1963,6 +1965,7 @@ public class RemoteOrderDisplay
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -2118,6 +2121,20 @@ public class RemoteOrderDisplay
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement RemoteOrderDisplayService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (RemoteOrderDisplayService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement RemoteOrderDisplayService114 interface",
                                   e);
         }
       }

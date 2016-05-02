@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scanner.java - A JavaPOS 1.13.4 device control
+// Scanner.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Scanner
   extends BaseJposControl
-  implements ScannerControl113, JposConst
+  implements ScannerControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class Scanner
   protected ScannerService111 service111;
   protected ScannerService112 service112;
   protected ScannerService113 service113;
+  protected ScannerService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -62,7 +63,7 @@ public class Scanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scanner Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class Scanner
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -853,6 +855,7 @@ public class Scanner
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1022,6 +1025,20 @@ public class Scanner
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScannerService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (ScannerService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ScannerService114 interface",
                                   e);
         }
       }

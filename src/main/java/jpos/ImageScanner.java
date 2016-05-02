@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ImageScanner.java - A JavaPOS 1.13.4 device control
+// ImageScanner.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ImageScanner
   extends BaseJposControl
-  implements ImageScannerControl113, JposConst
+  implements ImageScannerControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -39,6 +39,7 @@ public class ImageScanner
   protected ImageScannerService111 service111;
   protected ImageScannerService112 service112;
   protected ImageScannerService113 service113;
+  protected ImageScannerService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -53,13 +54,14 @@ public class ImageScanner
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ImageScanner Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1303,6 +1305,7 @@ public class ImageScanner
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1346,6 +1349,20 @@ public class ImageScanner
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ImageScannerService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (ImageScannerService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement ImageScannerService114 interface",
                                   e);
         }
       }

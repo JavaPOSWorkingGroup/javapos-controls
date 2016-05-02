@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSPower.java - A JavaPOS 1.13.4 device control
+// POSPower.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class POSPower
   extends BaseJposControl
-  implements POSPowerControl113, JposConst
+  implements POSPowerControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -45,6 +45,7 @@ public class POSPower
   protected POSPowerService111 service111;
   protected POSPowerService112 service112;
   protected POSPowerService113 service113;
+  protected POSPowerService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -57,7 +58,7 @@ public class POSPower
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS POSPower Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -70,6 +71,7 @@ public class POSPower
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -1285,6 +1287,7 @@ public class POSPower
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1412,6 +1415,20 @@ public class POSPower
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement POSPowerService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (POSPowerService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement POSPowerService114 interface",
                                   e);
         }
       }

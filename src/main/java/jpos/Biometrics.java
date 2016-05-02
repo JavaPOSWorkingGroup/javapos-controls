@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Biometrics.java - A JavaPOS 1.13.4 device control
+// Biometrics.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Biometrics
   extends BaseJposControl
-  implements BiometricsControl113, JposConst
+  implements BiometricsControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -40,6 +40,7 @@ public class Biometrics
   protected BiometricsService111 service111;
   protected BiometricsService112 service112;
   protected BiometricsService113 service113;
+  protected BiometricsService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -54,7 +55,7 @@ public class Biometrics
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Biometrics Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -62,6 +63,7 @@ public class Biometrics
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1381,6 +1383,7 @@ public class Biometrics
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -1438,6 +1441,20 @@ public class Biometrics
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement BiometricsService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (BiometricsService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement BiometricsService114 interface",
                                   e);
         }
       }

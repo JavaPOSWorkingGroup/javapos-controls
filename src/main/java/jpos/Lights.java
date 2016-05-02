@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Lights.java - A JavaPOS 1.13.4 device control
+// Lights.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Lights
   extends BaseJposControl
-  implements LightsControl113, JposConst
+  implements LightsControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -38,6 +38,7 @@ public class Lights
 
   protected LightsService112 service112;
   protected LightsService113 service113;
+  protected LightsService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -50,12 +51,13 @@ public class Lights
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Lights Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -571,6 +573,7 @@ public class Lights
 
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -600,6 +603,20 @@ public class Lights
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement LightsService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (LightsService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement LightsService114 interface",
                                   e);
         }
       }

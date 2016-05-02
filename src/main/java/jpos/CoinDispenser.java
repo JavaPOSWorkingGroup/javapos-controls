@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CoinDispenser.java - A JavaPOS 1.13.4 device control
+// CoinDispenser.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class CoinDispenser
   extends BaseJposControl
-  implements CoinDispenserControl113, JposConst
+  implements CoinDispenserControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class CoinDispenser
   protected CoinDispenserService111 service111;
   protected CoinDispenserService112 service112;
   protected CoinDispenserService113 service113;
+  protected CoinDispenserService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -60,7 +61,7 @@ public class CoinDispenser
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS CoinDispenser Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -76,6 +77,7 @@ public class CoinDispenser
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -731,6 +733,7 @@ public class CoinDispenser
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -900,6 +903,20 @@ public class CoinDispenser
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement CoinDispenserService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (CoinDispenserService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement CoinDispenserService114 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MotionSensor.java - A JavaPOS 1.13.4 device control
+// MotionSensor.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class MotionSensor
   extends BaseJposControl
-  implements MotionSensorControl113, JposConst
+  implements MotionSensorControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -43,6 +43,7 @@ public class MotionSensor
   protected MotionSensorService111 service111;
   protected MotionSensorService112 service112;
   protected MotionSensorService113 service113;
+  protected MotionSensorService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -55,7 +56,7 @@ public class MotionSensor
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS MotionSensor Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -66,6 +67,7 @@ public class MotionSensor
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -599,6 +601,7 @@ public class MotionSensor
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -698,6 +701,20 @@ public class MotionSensor
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement MotionSensorService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (MotionSensorService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement MotionSensorService114 interface",
                                   e);
         }
       }

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Keylock.java - A JavaPOS 1.13.4 device control
+// Keylock.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Keylock
   extends BaseJposControl
-  implements KeylockControl113, JposConst
+  implements KeylockControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class Keylock
   protected KeylockService111 service111;
   protected KeylockService112 service112;
   protected KeylockService113 service113;
+  protected KeylockService114 service114;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -60,7 +61,7 @@ public class Keylock
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Keylock Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -76,6 +77,7 @@ public class Keylock
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -681,6 +683,7 @@ public class Keylock
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -850,6 +853,20 @@ public class Keylock
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement KeylockService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (KeylockService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement KeylockService114 interface",
                                   e);
         }
       }

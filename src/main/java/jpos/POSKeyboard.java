@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSKeyboard.java - A JavaPOS 1.13.4 device control
+// POSKeyboard.java - A JavaPOS 1.14.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class POSKeyboard
   extends BaseJposControl
-  implements POSKeyboardControl113, JposConst
+  implements POSKeyboardControl114, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class POSKeyboard
   protected POSKeyboardService111 service111;
   protected POSKeyboardService112 service112;
   protected POSKeyboardService113 service113;
+  protected POSKeyboardService114 service114;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -62,7 +63,7 @@ public class POSKeyboard
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS POSKeyboard Device Control";
-    deviceControlVersion = deviceVersion113;
+    deviceControlVersion = deviceVersion114;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class POSKeyboard
     //service111 = null;
     //service112 = null;
     //service113 = null;
+    //service114 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -821,6 +823,7 @@ public class POSKeyboard
       service111 = null;
       service112 = null;
       service113 = null;
+      service114 = null;
     }
     else
     {
@@ -990,6 +993,20 @@ public class POSKeyboard
         {
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement POSKeyboardService113 interface",
+                                  e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion114)
+      {
+        try
+        {
+          service114 = (POSKeyboardService114)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                                  "Service does not fully implement POSKeyboardService114 interface",
                                   e);
         }
       }
