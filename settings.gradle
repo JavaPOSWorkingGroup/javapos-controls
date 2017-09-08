@@ -1,0 +1,10 @@
+rootProject.name = 'javapos-controls'
+
+def boolean isDevHost = !System.getenv('TRAVIS') && !hasProperty('disableIDEDependencySubstitution')
+
+if (startParameter.searchUpwards && isDevHost)
+{
+// comment this out if you want to use binary dependencies
+	if (file('../javapos-contracts').exists()) 		includeBuild '../javapos-contracts'
+	if (file('../javapos-config-loader').exists()) 	includeBuild '../javapos-config-loader'
+}
