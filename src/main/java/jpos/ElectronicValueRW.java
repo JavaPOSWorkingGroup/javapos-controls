@@ -2884,7 +2884,7 @@ public class ElectronicValueRW
   //--------------------------------------------------------------------------
 
   protected class ElectronicValueRWCallbacks
-    implements EventCallbacks
+    implements EventCallbacks2
   {
     public BaseControl getEventSource()
     {
@@ -2950,5 +2950,16 @@ public class ElectronicValueRW
         }
       }
     }
+
+	public void fireTransitionEvent(TransitionEvent e) {
+	  synchronized(ElectronicValueRW.this.transitionListeners)
+	  {
+	    // deliver the event to all registered listeners
+	    for(int x = 0; x < transitionListeners.size(); x++)
+	    {
+          ((TransitionListener)transitionListeners.elementAt(x)).transitionOccurred(e);
+	    }
+	  }
+	}
   }
 }
