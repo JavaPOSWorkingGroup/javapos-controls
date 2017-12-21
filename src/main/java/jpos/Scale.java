@@ -1834,7 +1834,13 @@ public class Scale
   }
 
   public void setTarePrioity(int priority)
-    throws JposException
+		  throws JposException
+  {
+    setTarePriority(priority);
+  }
+  
+  public void setTarePriority(int priority)
+		  throws JposException
   {
     // Make sure control is opened
     if(!bOpen)
