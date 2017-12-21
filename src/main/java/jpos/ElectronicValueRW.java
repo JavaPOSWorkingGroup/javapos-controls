@@ -732,7 +732,13 @@ public class ElectronicValueRW
     }
   }
 
-  public boolean CapTrainingMode()
+  public boolean CapTrainingMode() 
+		  throws JposException 
+  {
+  	return getCapTrainingMode();
+  }
+  
+  public boolean getCapTrainingMode()
     throws JposException
   {
     // Make sure control is opened
