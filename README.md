@@ -8,4 +8,4 @@ Use this library if your are implementing an JavaPOS application to compile agai
 This library may also be used by JavaPOS device service implementors for testing purposes.
 
 *Note*: This project may be edited directly in the browser using the gitpod application which is provides a full blown IDE.
-Just try the following URL: [https://gitpod.io#https://github.com/JavaPOSWorkingGroup/javapos-controls](https://gitpod.io#https://github.com/JavaPOSWorkingGroup/javapos-controls)    
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/JavaPOSWorkingGroup/javapos-controls)    
