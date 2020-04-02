@@ -59,6 +59,9 @@ repositories {
 dependencies {
 	compile "org.javapos:javapos-contracts:$javaposContractsVersion"
 	compile "org.javapos:javapos-config-loader:2.2.0"
+	
+	testCompile "junit:junit:4.+"
+    testCompile "org.hamcrest:hamcrest-library:1.3"
 }
 
 
