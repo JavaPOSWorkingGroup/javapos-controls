@@ -437,9 +437,9 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testGetCapTrainingModeFailsWithClosedExceptionBeforeOpen() {
+    public final void testCapTrainingModeFailsWithClosedExceptionBeforeOpen() {
         try {
-            this.control.getCapTrainingMode();
+            this.control.CapTrainingMode();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -448,9 +448,9 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testCapTrainingModeFailsWithClosedExceptionBeforeOpen() {
+    public final void testGetCapTrainingModeFailsWithClosedExceptionBeforeOpen() {
         try {
-            this.control.CapTrainingMode();
+            this.control.getCapTrainingMode();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1817,10 +1817,10 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testGetCapTrainingModeFailsWithFailureExceptionOnNPE() {
+    public final void testCapTrainingModeFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
-            this.control.getCapTrainingMode();
+            this.control.CapTrainingMode();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1831,10 +1831,10 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testCapTrainingModeFailsWithFailureExceptionOnNPE() {
+    public final void testGetCapTrainingModeFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
-            this.control.CapTrainingMode();
+            this.control.getCapTrainingMode();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3486,10 +3486,10 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testGetCapTrainingModeRethrowsJposException() {
+    public final void testCapTrainingModeRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
-            this.control.getCapTrainingMode();
+            this.control.CapTrainingMode();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3501,10 +3501,10 @@ public class ElectronicValueRWTest {
     }
     
     @Test
-    public final void testCapTrainingModeRethrowsJposException() {
+    public final void testGetCapTrainingModeRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
-            this.control.CapTrainingMode();
+            this.control.getCapTrainingMode();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -5876,33 +5876,6 @@ public class ElectronicValueRWTest {
     
     
     @Test
-    public void testGetCapTrainingModeFailsOnServiceVersionBeforeAdded() {
-        try {
-            this.control.open(OPENNAME_SERVICE_113);
-            this.control.getCapTrainingMode();
-            fail("NOSERVICE JposException expected but not thrown");
-        }
-        catch (JposException e) {
-            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
-                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
-        }
-    }
-    
-    
-    @Test
-    public void testGetCapTrainingModeCalledOnServiceVersionWhenAdded() throws Exception {
-        try {
-            this.control.open(OPENNAME_SERVICE_114);
-            this.control.getCapTrainingMode();
-        }
-        catch (JposException e) {
-            fail(e.getMessage());
-        }
-    }
-    
-    
-    
-    @Test
     public void testCapTrainingModeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -5921,6 +5894,33 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_SERVICE_114);
             this.control.CapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapTrainingModeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.getCapTrainingMode();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapTrainingModeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTrainingMode();
         }
         catch (JposException e) {
             fail(e.getMessage());
