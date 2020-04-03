@@ -12,6 +12,7 @@ plugins {
 	id 'eclipse'
 //  id 'maven' // comment this in and the next line out for populating to a local Maven repository for testing purposes
     id 'com.github.oehme.sobula.bintray-release' version '0.6.7'
+    id 'jacoco'
 }
 
 ext.githubProjectUrl = 'https://github.com/JavaPOSWorkingGroup/javapos-controls'
