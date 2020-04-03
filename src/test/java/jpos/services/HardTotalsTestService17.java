@@ -38,13 +38,15 @@ public final class HardTotalsTestService17 implements jpos.services.HardTotalsSe
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
             return 1008000;
+        else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
+            throw new NullPointerException();
         else
             return 1007000;
     }
     
     @Override
     public int getState() throws JposException {
-        return JposConst.JPOS_S_CLOSED;
+        return JposConst.JPOS_S_IDLE;
     }
 
     @Override

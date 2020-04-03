@@ -38,13 +38,15 @@ public final class CATTestService14 implements jpos.services.CATService14, JposS
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
             return 1005000;
+        else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
+            throw new NullPointerException();
         else
             return 1004000;
     }
     
     @Override
     public int getState() throws JposException {
-        return JposConst.JPOS_S_CLOSED;
+        return JposConst.JPOS_S_IDLE;
     }
 
     @Override

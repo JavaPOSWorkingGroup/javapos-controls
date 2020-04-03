@@ -38,13 +38,15 @@ public final class CoinDispenserTestService18 implements jpos.services.CoinDispe
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
             return 1009000;
+        else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
+            throw new NullPointerException();
         else
             return 1008000;
     }
     
     @Override
     public int getState() throws JposException {
-        return JposConst.JPOS_S_CLOSED;
+        return JposConst.JPOS_S_IDLE;
     }
 
     @Override

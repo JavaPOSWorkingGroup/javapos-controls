@@ -61,8 +61,11 @@ public class PointCardRWTest {
     private static final String SERVICE_113 = "PointCardRWTestService113";
     private static final String SERVICE_114 = "PointCardRWTestService114";
     
+    private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
     private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION;
+    private static final String OPENNAME_THROWING_NPE_ON_GETDSVERSION = "CashDrawerTestServiceThrowingNPEOnGetDSVersion";
+    
     private static final String OPENNAME_SERVICE_10 = SERVICE_15;
     private static final String OPENNAME_SERVICE_15 = SERVICE_15;
     private static final String OPENNAME_SERVICE_16 = SERVICE_16;
@@ -92,8 +95,10 @@ public class PointCardRWTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_15, "1.5", SERVICE_15));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_16, "1.6", SERVICE_16));
@@ -115,8 +120,9 @@ public class PointCardRWTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        
     }
-
+    
     /**
      * @throws java.lang.Exception
      */
@@ -126,6 +132,7 @@ public class PointCardRWTest {
         
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
         registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+        registry.removeJposEntry(OPENNAME_THROWING_NPE_ON_GETDSVERSION);
         
         registry.removeJposEntry(OPENNAME_SERVICE_15);
         registry.removeJposEntry(OPENNAME_SERVICE_16);
@@ -147,7 +154,7 @@ public class PointCardRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
-        
+
     }
 
     private PointCardRW control;
@@ -169,6 +176,96 @@ public class PointCardRWTest {
     public final void testCreateEventCallbacks() {
         EventCallbacks callbacks = this.control.createEventCallbacks();
         assertThat(callbacks, is(notNullValue()));
+    }
+    
+    @Test
+    public void testOpenTwice() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            try {
+                this.control.open(OPENNAME_SERVICE_114);
+                fail("ILLEGAL exception expected but not thrown");
+            }
+            catch (JposException e) {
+                assertThat(e.getErrorCode(), is(JposConst.JPOS_E_ILLEGAL));
+            }
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testOpenNotExistingDevice() throws Exception {
+        try {
+            this.control.open("NOT_EXISTING_OPENNAME");
+            fail("ILLEGAL exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOEXIST));
+        }
+    }
+    
+    @Test
+    public void testOpenNotExistingServiceClass() throws Exception {
+        try {
+            this.control.open(OPENNAME_WITH_NOT_EXISTING_SERVICECLASS);
+            fail("ILLEGAL exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testGetStateBeforeOpen() throws Exception {
+        assertThat(this.control.getState(), is(JposConst.JPOS_S_CLOSED));
+    }
+    
+    @Test
+    public void testGetStateAfterOpen() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceBeforeOpen() throws Exception {
+        try {
+            this.control.getDeviceServiceVersion();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public void testGetDeviceControlDescription() throws Exception {
+        assertThat(this.control.getDeviceControlDescription(), is("JavaPOS PointCardRW Device Control"));
+    }
+    
+    @Test
+    public void testDeviceControlVersion() throws Exception {
+        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+    }
+    
+    @Test
+    public final void testOpenFailsOnGetDeviceVersionWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_THROWING_NPE_ON_GETDSVERSION);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
     }
     
     @Test

@@ -38,13 +38,15 @@ public final class MSRTestService13 implements jpos.services.MSRService13, JposS
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
             return 1004000;
+        else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
+            throw new NullPointerException();
         else
             return 1003000;
     }
     
     @Override
     public int getState() throws JposException {
-        return JposConst.JPOS_S_CLOSED;
+        return JposConst.JPOS_S_IDLE;
     }
 
     @Override
