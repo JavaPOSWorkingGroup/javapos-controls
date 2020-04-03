@@ -4737,4 +4737,3316 @@ public class HardTotalsTest {
         }
     }
     
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_10);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_10);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimFileCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testCloseCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_10);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCommitTransCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.compareFirmwareVersion("",new int[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testCreateCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCreateCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testDeleteCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_10);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testFindCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindByIndexCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testReadCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testReleaseCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_10);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testRenameCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRenameCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.resetStatistics("");
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.retrieveStatistics(new String[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testRollbackCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testSetAllCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAllCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.updateFirmware("");
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.updateStatistics("");
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testWriteCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_12);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion13() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion14() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion15() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion16() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion17() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion18() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion19() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion110() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion111() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion112() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion113() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteCalledOnServiceVersion114() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
 }
