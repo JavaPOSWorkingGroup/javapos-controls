@@ -2684,7 +2684,10 @@ public class GateTest {
                 this.control.removeDirectIOListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -2718,7 +2721,10 @@ public class GateTest {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }

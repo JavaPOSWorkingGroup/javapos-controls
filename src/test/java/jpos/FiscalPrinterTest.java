@@ -34914,7 +34914,10 @@ public class FiscalPrinterTest {
                 this.control.removeDirectIOListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -34948,7 +34951,10 @@ public class FiscalPrinterTest {
                 this.control.removeErrorListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -34982,7 +34988,10 @@ public class FiscalPrinterTest {
                 this.control.removeOutputCompleteListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -35016,7 +35025,10 @@ public class FiscalPrinterTest {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }

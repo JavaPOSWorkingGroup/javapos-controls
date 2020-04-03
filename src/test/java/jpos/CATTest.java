@@ -12713,7 +12713,10 @@ public class CATTest {
                 this.control.removeDirectIOListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -12747,7 +12750,10 @@ public class CATTest {
                 this.control.removeErrorListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -12781,7 +12787,10 @@ public class CATTest {
                 this.control.removeOutputCompleteListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -12815,7 +12824,10 @@ public class CATTest {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }

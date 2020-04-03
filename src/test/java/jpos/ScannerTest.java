@@ -7195,7 +7195,10 @@ public class ScannerTest {
                 this.control.removeDataListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -7229,7 +7232,10 @@ public class ScannerTest {
                 this.control.removeDirectIOListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -7263,7 +7269,10 @@ public class ScannerTest {
                 this.control.removeErrorListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -7297,7 +7306,10 @@ public class ScannerTest {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }

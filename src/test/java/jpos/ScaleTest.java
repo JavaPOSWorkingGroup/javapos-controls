@@ -11155,7 +11155,10 @@ public class ScaleTest {
                 this.control.removeDataListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -11189,7 +11192,10 @@ public class ScaleTest {
                 this.control.removeDirectIOListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -11223,7 +11229,10 @@ public class ScaleTest {
                 this.control.removeErrorListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
@@ -11257,7 +11266,10 @@ public class ScaleTest {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
-        catch (JposException | InterruptedException e) {
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
