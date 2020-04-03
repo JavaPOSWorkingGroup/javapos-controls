@@ -42,6 +42,7 @@ import jpos.services.EventCallbacks;
 public class CoinDispenserTest {
 
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = "CoinDispenserTestServiceAlwaysThrowingNPE";
+    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "CoinDispenserTestServiceRethrowingJposException";
     private static final String OPENNAME_SERVICE_10 = "CoinDispenserTestService12";
     private static final String OPENNAME_SERVICE_12 = "CoinDispenserTestService12";
     private static final String OPENNAME_SERVICE_13 = "CoinDispenserTestService13";
@@ -64,6 +65,7 @@ public class CoinDispenserTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CoinDispenser", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CoinDispenser", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14"));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CoinDispenser", OPENNAME_SERVICE_12, "1.2"));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CoinDispenser", OPENNAME_SERVICE_13, "1.3"));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CoinDispenser", OPENNAME_SERVICE_14, "1.4"));
@@ -86,6 +88,7 @@ public class CoinDispenserTest {
     public static void tearDownAfterClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
+        registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
         registry.removeJposEntry(OPENNAME_SERVICE_12);
         registry.removeJposEntry(OPENNAME_SERVICE_13);
         registry.removeJposEntry(OPENNAME_SERVICE_14);
@@ -969,6 +972,516 @@ public class CoinDispenserTest {
             assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
                     e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
             assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCompareFirmwareVersionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapCompareFirmwareVersion();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapEmptySensorRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapEmptySensor();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapJamSensorRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapJamSensor();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapNearEmptySensorRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapNearEmptySensor();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapPowerReportingRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapPowerReporting();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapStatisticsReportingRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapStatisticsReporting();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapUpdateFirmwareRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapUpdateFirmware();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapUpdateStatisticsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapUpdateStatistics();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCheckHealthTextRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCheckHealthText();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetClaimedRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getClaimed();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetDeviceEnabledRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getDeviceEnabled();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetDeviceEnabledRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setDeviceEnabled(true);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetDeviceServiceDescriptionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getDeviceServiceDescription();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetDispenserStatusRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getDispenserStatus();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetFreezeEventsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getFreezeEvents();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetFreezeEventsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setFreezeEvents(true);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPhysicalDeviceDescriptionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPhysicalDeviceDescription();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPhysicalDeviceNameRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPhysicalDeviceName();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPowerNotifyRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPowerNotify();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetPowerNotifyRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setPowerNotify(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPowerStateRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPowerState();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAdjustCashCountsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.adjustCashCounts("");
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testCheckHealthRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.checkHealth(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testClaimRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.claim(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testCloseRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.close();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testCompareFirmwareVersionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.compareFirmwareVersion("",new int[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testDirectIORethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.directIO(0,new int[0],new Object());
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testDispenseChangeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.dispenseChange(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testReadCashCountsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.readCashCounts(new String[0],new boolean[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testReleaseRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.release();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testResetStatisticsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.resetStatistics("");
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testRetrieveStatisticsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.retrieveStatistics(new String[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testUpdateFirmwareRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.updateFirmware("");
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testUpdateStatisticsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.updateStatistics("");
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
         }
     }
     
@@ -3926,6 +4439,7 @@ public class CoinDispenserTest {
             fail(e.getMessage());
         }
     }
+    
     
     @Test
     public void testAdjustCashCountsFailsOnServiceVersionBeforeAdded() {
