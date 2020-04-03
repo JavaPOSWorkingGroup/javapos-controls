@@ -4748,7 +4748,7 @@ public class BeltTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<DirectIOListener> listeners = new ArrayList<>();
+        List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -4785,7 +4785,7 @@ public class BeltTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<StatusUpdateListener> listeners = new ArrayList<>();
+        List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);

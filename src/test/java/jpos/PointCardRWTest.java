@@ -16698,7 +16698,7 @@ public class PointCardRWTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<DataListener> listeners = new ArrayList<>();
+        List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -16735,7 +16735,7 @@ public class PointCardRWTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<DirectIOListener> listeners = new ArrayList<>();
+        List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -16772,7 +16772,7 @@ public class PointCardRWTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<ErrorListener> listeners = new ArrayList<>();
+        List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -16809,7 +16809,7 @@ public class PointCardRWTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<OutputCompleteListener> listeners = new ArrayList<>();
+        List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -16846,7 +16846,7 @@ public class PointCardRWTest {
         final int numberOfListeners = 5;
         final int waitingTimeInMs = 100;
         final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
-        List<StatusUpdateListener> listeners = new ArrayList<>();
+        List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
             this.control.open(OPENNAME_SERVICE_114);
