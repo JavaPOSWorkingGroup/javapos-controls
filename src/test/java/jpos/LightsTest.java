@@ -31,6 +31,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import jpos.config.JposEntryRegistry;
+import jpos.config.simple.SimpleEntry;
 import jpos.loader.JposServiceLoader;
 import jpos.services.EventCallbacks;
 
@@ -41,24 +42,38 @@ import jpos.services.EventCallbacks;
  */
 public class LightsTest {
 
-    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = "LightsTestServiceAlwaysThrowingNPE";
-    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "LightsTestServiceRethrowingJposException";
-    private static final String OPENNAME_SERVICE_10 = "LightsTestService112";
-    private static final String OPENNAME_SERVICE_112 = "LightsTestService112";
-    private static final String OPENNAME_SERVICE_113 = "LightsTestService113";
-    private static final String OPENNAME_SERVICE_114 = "LightsTestService114";
-
+    private static final String SERVICE_ALL_METHODS_THROWING_NPE = "LightsTestServiceAlwaysThrowingNPE";
+    private static final String SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "LightsTestServiceRethrowingJposException";
+    private static final String SERVICE_112 = "LightsTestService112";
+    private static final String SERVICE_113 = "LightsTestService113";
+    private static final String SERVICE_114 = "LightsTestService114";
+    
+    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
+    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION;
+    private static final String OPENNAME_SERVICE_10 = SERVICE_112;
+    private static final String OPENNAME_SERVICE_112 = SERVICE_112;
+    private static final String OPENNAME_SERVICE_113 = SERVICE_113;
+    private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    
+    private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "LightsTestService112ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "LightsTestService113ReturningVersionTooLarge";
+    
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_112, "1.12"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_113, "1.13"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_114, "1.14"));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Lights", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
     }
 
     /**
@@ -67,11 +82,17 @@ public class LightsTest {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
+        
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
         registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+        
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        
+        registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        
     }
 
     private Lights control;
@@ -1448,6 +1469,27 @@ public class LightsTest {
         }
     }
     
+    @Test
+    public void testOpenOnService112ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService113ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     
     @Test
     public void testGetCapAlarmCalledOnServiceVersionWhenAdded() throws Exception {

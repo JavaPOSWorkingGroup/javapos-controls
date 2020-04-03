@@ -31,6 +31,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import jpos.config.JposEntryRegistry;
+import jpos.config.simple.SimpleEntry;
 import jpos.loader.JposServiceLoader;
 import jpos.services.EventCallbacks;
 
@@ -41,32 +42,58 @@ import jpos.services.EventCallbacks;
  */
 public class SmartCardRWTest {
 
-    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = "SmartCardRWTestServiceAlwaysThrowingNPE";
-    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "SmartCardRWTestServiceRethrowingJposException";
-    private static final String OPENNAME_SERVICE_10 = "SmartCardRWTestService18";
-    private static final String OPENNAME_SERVICE_18 = "SmartCardRWTestService18";
-    private static final String OPENNAME_SERVICE_19 = "SmartCardRWTestService19";
-    private static final String OPENNAME_SERVICE_110 = "SmartCardRWTestService110";
-    private static final String OPENNAME_SERVICE_111 = "SmartCardRWTestService111";
-    private static final String OPENNAME_SERVICE_112 = "SmartCardRWTestService112";
-    private static final String OPENNAME_SERVICE_113 = "SmartCardRWTestService113";
-    private static final String OPENNAME_SERVICE_114 = "SmartCardRWTestService114";
-
+    private static final String SERVICE_ALL_METHODS_THROWING_NPE = "SmartCardRWTestServiceAlwaysThrowingNPE";
+    private static final String SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "SmartCardRWTestServiceRethrowingJposException";
+    private static final String SERVICE_18 = "SmartCardRWTestService18";
+    private static final String SERVICE_19 = "SmartCardRWTestService19";
+    private static final String SERVICE_110 = "SmartCardRWTestService110";
+    private static final String SERVICE_111 = "SmartCardRWTestService111";
+    private static final String SERVICE_112 = "SmartCardRWTestService112";
+    private static final String SERVICE_113 = "SmartCardRWTestService113";
+    private static final String SERVICE_114 = "SmartCardRWTestService114";
+    
+    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
+    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION;
+    private static final String OPENNAME_SERVICE_10 = SERVICE_18;
+    private static final String OPENNAME_SERVICE_18 = SERVICE_18;
+    private static final String OPENNAME_SERVICE_19 = SERVICE_19;
+    private static final String OPENNAME_SERVICE_110 = SERVICE_110;
+    private static final String OPENNAME_SERVICE_111 = SERVICE_111;
+    private static final String OPENNAME_SERVICE_112 = SERVICE_112;
+    private static final String OPENNAME_SERVICE_113 = SERVICE_113;
+    private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    
+    private static final String OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService18ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService19ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService110ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService111ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService112ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "SmartCardRWTestService113ReturningVersionTooLarge";
+    
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_18, "1.8"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_19, "1.9"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_110, "1.10"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_111, "1.11"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_112, "1.12"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_113, "1.13"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_114, "1.14"));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_18, "1.8", SERVICE_18));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_19, "1.9", SERVICE_19));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_110, "1.10", SERVICE_110));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_111, "1.11", SERVICE_111));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE, "1.8", SERVICE_18, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE, "1.9", SERVICE_19, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE, "1.10", SERVICE_110, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("SmartCardRW", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
     }
 
     /**
@@ -75,8 +102,10 @@ public class SmartCardRWTest {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
+        
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
         registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+        
         registry.removeJposEntry(OPENNAME_SERVICE_18);
         registry.removeJposEntry(OPENNAME_SERVICE_19);
         registry.removeJposEntry(OPENNAME_SERVICE_110);
@@ -84,6 +113,14 @@ public class SmartCardRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        
+        registry.removeJposEntry(OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        
     }
 
     private SmartCardRW control;
@@ -2384,6 +2421,71 @@ public class SmartCardRWTest {
         }
     }
     
+    @Test
+    public void testOpenOnService18ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService19ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService110ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService111ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService112ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService113ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     
     @Test
     public void testGetCapCardErrorDetectionCalledOnServiceVersionWhenAdded() throws Exception {

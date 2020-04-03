@@ -31,6 +31,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import jpos.config.JposEntryRegistry;
+import jpos.config.simple.SimpleEntry;
 import jpos.loader.JposServiceLoader;
 import jpos.services.EventCallbacks;
 
@@ -41,28 +42,48 @@ import jpos.services.EventCallbacks;
  */
 public class BiometricsTest {
 
-    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = "BiometricsTestServiceAlwaysThrowingNPE";
-    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "BiometricsTestServiceRethrowingJposException";
-    private static final String OPENNAME_SERVICE_10 = "BiometricsTestService110";
-    private static final String OPENNAME_SERVICE_110 = "BiometricsTestService110";
-    private static final String OPENNAME_SERVICE_111 = "BiometricsTestService111";
-    private static final String OPENNAME_SERVICE_112 = "BiometricsTestService112";
-    private static final String OPENNAME_SERVICE_113 = "BiometricsTestService113";
-    private static final String OPENNAME_SERVICE_114 = "BiometricsTestService114";
-
+    private static final String SERVICE_ALL_METHODS_THROWING_NPE = "BiometricsTestServiceAlwaysThrowingNPE";
+    private static final String SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "BiometricsTestServiceRethrowingJposException";
+    private static final String SERVICE_110 = "BiometricsTestService110";
+    private static final String SERVICE_111 = "BiometricsTestService111";
+    private static final String SERVICE_112 = "BiometricsTestService112";
+    private static final String SERVICE_113 = "BiometricsTestService113";
+    private static final String SERVICE_114 = "BiometricsTestService114";
+    
+    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
+    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION;
+    private static final String OPENNAME_SERVICE_10 = SERVICE_110;
+    private static final String OPENNAME_SERVICE_110 = SERVICE_110;
+    private static final String OPENNAME_SERVICE_111 = SERVICE_111;
+    private static final String OPENNAME_SERVICE_112 = SERVICE_112;
+    private static final String OPENNAME_SERVICE_113 = SERVICE_113;
+    private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    
+    private static final String OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService110ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService111ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService112ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService113ReturningVersionTooLarge";
+    
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_110, "1.10"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_111, "1.11"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_112, "1.12"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_113, "1.13"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_114, "1.14"));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_110, "1.10", SERVICE_110));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_111, "1.11", SERVICE_111));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE, "1.10", SERVICE_110, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
     }
 
     /**
@@ -71,13 +92,21 @@ public class BiometricsTest {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
+        
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
         registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+        
         registry.removeJposEntry(OPENNAME_SERVICE_110);
         registry.removeJposEntry(OPENNAME_SERVICE_111);
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        
+        registry.removeJposEntry(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        
     }
 
     private Biometrics control;
@@ -2756,6 +2785,49 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testOpenOnService110ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService111ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService112ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService113ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     
     @Test
     public void testGetAlgorithmCalledOnServiceVersionWhenAdded() throws Exception {

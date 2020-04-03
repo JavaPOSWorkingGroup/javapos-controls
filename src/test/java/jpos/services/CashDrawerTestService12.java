@@ -20,8 +20,9 @@ package jpos.services;
 
 import jpos.JposConst;
 import jpos.JposException;
+import jpos.config.JposEntry;
 import jpos.loader.JposServiceInstance;
-import jpos.services.EventCallbacks;
+import jpos.loader.JposServiceLoader;
 
 /**
  * JavaPOS Device Service class, intended to be used for testing purposes in CashDrawerTest.
@@ -29,9 +30,14 @@ import jpos.services.EventCallbacks;
  */
 public final class CashDrawerTestService12 implements jpos.services.CashDrawerService12, JposServiceInstance {
     
+    private JposEntry configuration;
+    
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1002000;
+        if (configuration.hasPropertyWithName("returnVersionTooLarge"))
+            return 1003000;
+        else
+            return 1002000;
     }
     
     @Override
@@ -41,7 +47,7 @@ public final class CashDrawerTestService12 implements jpos.services.CashDrawerSe
 
     @Override
     public void open(String logicalName, EventCallbacks cb) throws JposException {
-        // intentionally left empty
+        configuration = JposServiceLoader.getManager().getEntryRegistry().getJposEntry(logicalName);
     }
 
     @Override

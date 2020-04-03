@@ -20,8 +20,9 @@ package jpos.services;
 
 import jpos.JposConst;
 import jpos.JposException;
+import jpos.config.JposEntry;
 import jpos.loader.JposServiceInstance;
-import jpos.services.EventCallbacks;
+import jpos.loader.JposServiceLoader;
 
 /**
  * JavaPOS Device Service class, intended to be used for testing purposes in CATTest.
@@ -29,9 +30,14 @@ import jpos.services.EventCallbacks;
  */
 public final class CATTestService18 implements jpos.services.CATService18, JposServiceInstance {
     
+    private JposEntry configuration;
+    
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1008000;
+        if (configuration.hasPropertyWithName("returnVersionTooLarge"))
+            return 1009000;
+        else
+            return 1008000;
     }
     
     @Override
@@ -41,7 +47,7 @@ public final class CATTestService18 implements jpos.services.CATService18, JposS
 
     @Override
     public void open(String logicalName, EventCallbacks cb) throws JposException {
-        // intentionally left empty
+        configuration = JposServiceLoader.getManager().getEntryRegistry().getJposEntry(logicalName);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package jpos;
 
 import jpos.config.JposEntry;
+import jpos.config.JposEntry.Prop;
 import jpos.config.simple.SimpleEntry;
 
 /**
@@ -15,21 +16,22 @@ final class ControlsTestHelper {
 
 	/**
 	 * Creates a {@link JposEntry} for the given open name, category and JavaPOS version and
-	 * let property "serviceClass" point to "jpos.services.{openName}" and
+	 * service class; let property "serviceClass" point to "jpos.services.{serviceClassName}" and
 	 * property "serviceInstanceFactoryClass" point to "jpos.TestServiceInstanceFactory".
 	 * 
 	 * @param category the JavaPOS category name, will be assigned to property "deviceCategory"  
 	 * @param openName the open name, will be assigned to property "logicalName"
 	 * @param version the JavaPOS version, e.g. "1.14", will be assigned to property "jposVersion"
+	 * @param serviceClassName the device service class name property "serviceClass" will point to
 	 * @return a corresponding {@link JposEntry} object
 	 */
-	static JposEntry createJposEntry(String category, String openName, String version) {
+	static JposEntry createJposEntry(String category, String openName, String version, String serviceClassName) {
 		JposEntry entry = new SimpleEntry();
 		entry.addProperty(JposEntry.LOGICAL_NAME_PROP_NAME, openName);
 		entry.addProperty(JposEntry.DEVICE_CATEGORY_PROP_NAME, category);
 		entry.addProperty(JposEntry.JPOS_VERSION_PROP_NAME, version);
 		
-		entry.addProperty(JposEntry.SERVICE_CLASS_PROP_NAME, "jpos.services." + openName);
+		entry.addProperty(JposEntry.SERVICE_CLASS_PROP_NAME, "jpos.services." + serviceClassName);
 		entry.addProperty(JposEntry.SI_FACTORY_CLASS_PROP_NAME, "jpos.TestServiceInstanceFactory");
 
 		entry.addProperty(JposEntry.PRODUCT_DESCRIPTION_PROP_NAME, "myProductDescription");
@@ -40,5 +42,21 @@ final class ControlsTestHelper {
 		return entry;
 	}
 
+	/**
+	 * Same same as {@link #createJposEntry(String, String, String, String)} but adds the given property, additionally.
+	 * @param category the JavaPOS category name, will be assigned to property "deviceCategory"  
+	 * @param openName the open name, will be assigned to property "logicalName"
+	 * @param version the JavaPOS version, e.g. "1.14", will be assigned to property "jposVersion"
+	 * @param serviceClassName the device service class name property "serviceClass" will point to
+	 * @param additionalProperty
+	 * @return a corresponding {@link JposEntry} object
+	 * @return
+	 */
+	static JposEntry createJposEntry(String category, String openName, String version, String serviceClassName, Prop additionalProperty) {
+		JposEntry result = createJposEntry(category, openName, version, serviceClassName);
+		if (additionalProperty != null)
+			result.add(additionalProperty);
+		return result;
+	}
 
 }

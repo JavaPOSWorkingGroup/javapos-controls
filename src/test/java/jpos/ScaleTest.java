@@ -31,6 +31,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import jpos.config.JposEntryRegistry;
+import jpos.config.simple.SimpleEntry;
 import jpos.loader.JposServiceLoader;
 import jpos.services.EventCallbacks;
 
@@ -41,44 +42,88 @@ import jpos.services.EventCallbacks;
  */
 public class ScaleTest {
 
-    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = "ScaleTestServiceAlwaysThrowingNPE";
-    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "ScaleTestServiceRethrowingJposException";
-    private static final String OPENNAME_SERVICE_10 = "ScaleTestService12";
-    private static final String OPENNAME_SERVICE_12 = "ScaleTestService12";
-    private static final String OPENNAME_SERVICE_13 = "ScaleTestService13";
-    private static final String OPENNAME_SERVICE_14 = "ScaleTestService14";
-    private static final String OPENNAME_SERVICE_15 = "ScaleTestService15";
-    private static final String OPENNAME_SERVICE_16 = "ScaleTestService16";
-    private static final String OPENNAME_SERVICE_17 = "ScaleTestService17";
-    private static final String OPENNAME_SERVICE_18 = "ScaleTestService18";
-    private static final String OPENNAME_SERVICE_19 = "ScaleTestService19";
-    private static final String OPENNAME_SERVICE_110 = "ScaleTestService110";
-    private static final String OPENNAME_SERVICE_111 = "ScaleTestService111";
-    private static final String OPENNAME_SERVICE_112 = "ScaleTestService112";
-    private static final String OPENNAME_SERVICE_113 = "ScaleTestService113";
-    private static final String OPENNAME_SERVICE_114 = "ScaleTestService114";
-
+    private static final String SERVICE_ALL_METHODS_THROWING_NPE = "ScaleTestServiceAlwaysThrowingNPE";
+    private static final String SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION = "ScaleTestServiceRethrowingJposException";
+    private static final String SERVICE_12 = "ScaleTestService12";
+    private static final String SERVICE_13 = "ScaleTestService13";
+    private static final String SERVICE_14 = "ScaleTestService14";
+    private static final String SERVICE_15 = "ScaleTestService15";
+    private static final String SERVICE_16 = "ScaleTestService16";
+    private static final String SERVICE_17 = "ScaleTestService17";
+    private static final String SERVICE_18 = "ScaleTestService18";
+    private static final String SERVICE_19 = "ScaleTestService19";
+    private static final String SERVICE_110 = "ScaleTestService110";
+    private static final String SERVICE_111 = "ScaleTestService111";
+    private static final String SERVICE_112 = "ScaleTestService112";
+    private static final String SERVICE_113 = "ScaleTestService113";
+    private static final String SERVICE_114 = "ScaleTestService114";
+    
+    private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
+    private static final String OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION = SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION;
+    private static final String OPENNAME_SERVICE_10 = SERVICE_12;
+    private static final String OPENNAME_SERVICE_12 = SERVICE_12;
+    private static final String OPENNAME_SERVICE_13 = SERVICE_13;
+    private static final String OPENNAME_SERVICE_14 = SERVICE_14;
+    private static final String OPENNAME_SERVICE_15 = SERVICE_15;
+    private static final String OPENNAME_SERVICE_16 = SERVICE_16;
+    private static final String OPENNAME_SERVICE_17 = SERVICE_17;
+    private static final String OPENNAME_SERVICE_18 = SERVICE_18;
+    private static final String OPENNAME_SERVICE_19 = SERVICE_19;
+    private static final String OPENNAME_SERVICE_110 = SERVICE_110;
+    private static final String OPENNAME_SERVICE_111 = SERVICE_111;
+    private static final String OPENNAME_SERVICE_112 = SERVICE_112;
+    private static final String OPENNAME_SERVICE_113 = SERVICE_113;
+    private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    
+    private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "ScaleTestService12ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "ScaleTestService13ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE = "ScaleTestService14ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE = "ScaleTestService15ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE = "ScaleTestService16ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_17_RETURNING_VERSION_TOO_LARGE = "ScaleTestService17ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE = "ScaleTestService18ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE = "ScaleTestService19ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE = "ScaleTestService110ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "ScaleTestService111ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "ScaleTestService112ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "ScaleTestService113ReturningVersionTooLarge";
+    
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_12, "1.2"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_13, "1.3"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_14, "1.4"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_15, "1.5"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_16, "1.6"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_17, "1.7"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_18, "1.8"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_19, "1.9"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_110, "1.10"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_111, "1.11"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_112, "1.12"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_113, "1.13"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_114, "1.14"));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_14, "1.4", SERVICE_14));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_15, "1.5", SERVICE_15));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_16, "1.6", SERVICE_16));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_17, "1.7", SERVICE_17));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_18, "1.8", SERVICE_18));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_19, "1.9", SERVICE_19));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_110, "1.10", SERVICE_110));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_111, "1.11", SERVICE_111));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE, "1.4", SERVICE_14, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE, "1.5", SERVICE_15, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE, "1.6", SERVICE_16, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_17_RETURNING_VERSION_TOO_LARGE, "1.7", SERVICE_17, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE, "1.8", SERVICE_18, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE, "1.9", SERVICE_19, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE, "1.10", SERVICE_110, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Scale", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
     }
 
     /**
@@ -87,8 +132,10 @@ public class ScaleTest {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
+        
         registry.removeJposEntry(OPENNAME_ALL_METHODS_THROWING_NPE);
         registry.removeJposEntry(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+        
         registry.removeJposEntry(OPENNAME_SERVICE_12);
         registry.removeJposEntry(OPENNAME_SERVICE_13);
         registry.removeJposEntry(OPENNAME_SERVICE_14);
@@ -102,6 +149,20 @@ public class ScaleTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        
+        registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_17_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        
     }
 
     private Scale control;
@@ -3148,6 +3209,137 @@ public class ScaleTest {
         }
     }
     
+    @Test
+    public void testOpenOnService12ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService13ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService14ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService15ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService16ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService17ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_17_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService18ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_18_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService19ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_19_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService110ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService111ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService112ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService113ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     @Test
     public void testGetAsyncModeFailsOnServiceVersionBeforeAdded() {
         try {
