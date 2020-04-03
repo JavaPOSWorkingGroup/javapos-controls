@@ -31,7 +31,7 @@ public final class POSKeyboardTestService16 implements jpos.services.POSKeyboard
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_006_000;
+        return 1006000;
     }
     
     @Override

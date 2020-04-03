@@ -31,7 +31,7 @@ public final class PINPadTestService16 implements jpos.services.PINPadService16,
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_006_000;
+        return 1006000;
     }
     
     @Override

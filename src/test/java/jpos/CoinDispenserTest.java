@@ -976,7 +976,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion12() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_002_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1002000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -987,7 +987,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion13() {
         try {
             this.control.open(OPENNAME_SERVICE_13);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_003_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1003000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -998,7 +998,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion14() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_004_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1004000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1009,7 +1009,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion15() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_005_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1005000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1020,7 +1020,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion16() {
         try {
             this.control.open(OPENNAME_SERVICE_16);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_006_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1006000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1031,7 +1031,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion17() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_007_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1007000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1042,7 +1042,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion18() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_008_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1008000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1053,7 +1053,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion19() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_009_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1009000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1064,7 +1064,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion110() {
         try {
             this.control.open(OPENNAME_SERVICE_110);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_010_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1010000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1075,7 +1075,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion111() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_011_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1011000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1086,7 +1086,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion112() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_012_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1012000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1097,7 +1097,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion113() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_013_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1013000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -1108,7 +1108,7 @@ public class CoinDispenserTest {
     public final void testGetDeviceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_014_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1014000));
         }
         catch (JposException e) {
             fail("CoinDispenser.getDeviceServiceVersion() failed with " + e.getMessage());

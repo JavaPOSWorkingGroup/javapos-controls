@@ -31,7 +31,7 @@ public final class SignatureCaptureTestService113 implements jpos.services.Signa
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

@@ -31,7 +31,7 @@ public final class CoinAcceptorTestService111 implements jpos.services.CoinAccep
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_011_000;
+        return 1011000;
     }
     
     @Override

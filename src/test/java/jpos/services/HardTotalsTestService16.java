@@ -31,7 +31,7 @@ public final class HardTotalsTestService16 implements jpos.services.HardTotalsSe
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_006_000;
+        return 1006000;
     }
     
     @Override

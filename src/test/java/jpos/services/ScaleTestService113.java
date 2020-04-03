@@ -31,7 +31,7 @@ public final class ScaleTestService113 implements jpos.services.ScaleService113,
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

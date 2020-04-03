@@ -31,7 +31,7 @@ public final class BillAcceptorTestService113 implements jpos.services.BillAccep
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

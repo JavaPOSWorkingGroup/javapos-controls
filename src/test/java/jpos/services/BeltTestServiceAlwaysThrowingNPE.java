@@ -31,7 +31,7 @@ public final class BeltTestServiceAlwaysThrowingNPE implements jpos.services.Bel
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_014_000;
+        return 1014000;
     }
     
     @Override

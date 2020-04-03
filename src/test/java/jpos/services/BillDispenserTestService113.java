@@ -31,7 +31,7 @@ public final class BillDispenserTestService113 implements jpos.services.BillDisp
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

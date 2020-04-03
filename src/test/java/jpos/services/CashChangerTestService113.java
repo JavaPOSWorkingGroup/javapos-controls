@@ -31,7 +31,7 @@ public final class CashChangerTestService113 implements jpos.services.CashChange
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

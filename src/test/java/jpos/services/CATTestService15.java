@@ -31,7 +31,7 @@ public final class CATTestService15 implements jpos.services.CATService15, JposS
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_005_000;
+        return 1005000;
     }
     
     @Override

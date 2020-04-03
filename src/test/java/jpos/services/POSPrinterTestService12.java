@@ -31,7 +31,7 @@ public final class POSPrinterTestService12 implements jpos.services.POSPrinterSe
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_002_000;
+        return 1002000;
     }
     
     @Override

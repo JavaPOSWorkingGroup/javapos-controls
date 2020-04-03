@@ -31,7 +31,7 @@ public final class BumpBarTestService13 implements jpos.services.BumpBarService1
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_003_000;
+        return 1003000;
     }
     
     @Override

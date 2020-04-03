@@ -31,7 +31,7 @@ public final class POSPowerTestService19 implements jpos.services.POSPowerServic
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_009_000;
+        return 1009000;
     }
     
     @Override

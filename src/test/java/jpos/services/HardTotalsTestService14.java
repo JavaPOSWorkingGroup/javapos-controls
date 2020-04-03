@@ -31,7 +31,7 @@ public final class HardTotalsTestService14 implements jpos.services.HardTotalsSe
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_004_000;
+        return 1004000;
     }
     
     @Override

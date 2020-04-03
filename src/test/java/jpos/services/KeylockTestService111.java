@@ -31,7 +31,7 @@ public final class KeylockTestService111 implements jpos.services.KeylockService
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_011_000;
+        return 1011000;
     }
     
     @Override

@@ -31,7 +31,7 @@ public final class LightsTestService112 implements jpos.services.LightsService11
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_012_000;
+        return 1012000;
     }
     
     @Override

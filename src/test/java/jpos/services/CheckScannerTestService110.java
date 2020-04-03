@@ -31,7 +31,7 @@ public final class CheckScannerTestService110 implements jpos.services.CheckScan
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_010_000;
+        return 1010000;
     }
     
     @Override

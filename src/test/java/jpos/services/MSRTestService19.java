@@ -31,7 +31,7 @@ public final class MSRTestService19 implements jpos.services.MSRService19, JposS
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_009_000;
+        return 1009000;
     }
     
     @Override

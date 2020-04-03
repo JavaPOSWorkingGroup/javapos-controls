@@ -31,7 +31,7 @@ public final class CashDrawerTestService19 implements jpos.services.CashDrawerSe
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_009_000;
+        return 1009000;
     }
     
     @Override

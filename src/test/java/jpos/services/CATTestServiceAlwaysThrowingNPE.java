@@ -31,7 +31,7 @@ public final class CATTestServiceAlwaysThrowingNPE implements jpos.services.CATS
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_014_000;
+        return 1014000;
     }
     
     @Override

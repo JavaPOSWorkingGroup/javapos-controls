@@ -31,7 +31,7 @@ public final class LineDisplayTestService19 implements jpos.services.LineDisplay
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_009_000;
+        return 1009000;
     }
     
     @Override

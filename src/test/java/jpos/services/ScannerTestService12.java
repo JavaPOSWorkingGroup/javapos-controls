@@ -31,7 +31,7 @@ public final class ScannerTestService12 implements jpos.services.ScannerService1
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_002_000;
+        return 1002000;
     }
     
     @Override

@@ -31,7 +31,7 @@ public final class PINPadTestService114 implements jpos.services.PINPadService11
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_014_000;
+        return 1014000;
     }
     
     @Override

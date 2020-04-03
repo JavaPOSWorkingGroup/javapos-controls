@@ -31,7 +31,7 @@ public final class ItemDispenserTestService114 implements jpos.services.ItemDisp
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_014_000;
+        return 1014000;
     }
     
     @Override

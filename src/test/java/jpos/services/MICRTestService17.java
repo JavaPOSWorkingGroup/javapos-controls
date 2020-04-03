@@ -31,7 +31,7 @@ public final class MICRTestService17 implements jpos.services.MICRService17, Jpo
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_007_000;
+        return 1007000;
     }
     
     @Override

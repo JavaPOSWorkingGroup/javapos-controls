@@ -31,7 +31,7 @@ public final class MotionSensorTestService17 implements jpos.services.MotionSens
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_007_000;
+        return 1007000;
     }
     
     @Override

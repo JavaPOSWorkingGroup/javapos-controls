@@ -31,7 +31,7 @@ public final class FiscalPrinterTestService15 implements jpos.services.FiscalPri
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_005_000;
+        return 1005000;
     }
     
     @Override

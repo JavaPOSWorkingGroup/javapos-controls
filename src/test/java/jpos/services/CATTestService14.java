@@ -31,7 +31,7 @@ public final class CATTestService14 implements jpos.services.CATService14, JposS
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_004_000;
+        return 1004000;
     }
     
     @Override

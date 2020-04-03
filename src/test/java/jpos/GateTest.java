@@ -896,7 +896,7 @@ public class GateTest {
     public final void testGetDeviceVersion112() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_012_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1012000));
         }
         catch (JposException e) {
             fail("Gate.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -907,7 +907,7 @@ public class GateTest {
     public final void testGetDeviceVersion113() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_013_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1013000));
         }
         catch (JposException e) {
             fail("Gate.getDeviceServiceVersion() failed with " + e.getMessage());
@@ -918,7 +918,7 @@ public class GateTest {
     public final void testGetDeviceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
-            assertThat(this.control.getDeviceServiceVersion(), is(1_014_000));
+            assertThat(this.control.getDeviceServiceVersion(), is(1014000));
         }
         catch (JposException e) {
             fail("Gate.getDeviceServiceVersion() failed with " + e.getMessage());

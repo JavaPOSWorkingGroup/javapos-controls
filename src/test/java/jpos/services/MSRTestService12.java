@@ -31,7 +31,7 @@ public final class MSRTestService12 implements jpos.services.MSRService12, JposS
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_002_000;
+        return 1002000;
     }
     
     @Override

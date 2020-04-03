@@ -31,7 +31,7 @@ public final class SmartCardRWTestService113 implements jpos.services.SmartCardR
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_013_000;
+        return 1013000;
     }
     
     @Override

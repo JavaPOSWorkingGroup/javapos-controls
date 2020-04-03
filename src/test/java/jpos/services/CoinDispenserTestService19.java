@@ -31,7 +31,7 @@ public final class CoinDispenserTestService19 implements jpos.services.CoinDispe
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_009_000;
+        return 1009000;
     }
     
     @Override

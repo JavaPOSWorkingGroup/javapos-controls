@@ -31,7 +31,7 @@ public final class RemoteOrderDisplayTestService16 implements jpos.services.Remo
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_006_000;
+        return 1006000;
     }
     
     @Override

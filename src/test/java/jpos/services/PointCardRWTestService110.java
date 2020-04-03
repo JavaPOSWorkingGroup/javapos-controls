@@ -31,7 +31,7 @@ public final class PointCardRWTestService110 implements jpos.services.PointCardR
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
-        return 1_010_000;
+        return 1010000;
     }
     
     @Override
