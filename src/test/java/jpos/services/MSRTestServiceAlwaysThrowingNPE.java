@@ -23,6 +23,7 @@ import jpos.JposException;
 import jpos.config.JposEntry;
 import jpos.loader.JposServiceInstance;
 import jpos.loader.JposServiceLoader;
+import jpos.events.*;
 
 /**
  * JavaPOS Device Service class, intended to be used for testing purposes in MSRTest.
@@ -31,6 +32,7 @@ import jpos.loader.JposServiceLoader;
 public final class MSRTestServiceAlwaysThrowingNPE implements jpos.services.MSRService114, JposServiceInstance {
     
     private JposEntry configuration;
+    private EventCallbacks callbacks;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
@@ -48,13 +50,20 @@ public final class MSRTestServiceAlwaysThrowingNPE implements jpos.services.MSRS
     @Override
     public void open(String logicalName, EventCallbacks cb) throws JposException {
         configuration = JposServiceLoader.getManager().getEntryRegistry().getJposEntry(logicalName);
+        callbacks = cb;
     }
 
     @Override
     public void deleteInstance() throws JposException {
         // intentionally left empty
     }
-
+    
+    @Override
+    public void directIO(int command, int[] data, Object object) throws JposException 
+    {
+        throw new NullPointerException();
+    }
+    
     
     @Override
     public String getAccountNumber() throws JposException {
@@ -490,12 +499,6 @@ public final class MSRTestServiceAlwaysThrowingNPE implements jpos.services.MSRS
     
     @Override
     public void deauthenticateDevice(byte[] response) throws JposException 
-    {
-        throw new NullPointerException();
-    }
-    
-    @Override
-    public void directIO(int command, int[] data, Object object) throws JposException 
     {
         throw new NullPointerException();
     }

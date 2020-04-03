@@ -8,11 +8,18 @@ import jpos.config.simple.SimpleEntry;
  * @author denis.kuniss
  *
  */
-final class ControlsTestHelper {
+final public class ControlsTestHelper {
 	
 	private ControlsTestHelper() {
 		// to avoid instantiation
 	}
+
+	public static final int SEND_DATA_EVENT = 1;
+	public static final int SEND_ERROR_EVENT = 3;
+	public static final int SEND_DIRECTIO_EVENT = 2;
+	public static final int SEND_OUTPUTCOMPLETE_EVENT = 4;
+	public static final int SEND_STATUSUPDATE_EVENT = 5;
+	public static final int SEND_TRANSITION_EVENT = 6;
 
 	/**
 	 * Creates a {@link JposEntry} for the given open name, category and JavaPOS version and

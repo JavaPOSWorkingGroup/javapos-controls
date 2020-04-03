@@ -24,6 +24,11 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CountDownLatch;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,6 +39,7 @@ import jpos.config.JposEntryRegistry;
 import jpos.config.simple.SimpleEntry;
 import jpos.loader.JposServiceLoader;
 import jpos.services.EventCallbacks;
+import jpos.events.*;
 
 /**
  * PINPad device control JUnit test.
@@ -12747,6 +12753,142 @@ public class PINPadTest {
             this.control.verifyMAC("");
         }
         catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDataEventDelivery() {
+        final int numberOfListeners = 5;
+        final int waitingTimeInMs = 100;
+        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        List<DataListener> listeners = new ArrayList<>();
+        
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            
+            for (int i = 0; i < numberOfListeners; i++) {
+                DataListener listener = new DataListener() {
+                    @Override
+                    public void dataOccurred(DataEvent e) {
+                        remainingEventsToReceive.countDown();
+                    }
+                };
+                this.control.addDataListener(listener);
+                listeners.add(listener);
+            }
+            
+            this.control.directIO(ControlsTestHelper.SEND_DATA_EVENT, null, null);
+            assertThat("not all listener received DataEvents within (ms)" + waitingTimeInMs, 
+                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            
+            for (DataListener listener : listeners) {
+                this.control.removeDataListener(listener);
+            }
+        }
+        catch (JposException | InterruptedException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOEventDelivery() {
+        final int numberOfListeners = 5;
+        final int waitingTimeInMs = 100;
+        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        List<DirectIOListener> listeners = new ArrayList<>();
+        
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            
+            for (int i = 0; i < numberOfListeners; i++) {
+                DirectIOListener listener = new DirectIOListener() {
+                    @Override
+                    public void directIOOccurred(DirectIOEvent e) {
+                        remainingEventsToReceive.countDown();
+                    }
+                };
+                this.control.addDirectIOListener(listener);
+                listeners.add(listener);
+            }
+            
+            this.control.directIO(ControlsTestHelper.SEND_DIRECTIO_EVENT, null, null);
+            assertThat("not all listener received DirectIOEvents within (ms)" + waitingTimeInMs, 
+                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            
+            for (DirectIOListener listener : listeners) {
+                this.control.removeDirectIOListener(listener);
+            }
+        }
+        catch (JposException | InterruptedException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testErrorEventDelivery() {
+        final int numberOfListeners = 5;
+        final int waitingTimeInMs = 100;
+        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        List<ErrorListener> listeners = new ArrayList<>();
+        
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            
+            for (int i = 0; i < numberOfListeners; i++) {
+                ErrorListener listener = new ErrorListener() {
+                    @Override
+                    public void errorOccurred(ErrorEvent e) {
+                        remainingEventsToReceive.countDown();
+                    }
+                };
+                this.control.addErrorListener(listener);
+                listeners.add(listener);
+            }
+            
+            this.control.directIO(ControlsTestHelper.SEND_ERROR_EVENT, null, null);
+            assertThat("not all listener received ErrorEvents within (ms)" + waitingTimeInMs, 
+                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            
+            for (ErrorListener listener : listeners) {
+                this.control.removeErrorListener(listener);
+            }
+        }
+        catch (JposException | InterruptedException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testStatusUpdateEventDelivery() {
+        final int numberOfListeners = 5;
+        final int waitingTimeInMs = 100;
+        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        List<StatusUpdateListener> listeners = new ArrayList<>();
+        
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            
+            for (int i = 0; i < numberOfListeners; i++) {
+                StatusUpdateListener listener = new StatusUpdateListener() {
+                    @Override
+                    public void statusUpdateOccurred(StatusUpdateEvent e) {
+                        remainingEventsToReceive.countDown();
+                    }
+                };
+                this.control.addStatusUpdateListener(listener);
+                listeners.add(listener);
+            }
+            
+            this.control.directIO(ControlsTestHelper.SEND_STATUSUPDATE_EVENT, null, null);
+            assertThat("not all listener received StatusUpdateEvents within (ms)" + waitingTimeInMs, 
+                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            
+            for (StatusUpdateListener listener : listeners) {
+                this.control.removeStatusUpdateListener(listener);
+            }
+        }
+        catch (JposException | InterruptedException e) {
             fail(e.getMessage());
         }
     }
