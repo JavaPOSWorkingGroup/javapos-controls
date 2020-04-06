@@ -26,8 +26,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -4407,8 +4406,7 @@ public class BillDispenserTest {
     @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
-        final int waitingTimeInMs = 100;
-        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
@@ -4418,7 +4416,7 @@ public class BillDispenserTest {
                 DirectIOListener listener = new DirectIOListener() {
                     @Override
                     public void directIOOccurred(DirectIOEvent e) {
-                        remainingEventsToReceive.countDown();
+                        remainingEventsToReceive.decrementAndGet();
                     }
                 };
                 this.control.addDirectIOListener(listener);
@@ -4426,8 +4424,8 @@ public class BillDispenserTest {
             }
             
             this.control.directIO(ControlsTestHelper.SEND_DIRECTIO_EVENT, null, null);
-            assertThat("not all listener received DirectIOEvents within (ms)" + waitingTimeInMs, 
-                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            assertThat("not all listener received DirectIOEvents", 
+                    remainingEventsToReceive.get(), is(0));
             
             for (DirectIOListener listener : listeners) {
                 this.control.removeDirectIOListener(listener);
@@ -4436,16 +4434,12 @@ public class BillDispenserTest {
         catch (JposException e) {
             fail(e.getMessage());
         }
-        catch (InterruptedException e) {
-            fail(e.getMessage());
-        }
     }
     
     @Test
     public void testStatusUpdateEventDelivery() {
         final int numberOfListeners = 5;
-        final int waitingTimeInMs = 100;
-        final CountDownLatch remainingEventsToReceive= new CountDownLatch(numberOfListeners);
+        final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
@@ -4455,7 +4449,7 @@ public class BillDispenserTest {
                 StatusUpdateListener listener = new StatusUpdateListener() {
                     @Override
                     public void statusUpdateOccurred(StatusUpdateEvent e) {
-                        remainingEventsToReceive.countDown();
+                        remainingEventsToReceive.decrementAndGet();
                     }
                 };
                 this.control.addStatusUpdateListener(listener);
@@ -4463,17 +4457,14 @@ public class BillDispenserTest {
             }
             
             this.control.directIO(ControlsTestHelper.SEND_STATUSUPDATE_EVENT, null, null);
-            assertThat("not all listener received StatusUpdateEvents within (ms)" + waitingTimeInMs, 
-                    remainingEventsToReceive.await(waitingTimeInMs, TimeUnit.MILLISECONDS), is(true));
+            assertThat("not all listener received StatusUpdateEvents", 
+                    remainingEventsToReceive.get(), is(0));
             
             for (StatusUpdateListener listener : listeners) {
                 this.control.removeStatusUpdateListener(listener);
             }
         }
         catch (JposException e) {
-            fail(e.getMessage());
-        }
-        catch (InterruptedException e) {
             fail(e.getMessage());
         }
     }
