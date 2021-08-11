@@ -1,4 +1,8 @@
-eclipse.preferences.version=1
+#
+#Wed Aug 11 12:23:00 CEST 2021
+org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
-org.eclipse.jdt.core.compiler.compliance=1.8
+eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.source=1.8
+org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+org.eclipse.jdt.core.compiler.compliance=1.8
