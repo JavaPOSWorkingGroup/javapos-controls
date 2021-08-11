@@ -1,6 +1,5 @@
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/JavaPOSWorkingGroup/javapos-controls)
 [![Build Status](https://github.com/JavaPOSWorkingGroup/javapos-controls/workflows/Build/badge.svg)](https://github.com/JavaPOSWorkingGroup/javapos-controls/actions)
-[ ![Bintray](https://api.bintray.com/packages/javaposworkinggroup/maven/javapos-controls/images/download.svg) ](https://bintray.com/javaposworkinggroup/maven/javapos-controls/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.javapos/javapos-controls/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.javapos/javapos-controls/)
 
 JavaPOS Controls
