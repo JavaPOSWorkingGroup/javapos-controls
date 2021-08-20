@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class FiscalPrinter
   extends BaseJposControl
-  implements FiscalPrinterControl114, JposConst
+  implements FiscalPrinterControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -48,6 +48,7 @@ public class FiscalPrinter
   protected FiscalPrinterService112 service112;
   protected FiscalPrinterService113 service113;
   protected FiscalPrinterService114 service114;
+  protected FiscalPrinterService115 service115;
   protected Vector directIOListeners;
   protected Vector errorListeners;
   protected Vector outputCompleteListeners;
@@ -62,7 +63,7 @@ public class FiscalPrinter
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS FiscalPrinter Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class FiscalPrinter
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     directIOListeners = new Vector();
     errorListeners = new Vector();
     outputCompleteListeners = new Vector();
@@ -5393,6 +5395,7 @@ public class FiscalPrinter
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -5563,6 +5566,20 @@ public class FiscalPrinter
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement FiscalPrinterService114 interface",
                                   e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (FiscalPrinterService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement FiscalPrinterService115 interface",
+                  e);
         }
       }
 
