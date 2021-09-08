@@ -1,5 +1,10 @@
 # Change Log for javapos-controls
 
+## 1.14.2 Maintenance Release
+
+- **Major Change**: requires Java 8 runtime (cannot be marked as major version change accordingly as major and minor version is aligned to UnifiedPOS version)
+- publishes to MavenCentral only, not Bintray (as Bintray has been shut down)
+
 ## 1.14.1 Maintenance Release
 
 This release solves the GH issues #1, #2, and #3.
