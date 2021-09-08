@@ -40,7 +40,7 @@ def javaposContractsVersion = "$uposVersion.3"
 
 repositories {
 	mavenCentral()
-	
+
     if (!System.getenv('CI')) 
     { // evaluates only at development environment, not at CI
 	    maven {
@@ -84,6 +84,9 @@ java {
 jar {
 	baseName = artifactName
 	manifest = javaposManifest
+	from ('CHANGELOG.md') {
+		into 'META-INF'
+	}
 }
 
 sourcesJar {
