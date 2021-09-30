@@ -41,7 +41,7 @@ def javaposContractsVersion = "$uposVersion.3"
 repositories {
 	mavenCentral()
 
-    if (!System.getenv('CI')) 
+    if (!System.getenv('CI') && project.hasProperty('localMavenRepo')) 
     { // evaluates only at development environment, not at CI
 	    maven {
 	        url "file:$localMavenRepo" // must be defined in gradle.properties
@@ -110,7 +110,7 @@ publishing {
 			pom {
 				name = artifactName
 				description = 'JavaPOS Device Controls Library'
-				url = 'https://github.com/JavaPOSWorkingGroup/javapos-controls'
+                url = githubProjectUrl
 				licenses {
 					license {
 						name = 'Common Public License (CPL) -- V1.0'
@@ -125,9 +125,9 @@ publishing {
 					}
 				}
 				scm {
-					connection = 'scm:git:https://github.com/JavaPOSWorkingGroup/javapos-controls.git'
-					developerConnection = 'scm:git:https://github.com/JavaPOSWorkingGroup/javapos-controls.git'
-					url = 'https://github.com/JavaPOSWorkingGroup/javapos-controls.git'
+                    connection = "scm:${githubProjectUrl}.git"
+                    developerConnection = "scm:git:${githubProjectUrl}.git"
+                    url = "${githubProjectUrl}.git"
 				}
 			}
 		}
