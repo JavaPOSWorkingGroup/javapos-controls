@@ -41,12 +41,9 @@ def javaposContractsVersion = "$uposVersion.3"
 repositories {
 	mavenCentral()
 
-    if (!System.getenv('CI') && project.hasProperty('localMavenRepo')) 
-    { // evaluates only at development environment, not at CI
-	    maven {
-	        url "file:$localMavenRepo" // must be defined in gradle.properties
-	    }
-	}
+    if (!System.getenv('CI')) {
+        mavenLocal()
+    }
 }
 
 dependencies {
