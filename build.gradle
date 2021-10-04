@@ -41,6 +41,11 @@ def javaposContractsVersion = "$uposVersion.3"
 repositories {
 	mavenCentral()
 
+    // for resolving snapshots from MavenCentral
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+
     if (!System.getenv('CI')) {
         mavenLocal()
     }
