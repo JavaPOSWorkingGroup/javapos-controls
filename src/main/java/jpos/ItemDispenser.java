@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ItemDispenser.java - A JavaPOS 1.14.0 device control
+// ItemDispenser.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ItemDispenser
   extends BaseJposControl
-  implements ItemDispenserControl114, JposConst
+  implements ItemDispenserControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -39,6 +39,7 @@ public class ItemDispenser
   protected ItemDispenserService112 service112;
   protected ItemDispenserService113 service113;
   protected ItemDispenserService114 service114;
+  protected ItemDispenserService115 service115;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -51,13 +52,14 @@ public class ItemDispenser
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ItemDispenser Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -649,6 +651,7 @@ public class ItemDispenser
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -693,6 +696,20 @@ public class ItemDispenser
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ItemDispenserService114 interface",
                                   e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (ItemDispenserService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement ItemDispenserService115 interface",
+                  e);
         }
       }
 

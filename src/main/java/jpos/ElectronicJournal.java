@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicJournal.java - A JavaPOS 1.14.0 device control
+// ElectronicJournal.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ElectronicJournal
   extends BaseJposControl
-  implements ElectronicJournalControl114, JposConst
+  implements ElectronicJournalControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -41,6 +41,7 @@ public class ElectronicJournal
   protected ElectronicJournalService112 service112;
   protected ElectronicJournalService113 service113;
   protected ElectronicJournalService114 service114;
+  protected ElectronicJournalService115 service115;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -56,7 +57,7 @@ public class ElectronicJournal
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ElectronicJournal Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -65,6 +66,7 @@ public class ElectronicJournal
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -1786,6 +1788,7 @@ public class ElectronicJournal
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -1861,6 +1864,19 @@ public class ElectronicJournal
         }
       }
 
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (ElectronicJournalService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement ElectronicJournalService115 interface",
+                  e);
+        }
+      }
     }
   }
 

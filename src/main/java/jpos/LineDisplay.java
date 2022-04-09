@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// LineDisplay.java - A JavaPOS 1.14.0 device control
+// LineDisplay.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class LineDisplay
   extends BaseJposControl
-  implements LineDisplayControl114, JposConst
+  implements LineDisplayControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -49,6 +49,7 @@ public class LineDisplay
   protected LineDisplayService112 service112;
   protected LineDisplayService113 service113;
   protected LineDisplayService114 service114;
+  protected LineDisplayService115 service115;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -61,7 +62,7 @@ public class LineDisplay
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS LineDisplay Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -78,6 +79,7 @@ public class LineDisplay
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -2502,6 +2504,7 @@ public class LineDisplay
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -2686,6 +2689,20 @@ public class LineDisplay
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement LineDisplayService114 interface",
                                   e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (LineDisplayService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement LineDisplayService115 interface",
+                  e);
         }
       }
 

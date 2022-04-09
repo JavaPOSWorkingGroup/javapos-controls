@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Belt.java - A JavaPOS 1.14.0 device control
+// Belt.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Belt
   extends BaseJposControl
-  implements BeltControl114, JposConst
+  implements BeltControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -39,6 +39,7 @@ public class Belt
   protected BeltService112 service112;
   protected BeltService113 service113;
   protected BeltService114 service114;
+  protected BeltService115 service115;
   protected Vector directIOListeners;
   protected Vector statusUpdateListeners;
 
@@ -51,13 +52,14 @@ public class Belt
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Belt Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     directIOListeners = new Vector();
     statusUpdateListeners = new Vector();
   }
@@ -1249,6 +1251,7 @@ public class Belt
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -1296,6 +1299,19 @@ public class Belt
         }
       }
 
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (BeltService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement BeltService115 interface",
+                  e);
+        }
+      }
     }
   }
 

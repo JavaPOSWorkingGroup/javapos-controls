@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.14.0 device control
+// Scale.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class Scale
   extends BaseJposControl
-  implements ScaleControl114, JposConst
+  implements ScaleControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -49,6 +49,7 @@ public class Scale
   protected ScaleService112 service112;
   protected ScaleService113 service113;
   protected ScaleService114 service114;
+  protected ScaleService115 service115;
   protected Vector directIOListeners;
   protected Vector dataListeners;
   protected Vector errorListeners;
@@ -63,7 +64,7 @@ public class Scale
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS Scale Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
@@ -80,6 +81,7 @@ public class Scale
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     directIOListeners = new Vector();
     dataListeners = new Vector();
     errorListeners = new Vector();
@@ -1935,6 +1937,7 @@ public class Scale
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -2119,6 +2122,20 @@ public class Scale
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ScaleService114 interface",
                                   e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (ScaleService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement ScaleService115 interface",
+                  e);
         }
       }
 

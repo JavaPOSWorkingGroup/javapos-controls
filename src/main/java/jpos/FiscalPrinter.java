@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// FiscalPrinter.java - A JavaPOS 1.14.0 device control
+// FiscalPrinter.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 

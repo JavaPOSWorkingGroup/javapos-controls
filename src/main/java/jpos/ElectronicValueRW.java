@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicValueRW.java - A JavaPOS 1.14.0 device control
+// ElectronicValueRW.java - A JavaPOS 1.15.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ import jpos.loader.*;
 
 public class ElectronicValueRW
   extends BaseJposControl
-  implements ElectronicValueRWControl114, JposConst
+  implements ElectronicValueRWControl115, JposConst
 {
   //--------------------------------------------------------------------------
   // Variables
@@ -39,6 +39,7 @@ public class ElectronicValueRW
   protected ElectronicValueRWService112 service112;
   protected ElectronicValueRWService113 service113;
   protected ElectronicValueRWService114 service114;
+  protected ElectronicValueRWService115 service115;
   protected Vector dataListeners;
   protected Vector directIOListeners;
   protected Vector errorListeners;
@@ -55,13 +56,14 @@ public class ElectronicValueRW
   {
     // Initialize base class instance data
     deviceControlDescription = "JavaPOS ElectronicValueRW Device Control";
-    deviceControlVersion = deviceVersion114;
+    deviceControlVersion = deviceVersion115;
 
     // Initialize instance data. Initializations are commented out for
     // efficiency if the Java default is correct.
     //service112 = null;
     //service113 = null;
     //service114 = null;
+    //service115 = null;
     dataListeners = new Vector();
     directIOListeners = new Vector();
     errorListeners = new Vector();
@@ -2647,6 +2649,1246 @@ public class ElectronicValueRW
     }
   }
 
+  @Override
+  public boolean getCapAdditionalSecurityInformation() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAdditionalSecurityInformation();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapAuthorizeCompletion() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAuthorizeCompletion();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapAuthorizePreSales() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAuthorizePreSales();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapAuthorizeRefund() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAuthorizeRefund();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapAuthorizeVoid() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAuthorizeVoid();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapAuthorizeVoidPreSales() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapAuthorizeVoidPreSales();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapCashDeposit() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapCashDeposit();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapCenterResultCode() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapCenterResultCode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapCheckCard() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapCheckCard();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public int getCapDailyLog() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapDailyLog();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapInstallments() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapInstallments();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapPaymentDetail() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapPaymentDetail();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapTaxOthers() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapTaxOthers();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapTransactionNumber() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapTransactionNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public boolean getCapMembershipCertificate() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCapMembershipCertificate();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getCardCompanyID() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCardCompanyID();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getCenterResultCode() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getCenterResultCode();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getDailyLog() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getDailyLog();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public int getPaymentCondition() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getPaymentCondition();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getPaymentDetail() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getPaymentDetail();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public int getPaymentMedia() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getPaymentMedia();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getSlipNumber() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getSlipNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public String getTransactionNumber() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getTransactionNumber();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public int getTransactionType() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getTransactionType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public int getServiceType() throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      return service115.getServiceType();
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void accessDailyLog(int sequenceNumber, int type, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.accessDailyLog(sequenceNumber, type, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void accessData(int dataType, int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.accessData(dataType, data,object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void activateEVService(int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.activateEVService(data, object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizeCompletion(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizeCompletion(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizePreSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizePreSales(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizeRefund(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizeRefund(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizeSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizeSales(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizeVoid(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizeVoid(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void authorizeVoidPreSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.authorizeVoidPreSales(sequenceNumber, amount, taxOthers, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void cashDeposit(int sequenceNumber, long amount, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.cashDeposit(sequenceNumber, amount, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void checkCard(int sequenceNumber, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.checkCard(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void checkServiceRegistrationToMedium(int sequenceNumber, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.checkServiceRegistrationToMedium(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void closeDailyEVService(int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.closeDailyEVService(data, object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void deactivateEVService(int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.deactivateEVService(data, object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void openDailyEVService(int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.openDailyEVService(data, object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
   public void retrieveResultInformation(String name, String[] value)
     throws JposException
   {
@@ -2676,6 +3918,68 @@ public class ElectronicValueRW
     {
       throw new JposException(JPOS_E_FAILURE,
                               "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void unregisterServiceToMedium(int sequenceNumber, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.unregisterServiceToMedium(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
+  public void updateData(int dataType, int[] data, Object[] object) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.updateData(dataType, data, object);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
     }
   }
 
@@ -2733,6 +4037,7 @@ public class ElectronicValueRW
       service112 = null;
       service113 = null;
       service114 = null;
+      service115 = null;
     }
     else
     {
@@ -2777,6 +4082,20 @@ public class ElectronicValueRW
           throw new JposException(JPOS_E_NOSERVICE,
                                   "Service does not fully implement ElectronicValueRWService114 interface",
                                   e);
+        }
+      }
+
+      if(serviceVersion >= deviceVersion115)
+      {
+        try
+        {
+          service115 = (ElectronicValueRWService115)service;
+        }
+        catch(Exception e)
+        {
+          throw new JposException(JPOS_E_NOSERVICE,
+                  "Service does not fully implement ElectronicValueRWService115 interface",
+                  e);
         }
       }
 
