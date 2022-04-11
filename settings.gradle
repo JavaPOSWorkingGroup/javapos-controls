@@ -1,6 +1,7 @@
 rootProject.name = 'javapos-controls'
 
-def boolean isDevHost = !System.getenv('TRAVIS') && !hasProperty('disableIDEDependencySubstitution')
+def boolean isRunningOnBuildServer = System.getenv('CI')
+def boolean isDevHost = !isRunningOnBuildServer  && !hasProperty('disableIDEDependencySubstitution')
 
 if (startParameter.searchUpwards && isDevHost)
 {
