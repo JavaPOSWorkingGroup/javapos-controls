@@ -3889,6 +3889,37 @@ public class ElectronicValueRW
     }
   }
 
+  @Override
+  public void registerServiceToMedium(int sequenceNumber, int timeout) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.registerServiceToMedium(sequenceNumber, timeout);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
   public void retrieveResultInformation(String name, String[] value)
     throws JposException
   {
