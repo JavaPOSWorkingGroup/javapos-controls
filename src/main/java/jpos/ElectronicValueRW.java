@@ -3301,6 +3301,37 @@ public class ElectronicValueRW
   }
 
   @Override
+  public void setPaymentMedia(int paymentMedia) throws JposException {
+    // Make sure control is opened
+    if(!bOpen)
+    {
+      throw new JposException(JPOS_E_CLOSED, "Control not opened");
+    }
+
+    // Make sure service supports at least version 1.15.0
+    if(serviceVersion < deviceVersion115)
+    {
+      throw new JposException(JPOS_E_NOSERVICE,
+              "Device Service is not 1.15.0 compliant.");
+    }
+
+    // Perform the operation
+    try
+    {
+      service115.setPaymentMedia(paymentMedia);
+    }
+    catch(JposException je)
+    {
+      throw je;
+    }
+    catch(Exception e)
+    {
+      throw new JposException(JPOS_E_FAILURE,
+              "Unhandled exception from Device Service", e);
+    }
+  }
+
+  @Override
   public String getSlipNumber() throws JposException {
     // Make sure control is opened
     if(!bOpen)
@@ -3456,7 +3487,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void accessData(int dataType, int[] data, Object[] object) throws JposException {
+  public void accessData(int dataType, int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -3473,7 +3504,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.accessData(dataType, data,object);
+      service115.accessData(dataType, data,obj);
     }
     catch(JposException je)
     {
@@ -3487,7 +3518,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void activateEVService(int[] data, Object[] object) throws JposException {
+  public void activateEVService(int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -3504,7 +3535,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.activateEVService(data, object);
+      service115.activateEVService(data, obj);
     }
     catch(JposException je)
     {
@@ -3797,7 +3828,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void closeDailyEVService(int[] data, Object[] object) throws JposException {
+  public void closeDailyEVService(int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -3814,7 +3845,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.closeDailyEVService(data, object);
+      service115.closeDailyEVService(data, obj);
     }
     catch(JposException je)
     {
@@ -3828,7 +3859,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void deactivateEVService(int[] data, Object[] object) throws JposException {
+  public void deactivateEVService(int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -3845,7 +3876,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.deactivateEVService(data, object);
+      service115.deactivateEVService(data, obj);
     }
     catch(JposException je)
     {
@@ -3859,7 +3890,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void openDailyEVService(int[] data, Object[] object) throws JposException {
+  public void openDailyEVService(int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -3876,7 +3907,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.openDailyEVService(data, object);
+      service115.openDailyEVService(data, obj);
     }
     catch(JposException je)
     {
@@ -3984,7 +4015,7 @@ public class ElectronicValueRW
   }
 
   @Override
-  public void updateData(int dataType, int[] data, Object[] object) throws JposException {
+  public void updateData(int dataType, int[] data, Object obj) throws JposException {
     // Make sure control is opened
     if(!bOpen)
     {
@@ -4001,7 +4032,7 @@ public class ElectronicValueRW
     // Perform the operation
     try
     {
-      service115.updateData(dataType, data, object);
+      service115.updateData(dataType, data, obj);
     }
     catch(JposException je)
     {
