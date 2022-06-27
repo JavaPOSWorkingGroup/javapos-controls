@@ -380,6 +380,17 @@ public class GateTest {
     }
     
     @Test
+    public final void testGetGateStatusFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getGateStatus();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetGetStatusFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getGetStatus();
@@ -764,6 +775,20 @@ public class GateTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.setFreezeEvents(true);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetGateStatusFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getGateStatus();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1225,6 +1250,21 @@ public class GateTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.setFreezeEvents(true);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetGateStatusRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getGateStatus();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2220,6 +2260,33 @@ public class GateTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testGetGateStatusFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getGateStatus();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetGateStatusCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getGateStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test

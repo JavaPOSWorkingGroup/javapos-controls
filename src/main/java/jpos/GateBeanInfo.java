@@ -54,6 +54,7 @@ public class GateBeanInfo
                 makeProperty("CapUpdateStatistics"),
                 
                 // Properties
+                makeProperty("GateStatus"),
                 makeProperty("GetStatus"),
                 makeProperty("PowerNotify"),
                 makeProperty("PowerState")

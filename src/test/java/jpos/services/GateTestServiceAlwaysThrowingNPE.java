@@ -135,6 +135,11 @@ public final class GateTestServiceAlwaysThrowingNPE implements jpos.services.Gat
     }
     
     @Override
+    public int getGateStatus() throws JposException {
+        throw new NullPointerException();
+    }
+    
+    @Override
     public int getGetStatus() throws JposException {
         throw new NullPointerException();
     }

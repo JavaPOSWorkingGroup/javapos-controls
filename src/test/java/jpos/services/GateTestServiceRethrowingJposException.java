@@ -135,6 +135,11 @@ public final class GateTestServiceRethrowingJposException implements jpos.servic
     }
     
     @Override
+    public int getGateStatus() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public int getGetStatus() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }

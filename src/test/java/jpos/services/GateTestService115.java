@@ -152,6 +152,11 @@ public final class GateTestService115 implements jpos.services.GateService115, J
     }
     
     @Override
+    public int getGateStatus() throws JposException {
+        return 0;
+    }
+    
+    @Override
     public int getGetStatus() throws JposException {
         return 0;
     }
