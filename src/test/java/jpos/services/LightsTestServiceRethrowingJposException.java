@@ -23,7 +23,6 @@ import jpos.JposException;
 import jpos.config.JposEntry;
 import jpos.loader.JposServiceInstance;
 import jpos.loader.JposServiceLoader;
-import jpos.events.*;
 
 /**
  * JavaPOS Device Service class, intended to be used for testing purposes in LightsTest.
@@ -32,7 +31,6 @@ import jpos.events.*;
 public final class LightsTestServiceRethrowingJposException implements jpos.services.LightsService115, JposServiceInstance {
     
     private JposEntry configuration;
-    private EventCallbacks callbacks;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
@@ -52,7 +50,6 @@ public final class LightsTestServiceRethrowingJposException implements jpos.serv
     @Override
     public void open(String logicalName, EventCallbacks cb) throws JposException {
         configuration = JposServiceLoader.getManager().getEntryRegistry().getJposEntry(logicalName);
-        callbacks = cb;
     }
 
     @Override
