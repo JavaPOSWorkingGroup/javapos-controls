@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Lights
     extends BaseJposControl
@@ -40,8 +41,8 @@ public class Lights
     protected LightsService113 service113;
     protected LightsService114 service114;
     protected LightsService115 service115;
-    protected Vector directIOListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -60,8 +61,8 @@ public class Lights
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        directIOListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -660,7 +661,7 @@ public class Lights
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -668,14 +669,14 @@ public class Lights
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -683,7 +684,7 @@ public class Lights
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -708,9 +709,8 @@ public class Lights
             synchronized(Lights.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : Lights.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -724,9 +724,8 @@ public class Lights
             synchronized(Lights.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : Lights.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }

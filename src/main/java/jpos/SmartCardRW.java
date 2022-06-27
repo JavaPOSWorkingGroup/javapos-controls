@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SmartCardRW
     extends BaseJposControl
@@ -44,11 +45,11 @@ public class SmartCardRW
     protected SmartCardRWService113 service113;
     protected SmartCardRWService114 service114;
     protected SmartCardRWService115 service115;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector errorListeners;
-    protected Vector outputCompleteListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DataListener> dataListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<ErrorListener> errorListeners;
+    protected List<OutputCompleteListener> outputCompleteListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -71,11 +72,11 @@ public class SmartCardRW
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        errorListeners = new Vector();
-        outputCompleteListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        dataListeners = new ArrayList<DataListener>();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        errorListeners = new ArrayList<ErrorListener>();
+        outputCompleteListeners = new ArrayList<OutputCompleteListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -1332,7 +1333,7 @@ public class SmartCardRW
     {
         synchronized(dataListeners)
         {
-            dataListeners.addElement(l);
+            dataListeners.add(l);
         }
     }
     
@@ -1340,14 +1341,14 @@ public class SmartCardRW
     {
         synchronized(dataListeners)
         {
-            dataListeners.removeElement(l);
+            dataListeners.remove(l);
         }
     }
     public void addDirectIOListener(DirectIOListener l)
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -1355,14 +1356,14 @@ public class SmartCardRW
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addErrorListener(ErrorListener l)
     {
         synchronized(errorListeners)
         {
-            errorListeners.addElement(l);
+            errorListeners.add(l);
         }
     }
     
@@ -1370,14 +1371,14 @@ public class SmartCardRW
     {
         synchronized(errorListeners)
         {
-            errorListeners.removeElement(l);
+            errorListeners.remove(l);
         }
     }
     public void addOutputCompleteListener(OutputCompleteListener l)
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.addElement(l);
+            outputCompleteListeners.add(l);
         }
     }
     
@@ -1385,14 +1386,14 @@ public class SmartCardRW
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.removeElement(l);
+            outputCompleteListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -1400,7 +1401,7 @@ public class SmartCardRW
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -1421,9 +1422,8 @@ public class SmartCardRW
             synchronized(SmartCardRW.this.dataListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                  ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
+                for (DataListener dataListener : SmartCardRW.this.dataListeners) {
+                	dataListener.dataOccurred(e);
                 }
             }
         }
@@ -1433,9 +1433,8 @@ public class SmartCardRW
             synchronized(SmartCardRW.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : SmartCardRW.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -1445,9 +1444,8 @@ public class SmartCardRW
             synchronized(SmartCardRW.this.errorListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < errorListeners.size(); x++)
-                {
-                  ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
+                for (ErrorListener errorListener : SmartCardRW.this.errorListeners) {
+                	errorListener.errorOccurred(e);
                 }
             }
         }
@@ -1457,9 +1455,8 @@ public class SmartCardRW
             synchronized(SmartCardRW.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : SmartCardRW.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }
@@ -1469,9 +1466,8 @@ public class SmartCardRW
             synchronized(SmartCardRW.this.outputCompleteListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < outputCompleteListeners.size(); x++)
-                {
-                  ((OutputCompleteListener)outputCompleteListeners.elementAt(x)).outputCompleteOccurred(e);
+                for (OutputCompleteListener outputCompleteListener : SmartCardRW.this.outputCompleteListeners) {
+                	outputCompleteListener.outputCompleteOccurred(e);
                 }
             }
         }

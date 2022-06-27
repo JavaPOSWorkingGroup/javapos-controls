@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CAT
     extends BaseJposControl
@@ -48,10 +49,10 @@ public class CAT
     protected CATService113 service113;
     protected CATService114 service114;
     protected CATService115 service115;
-    protected Vector directIOListeners;
-    protected Vector errorListeners;
-    protected Vector outputCompleteListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<ErrorListener> errorListeners;
+    protected List<OutputCompleteListener> outputCompleteListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -78,10 +79,10 @@ public class CAT
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        directIOListeners = new Vector();
-        errorListeners = new Vector();
-        outputCompleteListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        errorListeners = new ArrayList<ErrorListener>();
+        outputCompleteListeners = new ArrayList<OutputCompleteListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -2146,7 +2147,7 @@ public class CAT
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -2154,14 +2155,14 @@ public class CAT
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addErrorListener(ErrorListener l)
     {
         synchronized(errorListeners)
         {
-            errorListeners.addElement(l);
+            errorListeners.add(l);
         }
     }
     
@@ -2169,14 +2170,14 @@ public class CAT
     {
         synchronized(errorListeners)
         {
-            errorListeners.removeElement(l);
+            errorListeners.remove(l);
         }
     }
     public void addOutputCompleteListener(OutputCompleteListener l)
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.addElement(l);
+            outputCompleteListeners.add(l);
         }
     }
     
@@ -2184,14 +2185,14 @@ public class CAT
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.removeElement(l);
+            outputCompleteListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -2199,7 +2200,7 @@ public class CAT
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -2224,9 +2225,8 @@ public class CAT
             synchronized(CAT.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : CAT.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -2236,9 +2236,8 @@ public class CAT
             synchronized(CAT.this.errorListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < errorListeners.size(); x++)
-                {
-                  ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
+                for (ErrorListener errorListener : CAT.this.errorListeners) {
+                	errorListener.errorOccurred(e);
                 }
             }
         }
@@ -2248,9 +2247,8 @@ public class CAT
             synchronized(CAT.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : CAT.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }
@@ -2260,9 +2258,8 @@ public class CAT
             synchronized(CAT.this.outputCompleteListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < outputCompleteListeners.size(); x++)
-                {
-                  ((OutputCompleteListener)outputCompleteListeners.elementAt(x)).outputCompleteOccurred(e);
+                for (OutputCompleteListener outputCompleteListener : CAT.this.outputCompleteListeners) {
+                	outputCompleteListener.outputCompleteOccurred(e);
                 }
             }
         }

@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ElectronicValueRW
     extends BaseJposControl
@@ -40,12 +41,12 @@ public class ElectronicValueRW
     protected ElectronicValueRWService113 service113;
     protected ElectronicValueRWService114 service114;
     protected ElectronicValueRWService115 service115;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector errorListeners;
-    protected Vector outputCompleteListeners;
-    protected Vector statusUpdateListeners;
-    protected Vector transitionListeners;
+    protected List<DataListener> dataListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<ErrorListener> errorListeners;
+    protected List<OutputCompleteListener> outputCompleteListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
+    protected List<TransitionListener> transitionListeners;
     
 
     //--------------------------------------------------------------------------
@@ -64,12 +65,12 @@ public class ElectronicValueRW
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        errorListeners = new Vector();
-        outputCompleteListeners = new Vector();
-        statusUpdateListeners = new Vector();
-        transitionListeners = new Vector();
+        dataListeners = new ArrayList<DataListener>();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        errorListeners = new ArrayList<ErrorListener>();
+        outputCompleteListeners = new ArrayList<OutputCompleteListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
+        transitionListeners = new ArrayList<TransitionListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -4301,7 +4302,7 @@ public class ElectronicValueRW
     {
         synchronized(dataListeners)
         {
-            dataListeners.addElement(l);
+            dataListeners.add(l);
         }
     }
     
@@ -4309,14 +4310,14 @@ public class ElectronicValueRW
     {
         synchronized(dataListeners)
         {
-            dataListeners.removeElement(l);
+            dataListeners.remove(l);
         }
     }
     public void addDirectIOListener(DirectIOListener l)
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -4324,14 +4325,14 @@ public class ElectronicValueRW
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addErrorListener(ErrorListener l)
     {
         synchronized(errorListeners)
         {
-            errorListeners.addElement(l);
+            errorListeners.add(l);
         }
     }
     
@@ -4339,14 +4340,14 @@ public class ElectronicValueRW
     {
         synchronized(errorListeners)
         {
-            errorListeners.removeElement(l);
+            errorListeners.remove(l);
         }
     }
     public void addOutputCompleteListener(OutputCompleteListener l)
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.addElement(l);
+            outputCompleteListeners.add(l);
         }
     }
     
@@ -4354,14 +4355,14 @@ public class ElectronicValueRW
     {
         synchronized(outputCompleteListeners)
         {
-            outputCompleteListeners.removeElement(l);
+            outputCompleteListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -4369,14 +4370,14 @@ public class ElectronicValueRW
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     public void addTransitionListener(TransitionListener l)
     {
         synchronized(transitionListeners)
         {
-            transitionListeners.addElement(l);
+            transitionListeners.add(l);
         }
     }
     
@@ -4384,7 +4385,7 @@ public class ElectronicValueRW
     {
         synchronized(transitionListeners)
         {
-            transitionListeners.removeElement(l);
+            transitionListeners.remove(l);
         }
     }
     
@@ -4405,9 +4406,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.dataListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                  ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
+                for (DataListener dataListener : ElectronicValueRW.this.dataListeners) {
+                	dataListener.dataOccurred(e);
                 }
             }
         }
@@ -4417,9 +4417,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : ElectronicValueRW.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -4429,9 +4428,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.errorListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < errorListeners.size(); x++)
-                {
-                  ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
+                for (ErrorListener errorListener : ElectronicValueRW.this.errorListeners) {
+                	errorListener.errorOccurred(e);
                 }
             }
         }
@@ -4441,9 +4439,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : ElectronicValueRW.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }
@@ -4453,9 +4450,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.outputCompleteListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < outputCompleteListeners.size(); x++)
-                {
-                  ((OutputCompleteListener)outputCompleteListeners.elementAt(x)).outputCompleteOccurred(e);
+                for (OutputCompleteListener outputCompleteListener : ElectronicValueRW.this.outputCompleteListeners) {
+                	outputCompleteListener.outputCompleteOccurred(e);
                 }
             }
         }
@@ -4465,9 +4461,8 @@ public class ElectronicValueRW
             synchronized(ElectronicValueRW.this.transitionListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < transitionListeners.size(); x++)
-                {
-                  ((TransitionListener)transitionListeners.elementAt(x)).transitionOccurred(e);
+                for (TransitionListener transitionListener : ElectronicValueRW.this.transitionListeners) {
+                	transitionListener.transitionOccurred(e);
                 }
             }
         }

@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemDispenser
     extends BaseJposControl
@@ -40,8 +41,8 @@ public class ItemDispenser
     protected ItemDispenserService113 service113;
     protected ItemDispenserService114 service114;
     protected ItemDispenserService115 service115;
-    protected Vector directIOListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -60,8 +61,8 @@ public class ItemDispenser
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        directIOListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -738,7 +739,7 @@ public class ItemDispenser
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -746,14 +747,14 @@ public class ItemDispenser
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -761,7 +762,7 @@ public class ItemDispenser
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -786,9 +787,8 @@ public class ItemDispenser
             synchronized(ItemDispenser.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : ItemDispenser.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -802,9 +802,8 @@ public class ItemDispenser
             synchronized(ItemDispenser.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : ItemDispenser.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }

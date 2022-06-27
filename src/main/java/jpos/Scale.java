@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Scale
     extends BaseJposControl
@@ -50,10 +51,10 @@ public class Scale
     protected ScaleService113 service113;
     protected ScaleService114 service114;
     protected ScaleService115 service115;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector errorListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DataListener> dataListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<ErrorListener> errorListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -82,10 +83,10 @@ public class Scale
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        errorListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        dataListeners = new ArrayList<DataListener>();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        errorListeners = new ArrayList<ErrorListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -2136,7 +2137,7 @@ public class Scale
     {
         synchronized(dataListeners)
         {
-            dataListeners.addElement(l);
+            dataListeners.add(l);
         }
     }
     
@@ -2144,14 +2145,14 @@ public class Scale
     {
         synchronized(dataListeners)
         {
-            dataListeners.removeElement(l);
+            dataListeners.remove(l);
         }
     }
     public void addDirectIOListener(DirectIOListener l)
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -2159,14 +2160,14 @@ public class Scale
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addErrorListener(ErrorListener l)
     {
         synchronized(errorListeners)
         {
-            errorListeners.addElement(l);
+            errorListeners.add(l);
         }
     }
     
@@ -2174,14 +2175,14 @@ public class Scale
     {
         synchronized(errorListeners)
         {
-            errorListeners.removeElement(l);
+            errorListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -2189,7 +2190,7 @@ public class Scale
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -2210,9 +2211,8 @@ public class Scale
             synchronized(Scale.this.dataListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                  ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
+                for (DataListener dataListener : Scale.this.dataListeners) {
+                	dataListener.dataOccurred(e);
                 }
             }
         }
@@ -2222,9 +2222,8 @@ public class Scale
             synchronized(Scale.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : Scale.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -2234,9 +2233,8 @@ public class Scale
             synchronized(Scale.this.errorListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < errorListeners.size(); x++)
-                {
-                  ((ErrorListener)errorListeners.elementAt(x)).errorOccurred(e);
+                for (ErrorListener errorListener : Scale.this.errorListeners) {
+                	errorListener.errorOccurred(e);
                 }
             }
         }
@@ -2246,9 +2244,8 @@ public class Scale
             synchronized(Scale.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : Scale.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }

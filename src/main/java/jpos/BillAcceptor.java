@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillAcceptor
     extends BaseJposControl
@@ -41,9 +42,9 @@ public class BillAcceptor
     protected BillAcceptorService113 service113;
     protected BillAcceptorService114 service114;
     protected BillAcceptorService115 service115;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DataListener> dataListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -63,9 +64,9 @@ public class BillAcceptor
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        dataListeners = new ArrayList<DataListener>();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -1198,7 +1199,7 @@ public class BillAcceptor
     {
         synchronized(dataListeners)
         {
-            dataListeners.addElement(l);
+            dataListeners.add(l);
         }
     }
     
@@ -1206,14 +1207,14 @@ public class BillAcceptor
     {
         synchronized(dataListeners)
         {
-            dataListeners.removeElement(l);
+            dataListeners.remove(l);
         }
     }
     public void addDirectIOListener(DirectIOListener l)
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -1221,14 +1222,14 @@ public class BillAcceptor
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -1236,7 +1237,7 @@ public class BillAcceptor
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -1257,9 +1258,8 @@ public class BillAcceptor
             synchronized(BillAcceptor.this.dataListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                  ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
+                for (DataListener dataListener : BillAcceptor.this.dataListeners) {
+                	dataListener.dataOccurred(e);
                 }
             }
         }
@@ -1269,9 +1269,8 @@ public class BillAcceptor
             synchronized(BillAcceptor.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : BillAcceptor.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -1285,9 +1284,8 @@ public class BillAcceptor
             synchronized(BillAcceptor.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : BillAcceptor.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }

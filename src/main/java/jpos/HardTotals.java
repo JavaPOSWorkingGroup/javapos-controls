@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HardTotals
     extends BaseJposControl
@@ -50,8 +51,8 @@ public class HardTotals
     protected HardTotalsService113 service113;
     protected HardTotalsService114 service114;
     protected HardTotalsService115 service115;
-    protected Vector directIOListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -80,8 +81,8 @@ public class HardTotals
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        directIOListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -1314,7 +1315,7 @@ public class HardTotals
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -1322,14 +1323,14 @@ public class HardTotals
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -1337,7 +1338,7 @@ public class HardTotals
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -1362,9 +1363,8 @@ public class HardTotals
             synchronized(HardTotals.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : HardTotals.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -1378,9 +1378,8 @@ public class HardTotals
             synchronized(HardTotals.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : HardTotals.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }

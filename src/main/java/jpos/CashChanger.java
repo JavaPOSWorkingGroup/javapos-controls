@@ -25,8 +25,9 @@ package jpos;
 
 import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
-import jpos.loader.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CashChanger
     extends BaseJposControl
@@ -50,9 +51,9 @@ public class CashChanger
     protected CashChangerService113 service113;
     protected CashChangerService114 service114;
     protected CashChangerService115 service115;
-    protected Vector dataListeners;
-    protected Vector directIOListeners;
-    protected Vector statusUpdateListeners;
+    protected List<DataListener> dataListeners;
+    protected List<DirectIOListener> directIOListeners;
+    protected List<StatusUpdateListener> statusUpdateListeners;
     
 
     //--------------------------------------------------------------------------
@@ -81,9 +82,9 @@ public class CashChanger
         //service113 = null;
         //service114 = null;
         //service115 = null;
-        dataListeners = new Vector();
-        directIOListeners = new Vector();
-        statusUpdateListeners = new Vector();
+        dataListeners = new ArrayList<DataListener>();
+        directIOListeners = new ArrayList<DirectIOListener>();
+        statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
     
     //--------------------------------------------------------------------------
@@ -2148,7 +2149,7 @@ public class CashChanger
     {
         synchronized(dataListeners)
         {
-            dataListeners.addElement(l);
+            dataListeners.add(l);
         }
     }
     
@@ -2156,14 +2157,14 @@ public class CashChanger
     {
         synchronized(dataListeners)
         {
-            dataListeners.removeElement(l);
+            dataListeners.remove(l);
         }
     }
     public void addDirectIOListener(DirectIOListener l)
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.addElement(l);
+            directIOListeners.add(l);
         }
     }
     
@@ -2171,14 +2172,14 @@ public class CashChanger
     {
         synchronized(directIOListeners)
         {
-            directIOListeners.removeElement(l);
+            directIOListeners.remove(l);
         }
     }
     public void addStatusUpdateListener(StatusUpdateListener l)
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.addElement(l);
+            statusUpdateListeners.add(l);
         }
     }
     
@@ -2186,7 +2187,7 @@ public class CashChanger
     {
         synchronized(statusUpdateListeners)
         {
-            statusUpdateListeners.removeElement(l);
+            statusUpdateListeners.remove(l);
         }
     }
     
@@ -2207,9 +2208,8 @@ public class CashChanger
             synchronized(CashChanger.this.dataListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < dataListeners.size(); x++)
-                {
-                  ((DataListener)dataListeners.elementAt(x)).dataOccurred(e);
+                for (DataListener dataListener : CashChanger.this.dataListeners) {
+                	dataListener.dataOccurred(e);
                 }
             }
         }
@@ -2219,9 +2219,8 @@ public class CashChanger
             synchronized(CashChanger.this.directIOListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < directIOListeners.size(); x++)
-                {
-                  ((DirectIOListener)directIOListeners.elementAt(x)).directIOOccurred(e);
+                for (DirectIOListener directIOListener : CashChanger.this.directIOListeners) {
+                	directIOListener.directIOOccurred(e);
                 }
             }
         }
@@ -2235,9 +2234,8 @@ public class CashChanger
             synchronized(CashChanger.this.statusUpdateListeners)
             {
                 // deliver the event to all registered listeners
-                for(int x = 0; x < statusUpdateListeners.size(); x++)
-                {
-                  ((StatusUpdateListener)statusUpdateListeners.elementAt(x)).statusUpdateOccurred(e);
+                for (StatusUpdateListener statusUpdateListener : CashChanger.this.statusUpdateListeners) {
+                	statusUpdateListener.statusUpdateOccurred(e);
                 }
             }
         }
