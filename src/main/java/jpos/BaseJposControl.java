@@ -23,9 +23,7 @@
 
 package jpos;
 
-import jpos.events.*;
 import jpos.services.*;
-import java.util.Vector;
 import jpos.loader.*;
 
 public abstract class BaseJposControl
@@ -531,7 +529,6 @@ public abstract class BaseJposControl
 
     // Now attempt to process the open command
     JposException jposException = null;
-    boolean bRealOpenSucceeded = false;
     try
     {
       // Create callback subclass and attach it to the device service
@@ -539,7 +536,6 @@ public abstract class BaseJposControl
       service.open(logicalDeviceName, callbacks);
 
       // If we got this far, the real open call succeeded
-      bRealOpenSucceeded = true;
 
       // If the open succeeds, remember the service instance and determine
       // the actual service version
