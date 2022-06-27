@@ -28,89 +28,89 @@ import java.lang.reflect.*;
 public class RFIDScannerBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.RFIDScanner.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.RFIDScanner.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapContinuousRead"),
-        makeProperty("CapDisableTag"),
-        makeProperty("CapLockTag"),
-        makeProperty("CapMultipleProtocols"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapReadTimer"),
-        makeProperty("CapRealTimeData"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapWriteTag"),
-
-        // Properties
-        makeProperty("AutoDisable"),
-        makeProperty("ContinuousReadMode"),
-        makeProperty("CurrentTagID"),
-        makeProperty("CurrentTagProtocol"),
-        makeProperty("CurrentTagUserData"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("OutputID"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("ProtocolMask"),
-        makeProperty("ReadTimerInterval"),
-        makeProperty("TagCount")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.RFIDScanner.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.RFIDScanner.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.RFIDScanner.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapContinuousRead"),
+                makeProperty("CapDisableTag"),
+                makeProperty("CapLockTag"),
+                makeProperty("CapMultipleProtocols"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapReadTimer"),
+                makeProperty("CapRealTimeData"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapWriteTag"),
+                
+                // Properties
+                makeProperty("AutoDisable"),
+                makeProperty("ContinuousReadMode"),
+                makeProperty("CurrentTagID"),
+                makeProperty("CurrentTagProtocol"),
+                makeProperty("CurrentTagUserData"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("OutputID"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("ProtocolMask"),
+                makeProperty("ReadTimerInterval"),
+                makeProperty("TagCount")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.RFIDScanner.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

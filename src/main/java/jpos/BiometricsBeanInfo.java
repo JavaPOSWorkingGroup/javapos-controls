@@ -28,91 +28,91 @@ import java.lang.reflect.*;
 public class BiometricsBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.Biometrics.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.Biometrics.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapPrematchData"),
-        makeProperty("CapRawSensorData"),
-        makeProperty("CapRealTimeData"),
-        makeProperty("CapSensorColor"),
-        makeProperty("CapSensorOrientation"),
-        makeProperty("CapSensorType"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapTemplateAdaptation"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapUpdateStatistics"),
-
-        // Properties
-        makeProperty("Algorithm"),
-        makeProperty("AlgorithmList"),
-        makeProperty("AutoDisable"),
-        makeProperty("BIR"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("RawSensorData"),
-        makeProperty("RealTimeDataEnabled"),
-        makeProperty("SensorBPP"),
-        makeProperty("SensorColor"),
-        makeProperty("SensorHeight"),
-        makeProperty("SensorOrientation"),
-        makeProperty("SensorType"),
-        makeProperty("SensorWidth")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.Biometrics.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.Biometrics.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.Biometrics.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapPrematchData"),
+                makeProperty("CapRawSensorData"),
+                makeProperty("CapRealTimeData"),
+                makeProperty("CapSensorColor"),
+                makeProperty("CapSensorOrientation"),
+                makeProperty("CapSensorType"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapTemplateAdaptation"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("Algorithm"),
+                makeProperty("AlgorithmList"),
+                makeProperty("AutoDisable"),
+                makeProperty("BIR"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("RawSensorData"),
+                makeProperty("RealTimeDataEnabled"),
+                makeProperty("SensorBPP"),
+                makeProperty("SensorColor"),
+                makeProperty("SensorHeight"),
+                makeProperty("SensorOrientation"),
+                makeProperty("SensorType"),
+                makeProperty("SensorWidth")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.Biometrics.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

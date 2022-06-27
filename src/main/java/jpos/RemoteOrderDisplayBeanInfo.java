@@ -28,102 +28,101 @@ import java.lang.reflect.*;
 public class RemoteOrderDisplayBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.RemoteOrderDisplay.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.RemoteOrderDisplay.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapSelectCharacterSet"),
-        makeProperty("CapTone"),
-        makeProperty("CapTouch"),
-        makeProperty("CapTransaction"),
-        makeProperty("CapMapCharacterSet"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-
-        // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AutoToneDuration"),
-        makeProperty("AutoToneFrequency"),
-        makeProperty("CharacterSet"),
-        makeProperty("CharacterSetList"),
-        makeProperty("Clocks"),
-        makeProperty("CurrentUnitID"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("ErrorString"),
-        makeProperty("ErrorUnits"),
-        makeProperty("EventString"),
-        makeProperty("EventType"),
-        makeProperty("EventUnitID"),
-        makeProperty("EventUnits"),
-        makeProperty("OutputID"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("SystemClocks"),
-        makeProperty("SystemVideoSaveBuffers"),
-        makeProperty("Timeout"),
-        makeProperty("UnitsOnline"),
-        makeProperty("VideoDataCount"),
-        makeProperty("VideoMode"),
-        makeProperty("VideoModesList"),
-        makeProperty("VideoSaveBuffers"),
-        makeProperty("MapCharacterSet"),
-
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.RemoteOrderDisplay.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.RemoteOrderDisplay.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.RemoteOrderDisplay.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapMapCharacterSet"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapSelectCharacterSet"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapTone"),
+                makeProperty("CapTouch"),
+                makeProperty("CapTransaction"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("AsyncMode"),
+                makeProperty("AutoToneDuration"),
+                makeProperty("AutoToneFrequency"),
+                makeProperty("CharacterSet"),
+                makeProperty("CharacterSetList"),
+                makeProperty("Clocks"),
+                makeProperty("CurrentUnitID"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("ErrorString"),
+                makeProperty("ErrorUnits"),
+                makeProperty("EventString"),
+                makeProperty("EventType"),
+                makeProperty("EventUnitID"),
+                makeProperty("EventUnits"),
+                makeProperty("MapCharacterSet"),
+                makeProperty("OutputID"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("SystemClocks"),
+                makeProperty("SystemVideoSaveBuffers"),
+                makeProperty("Timeout"),
+                makeProperty("UnitsOnline"),
+                makeProperty("VideoDataCount"),
+                makeProperty("VideoMode"),
+                makeProperty("VideoModesList"),
+                makeProperty("VideoSaveBuffers")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.RemoteOrderDisplay.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

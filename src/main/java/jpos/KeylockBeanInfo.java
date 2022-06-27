@@ -28,72 +28,72 @@ import java.lang.reflect.*;
 public class KeylockBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.Keylock.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.Keylock.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapKeylockType"),
-
-        // Properties
-        makeProperty("KeyPosition"),
-        makeProperty("PositionCount"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("ElectronicKeyValue")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.Keylock.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.Keylock.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.Keylock.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("DirectIO"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapKeylockType"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("ElectronicKeyValue"),
+                makeProperty("KeyPosition"),
+                makeProperty("PositionCount"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.Keylock.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("DirectIO"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

@@ -28,83 +28,83 @@ import java.lang.reflect.*;
 public class MICRBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.MICR.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.MICR.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapValidationDevice"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-
-        // Properties
-        makeProperty("AutoDisable"),
-        makeProperty("AccountNumber"),
-        makeProperty("Amount"),
-        makeProperty("BankNumber"),
-        makeProperty("CheckType"),
-        makeProperty("CountryCode"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("EPC"),
-        makeProperty("RawData"),
-        makeProperty("SerialNumber"),
-        makeProperty("TransitNumber"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.MICR.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.MICR.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.MICR.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapValidationDevice"),
+                
+                // Properties
+                makeProperty("AccountNumber"),
+                makeProperty("Amount"),
+                makeProperty("AutoDisable"),
+                makeProperty("BankNumber"),
+                makeProperty("CheckType"),
+                makeProperty("CountryCode"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("EPC"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("RawData"),
+                makeProperty("SerialNumber"),
+                makeProperty("TransitNumber")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.MICR.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

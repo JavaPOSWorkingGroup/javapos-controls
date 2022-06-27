@@ -28,102 +28,102 @@ import java.lang.reflect.*;
 public class CashChangerBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.CashChanger.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.CashChanger.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapDiscrepancy"),
-        makeProperty("CapEmptySensor"),
-        makeProperty("CapFullSensor"),
-        makeProperty("CapNearEmptySensor"),
-        makeProperty("CapNearFullSensor"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapDeposit"),
-        makeProperty("CapDepositDataEvent"),
-        makeProperty("CapPauseDeposit"),
-        makeProperty("CapRepayDeposit"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapJamSensor"),
-        makeProperty("CapRealTimeData"),
-
-        // Properties
-        makeProperty("AsyncMode"),
-        makeProperty("AsyncResultCode"),
-        makeProperty("AsyncResultCodeExtended"),
-        makeProperty("CurrencyCashList"),
-        makeProperty("CurrencyCode"),
-        makeProperty("CurrencyCodeList"),
-        makeProperty("CurrentExit"),
-        makeProperty("DeviceExits"),
-        makeProperty("DeviceStatus"),
-        makeProperty("ExitCashList"),
-        makeProperty("FullStatus"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("DepositAmount"),
-        makeProperty("DepositCashList"),
-        makeProperty("DepositCodeList"),
-        makeProperty("DepositCounts"),
-        makeProperty("DepositStatus"),
-        makeProperty("CurrentService"),
-        makeProperty("RealTimeDataEnabled"),
-        makeProperty("ServiceCount"),
-        makeProperty("ServiceIndex")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.CashChanger.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.CashChanger.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.CashChanger.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapDeposit"),
+                makeProperty("CapDepositDataEvent"),
+                makeProperty("CapDiscrepancy"),
+                makeProperty("CapEmptySensor"),
+                makeProperty("CapFullSensor"),
+                makeProperty("CapJamSensor"),
+                makeProperty("CapNearEmptySensor"),
+                makeProperty("CapNearFullSensor"),
+                makeProperty("CapPauseDeposit"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapRealTimeData"),
+                makeProperty("CapRepayDeposit"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("AsyncMode"),
+                makeProperty("AsyncResultCode"),
+                makeProperty("AsyncResultCodeExtended"),
+                makeProperty("CurrencyCashList"),
+                makeProperty("CurrencyCode"),
+                makeProperty("CurrencyCodeList"),
+                makeProperty("CurrentExit"),
+                makeProperty("CurrentService"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("DepositAmount"),
+                makeProperty("DepositCashList"),
+                makeProperty("DepositCodeList"),
+                makeProperty("DepositCounts"),
+                makeProperty("DepositStatus"),
+                makeProperty("DeviceExits"),
+                makeProperty("DeviceStatus"),
+                makeProperty("ExitCashList"),
+                makeProperty("FullStatus"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("RealTimeDataEnabled"),
+                makeProperty("ServiceCount"),
+                makeProperty("ServiceIndex")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.CashChanger.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

@@ -28,122 +28,121 @@ import java.lang.reflect.*;
 public class MSRBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.MSR.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.MSR.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapISO"),
-        makeProperty("CapJISOne"),
-        makeProperty("CapJISTwo"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTransmitSentinels"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapWritableTracks"),
-        makeProperty("CapCardAuthentication"),
-        makeProperty("CapDataEncryption"),
-        makeProperty("CapDeviceAuthentication"),
-        makeProperty("CapTrackDataMasking"),
-
-        // Properties
-        makeProperty("AccountNumber"),
-        makeProperty("AutoDisable"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("DecodeData"),
-        makeProperty("ErrorReportingType"),
-        makeProperty("ExpirationDate"),
-        makeProperty("FirstName"),
-        makeProperty("MiddleInitial"),
-        makeProperty("ParseDecodeData"),
-        makeProperty("ServiceCode"),
-        makeProperty("Suffix"),
-        makeProperty("Surname"),
-        makeProperty("Title"),
-        makeProperty("Track1Data"),
-        makeProperty("Track1DiscretionaryData"),
-        makeProperty("Track2Data"),
-        makeProperty("Track2DiscretionaryData"),
-        makeProperty("Track3Data"),
-        makeProperty("TracksToRead"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("Track4Data"),
-        makeProperty("TransmitSentinels"),
-        makeProperty("EncodingMaxLength"),
-        makeProperty("TracksToWrite"),
-        makeProperty("AdditionalSecurityInformation"),
-        makeProperty("CardAuthenticationData"),
-        makeProperty("CardAuthenticationDataLength"),
-        makeProperty("CardPropertyList"),
-        makeProperty("CardType"),
-        makeProperty("CardTypeList"),
-        makeProperty("DataEncryptionAlgorithm"),
-        makeProperty("DeviceAuthenticated"),
-        makeProperty("DeviceAuthenticationProtocol"),
-        makeProperty("Track1EncryptedData"),
-        makeProperty("Track1EncryptedDataLength"),
-        makeProperty("Track2EncryptedData"),
-        makeProperty("Track2EncryptedDataLength"),
-        makeProperty("Track3EncryptedData"),
-        makeProperty("Track3EncryptedDataLength"),
-        makeProperty("Track4EncryptedData"),
-        makeProperty("Track4EncryptedDataLength"),
-        makeProperty("WriteCardType"),
-
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.MSR.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.MSR.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.MSR.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCardAuthentication"),
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapDataEncryption"),
+                makeProperty("CapDeviceAuthentication"),
+                makeProperty("CapISO"),
+                makeProperty("CapJISOne"),
+                makeProperty("CapJISTwo"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapTrackDataMasking"),
+                makeProperty("CapTransmitSentinels"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapWritableTracks"),
+                
+                // Properties
+                makeProperty("AccountNumber"),
+                makeProperty("AdditionalSecurityInformation"),
+                makeProperty("AutoDisable"),
+                makeProperty("CardAuthenticationData"),
+                makeProperty("CardAuthenticationDataLength"),
+                makeProperty("CardPropertyList"),
+                makeProperty("CardType"),
+                makeProperty("CardTypeList"),
+                makeProperty("DataCount"),
+                makeProperty("DataEncryptionAlgorithm"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("DecodeData"),
+                makeProperty("DeviceAuthenticated"),
+                makeProperty("DeviceAuthenticationProtocol"),
+                makeProperty("EncodingMaxLength"),
+                makeProperty("ErrorReportingType"),
+                makeProperty("ExpirationDate"),
+                makeProperty("FirstName"),
+                makeProperty("MiddleInitial"),
+                makeProperty("ParseDecodeData"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("ServiceCode"),
+                makeProperty("Suffix"),
+                makeProperty("Surname"),
+                makeProperty("Title"),
+                makeProperty("Track1Data"),
+                makeProperty("Track1DiscretionaryData"),
+                makeProperty("Track1EncryptedData"),
+                makeProperty("Track1EncryptedDataLength"),
+                makeProperty("Track2Data"),
+                makeProperty("Track2DiscretionaryData"),
+                makeProperty("Track2EncryptedData"),
+                makeProperty("Track2EncryptedDataLength"),
+                makeProperty("Track3Data"),
+                makeProperty("Track3EncryptedData"),
+                makeProperty("Track3EncryptedDataLength"),
+                makeProperty("Track4Data"),
+                makeProperty("Track4EncryptedData"),
+                makeProperty("Track4EncryptedDataLength"),
+                makeProperty("TracksToRead"),
+                makeProperty("TracksToWrite"),
+                makeProperty("TransmitSentinels"),
+                makeProperty("WriteCardType")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.MSR.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

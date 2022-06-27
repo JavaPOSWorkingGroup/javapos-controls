@@ -28,96 +28,95 @@ import java.lang.reflect.*;
 public class PINPadBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.PINPad.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.PINPad.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapDisplay"),
-        makeProperty("CapLanguage"),
-        makeProperty("CapKeyboard"),
-        makeProperty("CapMACCalculation"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTone"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-
-        // Properties
-        makeProperty("AccountNumber"),
-        makeProperty("AdditionalSecurityInformation"),
-        makeProperty("Amount"),
-        makeProperty("AvailableLanguagesList"),
-        makeProperty("AvailablePromptsList"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("EncryptedPIN"),
-        makeProperty("MaximumPINLength"),
-        makeProperty("MerchantID"),
-        makeProperty("MinimumPINLength"),
-        makeProperty("PINEntryEnabled"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("Prompt"),
-        makeProperty("PromptLanguage"),
-        makeProperty("TerminalID"),
-        makeProperty("Track1Data"),
-        makeProperty("Track2Data"),
-        makeProperty("Track3Data"),
-        makeProperty("TransactionType"),
-        makeProperty("Track4Data"),
-
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.PINPad.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.PINPad.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.PINPad.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapDisplay"),
+                makeProperty("CapKeyboard"),
+                makeProperty("CapLanguage"),
+                makeProperty("CapMACCalculation"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapTone"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("AccountNumber"),
+                makeProperty("AdditionalSecurityInformation"),
+                makeProperty("Amount"),
+                makeProperty("AvailableLanguagesList"),
+                makeProperty("AvailablePromptsList"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("EncryptedPIN"),
+                makeProperty("MaximumPINLength"),
+                makeProperty("MerchantID"),
+                makeProperty("MinimumPINLength"),
+                makeProperty("PINEntryEnabled"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("Prompt"),
+                makeProperty("PromptLanguage"),
+                makeProperty("TerminalID"),
+                makeProperty("Track1Data"),
+                makeProperty("Track2Data"),
+                makeProperty("Track3Data"),
+                makeProperty("Track4Data"),
+                makeProperty("TransactionType")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.PINPad.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

@@ -28,123 +28,148 @@ import java.lang.reflect.*;
 public class ElectronicValueRWBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.ElectronicValueRW.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.ElectronicValueRW.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapActivateService"),
-        makeProperty("CapAddValue"),
-        makeProperty("CapCancelValue"),
-        makeProperty("CapCardSensor"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapDetectionControl"),
-        makeProperty("CapElectronicMoney"),
-        makeProperty("CapEnumerateCardServices"),
-        makeProperty("CapIndirectTransactionLog"),
-        makeProperty("CapLockTerminal"),
-        makeProperty("CapLogStatus"),
-        makeProperty("CapMediumID"),
-        makeProperty("CapPoint"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapRealTimeData"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapSubtractValue"),
-        makeProperty("CapTransaction"),
-        makeProperty("CapTransactionLog"),
-        makeProperty("CapUnlockTerminal"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapUpdateKey"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapVoucher"),
-        makeProperty("CapWriteValue"),
-        makeProperty("CapPINDevice"),
-        makeProperty("TrainingMode"),
-
-        // Properties
-        makeProperty("AccountNumber"),
-        makeProperty("AdditionalSecurityInformation"),
-        makeProperty("Amount"),
-        makeProperty("ApprovalCode"),
-        makeProperty("AsyncMode"),
-        makeProperty("AutoDisable"),
-        makeProperty("Balance"),
-        makeProperty("BalanceOfPoint"),
-        makeProperty("CardServiceList"),
-        makeProperty("CurrentService"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("DetectionControl"),
-        makeProperty("DetectionStatus"),
-        makeProperty("ExpirationDate"),
-        makeProperty("LastUsedDate"),
-        makeProperty("LogStatus"),
-        makeProperty("MediumID"),
-        makeProperty("OutputID"),
-        makeProperty("Point"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("ReaderWriterServiceList"),
-        makeProperty("SequenceNumber"),
-        makeProperty("SettledAmount"),
-        makeProperty("SettledPoint"),
-        makeProperty("TransactionLog"),
-        makeProperty("VoucherID"),
-        makeProperty("VoucherIDList"),
-        makeProperty("PINEntry"),
-        makeProperty("TrainingModeState"),
-
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.ElectronicValueRW.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.ElectronicValueRW.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.ElectronicValueRW.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapActivateService"),
+                makeProperty("CapAddValue"),
+                makeProperty("CapAdditionalSecurityInformation"),
+                makeProperty("CapAuthorizeCompletion"),
+                makeProperty("CapAuthorizePreSales"),
+                makeProperty("CapAuthorizeRefund"),
+                makeProperty("CapAuthorizeVoid"),
+                makeProperty("CapAuthorizeVoidPreSales"),
+                makeProperty("CapCancelValue"),
+                makeProperty("CapCardSensor"),
+                makeProperty("CapCashDeposit"),
+                makeProperty("CapCenterResultCode"),
+                makeProperty("CapCheckCard"),
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapDailyLog"),
+                makeProperty("CapDetectionControl"),
+                makeProperty("CapElectronicMoney"),
+                makeProperty("CapEnumerateCardServices"),
+                makeProperty("CapIndirectTransactionLog"),
+                makeProperty("CapInstallments"),
+                makeProperty("CapLockTerminal"),
+                makeProperty("CapLogStatus"),
+                makeProperty("CapMediumID"),
+                makeProperty("CapMembershipCertificate"),
+                makeProperty("CapPINDevice"),
+                makeProperty("CapPaymentDetail"),
+                makeProperty("CapPoint"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapRealTimeData"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapSubtractValue"),
+                makeProperty("CapTaxOthers"),
+                makeProperty("CapTrainingMode"),
+                makeProperty("CapTransaction"),
+                makeProperty("CapTransactionLog"),
+                makeProperty("CapTransactionNumber"),
+                makeProperty("CapUnlockTerminal"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateKey"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapVoucher"),
+                makeProperty("CapWriteValue"),
+                
+                // Properties
+                makeProperty("AccountNumber"),
+                makeProperty("AdditionalSecurityInformation"),
+                makeProperty("Amount"),
+                makeProperty("ApprovalCode"),
+                makeProperty("AsyncMode"),
+                makeProperty("AutoDisable"),
+                makeProperty("Balance"),
+                makeProperty("BalanceOfPoint"),
+                makeProperty("CardCompanyID"),
+                makeProperty("CardServiceList"),
+                makeProperty("CenterResultCode"),
+                makeProperty("CurrentService"),
+                makeProperty("DailyLog"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("DetectionControl"),
+                makeProperty("DetectionStatus"),
+                makeProperty("ExpirationDate"),
+                makeProperty("LastUsedDate"),
+                makeProperty("LogStatus"),
+                makeProperty("MediumID"),
+                makeProperty("OutputID"),
+                makeProperty("PINEntry"),
+                makeProperty("PaymentCondition"),
+                makeProperty("PaymentDetail"),
+                makeProperty("PaymentMedia"),
+                makeProperty("Point"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("ReaderWriterServiceList"),
+                makeProperty("SequenceNumber"),
+                makeProperty("ServiceType"),
+                makeProperty("SettledAmount"),
+                makeProperty("SettledPoint"),
+                makeProperty("SlipNumber"),
+                makeProperty("TrainingModeState"),
+                makeProperty("TransactionLog"),
+                makeProperty("TransactionNumber"),
+                makeProperty("TransactionType"),
+                makeProperty("VoucherID"),
+                makeProperty("VoucherIDList")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.ElectronicValueRW.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
+                makeEvent("StatusUpdate"),
+                makeEvent("Transition")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

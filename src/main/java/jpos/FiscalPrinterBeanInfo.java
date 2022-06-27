@@ -28,172 +28,172 @@ import java.lang.reflect.*;
 public class FiscalPrinterBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.FiscalPrinter.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.FiscalPrinter.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapAdditionalLines"),
-        makeProperty("CapAmountAdjustment"),
-        makeProperty("CapAmountNotPaid"),
-        makeProperty("CapCheckTotal"),
-        makeProperty("CapCoverSensor"),
-        makeProperty("CapDoubleWidth"),
-        makeProperty("CapDuplicateReceipt"),
-        makeProperty("CapFixedOutput"),
-        makeProperty("CapHasVatTable"),
-        makeProperty("CapIndependentHeader"),
-        makeProperty("CapItemList"),
-        makeProperty("CapJrnEmptySensor"),
-        makeProperty("CapJrnNearEndSensor"),
-        makeProperty("CapJrnPresent"),
-        makeProperty("CapNonFiscalMode"),
-        makeProperty("CapOrderAdjustmentFirst"),
-        makeProperty("CapPercentAdjustment"),
-        makeProperty("CapPositiveAdjustment"),
-        makeProperty("CapPowerLossReport"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapPredefinedPaymentLines"),
-        makeProperty("CapReceiptNotPaid"),
-        makeProperty("CapRecEmptySensor"),
-        makeProperty("CapRecNearEndSensor"),
-        makeProperty("CapRecPresent"),
-        makeProperty("CapRemainingFiscalMemory"),
-        makeProperty("CapReservedWord"),
-        makeProperty("CapSetHeader"),
-        makeProperty("CapSetPOSID"),
-        makeProperty("CapSetStoreFiscalID"),
-        makeProperty("CapSetTrailer"),
-        makeProperty("CapSetVatTable"),
-        makeProperty("CapSlpEmptySensor"),
-        makeProperty("CapSlpFiscalDocument"),
-        makeProperty("CapSlpFullSlip"),
-        makeProperty("CapSlpNearEndSensor"),
-        makeProperty("CapSlpPresent"),
-        makeProperty("CapSlpValidation"),
-        makeProperty("CapSubAmountAdjustment"),
-        makeProperty("CapSubPercentAdjustment"),
-        makeProperty("CapSubtotal"),
-        makeProperty("CapTrainingMode"),
-        makeProperty("CapValidateJournal"),
-        makeProperty("CapXReport"),
-        makeProperty("CapAdditionalHeader"),
-        makeProperty("CapAdditionalTrailer"),
-        makeProperty("CapChangeDue"),
-        makeProperty("CapEmptyReceiptIsVoidable"),
-        makeProperty("CapFiscalReceiptStation"),
-        makeProperty("CapFiscalReceiptType"),
-        makeProperty("CapMultiContractor"),
-        makeProperty("CapOnlyVoidLastItem"),
-        makeProperty("CapPackageAdjustment"),
-        makeProperty("CapPostPreLine"),
-        makeProperty("CapSetCurrency"),
-        makeProperty("CapTotalizerType"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapPositiveSubtotalAdjustment"),
-
-        // Properties
-        makeProperty("AmountDecimalPlace"),
-        makeProperty("AsyncMode"),
-        makeProperty("CheckTotal"),
-        makeProperty("CountryCode"),
-        makeProperty("CoverOpen"),
-        makeProperty("DayOpened"),
-        makeProperty("DescriptionLength"),
-        makeProperty("DuplicateReceipt"),
-        makeProperty("ErrorLevel"),
-        makeProperty("ErrorOutID"),
-        makeProperty("ErrorState"),
-        makeProperty("ErrorStation"),
-        makeProperty("ErrorString"),
-        makeProperty("FlagWhenIdle"),
-        makeProperty("JrnEmpty"),
-        makeProperty("JrnNearEnd"),
-        makeProperty("MessageLength"),
-        makeProperty("NumHeaderLines"),
-        makeProperty("NumTrailerLines"),
-        makeProperty("NumVatRates"),
-        makeProperty("OutputID"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("PredefinedPaymentLines"),
-        makeProperty("PrinterState"),
-        makeProperty("QuantityDecimalPlaces"),
-        makeProperty("QuantityLength"),
-        makeProperty("RecEmpty"),
-        makeProperty("RecNearEnd"),
-        makeProperty("RemainingFiscalMemory"),
-        makeProperty("ReservedWord"),
-        makeProperty("SlpEmpty"),
-        makeProperty("SlpNearEnd"),
-        makeProperty("SlipSelection"),
-        makeProperty("TrainingModeActive"),
-        makeProperty("ActualCurrency"),
-        makeProperty("AdditionalHeader"),
-        makeProperty("AdditionalTrailer"),
-        makeProperty("ChangeDue"),
-        makeProperty("ContractorId"),
-        makeProperty("DateType"),
-        makeProperty("FiscalReceiptStation"),
-        makeProperty("FiscalReceiptType"),
-        makeProperty("MessageType"),
-        makeProperty("PostLine"),
-        makeProperty("PreLine"),
-        makeProperty("TotalizerType"),
-        makeProperty("AmountDecimalPlaces")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.FiscalPrinter.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.FiscalPrinter.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.FiscalPrinter.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapAdditionalHeader"),
+                makeProperty("CapAdditionalLines"),
+                makeProperty("CapAdditionalTrailer"),
+                makeProperty("CapAmountAdjustment"),
+                makeProperty("CapAmountNotPaid"),
+                makeProperty("CapChangeDue"),
+                makeProperty("CapCheckTotal"),
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapCoverSensor"),
+                makeProperty("CapDoubleWidth"),
+                makeProperty("CapDuplicateReceipt"),
+                makeProperty("CapEmptyReceiptIsVoidable"),
+                makeProperty("CapFiscalReceiptStation"),
+                makeProperty("CapFiscalReceiptType"),
+                makeProperty("CapFixedOutput"),
+                makeProperty("CapHasVatTable"),
+                makeProperty("CapIndependentHeader"),
+                makeProperty("CapItemList"),
+                makeProperty("CapJrnEmptySensor"),
+                makeProperty("CapJrnNearEndSensor"),
+                makeProperty("CapJrnPresent"),
+                makeProperty("CapMultiContractor"),
+                makeProperty("CapNonFiscalMode"),
+                makeProperty("CapOnlyVoidLastItem"),
+                makeProperty("CapOrderAdjustmentFirst"),
+                makeProperty("CapPackageAdjustment"),
+                makeProperty("CapPercentAdjustment"),
+                makeProperty("CapPositiveAdjustment"),
+                makeProperty("CapPositiveSubtotalAdjustment"),
+                makeProperty("CapPostPreLine"),
+                makeProperty("CapPowerLossReport"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapPredefinedPaymentLines"),
+                makeProperty("CapRecEmptySensor"),
+                makeProperty("CapRecNearEndSensor"),
+                makeProperty("CapRecPresent"),
+                makeProperty("CapReceiptNotPaid"),
+                makeProperty("CapRemainingFiscalMemory"),
+                makeProperty("CapReservedWord"),
+                makeProperty("CapSetCurrency"),
+                makeProperty("CapSetHeader"),
+                makeProperty("CapSetPOSID"),
+                makeProperty("CapSetStoreFiscalID"),
+                makeProperty("CapSetTrailer"),
+                makeProperty("CapSetVatTable"),
+                makeProperty("CapSlpEmptySensor"),
+                makeProperty("CapSlpFiscalDocument"),
+                makeProperty("CapSlpFullSlip"),
+                makeProperty("CapSlpNearEndSensor"),
+                makeProperty("CapSlpPresent"),
+                makeProperty("CapSlpValidation"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapSubAmountAdjustment"),
+                makeProperty("CapSubPercentAdjustment"),
+                makeProperty("CapSubtotal"),
+                makeProperty("CapTotalizerType"),
+                makeProperty("CapTrainingMode"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapValidateJournal"),
+                makeProperty("CapXReport"),
+                
+                // Properties
+                makeProperty("ActualCurrency"),
+                makeProperty("AdditionalHeader"),
+                makeProperty("AdditionalTrailer"),
+                makeProperty("AmountDecimalPlace"),
+                makeProperty("AmountDecimalPlaces"),
+                makeProperty("AsyncMode"),
+                makeProperty("ChangeDue"),
+                makeProperty("CheckTotal"),
+                makeProperty("ContractorId"),
+                makeProperty("CountryCode"),
+                makeProperty("CoverOpen"),
+                makeProperty("DateType"),
+                makeProperty("DayOpened"),
+                makeProperty("DescriptionLength"),
+                makeProperty("DuplicateReceipt"),
+                makeProperty("ErrorLevel"),
+                makeProperty("ErrorOutID"),
+                makeProperty("ErrorState"),
+                makeProperty("ErrorStation"),
+                makeProperty("ErrorString"),
+                makeProperty("FiscalReceiptStation"),
+                makeProperty("FiscalReceiptType"),
+                makeProperty("FlagWhenIdle"),
+                makeProperty("JrnEmpty"),
+                makeProperty("JrnNearEnd"),
+                makeProperty("MessageLength"),
+                makeProperty("MessageType"),
+                makeProperty("NumHeaderLines"),
+                makeProperty("NumTrailerLines"),
+                makeProperty("NumVatRates"),
+                makeProperty("OutputID"),
+                makeProperty("PostLine"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("PreLine"),
+                makeProperty("PredefinedPaymentLines"),
+                makeProperty("PrinterState"),
+                makeProperty("QuantityDecimalPlaces"),
+                makeProperty("QuantityLength"),
+                makeProperty("RecEmpty"),
+                makeProperty("RecNearEnd"),
+                makeProperty("RemainingFiscalMemory"),
+                makeProperty("ReservedWord"),
+                makeProperty("SlipSelection"),
+                makeProperty("SlpEmpty"),
+                makeProperty("SlpNearEnd"),
+                makeProperty("TotalizerType"),
+                makeProperty("TrainingModeActive")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.FiscalPrinter.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

@@ -28,86 +28,86 @@ import java.lang.reflect.*;
 public class SmartCardRWBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.SmartCardRW.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.SmartCardRW.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapCardErrorDetection"),
-        makeProperty("CapInterfaceMode"),
-        makeProperty("CapIsoEmvMode"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapSCPresentSensor"),
-        makeProperty("CapSCSlots"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapTransmissionProtocol"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapUpdateFirmware"),
-
-        // Properties
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("InterfaceMode"),
-        makeProperty("IsoEmvMode"),
-        makeProperty("OutputID"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("SCPresentSensor"),
-        makeProperty("SCSlot"),
-        makeProperty("TransactionInProgress"),
-        makeProperty("TransmissionProtocol")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.SmartCardRW.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.SmartCardRW.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.SmartCardRW.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("OutputComplete"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCardErrorDetection"),
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapInterfaceMode"),
+                makeProperty("CapIsoEmvMode"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapSCPresentSensor"),
+                makeProperty("CapSCSlots"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapTransmissionProtocol"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                
+                // Properties
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("InterfaceMode"),
+                makeProperty("IsoEmvMode"),
+                makeProperty("OutputID"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("SCPresentSensor"),
+                makeProperty("SCSlot"),
+                makeProperty("TransactionInProgress"),
+                makeProperty("TransmissionProtocol")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.SmartCardRW.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

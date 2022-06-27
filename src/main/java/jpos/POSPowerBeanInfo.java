@@ -28,88 +28,88 @@ import java.lang.reflect.*;
 public class POSPowerBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.POSPower.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.POSPower.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapFanAlarm"),
-        makeProperty("CapHeatAlarm"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapQuickCharge"),
-        makeProperty("CapShutdownPOS"),
-        makeProperty("CapUPSChargeState"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapBatteryCapacityRemaining"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapRestartPOS"),
-        makeProperty("CapStandbyPOS"),
-        makeProperty("CapSuspendPOS"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapVariableBatteryCriticallyLowThreshold"),
-        makeProperty("CapVariableBatteryLowThreshold"),
-
-        // Properties
-        makeProperty("EnforcedShutdownDelayTime"),
-        makeProperty("PowerFailDelayTime"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("QuickChargeMode"),
-        makeProperty("QuickChargeTime"),
-        makeProperty("UPSChargeState"),
-        makeProperty("BatteryCapacityRemaining"),
-        makeProperty("BatteryCriticallyLowThreshold"),
-        makeProperty("BatteryLowThreshold"),
-        makeProperty("PowerSource")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.POSPower.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.POSPower.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.POSPower.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("DirectIO"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapBatteryCapacityRemaining"),
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapFanAlarm"),
+                makeProperty("CapHeatAlarm"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapQuickCharge"),
+                makeProperty("CapRestartPOS"),
+                makeProperty("CapShutdownPOS"),
+                makeProperty("CapStandbyPOS"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapSuspendPOS"),
+                makeProperty("CapUPSChargeState"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapVariableBatteryCriticallyLowThreshold"),
+                makeProperty("CapVariableBatteryLowThreshold"),
+                
+                // Properties
+                makeProperty("BatteryCapacityRemaining"),
+                makeProperty("BatteryCriticallyLowThreshold"),
+                makeProperty("BatteryLowThreshold"),
+                makeProperty("EnforcedShutdownDelayTime"),
+                makeProperty("PowerFailDelayTime"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerSource"),
+                makeProperty("PowerState"),
+                makeProperty("QuickChargeMode"),
+                makeProperty("QuickChargeTime"),
+                makeProperty("UPSChargeState")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.POSPower.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("DirectIO"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }

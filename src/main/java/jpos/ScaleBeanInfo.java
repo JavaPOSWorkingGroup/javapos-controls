@@ -28,96 +28,96 @@ import java.lang.reflect.*;
 public class ScaleBeanInfo
   extends SimpleBeanInfo
 {
-  public BeanDescriptor getBeanDescriptor()
-  {
-    return new BeanDescriptor(jpos.Scale.class);
-  }
-
-  public PropertyDescriptor makeProperty(String propertyName)
-    throws IntrospectionException
-  {
-    return new PropertyDescriptor(propertyName, jpos.Scale.class);
-  }
-
-  public PropertyDescriptor[] getPropertyDescriptors()
-  {
-    try
+    public BeanDescriptor getBeanDescriptor()
     {
-      PropertyDescriptor[] properties =
-      {
-        // Capabilities
-        makeProperty("CapDisplay"),
-        makeProperty("CapDisplayText"),
-        makeProperty("CapPriceCalculating"),
-        makeProperty("CapPowerReporting"),
-        makeProperty("CapTareWeight"),
-        makeProperty("CapZeroScale"),
-        makeProperty("CapStatisticsReporting"),
-        makeProperty("CapUpdateStatistics"),
-        makeProperty("CapCompareFirmwareVersion"),
-        makeProperty("CapStatusUpdate"),
-        makeProperty("CapUpdateFirmware"),
-        makeProperty("CapFreezeValue"),
-        makeProperty("CapReadLiveWeightWithTare"),
-        makeProperty("CapSetPriceCalculationMode"),
-        makeProperty("CapSetUnitPriceWithWeightUnit"),
-        makeProperty("CapSpecialTare"),
-        makeProperty("CapTarePriority"),
-
-        // Properties
-        makeProperty("MaximumWeight"),
-        makeProperty("WeightUnit"),
-        makeProperty("AsyncMode"),
-        makeProperty("AutoDisable"),
-        makeProperty("DataCount"),
-        makeProperty("DataEventEnabled"),
-        makeProperty("MaxDisplayTextChars"),
-        makeProperty("SalesPrice"),
-        makeProperty("TareWeight"),
-        makeProperty("UnitPrice"),
-        makeProperty("PowerNotify"),
-        makeProperty("PowerState"),
-        makeProperty("ScaleLiveWeight"),
-        makeProperty("StatusNotify"),
-        makeProperty("ZeroValid"),
-        makeProperty("MinimumWeight")
-      };
-
-      return properties;
+        return new BeanDescriptor(jpos.Scale.class);
     }
-    catch(Exception e)
+
+    public PropertyDescriptor makeProperty(String propertyName)
+        throws IntrospectionException
     {
-      return super.getPropertyDescriptors();
+        return new PropertyDescriptor(propertyName, jpos.Scale.class);
     }
-  }
 
-  public EventSetDescriptor makeEvent(String eventName)
-    throws IntrospectionException, ClassNotFoundException
-  {
-    String listener = "jpos.events." + eventName + "Listener";
-    return new EventSetDescriptor(jpos.Scale.class,
-                                  eventName,
-                                  Class.forName(listener),
-                                  eventName + "Occurred");
-  }
-
-  public EventSetDescriptor[] getEventSetDescriptors()
-  {
-    try
+    public PropertyDescriptor[] getPropertyDescriptors()
     {
-      EventSetDescriptor[] events =
-      {
-        makeEvent("Data"),
-        makeEvent("DirectIO"),
-        makeEvent("Error"),
-        makeEvent("StatusUpdate")
-      };
+        try
+        {
+            PropertyDescriptor[] properties =
+            {
+                // Capabilities
+                makeProperty("CapCompareFirmwareVersion"),
+                makeProperty("CapDisplay"),
+                makeProperty("CapDisplayText"),
+                makeProperty("CapFreezeValue"),
+                makeProperty("CapPowerReporting"),
+                makeProperty("CapPriceCalculating"),
+                makeProperty("CapReadLiveWeightWithTare"),
+                makeProperty("CapSetPriceCalculationMode"),
+                makeProperty("CapSetUnitPriceWithWeightUnit"),
+                makeProperty("CapSpecialTare"),
+                makeProperty("CapStatisticsReporting"),
+                makeProperty("CapStatusUpdate"),
+                makeProperty("CapTarePriority"),
+                makeProperty("CapTareWeight"),
+                makeProperty("CapUpdateFirmware"),
+                makeProperty("CapUpdateStatistics"),
+                makeProperty("CapZeroScale"),
+                
+                // Properties
+                makeProperty("AsyncMode"),
+                makeProperty("AutoDisable"),
+                makeProperty("DataCount"),
+                makeProperty("DataEventEnabled"),
+                makeProperty("MaxDisplayTextChars"),
+                makeProperty("MaximumWeight"),
+                makeProperty("MinimumWeight"),
+                makeProperty("PowerNotify"),
+                makeProperty("PowerState"),
+                makeProperty("SalesPrice"),
+                makeProperty("ScaleLiveWeight"),
+                makeProperty("StatusNotify"),
+                makeProperty("TareWeight"),
+                makeProperty("UnitPrice"),
+                makeProperty("WeightUnit"),
+                makeProperty("ZeroValid")
+            };
 
-      return events;
+            return properties;
+        }
+        catch(Exception e)
+        {
+            return super.getPropertyDescriptors();
+        }
     }
-    catch(Exception e)
+
+    public EventSetDescriptor makeEvent(String eventName)
+        throws IntrospectionException, ClassNotFoundException
     {
-      return super.getEventSetDescriptors();
+        String listener = "jpos.events." + eventName + "Listener";
+        return new EventSetDescriptor(jpos.Scale.class,
+                                      eventName,
+                                      Class.forName(listener),
+                                      eventName + "Occurred");
     }
-  }
+
+    public EventSetDescriptor[] getEventSetDescriptors()
+    {
+        try
+        {
+            EventSetDescriptor[] events =
+            {
+                makeEvent("Data"),
+                makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("StatusUpdate")
+            };
+            
+            return events;
+        }
+        catch(Exception e)
+        {
+            return super.getEventSetDescriptors();
+        }
+    }
 }
