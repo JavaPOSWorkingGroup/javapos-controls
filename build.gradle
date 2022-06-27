@@ -27,11 +27,11 @@ wrapper {
 
 def artifactName = 'javapos-controls'
 group = 'org.javapos'
-def uposVersion = '1.14'
+def uposVersion = '1.15'
 version="${uposVersion}.2" // the last part after dot is the build/release version
 
 // dependency versions
-def javaposContractsVersion = "$uposVersion.4"
+def javaposContractsVersion = "$uposVersion.0-RC1"
 
 
 ///////////////////////////////////////////////////////////////////////////////
