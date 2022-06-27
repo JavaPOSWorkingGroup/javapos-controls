@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * PointCardRW device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class PointCardRWTest {
 
@@ -59,6 +59,7 @@ public class PointCardRWTest {
     private static final String SERVICE_112 = "PointCardRWTestService112";
     private static final String SERVICE_113 = "PointCardRWTestService113";
     private static final String SERVICE_114 = "PointCardRWTestService114";
+    private static final String SERVICE_115 = "PointCardRWTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -76,6 +77,7 @@ public class PointCardRWTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService15ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService16ReturningVersionTooLarge";
@@ -86,6 +88,7 @@ public class PointCardRWTest {
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "PointCardRWTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -94,10 +97,10 @@ public class PointCardRWTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_15, "1.5", SERVICE_15));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_16, "1.6", SERVICE_16));
@@ -109,6 +112,7 @@ public class PointCardRWTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE, "1.5", SERVICE_15, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE, "1.6", SERVICE_16, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -119,6 +123,7 @@ public class PointCardRWTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("PointCardRW", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -143,6 +148,7 @@ public class PointCardRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE);
@@ -153,6 +159,7 @@ public class PointCardRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -180,9 +187,9 @@ public class PointCardRWTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -224,7 +231,7 @@ public class PointCardRWTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -251,7 +258,7 @@ public class PointCardRWTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -4738,6 +4745,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("PointCardRW.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService15ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
@@ -4829,6 +4847,17 @@ public class PointCardRWTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -4939,6 +4968,17 @@ public class PointCardRWTest {
     public void testGetCapBoldCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapBold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapBoldCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapBold();
         }
         catch (JposException e) {
@@ -5058,6 +5098,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCardEntranceSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCardEntranceSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5163,6 +5214,17 @@ public class PointCardRWTest {
     public void testGetCapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCharacterSet();
         }
         catch (JposException e) {
@@ -5282,6 +5344,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCleanCardCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCleanCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5394,6 +5467,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapClearPrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapClearPrint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
@@ -5468,6 +5552,17 @@ public class PointCardRWTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -5587,6 +5682,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5692,6 +5798,17 @@ public class PointCardRWTest {
     public void testGetCapDwideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapDwide();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDwideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapDwide();
         }
         catch (JposException e) {
@@ -5811,6 +5928,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapDwideDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDwideDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5916,6 +6044,17 @@ public class PointCardRWTest {
     public void testGetCapItalicCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapItalic();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapItalicCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapItalic();
         }
         catch (JposException e) {
@@ -6035,6 +6174,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapLeft90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapLeft90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapMapCharacterSetFailsOnServiceVersionBeforeAdded() {
@@ -6131,6 +6281,17 @@ public class PointCardRWTest {
     public void testGetCapMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapMapCharacterSet();
         }
         catch (JposException e) {
@@ -6250,6 +6411,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6355,6 +6527,17 @@ public class PointCardRWTest {
     public void testGetCapPrintCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapPrint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapPrint();
         }
         catch (JposException e) {
@@ -6474,6 +6657,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPrintModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPrintMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6579,6 +6773,17 @@ public class PointCardRWTest {
     public void testGetCapRight90CalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRight90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRight90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRight90();
         }
         catch (JposException e) {
@@ -6698,6 +6903,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapRotate180CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRotate180();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -6783,6 +6999,17 @@ public class PointCardRWTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -6902,6 +7129,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTracksToReadCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTracksToRead();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7014,6 +7252,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTracksToWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTracksToWrite();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -7088,6 +7337,17 @@ public class PointCardRWTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -7180,6 +7440,17 @@ public class PointCardRWTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -7292,6 +7563,17 @@ public class PointCardRWTest {
     public void testGetCardStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCardState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCardStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCardState();
         }
         catch (JposException e) {
@@ -7412,6 +7694,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCharacterSetCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -7515,6 +7808,17 @@ public class PointCardRWTest {
     public void testSetCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCharacterSet(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCharacterSet(0);
         }
         catch (JposException e) {
@@ -7626,6 +7930,17 @@ public class PointCardRWTest {
     public void testGetCharacterSetListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCharacterSetList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCharacterSetListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCharacterSetList();
         }
         catch (JposException e) {
@@ -7745,6 +8060,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7857,6 +8183,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7962,6 +8299,17 @@ public class PointCardRWTest {
     public void testGetDataCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -8082,6 +8430,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -8185,6 +8544,17 @@ public class PointCardRWTest {
     public void testSetDataEventEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -8304,6 +8674,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -8407,6 +8788,17 @@ public class PointCardRWTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -8525,6 +8917,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8630,6 +9033,17 @@ public class PointCardRWTest {
     public void testGetFontTypeFaceListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getFontTypeFaceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetFontTypeFaceListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getFontTypeFaceList();
         }
         catch (JposException e) {
@@ -8750,6 +9164,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -8853,6 +9278,17 @@ public class PointCardRWTest {
     public void testSetFreezeEventsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -8972,6 +9408,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLineChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetLineCharsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -9075,6 +9522,17 @@ public class PointCardRWTest {
     public void testSetLineCharsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setLineChars(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setLineChars(0);
         }
         catch (JposException e) {
@@ -9186,6 +9644,17 @@ public class PointCardRWTest {
     public void testGetLineCharsListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getLineCharsList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetLineCharsListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getLineCharsList();
         }
         catch (JposException e) {
@@ -9306,6 +9775,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLineHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetLineHeightCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -9409,6 +9889,17 @@ public class PointCardRWTest {
     public void testSetLineHeightCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setLineHeight(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setLineHeight(0);
         }
         catch (JposException e) {
@@ -9528,6 +10019,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLineSpacing();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetLineSpacingCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -9631,6 +10133,17 @@ public class PointCardRWTest {
     public void testSetLineSpacingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setLineSpacing(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setLineSpacing(0);
         }
         catch (JposException e) {
@@ -9749,6 +10262,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetLineWidthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLineWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
@@ -9853,6 +10377,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_16);
@@ -9947,6 +10482,17 @@ public class PointCardRWTest {
     public void testSetMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMapCharacterSet(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMapCharacterSet(true);
         }
         catch (JposException e) {
@@ -10066,6 +10612,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetMapModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMapMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMapModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -10169,6 +10726,17 @@ public class PointCardRWTest {
     public void testSetMapModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMapMode(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMapModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMapMode(0);
         }
         catch (JposException e) {
@@ -10280,6 +10848,17 @@ public class PointCardRWTest {
     public void testGetMaxLinesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getMaxLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetMaxLinesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getMaxLines();
         }
         catch (JposException e) {
@@ -10399,6 +10978,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10511,6 +11101,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10616,6 +11217,17 @@ public class PointCardRWTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -10736,6 +11348,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -10839,6 +11462,17 @@ public class PointCardRWTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -10950,6 +11584,17 @@ public class PointCardRWTest {
     public void testGetPowerStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPowerState();
         }
         catch (JposException e) {
@@ -11069,6 +11714,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetPrintHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPrintHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11174,6 +11830,17 @@ public class PointCardRWTest {
     public void testGetReadState1CalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getReadState1();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetReadState1CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getReadState1();
         }
         catch (JposException e) {
@@ -11293,6 +11960,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetReadState2CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getReadState2();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11398,6 +12076,17 @@ public class PointCardRWTest {
     public void testGetRecvLength1CalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecvLength1();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecvLength1CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecvLength1();
         }
         catch (JposException e) {
@@ -11517,6 +12206,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetRecvLength2CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecvLength2();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11622,6 +12322,17 @@ public class PointCardRWTest {
     public void testGetSidewaysMaxCharsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSidewaysMaxChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSidewaysMaxCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSidewaysMaxChars();
         }
         catch (JposException e) {
@@ -11741,6 +12452,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetSidewaysMaxLinesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSidewaysMaxLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11846,6 +12568,17 @@ public class PointCardRWTest {
     public void testGetTrack1DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack1Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack1DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack1Data();
         }
         catch (JposException e) {
@@ -11965,6 +12698,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetTrack2DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack2Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12070,6 +12814,17 @@ public class PointCardRWTest {
     public void testGetTrack3DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack3Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack3DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack3Data();
         }
         catch (JposException e) {
@@ -12189,6 +12944,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetTrack4DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack4Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12301,6 +13067,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetTrack5DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack5Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12406,6 +13183,17 @@ public class PointCardRWTest {
     public void testGetTrack6DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack6Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack6DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack6Data();
         }
         catch (JposException e) {
@@ -12526,6 +13314,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetTracksToReadCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTracksToRead();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTracksToReadCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -12629,6 +13428,17 @@ public class PointCardRWTest {
     public void testSetTracksToReadCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setTracksToRead(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTracksToReadCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setTracksToRead(0);
         }
         catch (JposException e) {
@@ -12748,6 +13558,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetTracksToWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTracksToWrite();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTracksToWriteCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -12851,6 +13672,17 @@ public class PointCardRWTest {
     public void testSetTracksToWriteCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setTracksToWrite(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTracksToWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setTracksToWrite(0);
         }
         catch (JposException e) {
@@ -12970,6 +13802,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite1DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite1Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite1DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -13073,6 +13916,17 @@ public class PointCardRWTest {
     public void testSetWrite1DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite1Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite1DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite1Data("");
         }
         catch (JposException e) {
@@ -13192,6 +14046,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite2DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite2Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite2DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -13295,6 +14160,17 @@ public class PointCardRWTest {
     public void testSetWrite2DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite2Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite2DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite2Data("");
         }
         catch (JposException e) {
@@ -13414,6 +14290,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite3DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite3Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite3DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -13517,6 +14404,17 @@ public class PointCardRWTest {
     public void testSetWrite3DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite3Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite3DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite3Data("");
         }
         catch (JposException e) {
@@ -13636,6 +14534,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite4DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite4Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite4DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -13739,6 +14648,17 @@ public class PointCardRWTest {
     public void testSetWrite4DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite4Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite4DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite4Data("");
         }
         catch (JposException e) {
@@ -13858,6 +14778,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite5DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite5Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite5DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -13961,6 +14892,17 @@ public class PointCardRWTest {
     public void testSetWrite5DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite5Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite5DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite5Data("");
         }
         catch (JposException e) {
@@ -14080,6 +15022,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testGetWrite6DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWrite6Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetWrite6DataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -14183,6 +15136,17 @@ public class PointCardRWTest {
     public void testSetWrite6DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setWrite6Data("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetWrite6DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setWrite6Data("");
         }
         catch (JposException e) {
@@ -14294,6 +15258,17 @@ public class PointCardRWTest {
     public void testGetWriteState1CalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getWriteState1();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetWriteState1CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getWriteState1();
         }
         catch (JposException e) {
@@ -14413,6 +15388,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testGetWriteState2CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getWriteState2();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14518,6 +15504,17 @@ public class PointCardRWTest {
     public void testBeginInsertionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.beginInsertion(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginInsertionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.beginInsertion(0);
         }
         catch (JposException e) {
@@ -14636,6 +15633,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testBeginRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginRemoval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCheckHealthCalledOnServiceVersionWhenAdded() throws Exception {
@@ -14740,6 +15748,17 @@ public class PointCardRWTest {
     public void testCheckHealthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.checkHealth(0);
         }
         catch (JposException e) {
@@ -14858,6 +15877,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCleanCardCalledOnServiceVersionWhenAdded() throws Exception {
@@ -14962,6 +15992,17 @@ public class PointCardRWTest {
     public void testCleanCardCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.cleanCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCleanCardCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.cleanCard();
         }
         catch (JposException e) {
@@ -15081,6 +16122,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testClearInputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearInputPropertiesFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -15142,6 +16194,17 @@ public class PointCardRWTest {
     public void testClearInputPropertiesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -15260,6 +16323,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testClearOutputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearPrintWriteCalledOnServiceVersionWhenAdded() throws Exception {
@@ -15364,6 +16438,17 @@ public class PointCardRWTest {
     public void testClearPrintWriteCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearPrintWrite(0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearPrintWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearPrintWrite(0,0,0,0,0);
         }
         catch (JposException e) {
@@ -15483,6 +16568,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -15555,6 +16651,17 @@ public class PointCardRWTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -15673,6 +16780,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndInsertionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -15777,6 +16895,17 @@ public class PointCardRWTest {
     public void testEndInsertionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.endInsertion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndInsertionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.endInsertion();
         }
         catch (JposException e) {
@@ -15895,6 +17024,17 @@ public class PointCardRWTest {
         }
     }
     
+    @Test
+    public void testEndRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.endRemoval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintWriteCalledOnServiceVersionWhenAdded() throws Exception {
@@ -15999,6 +17139,17 @@ public class PointCardRWTest {
     public void testPrintWriteCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.printWrite(0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.printWrite(0,0,0,"");
         }
         catch (JposException e) {
@@ -16118,6 +17269,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -16209,6 +17371,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -16292,6 +17465,17 @@ public class PointCardRWTest {
     public void testRetrieveStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -16411,6 +17595,17 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testRotatePrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.rotatePrint(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -16483,6 +17678,17 @@ public class PointCardRWTest {
     public void testUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -16574,6 +17780,17 @@ public class PointCardRWTest {
     public void testUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -16693,13 +17910,24 @@ public class PointCardRWTest {
     }
     
     @Test
+    public void testValidateDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.validateData("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -16732,7 +17960,7 @@ public class PointCardRWTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -16765,7 +17993,7 @@ public class PointCardRWTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -16798,7 +18026,7 @@ public class PointCardRWTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -16831,7 +18059,7 @@ public class PointCardRWTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

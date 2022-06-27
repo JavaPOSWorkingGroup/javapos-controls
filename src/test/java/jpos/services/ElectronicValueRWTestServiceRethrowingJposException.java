@@ -29,7 +29,7 @@ import jpos.events.*;
  * JavaPOS Device Service class, intended to be used for testing purposes in ElectronicValueRWTest.
  *
  */
-public final class ElectronicValueRWTestServiceRethrowingJposException implements jpos.services.ElectronicValueRWService114, JposServiceInstance {
+public final class ElectronicValueRWTestServiceRethrowingJposException implements jpos.services.ElectronicValueRWService115, JposServiceInstance {
     
     private JposEntry configuration;
     private EventCallbacks callbacks;
@@ -37,11 +37,11 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1015000;
+            return 1016000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1014000;
+            return 1015000;
     }
     
     @Override
@@ -143,6 +143,36 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public boolean getCapAdditionalSecurityInformation() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapAuthorizeCompletion() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapAuthorizePreSales() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapAuthorizeRefund() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapAuthorizeVoid() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapAuthorizeVoidPreSales() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapCancelValue() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -153,7 +183,27 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public boolean getCapCashDeposit() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapCenterResultCode() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapCheckCard() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapCompareFirmwareVersion() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public int getCapDailyLog() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -178,6 +228,11 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public boolean getCapInstallments() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapLockTerminal() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -193,7 +248,17 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public boolean getCapMembershipCertificate() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapPINDevice() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapPaymentDetail() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -223,6 +288,11 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public boolean getCapTaxOthers() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean CapTrainingMode() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -234,6 +304,11 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public boolean getCapTransactionLog() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapTransactionNumber() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -268,7 +343,17 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public String getCardCompanyID() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public String getCardServiceList() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public String getCenterResultCode() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -289,6 +374,11 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public void setCurrentService(String currentService) throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public String getDailyLog() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -388,6 +478,26 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public int getPaymentCondition() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public String getPaymentDetail() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public int getPaymentMedia() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void setPaymentMedia(int paymentMedia) throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public String getPhysicalDeviceDescription() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -433,12 +543,22 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public int getServiceType() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public long getSettledAmount() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
     @Override
     public long getSettledPoint() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public String getSlipNumber() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -454,6 +574,16 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public String getTransactionLog() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public String getTransactionNumber() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public int getTransactionType() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -478,7 +608,25 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public void accessDailyLog(int sequenceNumber, int type, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void accessData(int dataType, int[] data, Object[] obj) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public void accessLog(int sequenceNumber, int type, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void activateEVService(int[] data, Object[] obj) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -491,6 +639,42 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public void addValue(int sequenceNumber, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizeCompletion(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizePreSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizeRefund(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizeSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizeVoid(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void authorizeVoidPreSales(int sequenceNumber, long amount, long taxOthers, int timeout) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -520,7 +704,25 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public void cashDeposit(int sequenceNumber, long amount, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void checkCard(int sequenceNumber, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public void checkHealth(int level) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void checkServiceRegistrationToMedium(int sequenceNumber, int timeout) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -562,7 +764,19 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public void closeDailyEVService(int[] data, Object[] obj) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public void compareFirmwareVersion(String firmwareFileName, int[] result) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void deactivateEVService(int[] data, Object[] obj) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -592,6 +806,12 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     }
     
     @Override
+    public void openDailyEVService(int[] data, Object[] obj) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public void queryLastSuccessfulTransactionResult() throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
@@ -599,6 +819,12 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public void readValue(int sequenceNumber, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void registerServiceToMedium(int sequenceNumber, int timeout) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
@@ -647,6 +873,18 @@ public final class ElectronicValueRWTestServiceRethrowingJposException implement
     
     @Override
     public void unlockTerminal() throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void unregisterServiceToMedium(int sequenceNumber, int timeout) throws JposException 
+    {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void updateData(int dataType, int[] data, Object[] obj) throws JposException 
     {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }

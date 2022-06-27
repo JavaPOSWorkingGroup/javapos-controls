@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * CashChanger device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class CashChangerTest {
 
@@ -62,6 +62,7 @@ public class CashChangerTest {
     private static final String SERVICE_112 = "CashChangerTestService112";
     private static final String SERVICE_113 = "CashChangerTestService113";
     private static final String SERVICE_114 = "CashChangerTestService114";
+    private static final String SERVICE_115 = "CashChangerTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -82,6 +83,7 @@ public class CashChangerTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService12ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService13ReturningVersionTooLarge";
@@ -95,6 +97,7 @@ public class CashChangerTest {
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "CashChangerTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -103,10 +106,10 @@ public class CashChangerTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
@@ -121,6 +124,7 @@ public class CashChangerTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -134,6 +138,7 @@ public class CashChangerTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("CashChanger", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -161,6 +166,7 @@ public class CashChangerTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -174,6 +180,7 @@ public class CashChangerTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -201,9 +208,9 @@ public class CashChangerTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -245,7 +252,7 @@ public class CashChangerTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -272,7 +279,7 @@ public class CashChangerTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -3432,6 +3439,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("CashChanger.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService12ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
@@ -3556,6 +3574,17 @@ public class CashChangerTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -3707,6 +3736,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -3843,6 +3883,17 @@ public class CashChangerTest {
     public void testSetAsyncModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAsyncMode(true);
         }
         catch (JposException e) {
@@ -3987,6 +4038,17 @@ public class CashChangerTest {
     public void testGetAsyncResultCodeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getAsyncResultCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAsyncResultCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getAsyncResultCode();
         }
         catch (JposException e) {
@@ -4139,6 +4201,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetAsyncResultCodeExtendedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAsyncResultCodeExtended();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
@@ -4213,6 +4286,17 @@ public class CashChangerTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -4345,6 +4429,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapDepositDataEventFailsOnServiceVersionBeforeAdded() {
@@ -4463,6 +4558,17 @@ public class CashChangerTest {
     public void testGetCapDepositDataEventCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapDepositDataEvent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDepositDataEventCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapDepositDataEvent();
         }
         catch (JposException e) {
@@ -4615,6 +4721,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapDiscrepancyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDiscrepancy();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4753,6 +4870,17 @@ public class CashChangerTest {
     public void testGetCapEmptySensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapEmptySensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapEmptySensor();
         }
         catch (JposException e) {
@@ -4905,6 +5033,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapFullSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapFullSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapJamSensorFailsOnServiceVersionBeforeAdded() {
@@ -4957,6 +5096,17 @@ public class CashChangerTest {
     public void testGetCapJamSensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJamSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJamSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJamSensor();
         }
         catch (JposException e) {
@@ -5109,6 +5259,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapNearEmptySensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapNearEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5254,6 +5415,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapNearFullSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapNearFullSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapPauseDepositFailsOnServiceVersionBeforeAdded() {
@@ -5372,6 +5544,17 @@ public class CashChangerTest {
     public void testGetCapPauseDepositCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapPauseDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPauseDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapPauseDeposit();
         }
         catch (JposException e) {
@@ -5526,6 +5709,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRealTimeDataFailsOnServiceVersionBeforeAdded() {
@@ -5578,6 +5772,17 @@ public class CashChangerTest {
     public void testGetCapRealTimeDataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRealTimeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRealTimeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRealTimeData();
         }
         catch (JposException e) {
@@ -5710,6 +5915,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapRepayDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRepayDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -5802,6 +6018,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -5876,6 +6103,17 @@ public class CashChangerTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -5968,6 +6206,17 @@ public class CashChangerTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -6120,6 +6369,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6265,6 +6525,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6403,6 +6674,17 @@ public class CashChangerTest {
     public void testGetCurrencyCashListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCurrencyCashList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCurrencyCashListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCurrencyCashList();
         }
         catch (JposException e) {
@@ -6556,6 +6838,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetCurrencyCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrencyCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrencyCodeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -6692,6 +6985,17 @@ public class CashChangerTest {
     public void testSetCurrencyCodeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCurrencyCode("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCurrencyCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCurrencyCode("");
         }
         catch (JposException e) {
@@ -6836,6 +7140,17 @@ public class CashChangerTest {
     public void testGetCurrencyCodeListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCurrencyCodeList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCurrencyCodeListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCurrencyCodeList();
         }
         catch (JposException e) {
@@ -6989,6 +7304,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetCurrentExitCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrentExit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrentExitCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7133,6 +7459,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testSetCurrentExitCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setCurrentExit(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetCurrentServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -7191,6 +7528,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetCurrentServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrentService();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrentServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -7241,6 +7589,17 @@ public class CashChangerTest {
     public void testSetCurrentServiceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCurrentService(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCurrentServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCurrentService(0);
         }
         catch (JposException e) {
@@ -7365,6 +7724,17 @@ public class CashChangerTest {
     public void testGetDataCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -7498,6 +7868,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -7622,6 +8003,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetDepositAmountFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -7738,6 +8130,17 @@ public class CashChangerTest {
     public void testGetDepositAmountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDepositAmount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDepositAmountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDepositAmount();
         }
         catch (JposException e) {
@@ -7870,6 +8273,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetDepositCashListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDepositCashList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetDepositCodeListFailsOnServiceVersionBeforeAdded() {
@@ -7988,6 +8402,17 @@ public class CashChangerTest {
     public void testGetDepositCodeListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDepositCodeList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDepositCodeListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDepositCodeList();
         }
         catch (JposException e) {
@@ -8120,6 +8545,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetDepositCountsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDepositCounts();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetDepositStatusFailsOnServiceVersionBeforeAdded() {
@@ -8238,6 +8674,17 @@ public class CashChangerTest {
     public void testGetDepositStatusCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDepositStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDepositStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDepositStatus();
         }
         catch (JposException e) {
@@ -8391,6 +8838,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -8527,6 +8985,17 @@ public class CashChangerTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -8671,6 +9140,17 @@ public class CashChangerTest {
     public void testGetDeviceExitsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDeviceExits();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceExitsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDeviceExits();
         }
         catch (JposException e) {
@@ -8823,6 +9303,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8968,6 +9459,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetDeviceStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9106,6 +9608,17 @@ public class CashChangerTest {
     public void testGetExitCashListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getExitCashList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetExitCashListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getExitCashList();
         }
         catch (JposException e) {
@@ -9259,6 +9772,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -9395,6 +9919,17 @@ public class CashChangerTest {
     public void testSetFreezeEventsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -9539,6 +10074,17 @@ public class CashChangerTest {
     public void testGetFullStatusCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getFullStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetFullStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getFullStatus();
         }
         catch (JposException e) {
@@ -9691,6 +10237,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9829,6 +10386,17 @@ public class CashChangerTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -9984,6 +10552,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -10122,6 +10701,17 @@ public class CashChangerTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -10275,6 +10865,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetRealTimeDataEnabledFailsOnServiceVersionBeforeAdded() {
@@ -10327,6 +10928,17 @@ public class CashChangerTest {
     public void testGetRealTimeDataEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRealTimeDataEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRealTimeDataEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRealTimeDataEnabled();
         }
         catch (JposException e) {
@@ -10393,6 +11005,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testSetRealTimeDataEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setRealTimeDataEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetServiceCountFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -10443,6 +11066,17 @@ public class CashChangerTest {
     public void testGetServiceCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getServiceCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetServiceCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getServiceCount();
         }
         catch (JposException e) {
@@ -10509,6 +11143,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testGetServiceIndexCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getServiceIndex();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testAdjustCashCountsFailsOnServiceVersionBeforeAdded() {
@@ -10561,6 +11206,17 @@ public class CashChangerTest {
     public void testAdjustCashCountsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.adjustCashCounts("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testAdjustCashCountsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.adjustCashCounts("");
         }
         catch (JposException e) {
@@ -10685,6 +11341,17 @@ public class CashChangerTest {
     public void testBeginDepositCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.beginDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.beginDeposit();
         }
         catch (JposException e) {
@@ -10829,6 +11496,17 @@ public class CashChangerTest {
     public void testCheckHealthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.checkHealth(0);
         }
         catch (JposException e) {
@@ -10981,6 +11659,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearInputFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -11097,6 +11786,17 @@ public class CashChangerTest {
     public void testClearInputCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearInput();
         }
         catch (JposException e) {
@@ -11249,6 +11949,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -11321,6 +12032,17 @@ public class CashChangerTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -11472,6 +12194,17 @@ public class CashChangerTest {
         }
     }
     
+    @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testDispenseCashCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11609,6 +12342,17 @@ public class CashChangerTest {
     public void testDispenseCashCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.dispenseCash("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDispenseCashCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.dispenseCash("");
         }
         catch (JposException e) {
@@ -11761,6 +12505,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testDispenseChangeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.dispenseChange(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testEndDepositFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -11877,6 +12632,17 @@ public class CashChangerTest {
     public void testEndDepositCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.endDeposit(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.endDeposit(0);
         }
         catch (JposException e) {
@@ -12009,6 +12775,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testFixDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.fixDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPauseDepositFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -12125,6 +12902,17 @@ public class CashChangerTest {
     public void testPauseDepositCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.pauseDeposit(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPauseDepositCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.pauseDeposit(0);
         }
         catch (JposException e) {
@@ -12269,6 +13057,17 @@ public class CashChangerTest {
     public void testReadCashCountsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.readCashCounts(new String[0],new boolean[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCashCountsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.readCashCounts(new String[0],new boolean[0]);
         }
         catch (JposException e) {
@@ -12421,6 +13220,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -12504,6 +13314,17 @@ public class CashChangerTest {
     public void testResetStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.resetStatistics("");
         }
         catch (JposException e) {
@@ -12603,6 +13424,17 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -12675,6 +13507,17 @@ public class CashChangerTest {
     public void testUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -12774,13 +13617,24 @@ public class CashChangerTest {
     }
     
     @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -12813,7 +13667,7 @@ public class CashChangerTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -12846,7 +13700,7 @@ public class CashChangerTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * MSR device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class MSRTest {
 
@@ -62,6 +62,7 @@ public class MSRTest {
     private static final String SERVICE_112 = "MSRTestService112";
     private static final String SERVICE_113 = "MSRTestService113";
     private static final String SERVICE_114 = "MSRTestService114";
+    private static final String SERVICE_115 = "MSRTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -82,6 +83,7 @@ public class MSRTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "MSRTestService12ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "MSRTestService13ReturningVersionTooLarge";
@@ -95,6 +97,7 @@ public class MSRTest {
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "MSRTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "MSRTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "MSRTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "MSRTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -103,10 +106,10 @@ public class MSRTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
@@ -121,6 +124,7 @@ public class MSRTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -134,6 +138,7 @@ public class MSRTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("MSR", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -161,6 +166,7 @@ public class MSRTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -174,6 +180,7 @@ public class MSRTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -201,9 +208,9 @@ public class MSRTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -245,7 +252,7 @@ public class MSRTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -272,7 +279,7 @@ public class MSRTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -4312,6 +4319,17 @@ public class MSRTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("MSR.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService12ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
@@ -4436,6 +4454,17 @@ public class MSRTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -4586,6 +4615,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetAccountNumberCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAccountNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetAdditionalSecurityInformationFailsOnServiceVersionBeforeAdded() {
@@ -4627,6 +4667,17 @@ public class MSRTest {
     public void testGetAdditionalSecurityInformationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getAdditionalSecurityInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAdditionalSecurityInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getAdditionalSecurityInformation();
         }
         catch (JposException e) {
@@ -4780,6 +4831,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetAutoDisableCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAutoDisable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoDisableCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -4924,6 +4986,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testSetAutoDisableCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAutoDisable(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetCapCardAuthenticationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -4963,6 +5036,17 @@ public class MSRTest {
     public void testGetCapCardAuthenticationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCardAuthentication();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCardAuthenticationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCardAuthentication();
         }
         catch (JposException e) {
@@ -5051,6 +5135,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapDataEncryptionFailsOnServiceVersionBeforeAdded() {
@@ -5099,6 +5194,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapDataEncryptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDataEncryption();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapDeviceAuthenticationFailsOnServiceVersionBeforeAdded() {
@@ -5140,6 +5246,17 @@ public class MSRTest {
     public void testGetCapDeviceAuthenticationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapDeviceAuthentication();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDeviceAuthenticationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapDeviceAuthentication();
         }
         catch (JposException e) {
@@ -5292,6 +5409,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapISOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapISO();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5437,6 +5565,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapJISOneCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJISOne();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5575,6 +5714,17 @@ public class MSRTest {
     public void testGetCapJISTwoCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJISTwo();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJISTwoCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJISTwo();
         }
         catch (JposException e) {
@@ -5729,6 +5879,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -5821,6 +5982,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapTrackDataMaskingFailsOnServiceVersionBeforeAdded() {
@@ -5862,6 +6034,17 @@ public class MSRTest {
     public void testGetCapTrackDataMaskingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTrackDataMasking();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTrackDataMaskingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapTrackDataMasking();
         }
         catch (JposException e) {
@@ -5994,6 +6177,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapTransmitSentinelsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTransmitSentinels();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -6068,6 +6262,17 @@ public class MSRTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -6167,6 +6372,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapWritableTracksFailsOnServiceVersionBeforeAdded() {
@@ -6237,6 +6453,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCapWritableTracksCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapWritableTracks();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCardAuthenticationDataFailsOnServiceVersionBeforeAdded() {
@@ -6278,6 +6505,17 @@ public class MSRTest {
     public void testGetCardAuthenticationDataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCardAuthenticationData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCardAuthenticationDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCardAuthenticationData();
         }
         catch (JposException e) {
@@ -6333,6 +6571,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCardAuthenticationDataLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCardAuthenticationDataLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCardPropertyListFailsOnServiceVersionBeforeAdded() {
@@ -6374,6 +6623,17 @@ public class MSRTest {
     public void testGetCardPropertyListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCardPropertyList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCardPropertyListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCardPropertyList();
         }
         catch (JposException e) {
@@ -6429,6 +6689,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCardTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCardType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCardTypeListFailsOnServiceVersionBeforeAdded() {
@@ -6470,6 +6741,17 @@ public class MSRTest {
     public void testGetCardTypeListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCardTypeList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCardTypeListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCardTypeList();
         }
         catch (JposException e) {
@@ -6622,6 +6904,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6760,6 +7053,17 @@ public class MSRTest {
     public void testGetClaimedCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -6912,6 +7216,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetDataEncryptionAlgorithmFailsOnServiceVersionBeforeAdded() {
@@ -6961,6 +7276,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetDataEncryptionAlgorithmCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEncryptionAlgorithm();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEncryptionAlgorithmFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -7000,6 +7326,17 @@ public class MSRTest {
     public void testSetDataEncryptionAlgorithmCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDataEncryptionAlgorithm(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEncryptionAlgorithmCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDataEncryptionAlgorithm(0);
         }
         catch (JposException e) {
@@ -7152,6 +7489,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7288,6 +7636,17 @@ public class MSRTest {
     public void testSetDataEventEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -7440,6 +7799,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetDecodeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDecodeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDecodeDataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7584,6 +7954,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testSetDecodeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDecodeData(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetDeviceAuthenticatedFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -7623,6 +8004,17 @@ public class MSRTest {
     public void testGetDeviceAuthenticatedCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDeviceAuthenticated();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceAuthenticatedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDeviceAuthenticated();
         }
         catch (JposException e) {
@@ -7671,6 +8063,17 @@ public class MSRTest {
     public void testGetDeviceAuthenticationProtocolCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDeviceAuthenticationProtocol();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceAuthenticationProtocolCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDeviceAuthenticationProtocol();
         }
         catch (JposException e) {
@@ -7824,6 +8227,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -7960,6 +8374,17 @@ public class MSRTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -8111,6 +8536,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetEncodingMaxLengthFailsOnServiceVersionBeforeAdded() {
@@ -8174,6 +8610,17 @@ public class MSRTest {
     public void testGetEncodingMaxLengthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getEncodingMaxLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetEncodingMaxLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getEncodingMaxLength();
         }
         catch (JposException e) {
@@ -8327,6 +8774,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetErrorReportingTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorReportingType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetErrorReportingTypeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -8463,6 +8921,17 @@ public class MSRTest {
     public void testSetErrorReportingTypeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setErrorReportingType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetErrorReportingTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setErrorReportingType(0);
         }
         catch (JposException e) {
@@ -8614,6 +9083,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetExpirationDateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getExpirationDate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8752,6 +9232,17 @@ public class MSRTest {
     public void testGetFirstNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getFirstName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetFirstNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getFirstName();
         }
         catch (JposException e) {
@@ -8905,6 +9396,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -9041,6 +9543,17 @@ public class MSRTest {
     public void testSetFreezeEventsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -9185,6 +9698,17 @@ public class MSRTest {
     public void testGetMiddleInitialCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getMiddleInitial();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetMiddleInitialCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getMiddleInitial();
         }
         catch (JposException e) {
@@ -9338,6 +9862,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetParseDecodeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getParseDecodeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetParseDecodeDataCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -9474,6 +10009,17 @@ public class MSRTest {
     public void testSetParseDecodeDataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setParseDecodeData(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetParseDecodeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setParseDecodeData(true);
         }
         catch (JposException e) {
@@ -9625,6 +10171,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9763,6 +10320,17 @@ public class MSRTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -9918,6 +10486,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -10056,6 +10635,17 @@ public class MSRTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -10209,6 +10799,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10347,6 +10948,17 @@ public class MSRTest {
     public void testGetServiceCodeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getServiceCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetServiceCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getServiceCode();
         }
         catch (JposException e) {
@@ -10499,6 +11111,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetSuffixCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSuffix();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10637,6 +11260,17 @@ public class MSRTest {
     public void testGetSurnameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSurname();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSurnameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSurname();
         }
         catch (JposException e) {
@@ -10789,6 +11423,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTitleCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTitle();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10927,6 +11572,17 @@ public class MSRTest {
     public void testGetTrack1DataCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack1Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack1DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack1Data();
         }
         catch (JposException e) {
@@ -11079,6 +11735,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack1DiscretionaryDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack1DiscretionaryData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack1EncryptedDataFailsOnServiceVersionBeforeAdded() {
@@ -11127,6 +11794,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack1EncryptedDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack1EncryptedData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack1EncryptedDataLengthFailsOnServiceVersionBeforeAdded() {
@@ -11168,6 +11846,17 @@ public class MSRTest {
     public void testGetTrack1EncryptedDataLengthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack1EncryptedDataLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack1EncryptedDataLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack1EncryptedDataLength();
         }
         catch (JposException e) {
@@ -11320,6 +12009,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack2DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack2Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11465,6 +12165,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack2DiscretionaryDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack2DiscretionaryData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack2EncryptedDataFailsOnServiceVersionBeforeAdded() {
@@ -11513,6 +12224,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack2EncryptedDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack2EncryptedData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack2EncryptedDataLengthFailsOnServiceVersionBeforeAdded() {
@@ -11554,6 +12276,17 @@ public class MSRTest {
     public void testGetTrack2EncryptedDataLengthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack2EncryptedDataLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack2EncryptedDataLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack2EncryptedDataLength();
         }
         catch (JposException e) {
@@ -11706,6 +12439,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack3DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack3Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack3EncryptedDataFailsOnServiceVersionBeforeAdded() {
@@ -11754,6 +12498,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack3EncryptedDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack3EncryptedData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack3EncryptedDataLengthFailsOnServiceVersionBeforeAdded() {
@@ -11795,6 +12550,17 @@ public class MSRTest {
     public void testGetTrack3EncryptedDataLengthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack3EncryptedDataLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack3EncryptedDataLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack3EncryptedDataLength();
         }
         catch (JposException e) {
@@ -11927,6 +12693,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack4DataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack4Data();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack4EncryptedDataFailsOnServiceVersionBeforeAdded() {
@@ -11975,6 +12752,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testGetTrack4EncryptedDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrack4EncryptedData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTrack4EncryptedDataLengthFailsOnServiceVersionBeforeAdded() {
@@ -12016,6 +12804,17 @@ public class MSRTest {
     public void testGetTrack4EncryptedDataLengthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTrack4EncryptedDataLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrack4EncryptedDataLengthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getTrack4EncryptedDataLength();
         }
         catch (JposException e) {
@@ -12169,6 +12968,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetTracksToReadCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTracksToRead();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTracksToReadCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -12313,6 +13123,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testSetTracksToReadCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTracksToRead(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetTracksToWriteFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -12382,6 +13203,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetTracksToWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTracksToWrite();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTracksToWriteFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -12443,6 +13275,17 @@ public class MSRTest {
     public void testSetTracksToWriteCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setTracksToWrite(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTracksToWriteCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setTracksToWrite(0);
         }
         catch (JposException e) {
@@ -12575,6 +13418,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testGetTransmitSentinelsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTransmitSentinels();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTransmitSentinelsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -12699,6 +13553,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testSetTransmitSentinelsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTransmitSentinels(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetWriteCardTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -12738,6 +13603,17 @@ public class MSRTest {
     public void testGetWriteCardTypeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getWriteCardType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetWriteCardTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getWriteCardType();
         }
         catch (JposException e) {
@@ -12793,6 +13669,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testSetWriteCardTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setWriteCardType("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testAuthenticateDeviceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -12832,6 +13719,17 @@ public class MSRTest {
     public void testAuthenticateDeviceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.authenticateDevice(new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testAuthenticateDeviceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.authenticateDevice(new byte[0]);
         }
         catch (JposException e) {
@@ -12983,6 +13881,17 @@ public class MSRTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -13120,6 +14029,17 @@ public class MSRTest {
     public void testClaimCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -13272,6 +14192,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testClearInputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearInputPropertiesFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -13333,6 +14264,17 @@ public class MSRTest {
     public void testClearInputPropertiesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -13485,6 +14427,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -13565,6 +14518,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDeauthenticateDeviceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -13604,6 +14568,17 @@ public class MSRTest {
     public void testDeauthenticateDeviceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.deauthenticateDevice(new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeauthenticateDeviceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.deauthenticateDevice(new byte[0]);
         }
         catch (JposException e) {
@@ -13748,6 +14723,17 @@ public class MSRTest {
     public void testDirectIOCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -13900,6 +14886,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -13991,6 +14988,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveCardPropertyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -14038,6 +15046,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testRetrieveCardPropertyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveCardProperty("",new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveDeviceAuthenticationDataByteArrayArrayFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -14066,6 +15085,17 @@ public class MSRTest {
     public void testRetrieveDeviceAuthenticationDataByteArrayArrayCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveDeviceAuthenticationData(new byte[0][0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveDeviceAuthenticationDataByteArrayArrayCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.retrieveDeviceAuthenticationData(new byte[0][0]);
         }
         catch (JposException e) {
@@ -14113,6 +15143,17 @@ public class MSRTest {
     public void testRetrieveDeviceAuthenticationDataByteArrayCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveDeviceAuthenticationData(new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveDeviceAuthenticationDataByteArrayCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.retrieveDeviceAuthenticationData(new byte[0]);
         }
         catch (JposException e) {
@@ -14212,6 +15253,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -14292,6 +15344,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateKeyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -14331,6 +15394,17 @@ public class MSRTest {
     public void testUpdateKeyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateKey("","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateKeyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateKey("","");
         }
         catch (JposException e) {
@@ -14430,6 +15504,17 @@ public class MSRTest {
     }
     
     @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testWriteTracksFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -14499,13 +15584,24 @@ public class MSRTest {
     }
     
     @Test
+    public void testWriteTracksCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.writeTracks(new byte[0][0],0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -14538,7 +15634,7 @@ public class MSRTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -14571,7 +15667,7 @@ public class MSRTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -14604,7 +15700,7 @@ public class MSRTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

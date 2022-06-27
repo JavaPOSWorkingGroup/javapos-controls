@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * ElectronicValueRW device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class ElectronicValueRWTest {
 
@@ -52,6 +52,7 @@ public class ElectronicValueRWTest {
     private static final String SERVICE_112 = "ElectronicValueRWTestService112";
     private static final String SERVICE_113 = "ElectronicValueRWTestService113";
     private static final String SERVICE_114 = "ElectronicValueRWTestService114";
+    private static final String SERVICE_115 = "ElectronicValueRWTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -62,9 +63,11 @@ public class ElectronicValueRWTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -73,17 +76,19 @@ public class ElectronicValueRWTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -101,9 +106,11 @@ public class ElectronicValueRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -131,9 +138,9 @@ public class ElectronicValueRWTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -175,7 +182,7 @@ public class ElectronicValueRWTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -202,7 +209,7 @@ public class ElectronicValueRWTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -384,6 +391,72 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapAdditionalSecurityInformationFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAdditionalSecurityInformation();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeCompletionFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAuthorizeCompletion();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizePreSalesFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAuthorizePreSales();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeRefundFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAuthorizeRefund();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAuthorizeVoid();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidPreSalesFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapAuthorizeVoidPreSales();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapCancelValueFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapCancelValue();
@@ -406,9 +479,53 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapCashDepositFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapCashDeposit();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCenterResultCodeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapCenterResultCode();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCheckCardFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapCheckCard();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapCompareFirmwareVersionFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapCompareFirmwareVersion();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapDailyLogFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapDailyLog();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -461,6 +578,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapInstallmentsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapInstallments();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapLockTerminalFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapLockTerminal();
@@ -494,9 +622,31 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapMembershipCertificateFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapMembershipCertificate();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapPINDeviceFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapPINDevice();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapPaymentDetailFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapPaymentDetail();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -560,6 +710,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapTaxOthersFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapTaxOthers();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testCapTrainingModeFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.CapTrainingMode();
@@ -596,6 +757,17 @@ public class ElectronicValueRWTest {
     public final void testGetCapTransactionLogFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapTransactionLog();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapTransactionNumberFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapTransactionNumber();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -670,9 +842,31 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCardCompanyIDFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCardCompanyID();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCardServiceListFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCardServiceList();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCenterResultCodeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCenterResultCode();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -717,6 +911,17 @@ public class ElectronicValueRWTest {
     public final void testSetCurrentServiceFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.setCurrentService("");
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetDailyLogFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getDailyLog();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -934,6 +1139,50 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetPaymentConditionFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getPaymentCondition();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentDetailFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getPaymentDetail();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentMediaFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getPaymentMedia();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testSetPaymentMediaFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.setPaymentMedia(0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetPhysicalDeviceDescriptionFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getPhysicalDeviceDescription();
@@ -1033,6 +1282,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetServiceTypeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getServiceType();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetSettledAmountFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getSettledAmount();
@@ -1047,6 +1307,17 @@ public class ElectronicValueRWTest {
     public final void testGetSettledPointFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getSettledPoint();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetSlipNumberFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getSlipNumber();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1080,6 +1351,28 @@ public class ElectronicValueRWTest {
     public final void testGetTransactionLogFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getTransactionLog();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionNumberFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getTransactionNumber();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionTypeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getTransactionType();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1132,9 +1425,42 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testAccessDailyLogFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.accessDailyLog(0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAccessDataFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.accessData(0,new int[0],new Object[0]);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testAccessLogFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.accessLog(0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testActivateEVServiceFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.activateEVService(new int[0],new Object[0]);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1157,6 +1483,72 @@ public class ElectronicValueRWTest {
     public final void testAddValueFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.addValue(0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeCompletionFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizeCompletion(0,0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizePreSalesFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizePreSales(0,0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeRefundFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizeRefund(0,0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeSalesFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizeSales(0,0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizeVoid(0,0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidPreSalesFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.authorizeVoidPreSales(0,0,0,0);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1209,9 +1601,42 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCashDepositFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.cashDeposit(0,0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testCheckCardFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.checkCard(0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testCheckHealthFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.checkHealth(0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testCheckServiceRegistrationToMediumFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.checkServiceRegistrationToMedium(0,0);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1286,9 +1711,31 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCloseDailyEVServiceFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testCompareFirmwareVersionFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.compareFirmwareVersion("",new int[0]);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testDeactivateEVServiceFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.deactivateEVService(new int[0],new Object[0]);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1352,6 +1799,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testOpenDailyEVServiceFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.openDailyEVService(new int[0],new Object[0]);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testQueryLastSuccessfulTransactionResultFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.queryLastSuccessfulTransactionResult();
@@ -1366,6 +1824,17 @@ public class ElectronicValueRWTest {
     public final void testReadValueFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.readValue(0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testRegisterServiceToMediumFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.registerServiceToMedium(0,0);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1454,6 +1923,28 @@ public class ElectronicValueRWTest {
     public final void testUnlockTerminalFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.unlockTerminal();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testUnregisterServiceToMediumFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.unregisterServiceToMedium(0,0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testUpdateDataFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.updateData(0,new int[0],new Object[0]);
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1716,6 +2207,90 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapAdditionalSecurityInformationFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAdditionalSecurityInformation();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeCompletionFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAuthorizeCompletion();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizePreSalesFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAuthorizePreSales();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeRefundFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAuthorizeRefund();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAuthorizeVoid();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidPreSalesFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapAuthorizeVoidPreSales();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapCancelValueFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -1744,10 +2319,66 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapCashDepositFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapCashDeposit();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCenterResultCodeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapCenterResultCode();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCheckCardFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapCheckCard();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapCompareFirmwareVersionFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCapCompareFirmwareVersion();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapDailyLogFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapDailyLog();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1814,6 +2445,20 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapInstallmentsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapInstallments();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapLockTerminalFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -1856,10 +2501,38 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapMembershipCertificateFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapMembershipCertificate();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapPINDeviceFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCapPINDevice();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapPaymentDetailFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapPaymentDetail();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1940,6 +2613,20 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapTaxOthersFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapTaxOthers();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testCapTrainingModeFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -1986,6 +2673,20 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCapTransactionLog();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapTransactionNumberFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapTransactionNumber();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2080,10 +2781,38 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCardCompanyIDFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCardCompanyID();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCardServiceListFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCardServiceList();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCenterResultCodeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCenterResultCode();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2140,6 +2869,20 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.setCurrentService("");
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetDailyLogFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getDailyLog();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2416,6 +3159,62 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetPaymentConditionFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getPaymentCondition();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentDetailFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getPaymentDetail();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentMediaFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getPaymentMedia();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testSetPaymentMediaFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.setPaymentMedia(0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetPhysicalDeviceDescriptionFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -2542,6 +3341,20 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetServiceTypeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getServiceType();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetSettledAmountFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -2560,6 +3373,20 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getSettledPoint();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetSlipNumberFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getSlipNumber();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2602,6 +3429,34 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getTransactionLog();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionNumberFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getTransactionNumber();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionTypeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getTransactionType();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2668,10 +3523,52 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testAccessDailyLogFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.accessDailyLog(0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAccessDataFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.accessData(0,new int[0],new Object[0]);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testAccessLogFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.accessLog(0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testActivateEVServiceFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.activateEVService(new int[0],new Object[0]);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2700,6 +3597,90 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.addValue(0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeCompletionFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizeCompletion(0,0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizePreSalesFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizePreSales(0,0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeRefundFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizeRefund(0,0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeSalesFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizeSales(0,0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizeVoid(0,0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidPreSalesFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.authorizeVoidPreSales(0,0,0,0);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2766,10 +3747,52 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCashDepositFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.cashDeposit(0,0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testCheckCardFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.checkCard(0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testCheckHealthFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.checkHealth(0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testCheckServiceRegistrationToMediumFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.checkServiceRegistrationToMedium(0,0);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2864,10 +3887,38 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCloseDailyEVServiceFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testCompareFirmwareVersionFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.compareFirmwareVersion("",new int[0]);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testDeactivateEVServiceFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.deactivateEVService(new int[0],new Object[0]);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2948,6 +3999,20 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testOpenDailyEVServiceFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.openDailyEVService(new int[0],new Object[0]);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testQueryLastSuccessfulTransactionResultFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -2966,6 +4031,20 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.readValue(0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testRegisterServiceToMediumFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.registerServiceToMedium(0,0);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3078,6 +4157,34 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.unlockTerminal();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testUnregisterServiceToMediumFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.unregisterServiceToMedium(0,0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testUpdateDataFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.updateData(0,new int[0],new Object[0]);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3369,6 +4476,96 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapAdditionalSecurityInformationRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAdditionalSecurityInformation();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeCompletionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAuthorizeCompletion();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizePreSalesRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAuthorizePreSales();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeRefundRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAuthorizeRefund();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAuthorizeVoid();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapAuthorizeVoidPreSalesRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapAuthorizeVoidPreSales();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapCancelValueRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -3399,10 +4596,70 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapCashDepositRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapCashDeposit();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCenterResultCodeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapCenterResultCode();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapCheckCardRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapCheckCard();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapCompareFirmwareVersionRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCapCompareFirmwareVersion();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapDailyLogRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapDailyLog();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3474,6 +4731,21 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapInstallmentsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapInstallments();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapLockTerminalRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -3519,10 +4791,40 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapMembershipCertificateRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapMembershipCertificate();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapPINDeviceRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCapPINDevice();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapPaymentDetailRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapPaymentDetail();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3609,6 +4911,21 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCapTaxOthersRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapTaxOthers();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testCapTrainingModeRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -3658,6 +4975,21 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCapTransactionLog();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapTransactionNumberRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapTransactionNumber();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3759,10 +5091,40 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetCardCompanyIDRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCardCompanyID();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCardServiceListRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCardServiceList();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCenterResultCodeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCenterResultCode();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -3823,6 +5185,21 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.setCurrentService("");
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetDailyLogRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getDailyLog();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4119,6 +5496,66 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetPaymentConditionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPaymentCondition();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentDetailRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPaymentDetail();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetPaymentMediaRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getPaymentMedia();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetPaymentMediaRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setPaymentMedia(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetPhysicalDeviceDescriptionRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -4254,6 +5691,21 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetServiceTypeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getServiceType();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetSettledAmountRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -4273,6 +5725,21 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getSettledPoint();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetSlipNumberRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getSlipNumber();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4318,6 +5785,36 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getTransactionLog();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionNumberRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getTransactionNumber();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetTransactionTypeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getTransactionType();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4389,10 +5886,55 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testAccessDailyLogRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.accessDailyLog(0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAccessDataRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.accessData(0,new int[0],new Object[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testAccessLogRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.accessLog(0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testActivateEVServiceRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.activateEVService(new int[0],new Object[0]);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4423,6 +5965,96 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.addValue(0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeCompletionRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizeCompletion(0,0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizePreSalesRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizePreSales(0,0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeRefundRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizeRefund(0,0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeSalesRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizeSales(0,0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizeVoid(0,0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testAuthorizeVoidPreSalesRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.authorizeVoidPreSales(0,0,0,0);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4494,10 +6126,55 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCashDepositRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.cashDeposit(0,0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testCheckCardRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.checkCard(0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testCheckHealthRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.checkHealth(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testCheckServiceRegistrationToMediumRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.checkServiceRegistrationToMedium(0,0);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4599,10 +6276,40 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testCloseDailyEVServiceRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testCompareFirmwareVersionRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.compareFirmwareVersion("",new int[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testDeactivateEVServiceRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.deactivateEVService(new int[0],new Object[0]);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4689,6 +6396,21 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testOpenDailyEVServiceRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.openDailyEVService(new int[0],new Object[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testQueryLastSuccessfulTransactionResultRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -4708,6 +6430,21 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.readValue(0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testRegisterServiceToMediumRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.registerServiceToMedium(0,0);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -4839,6 +6576,36 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testUnregisterServiceToMediumRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.unregisterServiceToMedium(0,0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testUpdateDataRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.updateData(0,new int[0],new Object[0]);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testUpdateFirmwareRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -4932,6 +6699,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("ElectronicValueRW.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService112ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
@@ -4946,6 +6724,17 @@ public class ElectronicValueRWTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -4979,6 +6768,17 @@ public class ElectronicValueRWTest {
     public void testGetAccountNumberCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getAccountNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAccountNumberCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getAccountNumber();
         }
         catch (JposException e) {
@@ -5022,6 +6822,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAdditionalSecurityInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAdditionalSecurityInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAdditionalSecurityInformationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5048,6 +6859,17 @@ public class ElectronicValueRWTest {
     public void testSetAdditionalSecurityInformationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAdditionalSecurityInformation("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAdditionalSecurityInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAdditionalSecurityInformation("");
         }
         catch (JposException e) {
@@ -5090,6 +6912,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAmountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAmount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAmountCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5116,6 +6949,17 @@ public class ElectronicValueRWTest {
     public void testSetAmountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAmount(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAmountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAmount(0);
         }
         catch (JposException e) {
@@ -5158,6 +7002,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetApprovalCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getApprovalCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetApprovalCodeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5184,6 +7039,17 @@ public class ElectronicValueRWTest {
     public void testSetApprovalCodeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setApprovalCode("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetApprovalCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setApprovalCode("");
         }
         catch (JposException e) {
@@ -5226,6 +7092,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5252,6 +7129,17 @@ public class ElectronicValueRWTest {
     public void testSetAsyncModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAsyncMode(true);
         }
         catch (JposException e) {
@@ -5294,6 +7182,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAutoDisableCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAutoDisable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoDisableCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5320,6 +7219,17 @@ public class ElectronicValueRWTest {
     public void testSetAutoDisableCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAutoDisable(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAutoDisableCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAutoDisable(true);
         }
         catch (JposException e) {
@@ -5354,6 +7264,17 @@ public class ElectronicValueRWTest {
     public void testGetBalanceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getBalance();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetBalanceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getBalance();
         }
         catch (JposException e) {
@@ -5396,6 +7317,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetBalanceOfPointCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBalanceOfPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5424,6 +7356,17 @@ public class ElectronicValueRWTest {
     public void testGetCapActivateServiceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapActivateService();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapActivateServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapActivateService();
         }
         catch (JposException e) {
@@ -5466,6 +7409,179 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAddValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAddValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAdditionalSecurityInformationFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAdditionalSecurityInformation();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAdditionalSecurityInformationCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAdditionalSecurityInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapAuthorizeCompletionFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAuthorizeCompletion();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAuthorizeCompletionCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAuthorizeCompletion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapAuthorizePreSalesFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAuthorizePreSales();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAuthorizePreSalesCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAuthorizePreSales();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapAuthorizeRefundFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAuthorizeRefund();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAuthorizeRefundCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAuthorizeRefund();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapAuthorizeVoidFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAuthorizeVoid();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAuthorizeVoidCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAuthorizeVoid();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapAuthorizeVoidPreSalesFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapAuthorizeVoidPreSales();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapAuthorizeVoidPreSalesCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAuthorizeVoidPreSales();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -5494,6 +7610,17 @@ public class ElectronicValueRWTest {
     public void testGetCapCancelValueCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCancelValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCancelValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCancelValue();
         }
         catch (JposException e) {
@@ -5536,6 +7663,98 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCardSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCardSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapCashDepositFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCashDeposit();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapCashDepositCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCashDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapCenterResultCodeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCenterResultCode();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapCenterResultCodeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCenterResultCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapCheckCardFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCheckCard();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapCheckCardCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCheckCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -5571,6 +7790,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapDailyLogFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapDailyLog();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapDailyLogCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDailyLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -5599,6 +7856,17 @@ public class ElectronicValueRWTest {
     public void testGetCapDetectionControlCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapDetectionControl();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDetectionControlCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapDetectionControl();
         }
         catch (JposException e) {
@@ -5641,6 +7909,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapElectronicMoneyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapElectronicMoney();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5669,6 +7948,17 @@ public class ElectronicValueRWTest {
     public void testGetCapEnumerateCardServicesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapEnumerateCardServices();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapEnumerateCardServicesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapEnumerateCardServices();
         }
         catch (JposException e) {
@@ -5711,6 +8001,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapIndirectTransactionLogCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapIndirectTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapInstallmentsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapInstallments();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapInstallmentsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapInstallments();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -5739,6 +8067,17 @@ public class ElectronicValueRWTest {
     public void testGetCapLockTerminalCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapLockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapLockTerminalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapLockTerminal();
         }
         catch (JposException e) {
@@ -5781,6 +8120,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapLogStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapLogStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5816,6 +8166,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapMediumIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapMediumID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapMembershipCertificateFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapMembershipCertificate();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapMembershipCertificateCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapMembershipCertificate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testGetCapPINDeviceFailsOnServiceVersionBeforeAdded() {
@@ -5836,6 +8224,43 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_SERVICE_114);
             this.control.getCapPINDevice();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPINDeviceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPINDevice();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapPaymentDetailFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapPaymentDetail();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapPaymentDetailCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPaymentDetail();
         }
         catch (JposException e) {
             fail(e.getMessage());
@@ -5878,6 +8303,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPointCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5906,6 +8342,17 @@ public class ElectronicValueRWTest {
     public void testGetCapPowerReportingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapPowerReporting();
         }
         catch (JposException e) {
@@ -5948,6 +8395,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapRealTimeDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRealTimeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5976,6 +8434,17 @@ public class ElectronicValueRWTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -6018,6 +8487,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapSubtractValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSubtractValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapTaxOthersFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTaxOthers();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapTaxOthersCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTaxOthers();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testCapTrainingModeFailsOnServiceVersionBeforeAdded() {
@@ -6044,6 +8551,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCapTrainingModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.CapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -6071,6 +8588,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTrainingModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -6100,6 +8627,17 @@ public class ElectronicValueRWTest {
     public void testGetCapTransactionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTransaction();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTransactionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapTransaction();
         }
         catch (JposException e) {
@@ -6142,6 +8680,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionLogCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapTransactionNumberFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTransactionNumber();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapTransactionNumberCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTransactionNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -6170,6 +8746,17 @@ public class ElectronicValueRWTest {
     public void testGetCapUnlockTerminalCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUnlockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUnlockTerminalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUnlockTerminal();
         }
         catch (JposException e) {
@@ -6212,6 +8799,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6240,6 +8838,17 @@ public class ElectronicValueRWTest {
     public void testGetCapUpdateKeyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateKey();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateKeyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateKey();
         }
         catch (JposException e) {
@@ -6282,6 +8891,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6310,6 +8930,17 @@ public class ElectronicValueRWTest {
     public void testGetCapVoucherCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapVoucher();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapVoucherCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapVoucher();
         }
         catch (JposException e) {
@@ -6352,6 +8983,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapWriteValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapWriteValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCardCompanyIDFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCardCompanyID();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCardCompanyIDCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCardCompanyID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -6386,6 +9055,44 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testGetCardServiceListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCardServiceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCenterResultCodeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCenterResultCode();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCenterResultCodeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCenterResultCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     
@@ -6422,6 +9129,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6450,6 +9168,17 @@ public class ElectronicValueRWTest {
     public void testGetClaimedCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -6493,6 +9222,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetCurrentServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrentService();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrentServiceCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -6526,6 +9266,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testSetCurrentServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setCurrentService("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDailyLogFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDailyLog();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetDailyLogCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDailyLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
     
     @Test
     public void testGetDataCountCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6553,6 +9331,17 @@ public class ElectronicValueRWTest {
     public void testGetDataCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -6596,6 +9385,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -6622,6 +9422,17 @@ public class ElectronicValueRWTest {
     public void testSetDataEventEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -6664,6 +9475,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDetectionControlCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDetectionControl();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDetectionControlCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -6690,6 +9512,17 @@ public class ElectronicValueRWTest {
     public void testSetDetectionControlCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDetectionControl(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDetectionControlCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDetectionControl(true);
         }
         catch (JposException e) {
@@ -6724,6 +9557,17 @@ public class ElectronicValueRWTest {
     public void testGetDetectionStatusCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDetectionStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDetectionStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDetectionStatus();
         }
         catch (JposException e) {
@@ -6767,6 +9611,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -6793,6 +9648,17 @@ public class ElectronicValueRWTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -6834,6 +9700,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6862,6 +9739,17 @@ public class ElectronicValueRWTest {
     public void testGetExpirationDateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getExpirationDate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetExpirationDateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getExpirationDate();
         }
         catch (JposException e) {
@@ -6905,6 +9793,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -6931,6 +9830,17 @@ public class ElectronicValueRWTest {
     public void testSetFreezeEventsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -6972,6 +9882,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetLastUsedDateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLastUsedDate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7000,6 +9921,17 @@ public class ElectronicValueRWTest {
     public void testGetLogStatusCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getLogStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetLogStatusCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getLogStatus();
         }
         catch (JposException e) {
@@ -7043,6 +9975,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetMediumIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMediumID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMediumIDCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7069,6 +10012,17 @@ public class ElectronicValueRWTest {
     public void testSetMediumIDCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMediumID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMediumIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMediumID("");
         }
         catch (JposException e) {
@@ -7110,6 +10064,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPINEntryFailsOnServiceVersionBeforeAdded() {
@@ -7136,6 +10101,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPINEntryCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPINEntry();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testSetPINEntryFailsOnServiceVersionBeforeAdded() {
@@ -7155,6 +10130,122 @@ public class ElectronicValueRWTest {
         try {
             this.control.open(OPENNAME_SERVICE_114);
             this.control.setPINEntry(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testSetPINEntryCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPINEntry(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPaymentConditionFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPaymentCondition();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetPaymentConditionCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPaymentCondition();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetPaymentDetailFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPaymentDetail();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetPaymentDetailCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPaymentDetail();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetPaymentMediaFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPaymentMedia();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetPaymentMediaCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPaymentMedia();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testSetPaymentMediaFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPaymentMedia(0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testSetPaymentMediaCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPaymentMedia(0);
         }
         catch (JposException e) {
             fail(e.getMessage());
@@ -7196,6 +10287,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7224,6 +10326,17 @@ public class ElectronicValueRWTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -7267,6 +10380,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetPointCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPointCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7293,6 +10417,17 @@ public class ElectronicValueRWTest {
     public void testSetPointCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPoint(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPointCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPoint(0);
         }
         catch (JposException e) {
@@ -7335,6 +10470,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7361,6 +10507,17 @@ public class ElectronicValueRWTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -7395,6 +10552,17 @@ public class ElectronicValueRWTest {
     public void testGetPowerStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPowerState();
         }
         catch (JposException e) {
@@ -7437,6 +10605,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetReaderWriterServiceListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getReaderWriterServiceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7472,6 +10651,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetSequenceNumberCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSequenceNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetServiceTypeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getServiceType();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetServiceTypeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getServiceType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     
     @Test
@@ -7500,6 +10717,17 @@ public class ElectronicValueRWTest {
     public void testGetSettledAmountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSettledAmount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSettledAmountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSettledAmount();
         }
         catch (JposException e) {
@@ -7542,6 +10770,44 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetSettledPointCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSettledPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetSlipNumberFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlipNumber();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetSlipNumberCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlipNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testGetTrainingModeStateFailsOnServiceVersionBeforeAdded() {
@@ -7568,6 +10834,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetTrainingModeStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrainingModeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testSetTrainingModeStateFailsOnServiceVersionBeforeAdded() {
@@ -7593,6 +10869,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    
+    @Test
+    public void testSetTrainingModeStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTrainingModeState(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7627,6 +10914,71 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testGetTransactionLogCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetTransactionNumberFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTransactionNumber();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetTransactionNumberCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTransactionNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetTransactionTypeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.getTransactionType();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetTransactionTypeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTransactionType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     
@@ -7664,6 +11016,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetVoucherIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getVoucherID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetVoucherIDCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7690,6 +11053,17 @@ public class ElectronicValueRWTest {
     public void testSetVoucherIDCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setVoucherID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetVoucherIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setVoucherID("");
         }
         catch (JposException e) {
@@ -7732,6 +11106,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetVoucherIDListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getVoucherIDList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetVoucherIDListCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7764,6 +11149,69 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testSetVoucherIDListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setVoucherIDList("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testAccessDailyLogFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.accessDailyLog(0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAccessDailyLogCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.accessDailyLog(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAccessDataFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.accessData(0,new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAccessDataCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.accessData(0,new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7799,6 +11247,43 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAccessLogCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.accessLog(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testActivateEVServiceFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.activateEVService(new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testActivateEVServiceCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.activateEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testActivateServiceCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7826,6 +11311,17 @@ public class ElectronicValueRWTest {
     public void testActivateServiceCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.activateService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testActivateServiceCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.activateService(new int[0],new Object[0]);
         }
         catch (JposException e) {
@@ -7867,6 +11363,173 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAddValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.addValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testAuthorizeCompletionFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizeCompletion(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeCompletionCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizeCompletion(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizePreSalesFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizePreSales(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizePreSalesCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizePreSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeRefundFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizeRefund(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeRefundCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizeRefund(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeSalesFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizeSales(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeSalesCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizeSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeVoidFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizeVoid(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeVoidCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizeVoid(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeVoidPreSalesFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.authorizeVoidPreSales(0,0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testAuthorizeVoidPreSalesCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.authorizeVoidPreSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testBeginDetectionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7894,6 +11557,17 @@ public class ElectronicValueRWTest {
     public void testBeginDetectionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.beginDetection(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginDetectionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.beginDetection(0,0);
         }
         catch (JposException e) {
@@ -7935,6 +11609,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testBeginRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginRemoval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCancelValueCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7962,6 +11647,17 @@ public class ElectronicValueRWTest {
     public void testCancelValueCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.cancelValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCancelValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.cancelValue(0,0);
         }
         catch (JposException e) {
@@ -8003,6 +11699,69 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCaptureCardCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.captureCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCashDepositFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.cashDeposit(0,0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testCashDepositCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.cashDeposit(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testCheckCardFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkCard(0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testCheckCardCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.checkCard(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testCheckHealthCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8037,6 +11796,43 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckServiceRegistrationToMediumFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkServiceRegistrationToMedium(0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testCheckServiceRegistrationToMediumCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.checkServiceRegistrationToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8064,6 +11860,17 @@ public class ElectronicValueRWTest {
     public void testClaimCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -8105,6 +11912,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testClearInputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearInputPropertiesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8132,6 +11950,17 @@ public class ElectronicValueRWTest {
     public void testClearInputPropertiesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -8174,6 +12003,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testClearOutputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearParameterInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -8198,6 +12038,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testClearParameterInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearParameterInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8233,6 +12083,43 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseDailyEVServiceFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testCloseDailyEVServiceCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testCompareFirmwareVersionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8267,6 +12154,43 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeactivateEVServiceFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.deactivateEVService(new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testDeactivateEVServiceCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.deactivateEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testDirectIOCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8294,6 +12218,17 @@ public class ElectronicValueRWTest {
     public void testDirectIOCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -8335,6 +12270,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testEndDetectionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.endDetection();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndRemovalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8369,6 +12315,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testEndRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.endRemoval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEnumerateCardServicesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8396,6 +12353,17 @@ public class ElectronicValueRWTest {
     public void testEnumerateCardServicesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.enumerateCardServices();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEnumerateCardServicesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.enumerateCardServices();
         }
         catch (JposException e) {
@@ -8438,6 +12406,43 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testLockTerminalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.lockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testOpenDailyEVServiceFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.openDailyEVService(new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testOpenDailyEVServiceCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.openDailyEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
     public void testQueryLastSuccessfulTransactionResultFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -8462,6 +12467,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testQueryLastSuccessfulTransactionResultCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.queryLastSuccessfulTransactionResult();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8497,6 +12512,43 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testReadValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.readValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRegisterServiceToMediumFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.registerServiceToMedium(0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testRegisterServiceToMediumCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.registerServiceToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testReleaseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8524,6 +12576,17 @@ public class ElectronicValueRWTest {
     public void testReleaseCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.release();
         }
         catch (JposException e) {
@@ -8566,6 +12629,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveResultInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -8590,6 +12664,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testRetrieveResultInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveResultInformation("",new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8626,6 +12710,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetParameterInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -8650,6 +12745,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testSetParameterInformationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setParameterInformation("","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8678,6 +12783,17 @@ public class ElectronicValueRWTest {
     public void testSubtractValueCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.subtractValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSubtractValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.subtractValue(0,0);
         }
         catch (JposException e) {
@@ -8719,6 +12835,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testTransactionAccessCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.transactionAccess(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testUnlockTerminalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8753,6 +12880,69 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testUnlockTerminalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.unlockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUnregisterServiceToMediumFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.unregisterServiceToMedium(0,0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testUnregisterServiceToMediumCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.unregisterServiceToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testUpdateDataFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateData(0,new int[0],new Object[0]);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testUpdateDataCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateData(0,new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testUpdateFirmwareCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8780,6 +12970,17 @@ public class ElectronicValueRWTest {
     public void testUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -8821,6 +13022,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testUpdateKeyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateKey(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testUpdateStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8848,6 +13060,17 @@ public class ElectronicValueRWTest {
     public void testUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -8890,13 +13113,24 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testWriteValueCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.writeValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -8929,7 +13163,7 @@ public class ElectronicValueRWTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -8962,7 +13196,7 @@ public class ElectronicValueRWTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -8995,7 +13229,7 @@ public class ElectronicValueRWTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -9028,7 +13262,7 @@ public class ElectronicValueRWTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {
@@ -9061,7 +13295,7 @@ public class ElectronicValueRWTest {
         List<TransitionListener> listeners = new ArrayList<TransitionListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 TransitionListener listener = new TransitionListener() {

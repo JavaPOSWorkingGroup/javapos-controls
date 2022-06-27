@@ -29,7 +29,7 @@ import jpos.events.*;
  * JavaPOS Device Service class, intended to be used for testing purposes in FiscalPrinterTest.
  *
  */
-public final class FiscalPrinterTestServiceRethrowingJposException implements jpos.services.FiscalPrinterService114, JposServiceInstance {
+public final class FiscalPrinterTestServiceRethrowingJposException implements jpos.services.FiscalPrinterService115, JposServiceInstance {
     
     private JposEntry configuration;
     private EventCallbacks callbacks;
@@ -37,11 +37,11 @@ public final class FiscalPrinterTestServiceRethrowingJposException implements jp
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1015000;
+            return 1016000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1014000;
+            return 1015000;
     }
     
     @Override

@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * RemoteOrderDisplay device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class RemoteOrderDisplayTest {
 
@@ -61,6 +61,7 @@ public class RemoteOrderDisplayTest {
     private static final String SERVICE_112 = "RemoteOrderDisplayTestService112";
     private static final String SERVICE_113 = "RemoteOrderDisplayTestService113";
     private static final String SERVICE_114 = "RemoteOrderDisplayTestService114";
+    private static final String SERVICE_115 = "RemoteOrderDisplayTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -80,6 +81,7 @@ public class RemoteOrderDisplayTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService13ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService14ReturningVersionTooLarge";
@@ -92,6 +94,7 @@ public class RemoteOrderDisplayTest {
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "RemoteOrderDisplayTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -100,10 +103,10 @@ public class RemoteOrderDisplayTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_14, "1.4", SERVICE_14));
@@ -117,6 +120,7 @@ public class RemoteOrderDisplayTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE, "1.4", SERVICE_14, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -129,6 +133,7 @@ public class RemoteOrderDisplayTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RemoteOrderDisplay", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -155,6 +160,7 @@ public class RemoteOrderDisplayTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE);
@@ -167,6 +173,7 @@ public class RemoteOrderDisplayTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -194,9 +201,9 @@ public class RemoteOrderDisplayTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -238,7 +245,7 @@ public class RemoteOrderDisplayTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -265,7 +272,7 @@ public class RemoteOrderDisplayTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -3774,6 +3781,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("RemoteOrderDisplay.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService13ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -3887,6 +3905,17 @@ public class RemoteOrderDisplayTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -4027,6 +4056,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -4152,6 +4192,17 @@ public class RemoteOrderDisplayTest {
     public void testSetAsyncModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAsyncMode(true);
         }
         catch (JposException e) {
@@ -4293,6 +4344,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetAutoToneDurationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAutoToneDuration();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoToneDurationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -4418,6 +4480,17 @@ public class RemoteOrderDisplayTest {
     public void testSetAutoToneDurationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAutoToneDuration(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAutoToneDurationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAutoToneDuration(0);
         }
         catch (JposException e) {
@@ -4559,6 +4632,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetAutoToneFrequencyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAutoToneFrequency();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoToneFrequencyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -4692,6 +4776,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testSetAutoToneFrequencyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAutoToneFrequency(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -4764,6 +4859,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -4867,6 +4973,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapMapCharacterSet();
         }
         catch (JposException e) {
@@ -5008,6 +5125,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5142,6 +5270,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCapSelectCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSelectCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -5227,6 +5366,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -5368,6 +5518,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCapToneCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTone();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5495,6 +5656,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapTouchCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapTouch();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTouchCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapTouch();
         }
         catch (JposException e) {
@@ -5636,6 +5808,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTransaction();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -5710,6 +5893,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -5802,6 +5996,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -5943,6 +6148,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6070,6 +6286,17 @@ public class RemoteOrderDisplayTest {
     public void testGetCharacterSetListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCharacterSetList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCharacterSetListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCharacterSetList();
         }
         catch (JposException e) {
@@ -6211,6 +6438,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6345,6 +6583,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6472,6 +6721,17 @@ public class RemoteOrderDisplayTest {
     public void testGetClocksCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getClocks();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClocksCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getClocks();
         }
         catch (JposException e) {
@@ -6614,6 +6874,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetCurrentUnitIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrentUnitID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrentUnitIDCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -6739,6 +7010,17 @@ public class RemoteOrderDisplayTest {
     public void testSetCurrentUnitIDCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCurrentUnitID(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCurrentUnitIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCurrentUnitID(0);
         }
         catch (JposException e) {
@@ -6872,6 +7154,17 @@ public class RemoteOrderDisplayTest {
     public void testGetDataCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -7014,6 +7307,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -7139,6 +7443,17 @@ public class RemoteOrderDisplayTest {
     public void testSetDataEventEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -7280,6 +7595,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -7405,6 +7731,17 @@ public class RemoteOrderDisplayTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -7538,6 +7875,17 @@ public class RemoteOrderDisplayTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -7679,6 +8027,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetErrorStringCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorString();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7813,6 +8172,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetErrorUnitsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorUnits();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7940,6 +8310,17 @@ public class RemoteOrderDisplayTest {
     public void testGetEventStringCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getEventString();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetEventStringCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getEventString();
         }
         catch (JposException e) {
@@ -8082,6 +8463,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetEventTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getEventType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetEventTypeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -8207,6 +8599,17 @@ public class RemoteOrderDisplayTest {
     public void testSetEventTypeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setEventType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetEventTypeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setEventType(0);
         }
         catch (JposException e) {
@@ -8347,6 +8750,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetEventUnitIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getEventUnitID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8474,6 +8888,17 @@ public class RemoteOrderDisplayTest {
     public void testGetEventUnitsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getEventUnits();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetEventUnitsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getEventUnits();
         }
         catch (JposException e) {
@@ -8616,6 +9041,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -8749,6 +9185,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_16);
@@ -8851,6 +9298,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_16);
@@ -8945,6 +9403,17 @@ public class RemoteOrderDisplayTest {
     public void testSetMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMapCharacterSet(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMapCharacterSet(true);
         }
         catch (JposException e) {
@@ -9078,6 +9547,17 @@ public class RemoteOrderDisplayTest {
     public void testGetOutputIDCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getOutputID();
         }
         catch (JposException e) {
@@ -9219,6 +9699,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9346,6 +9837,17 @@ public class RemoteOrderDisplayTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -9488,6 +9990,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -9613,6 +10126,17 @@ public class RemoteOrderDisplayTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -9746,6 +10270,17 @@ public class RemoteOrderDisplayTest {
     public void testGetPowerStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPowerState();
         }
         catch (JposException e) {
@@ -9887,6 +10422,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetSystemClocksCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSystemClocks();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10014,6 +10560,17 @@ public class RemoteOrderDisplayTest {
     public void testGetSystemVideoSaveBuffersCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSystemVideoSaveBuffers();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSystemVideoSaveBuffersCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSystemVideoSaveBuffers();
         }
         catch (JposException e) {
@@ -10156,6 +10713,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetTimeoutCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTimeout();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTimeoutCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -10281,6 +10849,17 @@ public class RemoteOrderDisplayTest {
     public void testSetTimeoutCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setTimeout(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTimeoutCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setTimeout(0);
         }
         catch (JposException e) {
@@ -10421,6 +11000,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetUnitsOnlineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getUnitsOnline();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10548,6 +11138,17 @@ public class RemoteOrderDisplayTest {
     public void testGetVideoDataCountCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getVideoDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetVideoDataCountCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getVideoDataCount();
         }
         catch (JposException e) {
@@ -10690,6 +11291,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testGetVideoModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getVideoMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetVideoModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -10815,6 +11427,17 @@ public class RemoteOrderDisplayTest {
     public void testSetVideoModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setVideoMode(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetVideoModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setVideoMode(0);
         }
         catch (JposException e) {
@@ -10948,6 +11571,17 @@ public class RemoteOrderDisplayTest {
     public void testGetVideoModesListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getVideoModesList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetVideoModesListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getVideoModesList();
         }
         catch (JposException e) {
@@ -11089,6 +11723,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testGetVideoSaveBuffersCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getVideoSaveBuffers();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11216,6 +11861,17 @@ public class RemoteOrderDisplayTest {
     public void testCheckHealthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.checkHealth(0);
         }
         catch (JposException e) {
@@ -11356,6 +12012,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearInputCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11482,6 +12149,17 @@ public class RemoteOrderDisplayTest {
     public void testClearInputCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearInput();
         }
         catch (JposException e) {
@@ -11622,6 +12300,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testClearOutputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearVideoCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11755,6 +12444,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testClearVideoCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearVideo(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearVideoRegionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11881,6 +12581,17 @@ public class RemoteOrderDisplayTest {
     public void testClearVideoRegionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearVideoRegion(0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearVideoRegionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearVideoRegion(0,0,0,0,0,0);
         }
         catch (JposException e) {
@@ -12022,6 +12733,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -12094,6 +12816,17 @@ public class RemoteOrderDisplayTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -12234,6 +12967,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testControlClockCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.controlClock(0,0,0,0,0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testControlCursorCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12360,6 +13104,17 @@ public class RemoteOrderDisplayTest {
     public void testControlCursorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.controlCursor(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testControlCursorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.controlCursor(0,0);
         }
         catch (JposException e) {
@@ -12500,6 +13255,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testCopyVideoRegionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.copyVideoRegion(0,0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testDirectIOCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12626,6 +13392,17 @@ public class RemoteOrderDisplayTest {
     public void testDirectIOCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -12766,6 +13543,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testDisplayDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.displayData(0,0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testDrawBoxCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12899,6 +13687,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testDrawBoxCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.drawBox(0,0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testFreeVideoRegionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -13025,6 +13824,17 @@ public class RemoteOrderDisplayTest {
     public void testFreeVideoRegionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.freeVideoRegion(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFreeVideoRegionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.freeVideoRegion(0,0);
         }
         catch (JposException e) {
@@ -13166,6 +13976,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -13249,6 +14070,17 @@ public class RemoteOrderDisplayTest {
     public void testResetStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.resetStatistics("");
         }
         catch (JposException e) {
@@ -13382,6 +14214,17 @@ public class RemoteOrderDisplayTest {
     public void testResetVideoCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.resetVideo(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetVideoCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.resetVideo(0);
         }
         catch (JposException e) {
@@ -13523,6 +14366,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testRestoreVideoRegionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.restoreVideoRegion(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -13606,6 +14460,17 @@ public class RemoteOrderDisplayTest {
     public void testRetrieveStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -13746,6 +14611,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testSaveVideoRegionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.saveVideoRegion(0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSelectChararacterSetCalledOnServiceVersionWhenAdded() throws Exception {
@@ -13879,6 +14755,17 @@ public class RemoteOrderDisplayTest {
         }
     }
     
+    @Test
+    public void testSelectChararacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.selectChararacterSet(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetCursorCalledOnServiceVersionWhenAdded() throws Exception {
@@ -14005,6 +14892,17 @@ public class RemoteOrderDisplayTest {
     public void testSetCursorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCursor(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCursorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCursor(0,0,0);
         }
         catch (JposException e) {
@@ -14146,6 +15044,17 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testTransactionDisplayCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.transactionDisplay(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -14218,6 +15127,17 @@ public class RemoteOrderDisplayTest {
     public void testUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -14309,6 +15229,17 @@ public class RemoteOrderDisplayTest {
     public void testUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -14442,6 +15373,17 @@ public class RemoteOrderDisplayTest {
     public void testUpdateVideoRegionAttributeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateVideoRegionAttribute(0,0,0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateVideoRegionAttributeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateVideoRegionAttribute(0,0,0,0,0,0,0);
         }
         catch (JposException e) {
@@ -14583,13 +15525,24 @@ public class RemoteOrderDisplayTest {
     }
     
     @Test
+    public void testVideoSoundCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.videoSound(0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -14622,7 +15575,7 @@ public class RemoteOrderDisplayTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -14655,7 +15608,7 @@ public class RemoteOrderDisplayTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -14688,7 +15641,7 @@ public class RemoteOrderDisplayTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -14721,7 +15674,7 @@ public class RemoteOrderDisplayTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

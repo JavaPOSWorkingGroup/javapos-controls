@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * POSPrinter device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.14
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
  */
 public class POSPrinterTest {
 
@@ -62,6 +62,7 @@ public class POSPrinterTest {
     private static final String SERVICE_112 = "POSPrinterTestService112";
     private static final String SERVICE_113 = "POSPrinterTestService113";
     private static final String SERVICE_114 = "POSPrinterTestService114";
+    private static final String SERVICE_115 = "POSPrinterTestService115";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -82,6 +83,7 @@ public class POSPrinterTest {
     private static final String OPENNAME_SERVICE_112 = SERVICE_112;
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
+    private static final String OPENNAME_SERVICE_115 = SERVICE_115;
     
     private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService12ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService13ReturningVersionTooLarge";
@@ -95,6 +97,7 @@ public class POSPrinterTest {
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService113ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "POSPrinterTestService114ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -103,10 +106,10 @@ public class POSPrinterTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.14", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_ALL_METHODS_THROWING_NPE, "1.14", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.14", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.114", SERVICE_114, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
@@ -121,6 +124,7 @@ public class POSPrinterTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -134,6 +138,7 @@ public class POSPrinterTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPrinter", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -161,6 +166,7 @@ public class POSPrinterTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112);
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
+        registry.removeJposEntry(OPENNAME_SERVICE_115);
         
         registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -174,6 +180,7 @@ public class POSPrinterTest {
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -201,9 +208,9 @@ public class POSPrinterTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             try {
-                this.control.open(OPENNAME_SERVICE_114);
+                this.control.open(OPENNAME_SERVICE_115);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -245,7 +252,7 @@ public class POSPrinterTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -272,7 +279,7 @@ public class POSPrinterTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1014000));
+        assertThat(this.control.getDeviceControlVersion(), is(1015000));
     }
     
     @Test
@@ -8512,6 +8519,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public final void testGetDeviceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            assertThat(this.control.getDeviceServiceVersion(), is(1015000));
+        }
+        catch (JposException e) {
+            fail("POSPrinter.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService12ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
@@ -8636,6 +8654,17 @@ public class POSPrinterTest {
     public void testOpenOnService113ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService114ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -8787,6 +8816,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -8923,6 +8963,17 @@ public class POSPrinterTest {
     public void testSetAsyncModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAsyncModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setAsyncMode(true);
         }
         catch (JposException e) {
@@ -9074,6 +9125,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
@@ -9148,6 +9210,17 @@ public class POSPrinterTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -9300,6 +9373,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapConcurrentJrnRecCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapConcurrentJrnRec();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9445,6 +9529,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapConcurrentJrnSlpCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapConcurrentJrnSlp();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapConcurrentPageModeFailsOnServiceVersionBeforeAdded() {
@@ -9519,6 +9614,17 @@ public class POSPrinterTest {
     public void testGetCapConcurrentPageModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapConcurrentPageMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapConcurrentPageModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapConcurrentPageMode();
         }
         catch (JposException e) {
@@ -9671,6 +9777,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapConcurrentRecSlpCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapConcurrentRecSlp();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9809,6 +9926,17 @@ public class POSPrinterTest {
     public void testGetCapCoverSensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapCoverSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCoverSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapCoverSensor();
         }
         catch (JposException e) {
@@ -9961,6 +10089,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrn2ColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrn2Color();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10106,6 +10245,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnBoldCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnBold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapJrnCartridgeSensorFailsOnServiceVersionBeforeAdded() {
@@ -10231,6 +10381,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnCartridgeSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnCartridgeSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapJrnColorFailsOnServiceVersionBeforeAdded() {
@@ -10349,6 +10510,17 @@ public class POSPrinterTest {
     public void testGetCapJrnColorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJrnColor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJrnColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJrnColor();
         }
         catch (JposException e) {
@@ -10501,6 +10673,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10639,6 +10822,17 @@ public class POSPrinterTest {
     public void testGetCapJrnDwideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJrnDwide();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJrnDwideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJrnDwide();
         }
         catch (JposException e) {
@@ -10791,6 +10985,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnDwideDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnDwideDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10929,6 +11134,17 @@ public class POSPrinterTest {
     public void testGetCapJrnEmptySensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJrnEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJrnEmptySensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJrnEmptySensor();
         }
         catch (JposException e) {
@@ -11081,6 +11297,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnItalicCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnItalic();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11219,6 +11446,17 @@ public class POSPrinterTest {
     public void testGetCapJrnNearEndSensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapJrnNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJrnNearEndSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapJrnNearEndSensor();
         }
         catch (JposException e) {
@@ -11371,6 +11609,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnPresentCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11516,6 +11765,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnUnderlineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnUnderline();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapMapCharacterSetFailsOnServiceVersionBeforeAdded() {
@@ -11612,6 +11872,17 @@ public class POSPrinterTest {
     public void testGetCapMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapMapCharacterSet();
         }
         catch (JposException e) {
@@ -11766,6 +12037,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11904,6 +12186,17 @@ public class POSPrinterTest {
     public void testGetCapRec2ColorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRec2Color();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRec2ColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRec2Color();
         }
         catch (JposException e) {
@@ -12056,6 +12349,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecBarCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecBarCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12194,6 +12498,17 @@ public class POSPrinterTest {
     public void testGetCapRecBitmapCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecBitmap();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecBitmapCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecBitmap();
         }
         catch (JposException e) {
@@ -12346,6 +12661,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecBoldCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecBold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRecCartridgeSensorFailsOnServiceVersionBeforeAdded() {
@@ -12471,6 +12797,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecCartridgeSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecCartridgeSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRecColorFailsOnServiceVersionBeforeAdded() {
@@ -12589,6 +12926,17 @@ public class POSPrinterTest {
     public void testGetCapRecColorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecColor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecColor();
         }
         catch (JposException e) {
@@ -12741,6 +13089,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12879,6 +13238,17 @@ public class POSPrinterTest {
     public void testGetCapRecDwideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecDwide();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecDwideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecDwide();
         }
         catch (JposException e) {
@@ -13031,6 +13401,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecDwideDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecDwideDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -13169,6 +13550,17 @@ public class POSPrinterTest {
     public void testGetCapRecEmptySensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecEmptySensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecEmptySensor();
         }
         catch (JposException e) {
@@ -13321,6 +13713,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecItalicCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecItalic();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -13466,6 +13869,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecLeft90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecLeft90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRecMarkFeedFailsOnServiceVersionBeforeAdded() {
@@ -13584,6 +13998,17 @@ public class POSPrinterTest {
     public void testGetCapRecMarkFeedCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecMarkFeed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecMarkFeedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecMarkFeed();
         }
         catch (JposException e) {
@@ -13736,6 +14161,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecNearEndSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRecPageModeFailsOnServiceVersionBeforeAdded() {
@@ -13810,6 +14246,17 @@ public class POSPrinterTest {
     public void testGetCapRecPageModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecPageMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecPageModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecPageMode();
         }
         catch (JposException e) {
@@ -13962,6 +14409,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecPapercutCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecPapercut();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14100,6 +14558,17 @@ public class POSPrinterTest {
     public void testGetCapRecPresentCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecPresentCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecPresent();
         }
         catch (JposException e) {
@@ -14252,6 +14721,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecRight90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecRight90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14397,6 +14877,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecRotate180CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecRotate180();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRecRuledLineFailsOnServiceVersionBeforeAdded() {
@@ -14427,6 +14918,17 @@ public class POSPrinterTest {
     public void testGetCapRecRuledLineCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecRuledLine();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecRuledLineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecRuledLine();
         }
         catch (JposException e) {
@@ -14579,6 +15081,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecStampCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecStamp();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14717,6 +15230,17 @@ public class POSPrinterTest {
     public void testGetCapRecUnderlineCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapRecUnderline();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecUnderlineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapRecUnderline();
         }
         catch (JposException e) {
@@ -14869,6 +15393,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlp2ColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlp2Color();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -15007,6 +15542,17 @@ public class POSPrinterTest {
     public void testGetCapSlpBarCodeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpBarCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpBarCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpBarCode();
         }
         catch (JposException e) {
@@ -15159,6 +15705,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpBitmapCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpBitmap();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -15304,6 +15861,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpBoldCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpBold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSlpBothSidesPrintFailsOnServiceVersionBeforeAdded() {
@@ -15422,6 +15990,17 @@ public class POSPrinterTest {
     public void testGetCapSlpBothSidesPrintCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpBothSidesPrint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpBothSidesPrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpBothSidesPrint();
         }
         catch (JposException e) {
@@ -15554,6 +16133,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpCartridgeSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpCartridgeSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSlpColorFailsOnServiceVersionBeforeAdded() {
@@ -15672,6 +16262,17 @@ public class POSPrinterTest {
     public void testGetCapSlpColorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpColor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpColorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpColor();
         }
         catch (JposException e) {
@@ -15824,6 +16425,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -15962,6 +16574,17 @@ public class POSPrinterTest {
     public void testGetCapSlpDwideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpDwide();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpDwideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpDwide();
         }
         catch (JposException e) {
@@ -16114,6 +16737,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpDwideDhighCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpDwideDhigh();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16252,6 +16886,17 @@ public class POSPrinterTest {
     public void testGetCapSlpEmptySensorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpEmptySensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpEmptySensor();
         }
         catch (JposException e) {
@@ -16404,6 +17049,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpFullslipCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpFullslip();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16542,6 +17198,17 @@ public class POSPrinterTest {
     public void testGetCapSlpItalicCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpItalic();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpItalicCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpItalic();
         }
         catch (JposException e) {
@@ -16694,6 +17361,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpLeft90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpLeft90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16839,6 +17517,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpNearEndSensorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSlpPageModeFailsOnServiceVersionBeforeAdded() {
@@ -16913,6 +17602,17 @@ public class POSPrinterTest {
     public void testGetCapSlpPageModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpPageMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpPageModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpPageMode();
         }
         catch (JposException e) {
@@ -17065,6 +17765,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpPresentCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -17203,6 +17914,17 @@ public class POSPrinterTest {
     public void testGetCapSlpRight90CalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpRight90();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpRight90CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpRight90();
         }
         catch (JposException e) {
@@ -17355,6 +18077,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpRotate180CalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpRotate180();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSlpRuledLineFailsOnServiceVersionBeforeAdded() {
@@ -17385,6 +18118,17 @@ public class POSPrinterTest {
     public void testGetCapSlpRuledLineCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapSlpRuledLine();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpRuledLineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapSlpRuledLine();
         }
         catch (JposException e) {
@@ -17537,6 +18281,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpUnderlineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpUnderline();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -17622,6 +18377,17 @@ public class POSPrinterTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -17774,6 +18540,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTransaction();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -17848,6 +18625,17 @@ public class POSPrinterTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -17940,6 +18728,17 @@ public class POSPrinterTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -18073,6 +18872,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetCartridgeNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCartridgeNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCartridgeNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -18189,6 +18999,17 @@ public class POSPrinterTest {
     public void testSetCartridgeNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCartridgeNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCartridgeNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCartridgeNotify(0);
         }
         catch (JposException e) {
@@ -18341,6 +19162,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCharacterSetCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -18477,6 +19309,17 @@ public class POSPrinterTest {
     public void testSetCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setCharacterSet(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setCharacterSet(0);
         }
         catch (JposException e) {
@@ -18621,6 +19464,17 @@ public class POSPrinterTest {
     public void testGetCharacterSetListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCharacterSetList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCharacterSetListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCharacterSetList();
         }
         catch (JposException e) {
@@ -18773,6 +19627,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -18918,6 +19783,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -19056,6 +19932,17 @@ public class POSPrinterTest {
     public void testGetCoverOpenCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getCoverOpen();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCoverOpenCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getCoverOpen();
         }
         catch (JposException e) {
@@ -19209,6 +20096,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -19345,6 +20243,17 @@ public class POSPrinterTest {
     public void testSetDeviceEnabledCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -19489,6 +20398,17 @@ public class POSPrinterTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -19641,6 +20561,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetErrorLevelCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorLevel();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -19786,6 +20717,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetErrorStationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorStation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -19924,6 +20866,17 @@ public class POSPrinterTest {
     public void testGetErrorStringCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getErrorString();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetErrorStringCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getErrorString();
         }
         catch (JposException e) {
@@ -20077,6 +21030,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetFlagWhenIdleCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFlagWhenIdle();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFlagWhenIdleCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -20213,6 +21177,17 @@ public class POSPrinterTest {
     public void testSetFlagWhenIdleCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setFlagWhenIdle(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFlagWhenIdleCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setFlagWhenIdle(true);
         }
         catch (JposException e) {
@@ -20357,6 +21332,17 @@ public class POSPrinterTest {
     public void testGetFontTypefaceListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getFontTypefaceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetFontTypefaceListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getFontTypefaceList();
         }
         catch (JposException e) {
@@ -20510,6 +21496,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -20654,6 +21651,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testSetFreezeEventsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetJrnCartridgeStateFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -20770,6 +21778,17 @@ public class POSPrinterTest {
     public void testGetJrnCartridgeStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getJrnCartridgeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetJrnCartridgeStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getJrnCartridgeState();
         }
         catch (JposException e) {
@@ -20903,6 +21922,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetJrnCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnCurrentCartridge();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetJrnCurrentCartridgeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -21019,6 +22049,17 @@ public class POSPrinterTest {
     public void testSetJrnCurrentCartridgeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setJrnCurrentCartridge(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetJrnCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setJrnCurrentCartridge(0);
         }
         catch (JposException e) {
@@ -21163,6 +22204,17 @@ public class POSPrinterTest {
     public void testGetJrnEmptyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getJrnEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetJrnEmptyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getJrnEmpty();
         }
         catch (JposException e) {
@@ -21316,6 +22368,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetJrnLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnLetterQuality();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetJrnLetterQualityCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -21452,6 +22515,17 @@ public class POSPrinterTest {
     public void testSetJrnLetterQualityCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setJrnLetterQuality(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetJrnLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setJrnLetterQuality(true);
         }
         catch (JposException e) {
@@ -21604,6 +22678,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetJrnLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnLineChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetJrnLineCharsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -21740,6 +22825,17 @@ public class POSPrinterTest {
     public void testSetJrnLineCharsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setJrnLineChars(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetJrnLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setJrnLineChars(0);
         }
         catch (JposException e) {
@@ -21884,6 +22980,17 @@ public class POSPrinterTest {
     public void testGetJrnLineCharsListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getJrnLineCharsList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetJrnLineCharsListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getJrnLineCharsList();
         }
         catch (JposException e) {
@@ -22037,6 +23144,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetJrnLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnLineHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetJrnLineHeightCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -22173,6 +23291,17 @@ public class POSPrinterTest {
     public void testSetJrnLineHeightCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setJrnLineHeight(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetJrnLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setJrnLineHeight(0);
         }
         catch (JposException e) {
@@ -22325,6 +23454,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetJrnLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnLineSpacing();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetJrnLineSpacingCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -22461,6 +23601,17 @@ public class POSPrinterTest {
     public void testSetJrnLineSpacingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setJrnLineSpacing(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetJrnLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setJrnLineSpacing(0);
         }
         catch (JposException e) {
@@ -22605,6 +23756,17 @@ public class POSPrinterTest {
     public void testGetJrnLineWidthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getJrnLineWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetJrnLineWidthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getJrnLineWidth();
         }
         catch (JposException e) {
@@ -22757,6 +23919,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetJrnNearEndCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
@@ -22861,6 +24034,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMapCharacterSet();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMapCharacterSetFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_16);
@@ -22955,6 +24139,17 @@ public class POSPrinterTest {
     public void testSetMapCharacterSetCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMapCharacterSet(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMapCharacterSetCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMapCharacterSet(true);
         }
         catch (JposException e) {
@@ -23107,6 +24302,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetMapModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getMapMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMapModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -23243,6 +24449,17 @@ public class POSPrinterTest {
     public void testSetMapModeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setMapMode(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMapModeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setMapMode(0);
         }
         catch (JposException e) {
@@ -23394,6 +24611,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPageModeAreaFailsOnServiceVersionBeforeAdded() {
@@ -23475,6 +24703,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPageModeAreaCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModeArea();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPageModeDescriptorFailsOnServiceVersionBeforeAdded() {
@@ -23549,6 +24788,17 @@ public class POSPrinterTest {
     public void testGetPageModeDescriptorCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPageModeDescriptor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPageModeDescriptorCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPageModeDescriptor();
         }
         catch (JposException e) {
@@ -23638,6 +24888,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPageModeHorizontalPositionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModeHorizontalPosition();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPageModeHorizontalPositionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -23710,6 +24971,17 @@ public class POSPrinterTest {
     public void testSetPageModeHorizontalPositionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPageModeHorizontalPosition(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPageModeHorizontalPositionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPageModeHorizontalPosition(0);
         }
         catch (JposException e) {
@@ -23798,6 +25070,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPageModePrintAreaCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModePrintArea();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPageModePrintAreaFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -23870,6 +25153,17 @@ public class POSPrinterTest {
     public void testSetPageModePrintAreaCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPageModePrintArea("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPageModePrintAreaCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPageModePrintArea("");
         }
         catch (JposException e) {
@@ -23958,6 +25252,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPageModePrintDirectionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModePrintDirection();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPageModePrintDirectionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -24030,6 +25335,17 @@ public class POSPrinterTest {
     public void testSetPageModePrintDirectionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPageModePrintDirection(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPageModePrintDirectionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPageModePrintDirection(0);
         }
         catch (JposException e) {
@@ -24118,6 +25434,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPageModeStationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModeStation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPageModeStationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -24190,6 +25517,17 @@ public class POSPrinterTest {
     public void testSetPageModeStationCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPageModeStation(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPageModeStationCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPageModeStation(0);
         }
         catch (JposException e) {
@@ -24278,6 +25616,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPageModeVerticalPositionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPageModeVerticalPosition();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPageModeVerticalPositionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -24350,6 +25699,17 @@ public class POSPrinterTest {
     public void testSetPageModeVerticalPositionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPageModeVerticalPosition(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPageModeVerticalPositionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPageModeVerticalPosition(0);
         }
         catch (JposException e) {
@@ -24501,6 +25861,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -24639,6 +26010,17 @@ public class POSPrinterTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -24794,6 +26176,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -24932,6 +26325,17 @@ public class POSPrinterTest {
     public void testSetPowerNotifyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -25085,6 +26489,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -25230,6 +26645,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetRecBarCodeRotationListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecBarCodeRotationList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetRecBitmapRotationListFailsOnServiceVersionBeforeAdded() {
@@ -25326,6 +26752,17 @@ public class POSPrinterTest {
     public void testGetRecBitmapRotationListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecBitmapRotationList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecBitmapRotationListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecBitmapRotationList();
         }
         catch (JposException e) {
@@ -25451,6 +26888,17 @@ public class POSPrinterTest {
     public void testGetRecCartridgeStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecCartridgeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecCartridgeStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecCartridgeState();
         }
         catch (JposException e) {
@@ -25584,6 +27032,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRecCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecCurrentCartridge();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRecCurrentCartridgeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -25700,6 +27159,17 @@ public class POSPrinterTest {
     public void testSetRecCurrentCartridgeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRecCurrentCartridge(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRecCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRecCurrentCartridge(0);
         }
         catch (JposException e) {
@@ -25844,6 +27314,17 @@ public class POSPrinterTest {
     public void testGetRecEmptyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecEmptyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecEmpty();
         }
         catch (JposException e) {
@@ -25997,6 +27478,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRecLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecLetterQuality();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRecLetterQualityCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -26133,6 +27625,17 @@ public class POSPrinterTest {
     public void testSetRecLetterQualityCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRecLetterQuality(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRecLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRecLetterQuality(true);
         }
         catch (JposException e) {
@@ -26285,6 +27788,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRecLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecLineChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRecLineCharsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -26421,6 +27935,17 @@ public class POSPrinterTest {
     public void testSetRecLineCharsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRecLineChars(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRecLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRecLineChars(0);
         }
         catch (JposException e) {
@@ -26565,6 +28090,17 @@ public class POSPrinterTest {
     public void testGetRecLineCharsListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecLineCharsList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecLineCharsListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecLineCharsList();
         }
         catch (JposException e) {
@@ -26718,6 +28254,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRecLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecLineHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRecLineHeightCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -26854,6 +28401,17 @@ public class POSPrinterTest {
     public void testSetRecLineHeightCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRecLineHeight(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRecLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRecLineHeight(0);
         }
         catch (JposException e) {
@@ -27006,6 +28564,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRecLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecLineSpacing();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRecLineSpacingCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -27142,6 +28711,17 @@ public class POSPrinterTest {
     public void testSetRecLineSpacingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRecLineSpacing(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRecLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRecLineSpacing(0);
         }
         catch (JposException e) {
@@ -27286,6 +28866,17 @@ public class POSPrinterTest {
     public void testGetRecLineWidthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecLineWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecLineWidthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecLineWidth();
         }
         catch (JposException e) {
@@ -27438,6 +29029,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetRecLinesToPaperCutCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecLinesToPaperCut();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -27576,6 +29178,17 @@ public class POSPrinterTest {
     public void testGetRecNearEndCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecNearEndCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecNearEnd();
         }
         catch (JposException e) {
@@ -27728,6 +29341,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetRecSidewaysMaxCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecSidewaysMaxChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -27866,6 +29490,17 @@ public class POSPrinterTest {
     public void testGetRecSidewaysMaxLinesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getRecSidewaysMaxLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecSidewaysMaxLinesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getRecSidewaysMaxLines();
         }
         catch (JposException e) {
@@ -28019,6 +29654,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetRotateSpecialCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRotateSpecial();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRotateSpecialCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -28155,6 +29801,17 @@ public class POSPrinterTest {
     public void testSetRotateSpecialCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setRotateSpecial(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRotateSpecialCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setRotateSpecial(0);
         }
         catch (JposException e) {
@@ -28306,6 +29963,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetSlpBarCodeRotationListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpBarCodeRotationList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetSlpBitmapRotationListFailsOnServiceVersionBeforeAdded() {
@@ -28402,6 +30070,17 @@ public class POSPrinterTest {
     public void testGetSlpBitmapRotationListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpBitmapRotationList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpBitmapRotationListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpBitmapRotationList();
         }
         catch (JposException e) {
@@ -28527,6 +30206,17 @@ public class POSPrinterTest {
     public void testGetSlpCartridgeStateCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpCartridgeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpCartridgeStateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpCartridgeState();
         }
         catch (JposException e) {
@@ -28660,6 +30350,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetSlpCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpCurrentCartridge();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlpCurrentCartridgeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -28776,6 +30477,17 @@ public class POSPrinterTest {
     public void testSetSlpCurrentCartridgeCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setSlpCurrentCartridge(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlpCurrentCartridgeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setSlpCurrentCartridge(0);
         }
         catch (JposException e) {
@@ -28920,6 +30632,17 @@ public class POSPrinterTest {
     public void testGetSlpEmptyCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpEmptyCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpEmpty();
         }
         catch (JposException e) {
@@ -29073,6 +30796,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetSlpLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpLetterQuality();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlpLetterQualityCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -29209,6 +30943,17 @@ public class POSPrinterTest {
     public void testSetSlpLetterQualityCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setSlpLetterQuality(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlpLetterQualityCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setSlpLetterQuality(true);
         }
         catch (JposException e) {
@@ -29361,6 +31106,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetSlpLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpLineChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlpLineCharsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -29497,6 +31253,17 @@ public class POSPrinterTest {
     public void testSetSlpLineCharsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setSlpLineChars(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlpLineCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setSlpLineChars(0);
         }
         catch (JposException e) {
@@ -29641,6 +31408,17 @@ public class POSPrinterTest {
     public void testGetSlpLineCharsListCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpLineCharsList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpLineCharsListCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpLineCharsList();
         }
         catch (JposException e) {
@@ -29794,6 +31572,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetSlpLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpLineHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlpLineHeightCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -29930,6 +31719,17 @@ public class POSPrinterTest {
     public void testSetSlpLineHeightCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setSlpLineHeight(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlpLineHeightCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setSlpLineHeight(0);
         }
         catch (JposException e) {
@@ -30082,6 +31882,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testGetSlpLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpLineSpacing();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlpLineSpacingCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -30218,6 +32029,17 @@ public class POSPrinterTest {
     public void testSetSlpLineSpacingCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setSlpLineSpacing(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlpLineSpacingCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setSlpLineSpacing(0);
         }
         catch (JposException e) {
@@ -30362,6 +32184,17 @@ public class POSPrinterTest {
     public void testGetSlpLineWidthCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpLineWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpLineWidthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpLineWidth();
         }
         catch (JposException e) {
@@ -30514,6 +32347,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetSlpLinesNearEndToEndCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpLinesNearEndToEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -30652,6 +32496,17 @@ public class POSPrinterTest {
     public void testGetSlpMaxLinesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpMaxLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpMaxLinesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpMaxLines();
         }
         catch (JposException e) {
@@ -30804,6 +32659,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetSlpNearEndCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetSlpPrintSideFailsOnServiceVersionBeforeAdded() {
@@ -30922,6 +32788,17 @@ public class POSPrinterTest {
     public void testGetSlpPrintSideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpPrintSide();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpPrintSideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpPrintSide();
         }
         catch (JposException e) {
@@ -31074,6 +32951,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testGetSlpSidewaysMaxCharsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpSidewaysMaxChars();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -31212,6 +33100,17 @@ public class POSPrinterTest {
     public void testGetSlpSidewaysMaxLinesCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.getSlpSidewaysMaxLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpSidewaysMaxLinesCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.getSlpSidewaysMaxLines();
         }
         catch (JposException e) {
@@ -31364,6 +33263,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testBeginInsertionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginInsertion(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginRemovalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31509,6 +33419,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testBeginRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginRemoval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testChangePrintSideFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -31625,6 +33546,17 @@ public class POSPrinterTest {
     public void testChangePrintSideCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.changePrintSide(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testChangePrintSideCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.changePrintSide(0);
         }
         catch (JposException e) {
@@ -31776,6 +33708,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31913,6 +33856,17 @@ public class POSPrinterTest {
     public void testClaimCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -32065,6 +34019,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testClearOutputCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearPrintAreaFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -32137,6 +34102,17 @@ public class POSPrinterTest {
     public void testClearPrintAreaCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.clearPrintArea();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearPrintAreaCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.clearPrintArea();
         }
         catch (JposException e) {
@@ -32289,6 +34265,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -32361,6 +34348,17 @@ public class POSPrinterTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -32505,6 +34503,17 @@ public class POSPrinterTest {
     public void testCutPaperCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.cutPaper(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCutPaperCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.cutPaper(0);
         }
         catch (JposException e) {
@@ -32657,6 +34666,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testDirectIOCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDrawRuledLineFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -32685,6 +34705,17 @@ public class POSPrinterTest {
     public void testDrawRuledLineCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.drawRuledLine(0,"",0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDrawRuledLineCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.drawRuledLine(0,"",0,0,0,0);
         }
         catch (JposException e) {
@@ -32829,6 +34860,17 @@ public class POSPrinterTest {
     public void testEndInsertionCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.endInsertion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndInsertionCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.endInsertion();
         }
         catch (JposException e) {
@@ -32981,6 +35023,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testEndRemovalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.endRemoval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testMarkFeedFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_14);
@@ -33105,6 +35158,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testMarkFeedCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.markFeed(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPageModePrintFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -33177,6 +35241,17 @@ public class POSPrinterTest {
     public void testPageModePrintCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.pageModePrint(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPageModePrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.pageModePrint(0);
         }
         catch (JposException e) {
@@ -33328,6 +35403,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintBarCodeCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.printBarCode(0,"",0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintBitmapCalledOnServiceVersionWhenAdded() throws Exception {
@@ -33465,6 +35551,17 @@ public class POSPrinterTest {
     public void testPrintBitmapCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.printBitmap(0,"",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintBitmapCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.printBitmap(0,"",0,0);
         }
         catch (JposException e) {
@@ -33617,6 +35714,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testPrintImmediateCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.printImmediate(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintMemoryBitmapFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_19);
@@ -33678,6 +35786,17 @@ public class POSPrinterTest {
     public void testPrintMemoryBitmapCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.printMemoryBitmap(0,new byte[0],0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintMemoryBitmapCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.printMemoryBitmap(0,new byte[0],0,0,0);
         }
         catch (JposException e) {
@@ -33829,6 +35948,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintNormalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.printNormal(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintTwoNormalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -33966,6 +36096,17 @@ public class POSPrinterTest {
     public void testPrintTwoNormalCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.printTwoNormal(0,"","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintTwoNormalCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.printTwoNormal(0,"","");
         }
         catch (JposException e) {
@@ -34118,6 +36259,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -34209,6 +36361,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -34292,6 +36455,17 @@ public class POSPrinterTest {
     public void testRetrieveStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -34443,6 +36617,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testRotatePrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.rotatePrint(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetBitmapCalledOnServiceVersionWhenAdded() throws Exception {
@@ -34587,6 +36772,17 @@ public class POSPrinterTest {
         }
     }
     
+    @Test
+    public void testSetBitmapCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setBitmap(0,0,"",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetLogoCalledOnServiceVersionWhenAdded() throws Exception {
@@ -34724,6 +36920,17 @@ public class POSPrinterTest {
     public void testSetLogoCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.setLogo(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetLogoCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.setLogo(0,"");
         }
         catch (JposException e) {
@@ -34876,6 +37083,17 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testTransactionPrintCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.transactionPrint(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -34948,6 +37166,17 @@ public class POSPrinterTest {
     public void testUpdateFirmwareCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -35039,6 +37268,17 @@ public class POSPrinterTest {
     public void testUpdateStatisticsCalledOnServiceVersion114() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -35191,13 +37431,24 @@ public class POSPrinterTest {
     }
     
     @Test
+    public void testValidateDataCalledOnServiceVersion115() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.validateData(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -35230,7 +37481,7 @@ public class POSPrinterTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -35263,7 +37514,7 @@ public class POSPrinterTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -35296,7 +37547,7 @@ public class POSPrinterTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_114);
+            this.control.open(OPENNAME_SERVICE_115);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {
