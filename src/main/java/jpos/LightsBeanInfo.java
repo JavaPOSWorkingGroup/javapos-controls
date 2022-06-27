@@ -23,7 +23,6 @@
 package jpos;
 
 import java.beans.*;
-import java.lang.reflect.*;
 
 public class LightsBeanInfo
   extends SimpleBeanInfo
