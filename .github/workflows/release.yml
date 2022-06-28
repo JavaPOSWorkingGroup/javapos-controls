@@ -34,4 +34,19 @@ jobs:
         with:
           name: dependencies
           path: "**/build/reports/project/dependencies.txt"
+      - name: Store HTML test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report-html
+          path: "**/reports/tests/"
+      - name: Store XML test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-xml
+          path: "**/test-results/"
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: "**/test-results/**/*.xml"
           
