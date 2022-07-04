@@ -21,6 +21,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
            arguments: |
+             -Pgithub.event.action=${{github.event.action}}
              --scan
              dependencyReport build
       - name: Store Dependency Report

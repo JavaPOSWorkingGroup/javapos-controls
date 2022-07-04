@@ -27,6 +27,7 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
         with: 
           arguments: |
+             -Pgithub.event.action=${{github.event.action}}
              --scan
              dependencyReport
              test

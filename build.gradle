@@ -42,15 +42,29 @@ def javaposContractsVersion = "$uposVersion.0-SNAPSHOT"
 repositories {
 	mavenCentral()
 
-    // for resolving snapshots from MavenCentral
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    // for resolving snapshots from MavenCentral if not going for a real release
+    if (!isReleaseRun()) 
+    {
+   		logger.warn("WARN: Seems not to be a release, so Maven Central snapshot repository is fetched!");
+	    maven {
+	        url 'https://oss.sonatype.org/content/repositories/snapshots'
+	    }
     }
 
     if (!System.getenv('CI')) {
         mavenLocal()
     }
 }
+
+// this gets true if Github Actions workflow defines github.event.action project variable at Gradle command line
+// AND the event action is 'released' (see release.yml)
+def boolean isReleaseRun() {
+	return System.getenv('CI') && null != findProperty('github.event.action') && 'released'.equals(getProperty('github.event.action')) 
+}
+
+// check whether github.event.action is defined on CI
+if (System.getenv('CI') && null == findProperty('github.event.action'))
+	logger.warn('WARN: Project property github.event.action is not defined, so, it cannot be determined whether a release is ongoing.')
 
 dependencies {
 	api "org.javapos:javapos-contracts:$javaposContractsVersion"
