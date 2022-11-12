@@ -1,3 +1,8 @@
+// for enabling Gradle scan at GitHub Actions
+plugins {
+    id("com.gradle.enterprise") version("3.9")
+}
+
 rootProject.name = 'javapos-controls'
 
 def boolean isRunningOnBuildServer = System.getenv('CI')
@@ -8,4 +13,16 @@ if (startParameter.searchUpwards && isDevHost)
 // comment this out if you want to use binary dependencies
 	if (file('../javapos-contracts').exists()) 		includeBuild '../javapos-contracts'
 	if (file('../javapos-config-loader').exists()) 	includeBuild '../javapos-config-loader'
+}
+
+
+// enabling Gradle scan by agreeing to term of service
+gradleEnterprise {
+    if (System.getenv("CI") != null) {
+        buildScan {
+            publishAlways()
+            termsOfServiceUrl = "https://gradle.com/terms-of-service"
+            termsOfServiceAgree = "yes"
+        }
+    }
 }
