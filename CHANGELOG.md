@@ -2,10 +2,10 @@
 
 ## 1.15.0 Release
 
-- incorporated outstanding changes from UnifiedPOS version 1.14.1 regarding Electronic Value Reader/Writer; solves GH issue #6
+- incorporated outstanding changes from UnifiedPOS version 1.14.1 regarding _Electronic Value Reader/Writer_; solves GH issue #6
 - made implementation UnifiedPOS version 1.15 compliant; solves GH issue #8 
 - internal improvements: replacing Vector based implementation for listener list by an ArrayList based one, get rid of compiler warnings 
-- added `getGateStatus` to _Gate_ which was missing since version 1.12 where it was misspelled as `getGetStatus`; solves GH issue #9
+- added `getGateStatus` to _Gate_ which was missing since version 1.12 where it was misspelled as `getGetStatus`
 
 ## 1.14.2 Maintenance Release
 
