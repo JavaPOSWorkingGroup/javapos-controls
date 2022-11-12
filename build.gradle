@@ -32,7 +32,7 @@ def uposVersion = '1.15'
 version="${uposVersion}.0-SNAPSHOT" // the last part after dot is the build/release version
 
 // dependency versions
-def javaposContractsVersion = "$uposVersion.0-SNAPSHOT"
+def javaposContractsVersion = "$uposVersion.0"
 
 
 ///////////////////////////////////////////////////////////////////////////////
