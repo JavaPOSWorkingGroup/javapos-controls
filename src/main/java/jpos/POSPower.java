@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// POSPower.java - A JavaPOS 1.15.0 device control
+// POSPower.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class POSPower
     extends BaseJposControl
-    implements POSPowerControl115, JposConst
+    implements POSPowerControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -48,6 +48,7 @@ public class POSPower
     protected POSPowerService113 service113;
     protected POSPowerService114 service114;
     protected POSPowerService115 service115;
+    protected POSPowerService116 service116;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
     
@@ -60,7 +61,7 @@ public class POSPower
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS POSPower Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -75,6 +76,7 @@ public class POSPower
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
@@ -103,6 +105,70 @@ public class POSPower
         try
         {
             return service19.getCapBatteryCapacityRemaining();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public boolean getCapBatteryCapacityRemainingInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getCapBatteryCapacityRemainingInSeconds();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public boolean getCapChargeTime()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getCapChargeTime();
         }
         catch(JposException je)
         {
@@ -527,6 +593,38 @@ public class POSPower
         }
     }
     
+    public boolean getCapVariableBatteryCriticallyLowThresholdInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
     public boolean getCapVariableBatteryLowThreshold()
         throws JposException
     {
@@ -547,6 +645,38 @@ public class POSPower
         try
         {
             return service19.getCapVariableBatteryLowThreshold();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public boolean getCapVariableBatteryLowThresholdInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getCapVariableBatteryLowThresholdInSeconds();
         }
         catch(JposException je)
         {
@@ -583,6 +713,38 @@ public class POSPower
         try
         {
             return service19.getBatteryCapacityRemaining();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public int getBatteryCapacityRemainingInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getBatteryCapacityRemainingInSeconds();
         }
         catch(JposException je)
         {
@@ -659,6 +821,70 @@ public class POSPower
         }
     }
     
+    public int getBatteryCriticallyLowThresholdInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getBatteryCriticallyLowThresholdInSeconds();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    public void setBatteryCriticallyLowThresholdInSeconds(int seconds)
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            service116.setBatteryCriticallyLowThresholdInSeconds(seconds);
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
     public int getBatteryLowThreshold()
         throws JposException
     {
@@ -719,6 +945,102 @@ public class POSPower
         catch(Exception e)
         {
             throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public int getBatteryLowThresholdInSeconds()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getBatteryLowThresholdInSeconds();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    public void setBatteryLowThresholdInSeconds(int seconds)
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            service116.setBatteryLowThresholdInSeconds(seconds);
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public int getChargeTime()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getChargeTime();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
                                     "Unhandled exception from Device Service", e);
         }
     }
@@ -1303,6 +1625,7 @@ public class POSPower
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1448,6 +1771,19 @@ public class POSPower
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement POSPowerService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (POSPowerService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement POSPowerService116 interface",
                                             e);
                 }
             }

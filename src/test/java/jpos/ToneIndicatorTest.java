@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * ToneIndicator device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class ToneIndicatorTest {
 
@@ -63,6 +63,7 @@ public class ToneIndicatorTest {
     private static final String SERVICE_113 = "ToneIndicatorTestService113";
     private static final String SERVICE_114 = "ToneIndicatorTestService114";
     private static final String SERVICE_115 = "ToneIndicatorTestService115";
+    private static final String SERVICE_116 = "ToneIndicatorTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -84,6 +85,7 @@ public class ToneIndicatorTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService12ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService13ReturningVersionTooLarge";
@@ -98,6 +100,7 @@ public class ToneIndicatorTest {
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "ToneIndicatorTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -106,10 +109,10 @@ public class ToneIndicatorTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
@@ -125,6 +128,7 @@ public class ToneIndicatorTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -139,6 +143,7 @@ public class ToneIndicatorTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ToneIndicator", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -167,6 +172,7 @@ public class ToneIndicatorTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -181,6 +187,7 @@ public class ToneIndicatorTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -208,9 +215,9 @@ public class ToneIndicatorTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -252,7 +259,7 @@ public class ToneIndicatorTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -279,7 +286,7 @@ public class ToneIndicatorTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -2610,6 +2617,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("ToneIndicator.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService12ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
@@ -2745,6 +2763,17 @@ public class ToneIndicatorTest {
     public void testOpenOnService114ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -2907,6 +2936,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -2916,7 +2956,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAsyncModeCalledOnServiceVersion13() {
@@ -3062,6 +3101,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testSetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -3152,6 +3202,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapMelodyFailsOnServiceVersionBeforeAdded() {
@@ -3193,6 +3254,17 @@ public class ToneIndicatorTest {
     public void testGetCapMelodyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapMelody();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMelodyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapMelody();
         }
         catch (JposException e) {
@@ -3349,6 +3421,17 @@ public class ToneIndicatorTest {
     public void testGetCapPitchCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPitch();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPitchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPitch();
         }
         catch (JposException e) {
@@ -3514,6 +3597,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -3617,6 +3711,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -3702,6 +3807,17 @@ public class ToneIndicatorTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -3805,6 +3921,17 @@ public class ToneIndicatorTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -3968,6 +4095,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetCapVolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapVolume();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4124,6 +4262,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4273,6 +4422,17 @@ public class ToneIndicatorTest {
     public void testGetClaimedCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -4437,6 +4597,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4446,7 +4617,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion13() {
@@ -4584,6 +4754,17 @@ public class ToneIndicatorTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -4739,6 +4920,17 @@ public class ToneIndicatorTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -4903,6 +5095,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4912,7 +5115,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion13() {
@@ -5050,6 +5252,17 @@ public class ToneIndicatorTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -5213,6 +5426,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetInterToneWaitCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getInterToneWait();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetInterToneWaitCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -5222,7 +5446,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetInterToneWaitCalledOnServiceVersion13() {
@@ -5368,6 +5591,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testSetInterToneWaitCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setInterToneWait(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetMelodyTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5415,6 +5649,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetMelodyTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getMelodyType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMelodyTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5438,7 +5683,6 @@ public class ToneIndicatorTest {
         }
     }
     
-    
     @Test
     public void testSetMelodyTypeCalledOnServiceVersion114() {
         try {
@@ -5454,6 +5698,17 @@ public class ToneIndicatorTest {
     public void testSetMelodyTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setMelodyType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMelodyTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setMelodyType(0);
         }
         catch (JposException e) {
@@ -5509,6 +5764,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetMelodyVolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getMelodyVolume();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMelodyVolumeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -5532,7 +5798,6 @@ public class ToneIndicatorTest {
         }
     }
     
-    
     @Test
     public void testSetMelodyVolumeCalledOnServiceVersion114() {
         try {
@@ -5548,6 +5813,17 @@ public class ToneIndicatorTest {
     public void testSetMelodyVolumeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setMelodyVolume(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMelodyVolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setMelodyVolume(0);
         }
         catch (JposException e) {
@@ -5703,6 +5979,17 @@ public class ToneIndicatorTest {
     public void testGetOutputIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getOutputID();
         }
         catch (JposException e) {
@@ -5866,6 +6153,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6015,6 +6313,17 @@ public class ToneIndicatorTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -6181,6 +6490,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -6203,7 +6523,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion14() {
@@ -6330,6 +6649,17 @@ public class ToneIndicatorTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -6494,6 +6824,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6651,6 +6992,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone1DurationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone1Duration();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone1DurationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -6660,7 +7012,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone1DurationCalledOnServiceVersion13() {
@@ -6798,6 +7149,17 @@ public class ToneIndicatorTest {
     public void testSetTone1DurationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone1Duration(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone1DurationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone1Duration(0);
         }
         catch (JposException e) {
@@ -6961,6 +7323,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone1PitchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone1Pitch();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone1PitchCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -6970,7 +7343,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone1PitchCalledOnServiceVersion13() {
@@ -7108,6 +7480,17 @@ public class ToneIndicatorTest {
     public void testSetTone1PitchCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone1Pitch(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone1PitchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone1Pitch(0);
         }
         catch (JposException e) {
@@ -7271,6 +7654,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone1VolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone1Volume();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone1VolumeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7280,7 +7674,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone1VolumeCalledOnServiceVersion13() {
@@ -7418,6 +7811,17 @@ public class ToneIndicatorTest {
     public void testSetTone1VolumeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone1Volume(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone1VolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone1Volume(0);
         }
         catch (JposException e) {
@@ -7581,6 +7985,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone2DurationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone2Duration();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone2DurationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7590,7 +8005,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone2DurationCalledOnServiceVersion13() {
@@ -7728,6 +8142,17 @@ public class ToneIndicatorTest {
     public void testSetTone2DurationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone2Duration(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone2DurationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone2Duration(0);
         }
         catch (JposException e) {
@@ -7891,6 +8316,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone2PitchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone2Pitch();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone2PitchCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -7900,7 +8336,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone2PitchCalledOnServiceVersion13() {
@@ -8038,6 +8473,17 @@ public class ToneIndicatorTest {
     public void testSetTone2PitchCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone2Pitch(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone2PitchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone2Pitch(0);
         }
         catch (JposException e) {
@@ -8201,6 +8647,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testGetTone2VolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTone2Volume();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTone2VolumeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -8210,7 +8667,6 @@ public class ToneIndicatorTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTone2VolumeCalledOnServiceVersion13() {
@@ -8348,6 +8804,17 @@ public class ToneIndicatorTest {
     public void testSetTone2VolumeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTone2Volume(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTone2VolumeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTone2Volume(0);
         }
         catch (JposException e) {
@@ -8510,6 +8977,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8665,6 +9143,17 @@ public class ToneIndicatorTest {
         }
     }
     
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearOutputCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8813,6 +9302,17 @@ public class ToneIndicatorTest {
     public void testClearOutputCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearOutput();
         }
         catch (JposException e) {
@@ -8976,6 +9476,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -9059,6 +9570,17 @@ public class ToneIndicatorTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -9214,6 +9736,17 @@ public class ToneIndicatorTest {
     public void testDirectIOCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -9377,6 +9910,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -9479,6 +10023,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -9573,6 +10128,17 @@ public class ToneIndicatorTest {
     public void testRetrieveStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -9728,6 +10294,17 @@ public class ToneIndicatorTest {
     public void testSoundCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.sound(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSoundCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.sound(0,0);
         }
         catch (JposException e) {
@@ -9891,6 +10468,17 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testSoundImmediateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.soundImmediate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -9974,6 +10562,17 @@ public class ToneIndicatorTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -10084,13 +10683,24 @@ public class ToneIndicatorTest {
     }
     
     @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -10123,7 +10733,7 @@ public class ToneIndicatorTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -10156,7 +10766,7 @@ public class ToneIndicatorTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -10189,7 +10799,7 @@ public class ToneIndicatorTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

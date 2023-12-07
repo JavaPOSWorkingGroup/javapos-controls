@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Lights.java - A JavaPOS 1.15.0 device control
+// Lights.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Lights
     extends BaseJposControl
-    implements LightsControl115, JposConst
+    implements LightsControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -41,6 +41,7 @@ public class Lights
     protected LightsService113 service113;
     protected LightsService114 service114;
     protected LightsService115 service115;
+    protected LightsService116 service116;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
     
@@ -53,7 +54,7 @@ public class Lights
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS Lights Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -61,6 +62,7 @@ public class Lights
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
@@ -161,6 +163,38 @@ public class Lights
         try
         {
             return service112.getCapCompareFirmwareVersion();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE,
+                                    "Unhandled exception from Device Service", e);
+        }
+    }
+    
+    public int getCapPattern()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            return service116.getCapPattern();
         }
         catch(JposException je)
         {
@@ -493,6 +527,38 @@ public class Lights
         }
     }    
     
+    public void switchOffPattern()
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            service116.switchOffPattern();
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }    
+    
     public void switchOn(int lightNumber, int blinkOnCycle, int blinkOffCycle, int color, int alarm)
         throws JposException
     {
@@ -507,6 +573,70 @@ public class Lights
         try
         {
             service112.switchOn(lightNumber, blinkOnCycle, blinkOffCycle, color, alarm);
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }    
+    
+    public void switchOnMultiple(String lightNumbers, int blinkOnCycle, int blinkOffCycle, int color, int alarm)
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            service116.switchOnMultiple(lightNumbers, blinkOnCycle, blinkOffCycle, color, alarm);
+        }
+        catch(JposException je)
+        {
+            throw je;
+        }
+        catch(Exception e)
+        {
+            throw new JposException(JPOS_E_FAILURE, 
+                                    "Unhandled exception from Device Service", e);
+        }
+    }    
+    
+    public void switchOnPattern(int pattern, int alarm)
+        throws JposException
+    {
+        // Make sure control is opened
+        if(!bOpen)
+        {
+            throw new JposException(JPOS_E_CLOSED, "Control not opened");
+        }
+        
+        // Make sure service supports at least version 1.16.0
+        if(serviceVersion < deviceVersion116)
+        {
+            throw new JposException(JPOS_E_NOSERVICE,
+                                    "Device Service is not 1.16.0 compliant.");
+        }
+        
+        // Perform the operation
+        try
+        {
+            service116.switchOnPattern(pattern, alarm);
         }
         catch(JposException je)
         {
@@ -592,6 +722,7 @@ public class Lights
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -646,6 +777,19 @@ public class Lights
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement LightsService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (LightsService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement LightsService116 interface",
                                             e);
                 }
             }

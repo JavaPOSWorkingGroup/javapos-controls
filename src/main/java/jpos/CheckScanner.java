@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CheckScanner.java - A JavaPOS 1.15.0 device control
+// CheckScanner.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class CheckScanner
     extends BaseJposControl
-    implements CheckScannerControl115, JposConst
+    implements CheckScannerControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -46,6 +46,7 @@ public class CheckScanner
     protected CheckScannerService113 service113;
     protected CheckScannerService114 service114;
     protected CheckScannerService115 service115;
+    protected CheckScannerService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<ErrorListener> errorListeners;
@@ -60,7 +61,7 @@ public class CheckScanner
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS CheckScanner Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -73,6 +74,7 @@ public class CheckScanner
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         errorListeners = new ArrayList<ErrorListener>();
@@ -2021,6 +2023,7 @@ public class CheckScanner
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -2140,6 +2143,19 @@ public class CheckScanner
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement CheckScannerService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (CheckScannerService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement CheckScannerService116 interface",
                                             e);
                 }
             }

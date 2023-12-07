@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Scale.java - A JavaPOS 1.15.0 device control
+// Scale.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Scale
     extends BaseJposControl
-    implements ScaleControl115, JposConst
+    implements ScaleControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -51,6 +51,7 @@ public class Scale
     protected ScaleService113 service113;
     protected ScaleService114 service114;
     protected ScaleService115 service115;
+    protected ScaleService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<ErrorListener> errorListeners;
@@ -65,7 +66,7 @@ public class Scale
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS Scale Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -83,6 +84,7 @@ public class Scale
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         errorListeners = new ArrayList<ErrorListener>();
@@ -1938,6 +1940,7 @@ public class Scale
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -2122,6 +2125,19 @@ public class Scale
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement ScaleService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (ScaleService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement ScaleService116 interface",
                                             e);
                 }
             }

@@ -47,6 +47,7 @@ public abstract class BaseJposControl
   protected static final int deviceVersion113 = 1013000; // 1.13.0
   protected static final int deviceVersion114 = 1014000; // 1.14.0
   protected static final int deviceVersion115 = 1015000; // 1.15.0
+  protected static final int deviceVersion116 = 1016000; // 1.16.0
 
 
   //--------------------------------------------------------------------------

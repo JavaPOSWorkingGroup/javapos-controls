@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CashChanger.java - A JavaPOS 1.15.0 device control
+// CashChanger.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class CashChanger
     extends BaseJposControl
-    implements CashChangerControl115, JposConst
+    implements CashChangerControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -51,6 +51,7 @@ public class CashChanger
     protected CashChangerService113 service113;
     protected CashChangerService114 service114;
     protected CashChangerService115 service115;
+    protected CashChangerService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
@@ -64,7 +65,7 @@ public class CashChanger
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS CashChanger Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -82,6 +83,7 @@ public class CashChanger
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
@@ -1950,6 +1952,7 @@ public class CashChanger
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -2134,6 +2137,19 @@ public class CashChanger
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement CashChangerService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (CashChangerService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement CashChangerService116 interface",
                                             e);
                 }
             }

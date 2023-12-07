@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * HardTotals device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class HardTotalsTest {
 
@@ -63,6 +63,7 @@ public class HardTotalsTest {
     private static final String SERVICE_113 = "HardTotalsTestService113";
     private static final String SERVICE_114 = "HardTotalsTestService114";
     private static final String SERVICE_115 = "HardTotalsTestService115";
+    private static final String SERVICE_116 = "HardTotalsTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -84,6 +85,7 @@ public class HardTotalsTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService12ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService13ReturningVersionTooLarge";
@@ -98,6 +100,7 @@ public class HardTotalsTest {
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "HardTotalsTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -106,10 +109,10 @@ public class HardTotalsTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_12, "1.2", SERVICE_12));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
@@ -125,6 +128,7 @@ public class HardTotalsTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE, "1.2", SERVICE_12, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -139,6 +143,7 @@ public class HardTotalsTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("HardTotals", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -167,6 +172,7 @@ public class HardTotalsTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -181,6 +187,7 @@ public class HardTotalsTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -208,9 +215,9 @@ public class HardTotalsTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -252,7 +259,7 @@ public class HardTotalsTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -279,7 +286,7 @@ public class HardTotalsTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -2410,6 +2417,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("HardTotals.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService12ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_12_RETURNING_VERSION_TOO_LARGE);
@@ -2551,6 +2569,17 @@ public class HardTotalsTest {
             assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
         }
     }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
@@ -2635,6 +2664,17 @@ public class HardTotalsTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -2791,6 +2831,17 @@ public class HardTotalsTest {
     public void testGetCapErrorDetectionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapErrorDetection();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapErrorDetectionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapErrorDetection();
         }
         catch (JposException e) {
@@ -2956,6 +3007,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3112,6 +3174,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetCapSingleFileCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSingleFile();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -3208,6 +3281,17 @@ public class HardTotalsTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -3371,6 +3455,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTransactions();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -3456,6 +3551,17 @@ public class HardTotalsTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -3559,6 +3665,17 @@ public class HardTotalsTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -3722,6 +3839,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3871,6 +3999,17 @@ public class HardTotalsTest {
     public void testGetClaimedCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -4035,6 +4174,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4044,7 +4194,6 @@ public class HardTotalsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion13() {
@@ -4182,6 +4331,17 @@ public class HardTotalsTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -4344,6 +4504,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4493,6 +4664,17 @@ public class HardTotalsTest {
     public void testGetFreeDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getFreeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetFreeDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getFreeData();
         }
         catch (JposException e) {
@@ -4657,6 +4839,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4666,7 +4859,6 @@ public class HardTotalsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion13() {
@@ -4804,6 +4996,17 @@ public class HardTotalsTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -4959,6 +5162,17 @@ public class HardTotalsTest {
     public void testGetNumberOfFilesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getNumberOfFiles();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetNumberOfFilesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getNumberOfFiles();
         }
         catch (JposException e) {
@@ -5122,6 +5336,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5271,6 +5496,17 @@ public class HardTotalsTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -5437,6 +5673,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_12);
@@ -5459,7 +5706,6 @@ public class HardTotalsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion14() {
@@ -5586,6 +5832,17 @@ public class HardTotalsTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -5750,6 +6007,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5899,6 +6167,17 @@ public class HardTotalsTest {
     public void testGetTotalsSizeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTotalsSize();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTotalsSizeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getTotalsSize();
         }
         catch (JposException e) {
@@ -6062,6 +6341,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testGetTransactionInProgressCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTransactionInProgress();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6211,6 +6501,17 @@ public class HardTotalsTest {
     public void testBeginTransCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTransCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginTrans();
         }
         catch (JposException e) {
@@ -6373,6 +6674,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6521,6 +6833,17 @@ public class HardTotalsTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -6683,6 +7006,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testClaimFileCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.claimFile(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCloseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6831,6 +7165,17 @@ public class HardTotalsTest {
     public void testCloseCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.close();
         }
         catch (JposException e) {
@@ -6994,6 +7339,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testCommitTransCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.commitTrans();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -7077,6 +7433,17 @@ public class HardTotalsTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -7239,6 +7606,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testCreateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.create("",new int[0],0,true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testDeleteCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7387,6 +7765,17 @@ public class HardTotalsTest {
     public void testDeleteCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.delete("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDeleteCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.delete("");
         }
         catch (JposException e) {
@@ -7549,6 +7938,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testFindCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7697,6 +8097,17 @@ public class HardTotalsTest {
     public void testFindCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.find("",new int[0],new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFindCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.find("",new int[0],new int[0]);
         }
         catch (JposException e) {
@@ -7859,6 +8270,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testFindByIndexCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.findByIndex(0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReadCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8007,6 +8429,17 @@ public class HardTotalsTest {
     public void testReadCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.read(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.read(0,new byte[0],0,0);
         }
         catch (JposException e) {
@@ -8169,6 +8602,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testRecalculateValidationDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.recalculateValidationData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReleaseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8324,6 +8768,17 @@ public class HardTotalsTest {
         }
     }
     
+    @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReleaseFileCalledOnServiceVersionWhenAdded() throws Exception {
@@ -8472,6 +8927,17 @@ public class HardTotalsTest {
     public void testReleaseFileCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.releaseFile(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseFileCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.releaseFile(0);
         }
         catch (JposException e) {
@@ -8635,6 +9101,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testRenameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.rename(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -8737,6 +9214,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -8831,6 +9319,17 @@ public class HardTotalsTest {
     public void testRetrieveStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -8986,6 +9485,17 @@ public class HardTotalsTest {
     public void testRollbackCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.rollback();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRollbackCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.rollback();
         }
         catch (JposException e) {
@@ -9149,6 +9659,17 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testSetAllCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setAll(0,(byte)0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -9232,6 +9753,17 @@ public class HardTotalsTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -9334,6 +9866,17 @@ public class HardTotalsTest {
     public void testUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -9489,6 +10032,17 @@ public class HardTotalsTest {
     public void testValidateDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.validateData(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testValidateDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.validateData(0);
         }
         catch (JposException e) {
@@ -9652,13 +10206,24 @@ public class HardTotalsTest {
     }
     
     @Test
+    public void testWriteCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.write(0,new byte[0],0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -9691,7 +10256,7 @@ public class HardTotalsTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

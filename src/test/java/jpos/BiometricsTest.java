@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * Biometrics device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class BiometricsTest {
 
@@ -55,6 +55,7 @@ public class BiometricsTest {
     private static final String SERVICE_113 = "BiometricsTestService113";
     private static final String SERVICE_114 = "BiometricsTestService114";
     private static final String SERVICE_115 = "BiometricsTestService115";
+    private static final String SERVICE_116 = "BiometricsTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -68,12 +69,14 @@ public class BiometricsTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService110ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService111ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "BiometricsTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -82,10 +85,10 @@ public class BiometricsTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_110, "1.10", SERVICE_110));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_111, "1.11", SERVICE_111));
@@ -93,12 +96,14 @@ public class BiometricsTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE, "1.10", SERVICE_110, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE, "1.11", SERVICE_111, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("Biometrics", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -119,12 +124,14 @@ public class BiometricsTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_111_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -152,9 +159,9 @@ public class BiometricsTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -196,7 +203,7 @@ public class BiometricsTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -223,7 +230,7 @@ public class BiometricsTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -2906,6 +2913,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("Biometrics.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService110ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_110_RETURNING_VERSION_TOO_LARGE);
@@ -2953,6 +2971,17 @@ public class BiometricsTest {
     public void testOpenOnService114ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -3027,6 +3056,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetAlgorithmCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAlgorithm();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAlgorithmCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -3036,7 +3076,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAlgorithmCalledOnServiceVersion111() {
@@ -3086,6 +3125,17 @@ public class BiometricsTest {
     public void testSetAlgorithmCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAlgorithm(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAlgorithmCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAlgorithm(0);
         }
         catch (JposException e) {
@@ -3153,6 +3203,17 @@ public class BiometricsTest {
     public void testGetAlgorithmListCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAlgorithmList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAlgorithmListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getAlgorithmList();
         }
         catch (JposException e) {
@@ -3229,6 +3290,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAutoDisable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoDisableCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -3238,7 +3310,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAutoDisableCalledOnServiceVersion111() {
@@ -3288,6 +3359,17 @@ public class BiometricsTest {
     public void testSetAutoDisableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAutoDisable(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAutoDisable(true);
         }
         catch (JposException e) {
@@ -3355,6 +3437,17 @@ public class BiometricsTest {
     public void testGetBIRCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBIR();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetBIRCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getBIR();
         }
         catch (JposException e) {
@@ -3430,6 +3523,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3491,6 +3595,17 @@ public class BiometricsTest {
     public void testGetCapPowerReportingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPowerReporting();
         }
         catch (JposException e) {
@@ -3566,6 +3681,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapPrematchDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPrematchData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3627,6 +3753,17 @@ public class BiometricsTest {
     public void testGetCapRawSensorDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRawSensorData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRawSensorDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRawSensorData();
         }
         catch (JposException e) {
@@ -3702,6 +3839,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapRealTimeDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapRealTimeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3763,6 +3911,17 @@ public class BiometricsTest {
     public void testGetCapSensorColorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSensorColor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSensorColorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSensorColor();
         }
         catch (JposException e) {
@@ -3838,6 +3997,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapSensorOrientationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSensorOrientation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3899,6 +4069,17 @@ public class BiometricsTest {
     public void testGetCapSensorTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSensorType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSensorTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSensorType();
         }
         catch (JposException e) {
@@ -3974,6 +4155,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4035,6 +4227,17 @@ public class BiometricsTest {
     public void testGetCapTemplateAdaptationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTemplateAdaptation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTemplateAdaptationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapTemplateAdaptation();
         }
         catch (JposException e) {
@@ -4110,6 +4313,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4171,6 +4385,17 @@ public class BiometricsTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -4246,6 +4471,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4314,6 +4550,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4375,6 +4622,17 @@ public class BiometricsTest {
     public void testGetDataCountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -4451,6 +4709,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -4460,7 +4729,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDataEventEnabledCalledOnServiceVersion111() {
@@ -4510,6 +4778,17 @@ public class BiometricsTest {
     public void testSetDataEventEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -4585,6 +4864,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4594,7 +4884,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion111() {
@@ -4644,6 +4933,17 @@ public class BiometricsTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -4711,6 +5011,17 @@ public class BiometricsTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -4787,6 +5098,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4796,7 +5118,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion111() {
@@ -4846,6 +5167,17 @@ public class BiometricsTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -4920,6 +5252,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4981,6 +5324,17 @@ public class BiometricsTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -5057,6 +5411,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -5066,7 +5431,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion111() {
@@ -5116,6 +5480,17 @@ public class BiometricsTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -5190,6 +5565,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5251,6 +5637,17 @@ public class BiometricsTest {
     public void testGetRawSensorDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRawSensorData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRawSensorDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getRawSensorData();
         }
         catch (JposException e) {
@@ -5327,6 +5724,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetRealTimeDataEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getRealTimeDataEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetRealTimeDataEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -5336,7 +5744,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetRealTimeDataEnabledCalledOnServiceVersion111() {
@@ -5386,6 +5793,17 @@ public class BiometricsTest {
     public void testSetRealTimeDataEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setRealTimeDataEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetRealTimeDataEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setRealTimeDataEnabled(true);
         }
         catch (JposException e) {
@@ -5453,6 +5871,17 @@ public class BiometricsTest {
     public void testGetSensorBPPCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSensorBPP();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSensorBPPCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getSensorBPP();
         }
         catch (JposException e) {
@@ -5529,6 +5958,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetSensorColorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSensorColor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSensorColorCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -5538,7 +5978,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetSensorColorCalledOnServiceVersion111() {
@@ -5588,6 +6027,17 @@ public class BiometricsTest {
     public void testSetSensorColorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setSensorColor(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSensorColorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setSensorColor(0);
         }
         catch (JposException e) {
@@ -5655,6 +6105,17 @@ public class BiometricsTest {
     public void testGetSensorHeightCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSensorHeight();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSensorHeightCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getSensorHeight();
         }
         catch (JposException e) {
@@ -5731,6 +6192,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetSensorOrientationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSensorOrientation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSensorOrientationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -5740,7 +6212,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetSensorOrientationCalledOnServiceVersion111() {
@@ -5790,6 +6261,17 @@ public class BiometricsTest {
     public void testSetSensorOrientationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setSensorOrientation(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSensorOrientationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setSensorOrientation(0);
         }
         catch (JposException e) {
@@ -5865,6 +6347,17 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testGetSensorTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSensorType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSensorTypeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -5874,7 +6367,6 @@ public class BiometricsTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetSensorTypeCalledOnServiceVersion111() {
@@ -5924,6 +6416,17 @@ public class BiometricsTest {
     public void testSetSensorTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setSensorType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSensorTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setSensorType(0);
         }
         catch (JposException e) {
@@ -5991,6 +6494,17 @@ public class BiometricsTest {
     public void testGetSensorWidthCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSensorWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSensorWidthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getSensorWidth();
         }
         catch (JposException e) {
@@ -6066,6 +6580,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testBeginEnrollCaptureCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginEnrollCapture(new byte[0],new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginVerifyCaptureCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6126,6 +6651,17 @@ public class BiometricsTest {
     public void testBeginVerifyCaptureCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginVerifyCapture();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginVerifyCaptureCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginVerifyCapture();
         }
         catch (JposException e) {
@@ -6200,6 +6736,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6260,6 +6807,17 @@ public class BiometricsTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -6334,6 +6892,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testClearInputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearInputPropertiesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6394,6 +6963,17 @@ public class BiometricsTest {
     public void testClearInputPropertiesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -6468,6 +7048,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCompareFirmwareVersionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6528,6 +7119,17 @@ public class BiometricsTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -6602,6 +7204,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndCaptureCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6662,6 +7275,17 @@ public class BiometricsTest {
     public void testEndCaptureCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.endCapture();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndCaptureCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.endCapture();
         }
         catch (JposException e) {
@@ -6736,6 +7360,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testIdentifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.identify(0,0,true,new byte[0][0],new int[0][0],0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testIdentifyMatchCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6796,6 +7431,17 @@ public class BiometricsTest {
     public void testIdentifyMatchCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.identifyMatch(0,0,true,new byte[0],new byte[0][0],new int[0][0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testIdentifyMatchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.identifyMatch(0,0,true,new byte[0],new byte[0][0],new int[0][0]);
         }
         catch (JposException e) {
@@ -6870,6 +7516,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testProcessPrematchDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.processPrematchData(new byte[0],new byte[0],new byte[0][0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReleaseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -6930,6 +7587,17 @@ public class BiometricsTest {
     public void testReleaseCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.release();
         }
         catch (JposException e) {
@@ -7004,6 +7672,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testRetrieveStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7064,6 +7743,17 @@ public class BiometricsTest {
     public void testRetrieveStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -7138,6 +7828,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testUpdateStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7205,6 +7906,17 @@ public class BiometricsTest {
         }
     }
     
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testVerifyCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7265,6 +7977,17 @@ public class BiometricsTest {
     public void testVerifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.verify(0,0,true,new byte[0],new byte[0][0],new boolean[0],new int[0],new int[0],new byte[0][0],0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testVerifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.verify(0,0,true,new byte[0],new byte[0][0],new boolean[0],new int[0],new int[0],new byte[0][0],0);
         }
         catch (JposException e) {
@@ -7340,13 +8063,24 @@ public class BiometricsTest {
     }
     
     @Test
+    public void testVerifyMatchCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.verifyMatch(0,0,true,new byte[0],new byte[0],new byte[0][0],new boolean[0],new int[0],new int[0],new byte[0][0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -7379,7 +8113,7 @@ public class BiometricsTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -7412,7 +8146,7 @@ public class BiometricsTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -7445,7 +8179,7 @@ public class BiometricsTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

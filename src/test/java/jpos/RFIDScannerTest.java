@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * RFIDScanner device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class RFIDScannerTest {
 
@@ -53,6 +53,7 @@ public class RFIDScannerTest {
     private static final String SERVICE_113 = "RFIDScannerTestService113";
     private static final String SERVICE_114 = "RFIDScannerTestService114";
     private static final String SERVICE_115 = "RFIDScannerTestService115";
+    private static final String SERVICE_116 = "RFIDScannerTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -64,10 +65,12 @@ public class RFIDScannerTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "RFIDScannerTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "RFIDScannerTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "RFIDScannerTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "RFIDScannerTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -76,19 +79,21 @@ public class RFIDScannerTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("RFIDScanner", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -107,10 +112,12 @@ public class RFIDScannerTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -138,9 +145,9 @@ public class RFIDScannerTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -182,7 +189,7 @@ public class RFIDScannerTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -209,7 +216,7 @@ public class RFIDScannerTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -2750,6 +2757,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("RFIDScanner.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService112ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
@@ -2775,6 +2793,17 @@ public class RFIDScannerTest {
     public void testOpenOnService114ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -2827,6 +2856,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAutoDisable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoDisableCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -2836,7 +2876,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAutoDisableCalledOnServiceVersion113() {
@@ -2864,6 +2903,17 @@ public class RFIDScannerTest {
     public void testSetAutoDisableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAutoDisable(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAutoDisable(true);
         }
         catch (JposException e) {
@@ -2909,6 +2959,17 @@ public class RFIDScannerTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -2962,6 +3023,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapContinuousReadCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapContinuousRead();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3001,6 +3073,17 @@ public class RFIDScannerTest {
     public void testGetCapDisableTagCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDisableTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDisableTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapDisableTag();
         }
         catch (JposException e) {
@@ -3054,6 +3137,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapLockTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapLockTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3093,6 +3187,17 @@ public class RFIDScannerTest {
     public void testGetCapMultipleProtocolsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapMultipleProtocols();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMultipleProtocolsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapMultipleProtocols();
         }
         catch (JposException e) {
@@ -3146,6 +3251,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3185,6 +3301,17 @@ public class RFIDScannerTest {
     public void testGetCapReadTimerCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapReadTimer();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapReadTimerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapReadTimer();
         }
         catch (JposException e) {
@@ -3238,6 +3365,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapRealTimeDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapRealTimeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3277,6 +3415,17 @@ public class RFIDScannerTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -3330,6 +3479,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3369,6 +3529,17 @@ public class RFIDScannerTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -3422,6 +3593,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCapWriteTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapWriteTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3461,6 +3643,17 @@ public class RFIDScannerTest {
     public void testGetCheckHealthTextCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCheckHealthText();
         }
         catch (JposException e) {
@@ -3514,6 +3707,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3553,6 +3757,17 @@ public class RFIDScannerTest {
     public void testGetContinuousReadModeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getContinuousReadMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetContinuousReadModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getContinuousReadMode();
         }
         catch (JposException e) {
@@ -3606,6 +3821,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCurrentTagIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCurrentTagID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3645,6 +3871,17 @@ public class RFIDScannerTest {
     public void testGetCurrentTagProtocolCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCurrentTagProtocol();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCurrentTagProtocolCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCurrentTagProtocol();
         }
         catch (JposException e) {
@@ -3698,6 +3935,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetCurrentTagUserDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCurrentTagUserData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3737,6 +3985,17 @@ public class RFIDScannerTest {
     public void testGetDataCountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -3791,6 +4050,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -3800,7 +4070,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDataEventEnabledCalledOnServiceVersion113() {
@@ -3828,6 +4097,17 @@ public class RFIDScannerTest {
     public void testSetDataEventEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -3881,6 +4161,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -3890,7 +4181,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion113() {
@@ -3918,6 +4208,17 @@ public class RFIDScannerTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -3963,6 +4264,17 @@ public class RFIDScannerTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -4017,6 +4329,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -4026,7 +4349,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion113() {
@@ -4054,6 +4376,17 @@ public class RFIDScannerTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -4099,6 +4432,17 @@ public class RFIDScannerTest {
     public void testGetOutputIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getOutputID();
         }
         catch (JposException e) {
@@ -4152,6 +4496,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -4191,6 +4546,17 @@ public class RFIDScannerTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -4245,6 +4611,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -4254,7 +4631,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion113() {
@@ -4282,6 +4658,17 @@ public class RFIDScannerTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -4327,6 +4714,17 @@ public class RFIDScannerTest {
     public void testGetPowerStateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPowerState();
         }
         catch (JposException e) {
@@ -4381,6 +4779,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetProtocolMaskCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getProtocolMask();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetProtocolMaskCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -4390,7 +4799,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetProtocolMaskCalledOnServiceVersion113() {
@@ -4418,6 +4826,17 @@ public class RFIDScannerTest {
     public void testSetProtocolMaskCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setProtocolMask(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetProtocolMaskCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setProtocolMask(0);
         }
         catch (JposException e) {
@@ -4471,6 +4890,17 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testGetReadTimerIntervalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getReadTimerInterval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetReadTimerIntervalCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -4480,7 +4910,6 @@ public class RFIDScannerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetReadTimerIntervalCalledOnServiceVersion113() {
@@ -4508,6 +4937,17 @@ public class RFIDScannerTest {
     public void testSetReadTimerIntervalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setReadTimerInterval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetReadTimerIntervalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setReadTimerInterval(0);
         }
         catch (JposException e) {
@@ -4553,6 +4993,17 @@ public class RFIDScannerTest {
     public void testGetTagCountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTagCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTagCountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getTagCount();
         }
         catch (JposException e) {
@@ -4606,6 +5057,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -4644,6 +5106,17 @@ public class RFIDScannerTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -4696,6 +5169,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testClearInputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearInputPropertiesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -4734,6 +5218,17 @@ public class RFIDScannerTest {
     public void testClearInputPropertiesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -4786,6 +5281,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testClearOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCloseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -4824,6 +5330,17 @@ public class RFIDScannerTest {
     public void testCloseCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.close();
         }
         catch (JposException e) {
@@ -4876,6 +5393,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testDirectIOCalledOnServiceVersionWhenAdded() throws Exception {
@@ -4914,6 +5442,17 @@ public class RFIDScannerTest {
     public void testDirectIOCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -4966,6 +5505,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testDisableTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.disableTag(new byte[0],0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testFirstTagCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5004,6 +5554,17 @@ public class RFIDScannerTest {
     public void testFirstTagCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.firstTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testFirstTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.firstTag();
         }
         catch (JposException e) {
@@ -5056,6 +5617,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testLockTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.lockTag(new byte[0],0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testNextTagCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5094,6 +5666,17 @@ public class RFIDScannerTest {
     public void testNextTagCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.nextTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testNextTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.nextTag();
         }
         catch (JposException e) {
@@ -5146,6 +5729,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testPreviousTagCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.previousTag();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReadTagsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5184,6 +5778,17 @@ public class RFIDScannerTest {
     public void testReadTagsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.readTags(0,new byte[0],new byte[0],0,0,0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReadTagsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.readTags(0,new byte[0],new byte[0],0,0,0,new byte[0]);
         }
         catch (JposException e) {
@@ -5236,6 +5841,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testResetStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5274,6 +5890,17 @@ public class RFIDScannerTest {
     public void testResetStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.resetStatistics("");
         }
         catch (JposException e) {
@@ -5326,6 +5953,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testStartReadTagsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5364,6 +6002,17 @@ public class RFIDScannerTest {
     public void testStartReadTagsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.startReadTags(0,new byte[0],new byte[0],0,0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testStartReadTagsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.startReadTags(0,new byte[0],new byte[0],0,0,new byte[0]);
         }
         catch (JposException e) {
@@ -5416,6 +6065,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testStopReadTagsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.stopReadTags(new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testUpdateFirmwareCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5454,6 +6114,17 @@ public class RFIDScannerTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -5506,6 +6177,17 @@ public class RFIDScannerTest {
         }
     }
     
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testWriteTagDataCalledOnServiceVersionWhenAdded() throws Exception {
@@ -5544,6 +6226,17 @@ public class RFIDScannerTest {
     public void testWriteTagDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.writeTagData(new byte[0],new byte[0],0,0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testWriteTagDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.writeTagData(new byte[0],new byte[0],0,0,new byte[0]);
         }
         catch (JposException e) {
@@ -5597,13 +6290,24 @@ public class RFIDScannerTest {
     }
     
     @Test
+    public void testWriteTagIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.writeTagID(new byte[0],new byte[0],0,new byte[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -5636,7 +6340,7 @@ public class RFIDScannerTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -5669,7 +6373,7 @@ public class RFIDScannerTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -5702,7 +6406,7 @@ public class RFIDScannerTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -5735,7 +6439,7 @@ public class RFIDScannerTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

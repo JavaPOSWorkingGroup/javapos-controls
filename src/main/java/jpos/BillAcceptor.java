@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// BillAcceptor.java - A JavaPOS 1.15.0 device control
+// BillAcceptor.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class BillAcceptor
     extends BaseJposControl
-    implements BillAcceptorControl115, JposConst
+    implements BillAcceptorControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -42,6 +42,7 @@ public class BillAcceptor
     protected BillAcceptorService113 service113;
     protected BillAcceptorService114 service114;
     protected BillAcceptorService115 service115;
+    protected BillAcceptorService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
@@ -55,7 +56,7 @@ public class BillAcceptor
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS BillAcceptor Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -64,6 +65,7 @@ public class BillAcceptor
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
@@ -1117,6 +1119,7 @@ public class BillAcceptor
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1184,6 +1187,19 @@ public class BillAcceptor
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement BillAcceptorService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (BillAcceptorService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement BillAcceptorService116 interface",
                                             e);
                 }
             }

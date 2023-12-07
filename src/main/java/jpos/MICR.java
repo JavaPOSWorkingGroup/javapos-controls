@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// MICR.java - A JavaPOS 1.15.0 device control
+// MICR.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class MICR
     extends BaseJposControl
-    implements MICRControl115, JposConst
+    implements MICRControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -51,6 +51,7 @@ public class MICR
     protected MICRService113 service113;
     protected MICRService114 service114;
     protected MICRService115 service115;
+    protected MICRService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<ErrorListener> errorListeners;
@@ -65,7 +66,7 @@ public class MICR
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS MICR Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -83,6 +84,7 @@ public class MICR
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         errorListeners = new ArrayList<ErrorListener>();
@@ -1100,6 +1102,7 @@ public class MICR
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1284,6 +1287,19 @@ public class MICR
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement MICRService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (MICRService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement MICRService116 interface",
                                             e);
                 }
             }

@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * FiscalPrinter device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class FiscalPrinterTest {
 
@@ -62,6 +62,7 @@ public class FiscalPrinterTest {
     private static final String SERVICE_113 = "FiscalPrinterTestService113";
     private static final String SERVICE_114 = "FiscalPrinterTestService114";
     private static final String SERVICE_115 = "FiscalPrinterTestService115";
+    private static final String SERVICE_116 = "FiscalPrinterTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -82,6 +83,7 @@ public class FiscalPrinterTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService13ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService14ReturningVersionTooLarge";
@@ -95,6 +97,7 @@ public class FiscalPrinterTest {
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "FiscalPrinterTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -103,10 +106,10 @@ public class FiscalPrinterTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_13, "1.3", SERVICE_13));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_14, "1.4", SERVICE_14));
@@ -121,6 +124,7 @@ public class FiscalPrinterTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE, "1.3", SERVICE_13, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE, "1.4", SERVICE_14, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -134,6 +138,7 @@ public class FiscalPrinterTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("FiscalPrinter", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -161,6 +166,7 @@ public class FiscalPrinterTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_14_RETURNING_VERSION_TOO_LARGE);
@@ -174,6 +180,7 @@ public class FiscalPrinterTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -201,9 +208,9 @@ public class FiscalPrinterTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -245,7 +252,7 @@ public class FiscalPrinterTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -272,7 +279,7 @@ public class FiscalPrinterTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -8752,6 +8759,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("FiscalPrinter.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService13ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_13_RETURNING_VERSION_TOO_LARGE);
@@ -8882,6 +8900,17 @@ public class FiscalPrinterTest {
             assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
         }
     }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     @Test
     public void testGetActualCurrencyFailsOnServiceVersionBeforeAdded() {
         try {
@@ -8999,6 +9028,17 @@ public class FiscalPrinterTest {
     public void testGetActualCurrencyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getActualCurrency();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetActualCurrencyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getActualCurrency();
         }
         catch (JposException e) {
@@ -9132,6 +9172,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetAdditionalHeaderCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAdditionalHeader();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAdditionalHeaderFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -9154,7 +9205,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAdditionalHeaderCalledOnServiceVersion17() {
@@ -9248,6 +9298,17 @@ public class FiscalPrinterTest {
     public void testSetAdditionalHeaderCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAdditionalHeader("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAdditionalHeaderCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAdditionalHeader("");
         }
         catch (JposException e) {
@@ -9380,6 +9441,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetAdditionalTrailerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAdditionalTrailer();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAdditionalTrailerFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -9402,7 +9474,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAdditionalTrailerCalledOnServiceVersion17() {
@@ -9496,6 +9567,17 @@ public class FiscalPrinterTest {
     public void testSetAdditionalTrailerCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAdditionalTrailer("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAdditionalTrailerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAdditionalTrailer("");
         }
         catch (JposException e) {
@@ -9647,6 +9729,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetAmountDecimalPlaceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAmountDecimalPlace();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetAmountDecimalPlacesFailsOnServiceVersionBeforeAdded() {
@@ -9754,6 +9847,17 @@ public class FiscalPrinterTest {
     public void testGetAmountDecimalPlacesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAmountDecimalPlaces();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAmountDecimalPlacesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getAmountDecimalPlaces();
         }
         catch (JposException e) {
@@ -9907,6 +10011,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -9916,7 +10031,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAsyncModeCalledOnServiceVersion14() {
@@ -10051,6 +10165,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testSetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetCapAdditionalHeaderFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -10167,6 +10292,17 @@ public class FiscalPrinterTest {
     public void testGetCapAdditionalHeaderCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAdditionalHeader();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapAdditionalHeaderCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapAdditionalHeader();
         }
         catch (JposException e) {
@@ -10319,6 +10455,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapAdditionalLinesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAdditionalLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapAdditionalTrailerFailsOnServiceVersionBeforeAdded() {
@@ -10437,6 +10584,17 @@ public class FiscalPrinterTest {
     public void testGetCapAdditionalTrailerCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapAdditionalTrailer();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapAdditionalTrailerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapAdditionalTrailer();
         }
         catch (JposException e) {
@@ -10589,6 +10747,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapAmountAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAmountAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10734,6 +10903,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapAmountNotPaidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAmountNotPaid();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapChangeDueFailsOnServiceVersionBeforeAdded() {
@@ -10852,6 +11032,17 @@ public class FiscalPrinterTest {
     public void testGetCapChangeDueCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapChangeDue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapChangeDueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapChangeDue();
         }
         catch (JposException e) {
@@ -11004,6 +11195,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapCheckTotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCheckTotal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
@@ -11089,6 +11291,17 @@ public class FiscalPrinterTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -11241,6 +11454,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapCoverSensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCoverSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -11379,6 +11603,17 @@ public class FiscalPrinterTest {
     public void testGetCapDoubleWidthCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDoubleWidth();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDoubleWidthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapDoubleWidth();
         }
         catch (JposException e) {
@@ -11531,6 +11766,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapDuplicateReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapDuplicateReceipt();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapEmptyReceiptIsVoidableFailsOnServiceVersionBeforeAdded() {
@@ -11649,6 +11895,17 @@ public class FiscalPrinterTest {
     public void testGetCapEmptyReceiptIsVoidableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapEmptyReceiptIsVoidable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapEmptyReceiptIsVoidableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapEmptyReceiptIsVoidable();
         }
         catch (JposException e) {
@@ -11781,6 +12038,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapFiscalReceiptStationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapFiscalReceiptStation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapFiscalReceiptTypeFailsOnServiceVersionBeforeAdded() {
@@ -11899,6 +12167,17 @@ public class FiscalPrinterTest {
     public void testGetCapFiscalReceiptTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapFiscalReceiptType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapFiscalReceiptTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapFiscalReceiptType();
         }
         catch (JposException e) {
@@ -12051,6 +12330,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapFixedOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapFixedOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12189,6 +12479,17 @@ public class FiscalPrinterTest {
     public void testGetCapHasVatTableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapHasVatTable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapHasVatTableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapHasVatTable();
         }
         catch (JposException e) {
@@ -12341,6 +12642,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapIndependentHeaderCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapIndependentHeader();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12479,6 +12791,17 @@ public class FiscalPrinterTest {
     public void testGetCapItemListCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapItemList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapItemListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapItemList();
         }
         catch (JposException e) {
@@ -12631,6 +12954,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnEmptySensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapJrnEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -12769,6 +13103,17 @@ public class FiscalPrinterTest {
     public void testGetCapJrnNearEndSensorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapJrnNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapJrnNearEndSensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapJrnNearEndSensor();
         }
         catch (JposException e) {
@@ -12921,6 +13266,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapJrnPresentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapJrnPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapMultiContractorFailsOnServiceVersionBeforeAdded() {
@@ -13039,6 +13395,17 @@ public class FiscalPrinterTest {
     public void testGetCapMultiContractorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapMultiContractor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapMultiContractorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapMultiContractor();
         }
         catch (JposException e) {
@@ -13191,6 +13558,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapNonFiscalModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapNonFiscalMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapOnlyVoidLastItemFailsOnServiceVersionBeforeAdded() {
@@ -13309,6 +13687,17 @@ public class FiscalPrinterTest {
     public void testGetCapOnlyVoidLastItemCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapOnlyVoidLastItem();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapOnlyVoidLastItemCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapOnlyVoidLastItem();
         }
         catch (JposException e) {
@@ -13461,6 +13850,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapOrderAdjustmentFirstCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapOrderAdjustmentFirst();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapPackageAdjustmentFailsOnServiceVersionBeforeAdded() {
@@ -13579,6 +13979,17 @@ public class FiscalPrinterTest {
     public void testGetCapPackageAdjustmentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPackageAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPackageAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPackageAdjustment();
         }
         catch (JposException e) {
@@ -13731,6 +14142,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapPercentAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPercentAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -13876,6 +14298,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapPositiveAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPositiveAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapPositiveSubtotalAdjustmentFailsOnServiceVersionBeforeAdded() {
@@ -13939,6 +14372,17 @@ public class FiscalPrinterTest {
     public void testGetCapPositiveSubtotalAdjustmentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPositiveSubtotalAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPositiveSubtotalAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPositiveSubtotalAdjustment();
         }
         catch (JposException e) {
@@ -14064,6 +14508,17 @@ public class FiscalPrinterTest {
     public void testGetCapPostPreLineCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPostPreLine();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPostPreLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPostPreLine();
         }
         catch (JposException e) {
@@ -14216,6 +14671,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerLossReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerLossReport();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14354,6 +14820,17 @@ public class FiscalPrinterTest {
     public void testGetCapPowerReportingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPowerReporting();
         }
         catch (JposException e) {
@@ -14506,6 +14983,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapPredefinedPaymentLinesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPredefinedPaymentLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14644,6 +15132,17 @@ public class FiscalPrinterTest {
     public void testGetCapRecEmptySensorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecEmptySensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRecEmptySensor();
         }
         catch (JposException e) {
@@ -14796,6 +15295,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapRecNearEndSensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapRecNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -14934,6 +15444,17 @@ public class FiscalPrinterTest {
     public void testGetCapRecPresentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRecPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRecPresentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRecPresent();
         }
         catch (JposException e) {
@@ -15086,6 +15607,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapReceiptNotPaidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapReceiptNotPaid();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -15224,6 +15756,17 @@ public class FiscalPrinterTest {
     public void testGetCapRemainingFiscalMemoryCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRemainingFiscalMemory();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRemainingFiscalMemoryCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRemainingFiscalMemory();
         }
         catch (JposException e) {
@@ -15376,6 +15919,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapReservedWordCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapReservedWord();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSetCurrencyFailsOnServiceVersionBeforeAdded() {
@@ -15494,6 +16048,17 @@ public class FiscalPrinterTest {
     public void testGetCapSetCurrencyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSetCurrency();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSetCurrencyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSetCurrency();
         }
         catch (JposException e) {
@@ -15646,6 +16211,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSetHeaderCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSetHeader();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -15784,6 +16360,17 @@ public class FiscalPrinterTest {
     public void testGetCapSetPOSIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSetPOSID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSetPOSIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSetPOSID();
         }
         catch (JposException e) {
@@ -15936,6 +16523,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSetStoreFiscalIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSetStoreFiscalID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16074,6 +16672,17 @@ public class FiscalPrinterTest {
     public void testGetCapSetTrailerCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSetTrailer();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSetTrailerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSetTrailer();
         }
         catch (JposException e) {
@@ -16226,6 +16835,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSetVatTableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSetVatTable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16364,6 +16984,17 @@ public class FiscalPrinterTest {
     public void testGetCapSlpEmptySensorCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpEmptySensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpEmptySensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSlpEmptySensor();
         }
         catch (JposException e) {
@@ -16516,6 +17147,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpFiscalDocumentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSlpFiscalDocument();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16654,6 +17296,17 @@ public class FiscalPrinterTest {
     public void testGetCapSlpFullSlipCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpFullSlip();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpFullSlipCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSlpFullSlip();
         }
         catch (JposException e) {
@@ -16806,6 +17459,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpNearEndSensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSlpNearEndSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -16944,6 +17608,17 @@ public class FiscalPrinterTest {
     public void testGetCapSlpPresentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSlpPresent();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSlpPresentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSlpPresent();
         }
         catch (JposException e) {
@@ -17096,6 +17771,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSlpValidationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSlpValidation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStatisticsReportingFailsOnServiceVersionBeforeAdded() {
@@ -17192,6 +17878,17 @@ public class FiscalPrinterTest {
     public void testGetCapStatisticsReportingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapStatisticsReporting();
         }
         catch (JposException e) {
@@ -17344,6 +18041,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSubAmountAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSubAmountAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -17482,6 +18190,17 @@ public class FiscalPrinterTest {
     public void testGetCapSubPercentAdjustmentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSubPercentAdjustment();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSubPercentAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSubPercentAdjustment();
         }
         catch (JposException e) {
@@ -17634,6 +18353,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapSubtotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSubtotal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapTotalizerTypeFailsOnServiceVersionBeforeAdded() {
@@ -17752,6 +18482,17 @@ public class FiscalPrinterTest {
     public void testGetCapTotalizerTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTotalizerType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTotalizerTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapTotalizerType();
         }
         catch (JposException e) {
@@ -17904,6 +18645,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapTrainingModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -17989,6 +18741,17 @@ public class FiscalPrinterTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -18092,6 +18855,17 @@ public class FiscalPrinterTest {
     public void testGetCapUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateStatistics();
         }
         catch (JposException e) {
@@ -18244,6 +19018,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapValidateJournalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapValidateJournal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -18389,6 +19174,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCapXReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapXReport();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetChangeDueFailsOnServiceVersionBeforeAdded() {
@@ -18515,6 +19311,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetChangeDueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getChangeDue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetChangeDueFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -18537,7 +19344,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetChangeDueCalledOnServiceVersion17() {
@@ -18631,6 +19437,17 @@ public class FiscalPrinterTest {
     public void testSetChangeDueCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setChangeDue("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetChangeDueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setChangeDue("");
         }
         catch (JposException e) {
@@ -18775,6 +19592,17 @@ public class FiscalPrinterTest {
     public void testGetCheckHealthTextCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCheckHealthText();
         }
         catch (JposException e) {
@@ -18928,6 +19756,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetCheckTotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckTotal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCheckTotalCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -18937,7 +19776,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetCheckTotalCalledOnServiceVersion14() {
@@ -19064,6 +19902,17 @@ public class FiscalPrinterTest {
     public void testSetCheckTotalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setCheckTotal(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCheckTotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setCheckTotal(true);
         }
         catch (JposException e) {
@@ -19215,6 +20064,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetContractorIdFailsOnServiceVersionBeforeAdded() {
@@ -19341,6 +20201,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetContractorIdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getContractorId();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetContractorIdFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -19363,7 +20234,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetContractorIdCalledOnServiceVersion17() {
@@ -19457,6 +20327,17 @@ public class FiscalPrinterTest {
     public void testSetContractorIdCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setContractorId(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetContractorIdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setContractorId(0);
         }
         catch (JposException e) {
@@ -19601,6 +20482,17 @@ public class FiscalPrinterTest {
     public void testGetCountryCodeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCountryCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCountryCodeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCountryCode();
         }
         catch (JposException e) {
@@ -19753,6 +20645,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetCoverOpenCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCoverOpen();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetDateTypeFailsOnServiceVersionBeforeAdded() {
@@ -19879,6 +20782,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetDateTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDateType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDateTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -19901,7 +20815,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDateTypeCalledOnServiceVersion17() {
@@ -19995,6 +20908,17 @@ public class FiscalPrinterTest {
     public void testSetDateTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDateType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDateTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDateType(0);
         }
         catch (JposException e) {
@@ -20146,6 +21070,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetDayOpenedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDayOpened();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -20284,6 +21219,17 @@ public class FiscalPrinterTest {
     public void testGetDescriptionLengthCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDescriptionLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDescriptionLengthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDescriptionLength();
         }
         catch (JposException e) {
@@ -20437,6 +21383,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -20446,7 +21403,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion14() {
@@ -20573,6 +21529,17 @@ public class FiscalPrinterTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -20717,6 +21684,17 @@ public class FiscalPrinterTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -20870,6 +21848,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetDuplicateReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDuplicateReceipt();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDuplicateReceiptCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -20879,7 +21868,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDuplicateReceiptCalledOnServiceVersion14() {
@@ -21006,6 +21994,17 @@ public class FiscalPrinterTest {
     public void testSetDuplicateReceiptCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDuplicateReceipt(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDuplicateReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDuplicateReceipt(true);
         }
         catch (JposException e) {
@@ -21150,6 +22149,17 @@ public class FiscalPrinterTest {
     public void testGetErrorLevelCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorLevel();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetErrorLevelCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getErrorLevel();
         }
         catch (JposException e) {
@@ -21302,6 +22312,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetErrorOutIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getErrorOutID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -21440,6 +22461,17 @@ public class FiscalPrinterTest {
     public void testGetErrorStateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getErrorState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetErrorStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getErrorState();
         }
         catch (JposException e) {
@@ -21592,6 +22624,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetErrorStationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getErrorStation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -21737,6 +22780,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetErrorStringCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getErrorString();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetFiscalReceiptStationFailsOnServiceVersionBeforeAdded() {
@@ -21863,6 +22917,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetFiscalReceiptStationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFiscalReceiptStation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFiscalReceiptStationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -21885,7 +22950,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFiscalReceiptStationCalledOnServiceVersion17() {
@@ -21979,6 +23043,17 @@ public class FiscalPrinterTest {
     public void testSetFiscalReceiptStationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFiscalReceiptStation(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFiscalReceiptStationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFiscalReceiptStation(0);
         }
         catch (JposException e) {
@@ -22111,6 +23186,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetFiscalReceiptTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFiscalReceiptType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFiscalReceiptTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -22133,7 +23219,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFiscalReceiptTypeCalledOnServiceVersion17() {
@@ -22227,6 +23312,17 @@ public class FiscalPrinterTest {
     public void testSetFiscalReceiptTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFiscalReceiptType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFiscalReceiptTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFiscalReceiptType(0);
         }
         catch (JposException e) {
@@ -22379,6 +23475,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetFlagWhenIdleCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFlagWhenIdle();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFlagWhenIdleCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -22388,7 +23495,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFlagWhenIdleCalledOnServiceVersion14() {
@@ -22515,6 +23621,17 @@ public class FiscalPrinterTest {
     public void testSetFlagWhenIdleCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFlagWhenIdle(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFlagWhenIdleCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFlagWhenIdle(true);
         }
         catch (JposException e) {
@@ -22667,6 +23784,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -22676,7 +23804,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion14() {
@@ -22803,6 +23930,17 @@ public class FiscalPrinterTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -22947,6 +24085,17 @@ public class FiscalPrinterTest {
     public void testGetJrnEmptyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getJrnEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetJrnEmptyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getJrnEmpty();
         }
         catch (JposException e) {
@@ -23099,6 +24248,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetJrnNearEndCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getJrnNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -23244,6 +24404,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetMessageLengthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getMessageLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetMessageTypeFailsOnServiceVersionBeforeAdded() {
@@ -23370,6 +24541,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetMessageTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getMessageType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMessageTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -23392,7 +24574,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetMessageTypeCalledOnServiceVersion17() {
@@ -23486,6 +24667,17 @@ public class FiscalPrinterTest {
     public void testSetMessageTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setMessageType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMessageTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setMessageType(0);
         }
         catch (JposException e) {
@@ -23630,6 +24822,17 @@ public class FiscalPrinterTest {
     public void testGetNumHeaderLinesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getNumHeaderLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetNumHeaderLinesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getNumHeaderLines();
         }
         catch (JposException e) {
@@ -23782,6 +24985,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetNumTrailerLinesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getNumTrailerLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -23920,6 +25134,17 @@ public class FiscalPrinterTest {
     public void testGetNumVatRatesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getNumVatRates();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetNumVatRatesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getNumVatRates();
         }
         catch (JposException e) {
@@ -24072,6 +25297,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -24210,6 +25446,17 @@ public class FiscalPrinterTest {
     public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceDescription();
         }
         catch (JposException e) {
@@ -24362,6 +25609,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPostLineFailsOnServiceVersionBeforeAdded() {
@@ -24488,6 +25746,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetPostLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPostLine();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPostLineFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -24510,7 +25779,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPostLineCalledOnServiceVersion17() {
@@ -24604,6 +25872,17 @@ public class FiscalPrinterTest {
     public void testSetPostLineCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPostLine("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPostLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPostLine("");
         }
         catch (JposException e) {
@@ -24756,6 +26035,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -24765,7 +26055,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion14() {
@@ -24892,6 +26181,17 @@ public class FiscalPrinterTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -25043,6 +26343,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPreLineFailsOnServiceVersionBeforeAdded() {
@@ -25169,6 +26480,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetPreLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPreLine();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPreLineFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -25191,7 +26513,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPreLineCalledOnServiceVersion17() {
@@ -25285,6 +26606,17 @@ public class FiscalPrinterTest {
     public void testSetPreLineCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPreLine("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPreLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPreLine("");
         }
         catch (JposException e) {
@@ -25429,6 +26761,17 @@ public class FiscalPrinterTest {
     public void testGetPredefinedPaymentLinesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPredefinedPaymentLines();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPredefinedPaymentLinesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPredefinedPaymentLines();
         }
         catch (JposException e) {
@@ -25581,6 +26924,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetPrinterStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPrinterState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -25719,6 +27073,17 @@ public class FiscalPrinterTest {
     public void testGetQuantityDecimalPlacesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getQuantityDecimalPlaces();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetQuantityDecimalPlacesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getQuantityDecimalPlaces();
         }
         catch (JposException e) {
@@ -25871,6 +27236,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetQuantityLengthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getQuantityLength();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -26009,6 +27385,17 @@ public class FiscalPrinterTest {
     public void testGetRecEmptyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getRecEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetRecEmptyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getRecEmpty();
         }
         catch (JposException e) {
@@ -26161,6 +27548,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetRecNearEndCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getRecNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -26306,6 +27704,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetRemainingFiscalMemoryCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getRemainingFiscalMemory();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -26444,6 +27853,17 @@ public class FiscalPrinterTest {
     public void testGetReservedWordCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getReservedWord();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetReservedWordCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getReservedWord();
         }
         catch (JposException e) {
@@ -26597,6 +28017,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetSlipSelectionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSlipSelection();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetSlipSelectionCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_13);
@@ -26606,7 +28037,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetSlipSelectionCalledOnServiceVersion14() {
@@ -26733,6 +28163,17 @@ public class FiscalPrinterTest {
     public void testSetSlipSelectionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setSlipSelection(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetSlipSelectionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setSlipSelection(0);
         }
         catch (JposException e) {
@@ -26877,6 +28318,17 @@ public class FiscalPrinterTest {
     public void testGetSlpEmptyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSlpEmpty();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSlpEmptyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getSlpEmpty();
         }
         catch (JposException e) {
@@ -27029,6 +28481,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetSlpNearEndCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSlpNearEnd();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTotalizerTypeFailsOnServiceVersionBeforeAdded() {
@@ -27155,6 +28618,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testGetTotalizerTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTotalizerType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTotalizerTypeFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -27177,7 +28651,6 @@ public class FiscalPrinterTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetTotalizerTypeCalledOnServiceVersion17() {
@@ -27271,6 +28744,17 @@ public class FiscalPrinterTest {
     public void testSetTotalizerTypeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTotalizerType(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTotalizerTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTotalizerType(0);
         }
         catch (JposException e) {
@@ -27415,6 +28899,17 @@ public class FiscalPrinterTest {
     public void testGetTrainingModeActiveCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTrainingModeActive();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTrainingModeActiveCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getTrainingModeActive();
         }
         catch (JposException e) {
@@ -27567,6 +29062,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testBeginFiscalDocumentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginFiscalDocument(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginFiscalReceiptCalledOnServiceVersionWhenAdded() throws Exception {
@@ -27704,6 +29210,17 @@ public class FiscalPrinterTest {
     public void testBeginFiscalReceiptCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginFiscalReceipt(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginFiscalReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginFiscalReceipt(true);
         }
         catch (JposException e) {
@@ -27855,6 +29372,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testBeginFixedOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginFixedOutput(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginInsertionCalledOnServiceVersionWhenAdded() throws Exception {
@@ -27992,6 +29520,17 @@ public class FiscalPrinterTest {
     public void testBeginInsertionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginInsertion(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginInsertionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginInsertion(0);
         }
         catch (JposException e) {
@@ -28143,6 +29682,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testBeginItemListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginItemList(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginNonFiscalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -28280,6 +29830,17 @@ public class FiscalPrinterTest {
     public void testBeginNonFiscalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginNonFiscal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginNonFiscalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginNonFiscal();
         }
         catch (JposException e) {
@@ -28431,6 +29992,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testBeginRemovalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginRemoval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testBeginTrainingCalledOnServiceVersionWhenAdded() throws Exception {
@@ -28568,6 +30140,17 @@ public class FiscalPrinterTest {
     public void testBeginTrainingCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginTraining();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginTrainingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginTraining();
         }
         catch (JposException e) {
@@ -28719,6 +30302,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -28856,6 +30450,17 @@ public class FiscalPrinterTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -29007,6 +30612,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testClearErrorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearError();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearOutputCalledOnServiceVersionWhenAdded() throws Exception {
@@ -29144,6 +30760,17 @@ public class FiscalPrinterTest {
     public void testClearOutputCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearOutput();
         }
         catch (JposException e) {
@@ -29296,6 +30923,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -29379,6 +31017,17 @@ public class FiscalPrinterTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -29530,6 +31179,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndFiscalDocumentCalledOnServiceVersionWhenAdded() throws Exception {
@@ -29667,6 +31327,17 @@ public class FiscalPrinterTest {
     public void testEndFiscalDocumentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.endFiscalDocument();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndFiscalDocumentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.endFiscalDocument();
         }
         catch (JposException e) {
@@ -29818,6 +31489,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testEndFiscalReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endFiscalReceipt(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndFixedOutputCalledOnServiceVersionWhenAdded() throws Exception {
@@ -29955,6 +31637,17 @@ public class FiscalPrinterTest {
     public void testEndFixedOutputCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.endFixedOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndFixedOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.endFixedOutput();
         }
         catch (JposException e) {
@@ -30106,6 +31799,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testEndInsertionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endInsertion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndItemListCalledOnServiceVersionWhenAdded() throws Exception {
@@ -30243,6 +31947,17 @@ public class FiscalPrinterTest {
     public void testEndItemListCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.endItemList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndItemListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.endItemList();
         }
         catch (JposException e) {
@@ -30394,6 +32109,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testEndNonFiscalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endNonFiscal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndRemovalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -30531,6 +32257,17 @@ public class FiscalPrinterTest {
     public void testEndRemovalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.endRemoval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEndRemovalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.endRemoval();
         }
         catch (JposException e) {
@@ -30682,6 +32419,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testEndTrainingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endTraining();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetDataCalledOnServiceVersionWhenAdded() throws Exception {
@@ -30819,6 +32567,17 @@ public class FiscalPrinterTest {
     public void testGetDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getData(0,new int[0],new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getData(0,new int[0],new String[0]);
         }
         catch (JposException e) {
@@ -30970,6 +32729,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetDateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDate(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTotalizerCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31107,6 +32877,17 @@ public class FiscalPrinterTest {
     public void testGetTotalizerCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getTotalizer(0,0,new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetTotalizerCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getTotalizer(0,0,new String[0]);
         }
         catch (JposException e) {
@@ -31258,6 +33039,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testGetVatEntryCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getVatEntry(0,0,new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintDuplicateReceiptCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31395,6 +33187,17 @@ public class FiscalPrinterTest {
     public void testPrintDuplicateReceiptCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printDuplicateReceipt();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintDuplicateReceiptCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printDuplicateReceipt();
         }
         catch (JposException e) {
@@ -31546,6 +33349,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintFiscalDocumentLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printFiscalDocumentLine("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintFixedOutputCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31683,6 +33497,17 @@ public class FiscalPrinterTest {
     public void testPrintFixedOutputCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printFixedOutput(0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintFixedOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printFixedOutput(0,0,"");
         }
         catch (JposException e) {
@@ -31834,6 +33659,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintNormalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printNormal(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintPeriodicTotalsReportCalledOnServiceVersionWhenAdded() throws Exception {
@@ -31971,6 +33807,17 @@ public class FiscalPrinterTest {
     public void testPrintPeriodicTotalsReportCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printPeriodicTotalsReport("","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintPeriodicTotalsReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printPeriodicTotalsReport("","");
         }
         catch (JposException e) {
@@ -32123,6 +33970,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintPowerLossReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printPowerLossReport();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecCashFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -32239,6 +34097,17 @@ public class FiscalPrinterTest {
     public void testPrintRecCashCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecCash(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecCashCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecCash(0);
         }
         catch (JposException e) {
@@ -32383,6 +34252,17 @@ public class FiscalPrinterTest {
     public void testPrintRecItemCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecItem("",0,0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecItemCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecItem("",0,0,0,0,"");
         }
         catch (JposException e) {
@@ -32535,6 +34415,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecItemAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecItemAdjustment(0,"",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecItemAdjustmentVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_110);
@@ -32596,6 +34487,17 @@ public class FiscalPrinterTest {
     public void testPrintRecItemAdjustmentVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecItemAdjustmentVoid(0,"",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecItemAdjustmentVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecItemAdjustmentVoid(0,"",0,0);
         }
         catch (JposException e) {
@@ -32728,6 +34630,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecItemFuelCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecItemFuel("",0,0,0,0,"",0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecItemFuelVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -32852,6 +34765,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecItemFuelVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecItemFuelVoid("",0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecItemRefundFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -32910,6 +34834,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecItemRefundCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecItemRefund("",0,0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecItemRefundVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_111);
@@ -32960,6 +34895,17 @@ public class FiscalPrinterTest {
     public void testPrintRecItemRefundVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecItemRefundVoid("",0,0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecItemRefundVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecItemRefundVoid("",0,0,0,0,"");
         }
         catch (JposException e) {
@@ -33029,6 +34975,17 @@ public class FiscalPrinterTest {
     public void testPrintRecItemVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecItemVoid("",0,0,0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecItemVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecItemVoid("",0,0,0,0,"");
         }
         catch (JposException e) {
@@ -33173,6 +35130,17 @@ public class FiscalPrinterTest {
     public void testPrintRecMessageCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecMessage("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecMessageCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecMessage("");
         }
         catch (JposException e) {
@@ -33325,6 +35293,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecNotPaidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecNotPaid("",0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecPackageAdjustVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -33449,6 +35428,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecPackageAdjustVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecPackageAdjustVoid(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecPackageAdjustmentFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -33565,6 +35555,17 @@ public class FiscalPrinterTest {
     public void testPrintRecPackageAdjustmentCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecPackageAdjustment(0,"","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecPackageAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecPackageAdjustment(0,"","");
         }
         catch (JposException e) {
@@ -33717,6 +35718,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecRefundCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecRefund("",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecRefundVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -33833,6 +35845,17 @@ public class FiscalPrinterTest {
     public void testPrintRecRefundVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecRefundVoid("",0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecRefundVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecRefundVoid("",0,0);
         }
         catch (JposException e) {
@@ -33985,6 +36008,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecSubtotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecSubtotal(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecSubtotalAdjustVoidFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -34101,6 +36135,17 @@ public class FiscalPrinterTest {
     public void testPrintRecSubtotalAdjustVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecSubtotalAdjustVoid(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecSubtotalAdjustVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecSubtotalAdjustVoid(0,0);
         }
         catch (JposException e) {
@@ -34253,6 +36298,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testPrintRecSubtotalAdjustmentCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecSubtotalAdjustment(0,"",0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testPrintRecTaxIDFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -34369,6 +36425,17 @@ public class FiscalPrinterTest {
     public void testPrintRecTaxIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecTaxID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecTaxIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecTaxID("");
         }
         catch (JposException e) {
@@ -34520,6 +36587,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintRecTotalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecTotal(0,0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintRecVoidCalledOnServiceVersionWhenAdded() throws Exception {
@@ -34657,6 +36735,17 @@ public class FiscalPrinterTest {
     public void testPrintRecVoidCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printRecVoid("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintRecVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printRecVoid("");
         }
         catch (JposException e) {
@@ -34808,6 +36897,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintRecVoidItemCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printRecVoidItem("",0,0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintReportCalledOnServiceVersionWhenAdded() throws Exception {
@@ -34945,6 +37045,17 @@ public class FiscalPrinterTest {
     public void testPrintReportCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.printReport(0,"","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testPrintReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.printReport(0,"","");
         }
         catch (JposException e) {
@@ -35096,6 +37207,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintXReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printXReport();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testPrintZReportCalledOnServiceVersionWhenAdded() throws Exception {
@@ -35240,6 +37362,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testPrintZReportCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.printZReport();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testReleaseCalledOnServiceVersionWhenAdded() throws Exception {
@@ -35377,6 +37510,17 @@ public class FiscalPrinterTest {
     public void testReleaseCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.release();
         }
         catch (JposException e) {
@@ -35529,6 +37673,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testResetPrinterCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetPrinter();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -35631,6 +37786,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -35725,6 +37891,17 @@ public class FiscalPrinterTest {
     public void testRetrieveStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -35849,6 +38026,17 @@ public class FiscalPrinterTest {
     public void testSetCurrencyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setCurrency(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetCurrencyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setCurrency(0);
         }
         catch (JposException e) {
@@ -36000,6 +38188,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testSetDateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setDate("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetHeaderLineCalledOnServiceVersionWhenAdded() throws Exception {
@@ -36137,6 +38336,17 @@ public class FiscalPrinterTest {
     public void testSetHeaderLineCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setHeaderLine(0,"",true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetHeaderLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setHeaderLine(0,"",true);
         }
         catch (JposException e) {
@@ -36288,6 +38498,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testSetPOSIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setPOSID("","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetStoreFiscalIDCalledOnServiceVersionWhenAdded() throws Exception {
@@ -36425,6 +38646,17 @@ public class FiscalPrinterTest {
     public void testSetStoreFiscalIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setStoreFiscalID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetStoreFiscalIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setStoreFiscalID("");
         }
         catch (JposException e) {
@@ -36576,6 +38808,17 @@ public class FiscalPrinterTest {
         }
     }
     
+    @Test
+    public void testSetTrailerLineCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setTrailerLine(0,"",true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testSetVatTableCalledOnServiceVersionWhenAdded() throws Exception {
@@ -36713,6 +38956,17 @@ public class FiscalPrinterTest {
     public void testSetVatTableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setVatTable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetVatTableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setVatTable();
         }
         catch (JposException e) {
@@ -36865,6 +39119,17 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testSetVatValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setVatValue(0,"");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -36948,6 +39213,17 @@ public class FiscalPrinterTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -37050,6 +39326,17 @@ public class FiscalPrinterTest {
     public void testUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -37202,13 +39489,24 @@ public class FiscalPrinterTest {
     }
     
     @Test
+    public void testVerifyItemCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.verifyItem("",0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -37241,7 +39539,7 @@ public class FiscalPrinterTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -37274,7 +39572,7 @@ public class FiscalPrinterTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -37307,7 +39605,7 @@ public class FiscalPrinterTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

@@ -28,18 +28,18 @@ import jpos.loader.JposServiceLoader;
  * JavaPOS Device Service class, intended to be used for testing purposes in ElectronicJournalTest.
  *
  */
-public final class ElectronicJournalTestServiceAlwaysThrowingNPE implements jpos.services.ElectronicJournalService115, JposServiceInstance {
+public final class ElectronicJournalTestServiceAlwaysThrowingNPE implements jpos.services.ElectronicJournalService116, JposServiceInstance {
     
     private JposEntry configuration;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1016000;
+            return 1017000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1015000;
+            return 1016000;
     }
     
     @Override

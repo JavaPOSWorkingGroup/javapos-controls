@@ -28,18 +28,18 @@ import jpos.loader.JposServiceLoader;
  * JavaPOS Device Service class, intended to be used for testing purposes in HardTotalsTest.
  *
  */
-public final class HardTotalsTestServiceAlwaysThrowingNPE implements jpos.services.HardTotalsService115, JposServiceInstance {
+public final class HardTotalsTestServiceAlwaysThrowingNPE implements jpos.services.HardTotalsService116, JposServiceInstance {
     
     private JposEntry configuration;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1016000;
+            return 1017000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1015000;
+            return 1016000;
     }
     
     @Override

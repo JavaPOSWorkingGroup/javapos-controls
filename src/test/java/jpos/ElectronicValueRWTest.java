@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * ElectronicValueRW device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class ElectronicValueRWTest {
 
@@ -53,6 +53,7 @@ public class ElectronicValueRWTest {
     private static final String SERVICE_113 = "ElectronicValueRWTestService113";
     private static final String SERVICE_114 = "ElectronicValueRWTestService114";
     private static final String SERVICE_115 = "ElectronicValueRWTestService115";
+    private static final String SERVICE_116 = "ElectronicValueRWTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -64,10 +65,12 @@ public class ElectronicValueRWTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "ElectronicValueRWTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -76,19 +79,21 @@ public class ElectronicValueRWTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_112, "1.12", SERVICE_112));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("ElectronicValueRW", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -107,10 +112,12 @@ public class ElectronicValueRWTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -138,9 +145,9 @@ public class ElectronicValueRWTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -182,7 +189,7 @@ public class ElectronicValueRWTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -209,7 +216,7 @@ public class ElectronicValueRWTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -6710,6 +6717,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("ElectronicValueRW.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService112ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
@@ -6735,6 +6753,17 @@ public class ElectronicValueRWTest {
     public void testOpenOnService114ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
             fail("NOSERVICE exception expected but not thrown");
         }
         catch (JposException e) {
@@ -6779,6 +6808,17 @@ public class ElectronicValueRWTest {
     public void testGetAccountNumberCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getAccountNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetAccountNumberCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getAccountNumber();
         }
         catch (JposException e) {
@@ -6833,6 +6873,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAdditionalSecurityInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAdditionalSecurityInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAdditionalSecurityInformationCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -6842,7 +6893,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAdditionalSecurityInformationCalledOnServiceVersion113() {
@@ -6870,6 +6920,17 @@ public class ElectronicValueRWTest {
     public void testSetAdditionalSecurityInformationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAdditionalSecurityInformation("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAdditionalSecurityInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAdditionalSecurityInformation("");
         }
         catch (JposException e) {
@@ -6923,6 +6984,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAmountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAmount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAmountCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -6932,7 +7004,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAmountCalledOnServiceVersion113() {
@@ -6960,6 +7031,17 @@ public class ElectronicValueRWTest {
     public void testSetAmountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAmount(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAmountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAmount(0);
         }
         catch (JposException e) {
@@ -7013,6 +7095,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetApprovalCodeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getApprovalCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetApprovalCodeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7022,7 +7115,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetApprovalCodeCalledOnServiceVersion113() {
@@ -7050,6 +7142,17 @@ public class ElectronicValueRWTest {
     public void testSetApprovalCodeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setApprovalCode("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetApprovalCodeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setApprovalCode("");
         }
         catch (JposException e) {
@@ -7103,6 +7206,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAsyncMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAsyncModeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7112,7 +7226,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAsyncModeCalledOnServiceVersion113() {
@@ -7140,6 +7253,17 @@ public class ElectronicValueRWTest {
     public void testSetAsyncModeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAsyncMode(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAsyncModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAsyncMode(true);
         }
         catch (JposException e) {
@@ -7193,6 +7317,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getAutoDisable();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetAutoDisableCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -7202,7 +7337,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetAutoDisableCalledOnServiceVersion113() {
@@ -7230,6 +7364,17 @@ public class ElectronicValueRWTest {
     public void testSetAutoDisableCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setAutoDisable(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetAutoDisableCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setAutoDisable(true);
         }
         catch (JposException e) {
@@ -7275,6 +7420,17 @@ public class ElectronicValueRWTest {
     public void testGetBalanceCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBalance();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetBalanceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getBalance();
         }
         catch (JposException e) {
@@ -7328,6 +7484,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetBalanceOfPointCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBalanceOfPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7367,6 +7534,17 @@ public class ElectronicValueRWTest {
     public void testGetCapActivateServiceCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapActivateService();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapActivateServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapActivateService();
         }
         catch (JposException e) {
@@ -7420,6 +7598,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAddValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAddValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapAdditionalSecurityInformationFailsOnServiceVersionBeforeAdded() {
@@ -7446,6 +7635,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAdditionalSecurityInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAdditionalSecurityInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7473,6 +7672,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAuthorizeCompletionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAuthorizeCompletion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7500,6 +7709,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAuthorizePreSalesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAuthorizePreSales();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7527,6 +7746,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAuthorizeRefundCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAuthorizeRefund();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7554,6 +7783,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAuthorizeVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAuthorizeVoid();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7581,6 +7820,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapAuthorizeVoidPreSalesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapAuthorizeVoidPreSales();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -7621,6 +7870,17 @@ public class ElectronicValueRWTest {
     public void testGetCapCancelValueCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCancelValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCancelValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapCancelValue();
         }
         catch (JposException e) {
@@ -7674,6 +7934,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCardSensorCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCardSensor();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapCashDepositFailsOnServiceVersionBeforeAdded() {
@@ -7700,6 +7971,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCashDepositCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCashDeposit();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7727,6 +8008,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCenterResultCodeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCenterResultCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -7754,6 +8045,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCheckCardCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCheckCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -7801,6 +8102,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapDailyLogFailsOnServiceVersionBeforeAdded() {
@@ -7827,6 +8139,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapDailyLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapDailyLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -7867,6 +8189,17 @@ public class ElectronicValueRWTest {
     public void testGetCapDetectionControlCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapDetectionControl();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapDetectionControlCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapDetectionControl();
         }
         catch (JposException e) {
@@ -7920,6 +8253,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapElectronicMoneyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapElectronicMoney();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7959,6 +8303,17 @@ public class ElectronicValueRWTest {
     public void testGetCapEnumerateCardServicesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapEnumerateCardServices();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapEnumerateCardServicesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapEnumerateCardServices();
         }
         catch (JposException e) {
@@ -8012,6 +8367,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapIndirectTransactionLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapIndirectTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapInstallmentsFailsOnServiceVersionBeforeAdded() {
@@ -8038,6 +8404,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapInstallmentsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapInstallments();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -8078,6 +8454,17 @@ public class ElectronicValueRWTest {
     public void testGetCapLockTerminalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapLockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapLockTerminalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapLockTerminal();
         }
         catch (JposException e) {
@@ -8131,6 +8518,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapLogStatusCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapLogStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8177,6 +8575,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapMediumIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapMediumID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapMembershipCertificateFailsOnServiceVersionBeforeAdded() {
@@ -8203,6 +8612,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapMembershipCertificateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapMembershipCertificate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8241,6 +8660,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPINDeviceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPINDevice();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapPaymentDetailFailsOnServiceVersionBeforeAdded() {
@@ -8267,6 +8697,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPaymentDetailCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPaymentDetail();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -8307,6 +8747,17 @@ public class ElectronicValueRWTest {
     public void testGetCapPointCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapPointCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapPoint();
         }
         catch (JposException e) {
@@ -8360,6 +8811,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8399,6 +8861,17 @@ public class ElectronicValueRWTest {
     public void testGetCapRealTimeDataCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRealTimeData();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRealTimeDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRealTimeData();
         }
         catch (JposException e) {
@@ -8452,6 +8925,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8498,6 +8982,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapSubtractValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapSubtractValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapTaxOthersFailsOnServiceVersionBeforeAdded() {
@@ -8524,6 +9019,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTaxOthersCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTaxOthers();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -8562,6 +9067,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCapTrainingModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.CapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapTrainingModeFailsOnServiceVersionBeforeAdded() {
@@ -8592,6 +9108,17 @@ public class ElectronicValueRWTest {
     public void testGetCapTrainingModeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapTrainingMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapTrainingModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapTrainingMode();
         }
         catch (JposException e) {
@@ -8645,6 +9172,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTransaction();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8691,6 +9229,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapTransactionNumberFailsOnServiceVersionBeforeAdded() {
@@ -8717,6 +9266,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapTransactionNumberCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapTransactionNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -8757,6 +9316,17 @@ public class ElectronicValueRWTest {
     public void testGetCapUnlockTerminalCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUnlockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUnlockTerminalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUnlockTerminal();
         }
         catch (JposException e) {
@@ -8810,6 +9380,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8849,6 +9430,17 @@ public class ElectronicValueRWTest {
     public void testGetCapUpdateKeyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateKey();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateKeyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateKey();
         }
         catch (JposException e) {
@@ -8902,6 +9494,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -8941,6 +9544,17 @@ public class ElectronicValueRWTest {
     public void testGetCapVoucherCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapVoucher();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapVoucherCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapVoucher();
         }
         catch (JposException e) {
@@ -8994,6 +9608,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCapWriteValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapWriteValue();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCardCompanyIDFailsOnServiceVersionBeforeAdded() {
@@ -9020,6 +9645,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCardCompanyIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCardCompanyID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -9067,6 +9702,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCardServiceListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCardServiceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCenterResultCodeFailsOnServiceVersionBeforeAdded() {
@@ -9093,6 +9739,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCenterResultCodeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCenterResultCode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -9140,6 +9796,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9179,6 +9846,17 @@ public class ElectronicValueRWTest {
     public void testGetClaimedCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -9233,6 +9911,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetCurrentServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCurrentService();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetCurrentServiceCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -9242,7 +9931,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetCurrentServiceCalledOnServiceVersion113() {
@@ -9278,6 +9966,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testSetCurrentServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setCurrentService("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetDailyLogFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -9302,6 +10001,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetDailyLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDailyLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -9342,6 +10051,17 @@ public class ElectronicValueRWTest {
     public void testGetDataCountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDataCount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDataCountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDataCount();
         }
         catch (JposException e) {
@@ -9396,6 +10116,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDataEventEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDataEventEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -9405,7 +10136,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDataEventEnabledCalledOnServiceVersion113() {
@@ -9433,6 +10163,17 @@ public class ElectronicValueRWTest {
     public void testSetDataEventEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDataEventEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDataEventEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDataEventEnabled(true);
         }
         catch (JposException e) {
@@ -9486,6 +10227,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDetectionControlCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDetectionControl();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDetectionControlCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -9495,7 +10247,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDetectionControlCalledOnServiceVersion113() {
@@ -9523,6 +10274,17 @@ public class ElectronicValueRWTest {
     public void testSetDetectionControlCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDetectionControl(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDetectionControlCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDetectionControl(true);
         }
         catch (JposException e) {
@@ -9568,6 +10330,17 @@ public class ElectronicValueRWTest {
     public void testGetDetectionStatusCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDetectionStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDetectionStatusCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDetectionStatus();
         }
         catch (JposException e) {
@@ -9622,6 +10395,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -9631,7 +10415,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion113() {
@@ -9659,6 +10442,17 @@ public class ElectronicValueRWTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -9711,6 +10505,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9750,6 +10555,17 @@ public class ElectronicValueRWTest {
     public void testGetExpirationDateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getExpirationDate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetExpirationDateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getExpirationDate();
         }
         catch (JposException e) {
@@ -9804,6 +10620,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -9813,7 +10640,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion113() {
@@ -9841,6 +10667,17 @@ public class ElectronicValueRWTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -9893,6 +10730,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetLastUsedDateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getLastUsedDate();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -9932,6 +10780,17 @@ public class ElectronicValueRWTest {
     public void testGetLogStatusCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getLogStatus();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetLogStatusCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getLogStatus();
         }
         catch (JposException e) {
@@ -9986,6 +10845,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetMediumIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getMediumID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetMediumIDCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -9995,7 +10865,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetMediumIDCalledOnServiceVersion113() {
@@ -10023,6 +10892,17 @@ public class ElectronicValueRWTest {
     public void testSetMediumIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setMediumID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetMediumIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setMediumID("");
         }
         catch (JposException e) {
@@ -10075,6 +10955,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetOutputIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getOutputID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetPINEntryFailsOnServiceVersionBeforeAdded() {
@@ -10113,6 +11004,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetPINEntryCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPINEntry();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPINEntryFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -10136,11 +11038,21 @@ public class ElectronicValueRWTest {
         }
     }
     
-    
     @Test
     public void testSetPINEntryCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPINEntry(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPINEntryCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPINEntry(0);
         }
         catch (JposException e) {
@@ -10173,6 +11085,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPaymentConditionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPaymentCondition();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -10200,6 +11122,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPaymentDetailCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPaymentDetail();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -10227,6 +11159,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPaymentMediaCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPaymentMedia();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testSetPaymentMediaFailsOnServiceVersionBeforeAdded() {
@@ -10252,6 +11194,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testSetPaymentMediaCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setPaymentMedia(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -10298,6 +11250,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10337,6 +11300,17 @@ public class ElectronicValueRWTest {
     public void testGetPhysicalDeviceNameCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceName();
         }
         catch (JposException e) {
@@ -10391,6 +11365,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetPointCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPointCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -10400,7 +11385,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPointCalledOnServiceVersion113() {
@@ -10428,6 +11412,17 @@ public class ElectronicValueRWTest {
     public void testSetPointCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPoint(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPointCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPoint(0);
         }
         catch (JposException e) {
@@ -10481,6 +11476,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -10490,7 +11496,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion113() {
@@ -10518,6 +11523,17 @@ public class ElectronicValueRWTest {
     public void testSetPowerNotifyCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setPowerNotify(0);
         }
         catch (JposException e) {
@@ -10563,6 +11579,17 @@ public class ElectronicValueRWTest {
     public void testGetPowerStateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPowerState();
         }
         catch (JposException e) {
@@ -10616,6 +11643,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetReaderWriterServiceListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getReaderWriterServiceList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -10662,6 +11700,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetSequenceNumberCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSequenceNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetServiceTypeFailsOnServiceVersionBeforeAdded() {
@@ -10688,6 +11737,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetServiceTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getServiceType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -10728,6 +11787,17 @@ public class ElectronicValueRWTest {
     public void testGetSettledAmountCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getSettledAmount();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetSettledAmountCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getSettledAmount();
         }
         catch (JposException e) {
@@ -10781,6 +11851,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetSettledPointCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSettledPoint();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetSlipNumberFailsOnServiceVersionBeforeAdded() {
@@ -10807,6 +11888,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetSlipNumberCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getSlipNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -10846,6 +11937,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetTrainingModeStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTrainingModeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetTrainingModeStateFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -10869,11 +11971,21 @@ public class ElectronicValueRWTest {
         }
     }
     
-    
     @Test
     public void testSetTrainingModeStateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setTrainingModeState(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetTrainingModeStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setTrainingModeState(0);
         }
         catch (JposException e) {
@@ -10926,6 +12038,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetTransactionLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTransactionLog();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetTransactionNumberFailsOnServiceVersionBeforeAdded() {
@@ -10952,6 +12075,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetTransactionNumberCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTransactionNumber();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -10979,6 +12112,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testGetTransactionTypeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getTransactionType();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     
@@ -11027,6 +12170,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetVoucherIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getVoucherID();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetVoucherIDCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -11036,7 +12190,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetVoucherIDCalledOnServiceVersion113() {
@@ -11064,6 +12217,17 @@ public class ElectronicValueRWTest {
     public void testSetVoucherIDCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setVoucherID("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetVoucherIDCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setVoucherID("");
         }
         catch (JposException e) {
@@ -11117,6 +12281,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testGetVoucherIDListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getVoucherIDList();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetVoucherIDListCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_112);
@@ -11126,7 +12301,6 @@ public class ElectronicValueRWTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetVoucherIDListCalledOnServiceVersion113() {
@@ -11162,6 +12336,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testSetVoucherIDListCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setVoucherIDList("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testAccessDailyLogFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -11186,6 +12371,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAccessDailyLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.accessDailyLog(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAccessDataFailsOnServiceVersionBeforeAdded() {
@@ -11212,6 +12407,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAccessDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.accessData(0,new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -11259,6 +12464,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testAccessLogCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.accessLog(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testActivateEVServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -11283,6 +12499,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testActivateEVServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.activateEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -11322,6 +12548,17 @@ public class ElectronicValueRWTest {
     public void testActivateServiceCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.activateService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testActivateServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.activateService(new int[0],new Object[0]);
         }
         catch (JposException e) {
@@ -11375,6 +12612,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testAddValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.addValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testAuthorizeCompletionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -11399,6 +12647,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizeCompletionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizeCompletion(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAuthorizePreSalesFailsOnServiceVersionBeforeAdded() {
@@ -11425,6 +12683,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizePreSalesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizePreSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAuthorizeRefundFailsOnServiceVersionBeforeAdded() {
@@ -11451,6 +12719,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizeRefundCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizeRefund(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAuthorizeSalesFailsOnServiceVersionBeforeAdded() {
@@ -11477,6 +12755,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizeSalesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizeSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAuthorizeVoidFailsOnServiceVersionBeforeAdded() {
@@ -11503,6 +12791,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizeVoidCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizeVoid(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testAuthorizeVoidPreSalesFailsOnServiceVersionBeforeAdded() {
@@ -11529,6 +12827,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testAuthorizeVoidPreSalesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.authorizeVoidPreSales(0,0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -11568,6 +12876,17 @@ public class ElectronicValueRWTest {
     public void testBeginDetectionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.beginDetection(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testBeginDetectionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.beginDetection(0,0);
         }
         catch (JposException e) {
@@ -11620,6 +12939,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testBeginRemovalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.beginRemoval(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testCancelValueCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11658,6 +12988,17 @@ public class ElectronicValueRWTest {
     public void testCancelValueCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.cancelValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCancelValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.cancelValue(0,0);
         }
         catch (JposException e) {
@@ -11711,6 +13052,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testCaptureCardCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.captureCard();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCashDepositFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -11735,6 +13087,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCashDepositCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.cashDeposit(0,0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testCheckCardFailsOnServiceVersionBeforeAdded() {
@@ -11761,6 +13123,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCheckCardCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkCard(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -11808,6 +13180,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCheckServiceRegistrationToMediumFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -11832,6 +13215,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCheckServiceRegistrationToMediumCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkServiceRegistrationToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -11871,6 +13264,17 @@ public class ElectronicValueRWTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -11923,6 +13327,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testClearInputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearInput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClearInputPropertiesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -11961,6 +13376,17 @@ public class ElectronicValueRWTest {
     public void testClearInputPropertiesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearInputProperties();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearInputPropertiesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearInputProperties();
         }
         catch (JposException e) {
@@ -12014,6 +13440,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testClearOutputCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.clearOutput();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testClearParameterInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -12042,6 +13479,17 @@ public class ElectronicValueRWTest {
     public void testClearParameterInformationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.clearParameterInformation();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClearParameterInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.clearParameterInformation();
         }
         catch (JposException e) {
@@ -12095,6 +13543,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCloseDailyEVServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -12119,6 +13578,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testCloseDailyEVServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.closeDailyEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -12166,6 +13635,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDeactivateEVServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -12190,6 +13670,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testDeactivateEVServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.deactivateEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -12229,6 +13719,17 @@ public class ElectronicValueRWTest {
     public void testDirectIOCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -12281,6 +13782,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testEndDetectionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endDetection();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEndRemovalCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12326,6 +13838,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testEndRemovalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.endRemoval();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testEnumerateCardServicesCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12364,6 +13887,17 @@ public class ElectronicValueRWTest {
     public void testEnumerateCardServicesCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.enumerateCardServices();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEnumerateCardServicesCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.enumerateCardServices();
         }
         catch (JposException e) {
@@ -12417,6 +13951,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testLockTerminalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.lockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenDailyEVServiceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -12441,6 +13986,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testOpenDailyEVServiceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.openDailyEVService(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testQueryLastSuccessfulTransactionResultFailsOnServiceVersionBeforeAdded() {
@@ -12471,6 +14026,17 @@ public class ElectronicValueRWTest {
     public void testQueryLastSuccessfulTransactionResultCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.queryLastSuccessfulTransactionResult();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testQueryLastSuccessfulTransactionResultCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.queryLastSuccessfulTransactionResult();
         }
         catch (JposException e) {
@@ -12524,6 +14090,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testReadValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.readValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRegisterServiceToMediumFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -12548,6 +14125,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testRegisterServiceToMediumCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.registerServiceToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -12587,6 +14174,17 @@ public class ElectronicValueRWTest {
     public void testReleaseCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.release();
         }
         catch (JposException e) {
@@ -12640,6 +14238,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRetrieveResultInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -12668,6 +14277,17 @@ public class ElectronicValueRWTest {
     public void testRetrieveResultInformationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveResultInformation("",new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveResultInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveResultInformation("",new String[0]);
         }
         catch (JposException e) {
@@ -12721,6 +14341,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetParameterInformationFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_113);
@@ -12749,6 +14380,17 @@ public class ElectronicValueRWTest {
     public void testSetParameterInformationCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setParameterInformation("","");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetParameterInformationCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setParameterInformation("","");
         }
         catch (JposException e) {
@@ -12801,6 +14443,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testSubtractValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.subtractValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testTransactionAccessCalledOnServiceVersionWhenAdded() throws Exception {
@@ -12839,6 +14492,17 @@ public class ElectronicValueRWTest {
     public void testTransactionAccessCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.transactionAccess(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testTransactionAccessCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.transactionAccess(0);
         }
         catch (JposException e) {
@@ -12892,6 +14556,17 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testUnlockTerminalCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.unlockTerminal();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUnregisterServiceToMediumFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_114);
@@ -12916,6 +14591,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testUnregisterServiceToMediumCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.unregisterServiceToMedium(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     @Test
     public void testUpdateDataFailsOnServiceVersionBeforeAdded() {
@@ -12942,6 +14627,16 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testUpdateDataCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateData(0,new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
     
     
     @Test
@@ -12981,6 +14676,17 @@ public class ElectronicValueRWTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -13033,6 +14739,17 @@ public class ElectronicValueRWTest {
         }
     }
     
+    @Test
+    public void testUpdateKeyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateKey(new int[0],new Object[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testUpdateStatisticsCalledOnServiceVersionWhenAdded() throws Exception {
@@ -13071,6 +14788,17 @@ public class ElectronicValueRWTest {
     public void testUpdateStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateStatistics("");
         }
         catch (JposException e) {
@@ -13124,13 +14852,24 @@ public class ElectronicValueRWTest {
     }
     
     @Test
+    public void testWriteValueCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.writeValue(0,0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDataEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DataListener> listeners = new ArrayList<DataListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DataListener listener = new DataListener() {
@@ -13163,7 +14902,7 @@ public class ElectronicValueRWTest {
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -13196,7 +14935,7 @@ public class ElectronicValueRWTest {
         List<ErrorListener> listeners = new ArrayList<ErrorListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 ErrorListener listener = new ErrorListener() {
@@ -13229,7 +14968,7 @@ public class ElectronicValueRWTest {
         List<OutputCompleteListener> listeners = new ArrayList<OutputCompleteListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 OutputCompleteListener listener = new OutputCompleteListener() {
@@ -13262,7 +15001,7 @@ public class ElectronicValueRWTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {
@@ -13295,7 +15034,7 @@ public class ElectronicValueRWTest {
         List<TransitionListener> listeners = new ArrayList<TransitionListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 TransitionListener listener = new TransitionListener() {

@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Gate.java - A JavaPOS 1.15.0 device control
+// Gate.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Gate
     extends BaseJposControl
-    implements GateControl115, JposConst
+    implements GateControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -41,6 +41,7 @@ public class Gate
     protected GateService113 service113;
     protected GateService114 service114;
     protected GateService115 service115;
+    protected GateService116 service116;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
     
@@ -53,7 +54,7 @@ public class Gate
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS Gate Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -61,6 +62,7 @@ public class Gate
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
@@ -598,6 +600,7 @@ public class Gate
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -652,6 +655,19 @@ public class Gate
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement GateService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (GateService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement GateService116 interface",
                                             e);
                 }
             }

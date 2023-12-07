@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// HardTotals.java - A JavaPOS 1.15.0 device control
+// HardTotals.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class HardTotals
     extends BaseJposControl
-    implements HardTotalsControl115, JposConst
+    implements HardTotalsControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -51,6 +51,7 @@ public class HardTotals
     protected HardTotalsService113 service113;
     protected HardTotalsService114 service114;
     protected HardTotalsService115 service115;
+    protected HardTotalsService116 service116;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
     
@@ -63,7 +64,7 @@ public class HardTotals
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS HardTotals Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -81,6 +82,7 @@ public class HardTotals
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
@@ -1116,6 +1118,7 @@ public class HardTotals
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1300,6 +1303,19 @@ public class HardTotals
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement HardTotalsService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (HardTotalsService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement HardTotalsService116 interface",
                                             e);
                 }
             }

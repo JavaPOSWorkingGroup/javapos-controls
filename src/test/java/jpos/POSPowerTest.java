@@ -43,7 +43,7 @@ import jpos.events.*;
 /**
  * POSPower device control JUnit test.
  * <br>
- * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.15
+ * Generated through jpos.build.controls.JavaPOSDeviceControlTestGenerator for JavaPOS version 1.16
  */
 public class POSPowerTest {
 
@@ -60,6 +60,7 @@ public class POSPowerTest {
     private static final String SERVICE_113 = "POSPowerTestService113";
     private static final String SERVICE_114 = "POSPowerTestService114";
     private static final String SERVICE_115 = "POSPowerTestService115";
+    private static final String SERVICE_116 = "POSPowerTestService116";
     
     private static final String OPENNAME_WITH_NOT_EXISTING_SERVICECLASS = "OpenNameWithNotExistingServiceClass";
     private static final String OPENNAME_ALL_METHODS_THROWING_NPE = SERVICE_ALL_METHODS_THROWING_NPE;
@@ -78,6 +79,7 @@ public class POSPowerTest {
     private static final String OPENNAME_SERVICE_113 = SERVICE_113;
     private static final String OPENNAME_SERVICE_114 = SERVICE_114;
     private static final String OPENNAME_SERVICE_115 = SERVICE_115;
+    private static final String OPENNAME_SERVICE_116 = SERVICE_116;
     
     private static final String OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService15ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService16ReturningVersionTooLarge";
@@ -89,6 +91,7 @@ public class POSPowerTest {
     private static final String OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService112ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService113ReturningVersionTooLarge";
     private static final String OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService114ReturningVersionTooLarge";
+    private static final String OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE = "POSPowerTestService115ReturningVersionTooLarge";
     
     /**
      * @throws java.lang.Exception
@@ -97,10 +100,10 @@ public class POSPowerTest {
     public static void setUpBeforeClass() throws Exception {
         JposEntryRegistry registry = JposServiceLoader.getManager().getEntryRegistry();
         
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.15", "NotExistingServiceClass"));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_ALL_METHODS_THROWING_NPE, "1.15", SERVICE_ALL_METHODS_THROWING_NPE));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.15", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
-        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.115", SERVICE_115, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_WITH_NOT_EXISTING_SERVICECLASS, "1.16", "NotExistingServiceClass"));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_ALL_METHODS_THROWING_NPE, "1.16", SERVICE_ALL_METHODS_THROWING_NPE));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION, "1.16", SERVICE_ALL_METHODS_RETHROWING_JPOSEXCEPTION));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_THROWING_NPE_ON_GETDSVERSION, "1.116", SERVICE_116, new SimpleEntry.Prop("throwingNPEOnGetDSVersion", "")));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_15, "1.5", SERVICE_15));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_16, "1.6", SERVICE_16));
@@ -113,6 +116,7 @@ public class POSPowerTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_113, "1.13", SERVICE_113));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_114, "1.14", SERVICE_114));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_115, "1.15", SERVICE_115));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_116, "1.16", SERVICE_116));
         
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE, "1.5", SERVICE_15, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE, "1.6", SERVICE_16, new SimpleEntry.Prop("returnVersionTooLarge", "")));
@@ -124,6 +128,7 @@ public class POSPowerTest {
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE, "1.12", SERVICE_112, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE, "1.13", SERVICE_113, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE, "1.14", SERVICE_114, new SimpleEntry.Prop("returnVersionTooLarge", "")));
+        registry.addJposEntry(ControlsTestHelper.createJposEntry("POSPower", OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE, "1.15", SERVICE_115, new SimpleEntry.Prop("returnVersionTooLarge", "")));
         
     }
     
@@ -149,6 +154,7 @@ public class POSPowerTest {
         registry.removeJposEntry(OPENNAME_SERVICE_113);
         registry.removeJposEntry(OPENNAME_SERVICE_114);
         registry.removeJposEntry(OPENNAME_SERVICE_115);
+        registry.removeJposEntry(OPENNAME_SERVICE_116);
         
         registry.removeJposEntry(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_16_RETURNING_VERSION_TOO_LARGE);
@@ -160,6 +166,7 @@ public class POSPowerTest {
         registry.removeJposEntry(OPENNAME_SERVICE_112_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_113_RETURNING_VERSION_TOO_LARGE);
         registry.removeJposEntry(OPENNAME_SERVICE_114_RETURNING_VERSION_TOO_LARGE);
+        registry.removeJposEntry(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
 
     }
 
@@ -187,9 +194,9 @@ public class POSPowerTest {
     @Test
     public void testOpenTwice() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             try {
-                this.control.open(OPENNAME_SERVICE_115);
+                this.control.open(OPENNAME_SERVICE_116);
                 fail("ILLEGAL exception expected but not thrown");
             }
             catch (JposException e) {
@@ -231,7 +238,7 @@ public class POSPowerTest {
     @Test
     public void testGetStateAfterOpen() throws Exception {
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             assertThat(this.control.getState(), is(JposConst.JPOS_S_IDLE));
         }
         catch (JposException e) {
@@ -258,7 +265,7 @@ public class POSPowerTest {
     
     @Test
     public void testDeviceControlVersion() throws Exception {
-        assertThat(this.control.getDeviceControlVersion(), is(1015000));
+        assertThat(this.control.getDeviceControlVersion(), is(1016000));
     }
     
     @Test
@@ -278,6 +285,17 @@ public class POSPowerTest {
     public final void testGetBatteryCapacityRemainingFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getBatteryCapacityRemaining();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetBatteryCapacityRemainingInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getBatteryCapacityRemainingInSeconds();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -308,6 +326,28 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryCriticallyLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getBatteryCriticallyLowThresholdInSeconds();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryCriticallyLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.setBatteryCriticallyLowThresholdInSeconds(0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetBatteryLowThresholdFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getBatteryLowThreshold();
@@ -330,9 +370,53 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getBatteryLowThresholdInSeconds();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.setBatteryLowThresholdInSeconds(0);
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapBatteryCapacityRemainingFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapBatteryCapacityRemaining();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapBatteryCapacityRemainingInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapBatteryCapacityRemainingInSeconds();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapChargeTimeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapChargeTime();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -495,9 +579,42 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetCapVariableBatteryCriticallyLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
     public final void testGetCapVariableBatteryLowThresholdFailsWithClosedExceptionBeforeOpen() {
         try {
             this.control.getCapVariableBatteryLowThreshold();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetCapVariableBatteryLowThresholdInSecondsFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getCapVariableBatteryLowThresholdInSeconds();
+            fail("CLOSED JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("CLOSED JposException expected but a different was thrown: " + e.getErrorCode(), e.getErrorCode(), is(JposConst.JPOS_E_CLOSED));
+        }
+    }
+    
+    @Test
+    public final void testGetChargeTimeFailsWithClosedExceptionBeforeOpen() {
+        try {
+            this.control.getChargeTime();
             fail("CLOSED JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -883,6 +1000,20 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryCapacityRemainingInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getBatteryCapacityRemainingInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetBatteryCriticallyLowThresholdFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
@@ -901,6 +1032,34 @@ public class POSPowerTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.setBatteryCriticallyLowThreshold(0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetBatteryCriticallyLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getBatteryCriticallyLowThresholdInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryCriticallyLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.setBatteryCriticallyLowThresholdInSeconds(0);
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -939,10 +1098,66 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getBatteryLowThresholdInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.setBatteryLowThresholdInSeconds(0);
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapBatteryCapacityRemainingFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCapBatteryCapacityRemaining();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapBatteryCapacityRemainingInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapBatteryCapacityRemainingInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapChargeTimeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapChargeTime();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1149,10 +1364,52 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetCapVariableBatteryCriticallyLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
     public final void testGetCapVariableBatteryLowThresholdFailsWithFailureExceptionOnNPE() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
             this.control.getCapVariableBatteryLowThreshold();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetCapVariableBatteryLowThresholdInSecondsFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getCapVariableBatteryLowThresholdInSeconds();
+            fail("FAILURE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("FAILURE JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_FAILURE));
+            assertThat(e.getOrigException(), is(instanceOf(NullPointerException.class)));
+        }
+    }
+    
+    @Test
+    public final void testGetChargeTimeFailsWithFailureExceptionOnNPE() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_THROWING_NPE);
+            this.control.getChargeTime();
             fail("FAILURE JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1640,6 +1897,21 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryCapacityRemainingInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getBatteryCapacityRemainingInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetBatteryCriticallyLowThresholdRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
@@ -1659,6 +1931,36 @@ public class POSPowerTest {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.setBatteryCriticallyLowThreshold(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetBatteryCriticallyLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getBatteryCriticallyLowThresholdInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryCriticallyLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setBatteryCriticallyLowThresholdInSeconds(0);
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1700,10 +2002,70 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetBatteryLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getBatteryLowThresholdInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testSetBatteryLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.setBatteryLowThresholdInSeconds(0);
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapBatteryCapacityRemainingRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCapBatteryCapacityRemaining();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapBatteryCapacityRemainingInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapBatteryCapacityRemainingInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapChargeTimeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapChargeTime();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -1925,10 +2287,55 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetCapVariableBatteryCriticallyLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
     public final void testGetCapVariableBatteryLowThresholdRethrowsJposException() {
         try {
             this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
             this.control.getCapVariableBatteryLowThreshold();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetCapVariableBatteryLowThresholdInSecondsRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getCapVariableBatteryLowThresholdInSeconds();
+            fail("JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("JposException expected but a different was thrown: " + e.getErrorCode(),
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOHARDWARE));
+            assertThat(e.getErrorCodeExtended(), is(Integer.MAX_VALUE));
+            assertThat(e.getMessage(), is("hardware error"));
+        }
+    }
+    
+    @Test
+    public final void testGetChargeTimeRethrowsJposException() {
+        try {
+            this.control.open(OPENNAME_ALL_METHODS_RETHROWING_JPOSEXCEPTION);
+            this.control.getChargeTime();
             fail("JposException expected but not thrown");
         }
         catch (JposException e) {
@@ -2556,6 +2963,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public final void testGetDeviceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            assertThat(this.control.getDeviceServiceVersion(), is(1016000));
+        }
+        catch (JposException e) {
+            fail("POSPower.getDeviceServiceVersion() failed with " + e.getMessage());
+        }
+    }
+    
+    @Test
     public void testOpenOnService15ReturningVersionTooLarge() {
         try {
             this.control.open(OPENNAME_SERVICE_15_RETURNING_VERSION_TOO_LARGE);
@@ -2664,6 +3082,17 @@ public class POSPowerTest {
             assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
         }
     }
+    
+    @Test
+    public void testOpenOnService115ReturningVersionTooLarge() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115_RETURNING_VERSION_TOO_LARGE);
+            fail("NOSERVICE exception expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat(e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
     @Test
     public void testGetBatteryCapacityRemainingFailsOnServiceVersionBeforeAdded() {
         try {
@@ -2754,6 +3183,44 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testGetBatteryCapacityRemainingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryCapacityRemaining();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetBatteryCapacityRemainingInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBatteryCapacityRemainingInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetBatteryCapacityRemainingInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryCapacityRemainingInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -2848,6 +3315,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetBatteryCriticallyLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryCriticallyLowThreshold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetBatteryCriticallyLowThresholdFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -2870,7 +3348,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetBatteryCriticallyLowThresholdCalledOnServiceVersion110() {
@@ -2937,6 +3414,68 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testSetBatteryCriticallyLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setBatteryCriticallyLowThreshold(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetBatteryCriticallyLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBatteryCriticallyLowThresholdInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetBatteryCriticallyLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryCriticallyLowThresholdInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testSetBatteryCriticallyLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setBatteryCriticallyLowThresholdInSeconds(0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testSetBatteryCriticallyLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setBatteryCriticallyLowThresholdInSeconds(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetBatteryLowThresholdFailsOnServiceVersionBeforeAdded() {
@@ -3030,6 +3569,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetBatteryLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryLowThreshold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetBatteryLowThresholdFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -3052,7 +3602,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetBatteryLowThresholdCalledOnServiceVersion110() {
@@ -3119,6 +3668,68 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testSetBatteryLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setBatteryLowThreshold(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetBatteryLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getBatteryLowThresholdInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetBatteryLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getBatteryLowThresholdInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testSetBatteryLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.setBatteryLowThresholdInSeconds(0);
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    @Test
+    public void testSetBatteryLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setBatteryLowThresholdInSeconds(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapBatteryCapacityRemainingFailsOnServiceVersionBeforeAdded() {
@@ -3211,6 +3822,71 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapBatteryCapacityRemainingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapBatteryCapacityRemaining();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapBatteryCapacityRemainingInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapBatteryCapacityRemainingInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapBatteryCapacityRemainingInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapBatteryCapacityRemainingInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetCapChargeTimeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapChargeTime();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapChargeTimeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapChargeTime();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testGetCapCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
@@ -3296,6 +3972,17 @@ public class POSPowerTest {
     public void testGetCapCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapCompareFirmwareVersion();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapCompareFirmwareVersion();
         }
         catch (JposException e) {
@@ -3426,6 +4113,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapFanAlarmCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapFanAlarm();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3542,6 +4240,17 @@ public class POSPowerTest {
     public void testGetCapHeatAlarmCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapHeatAlarm();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapHeatAlarmCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapHeatAlarm();
         }
         catch (JposException e) {
@@ -3672,6 +4381,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapPowerReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapPowerReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -3795,6 +4515,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapQuickChargeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapQuickCharge();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapRestartPOSFailsOnServiceVersionBeforeAdded() {
@@ -3880,6 +4611,17 @@ public class POSPowerTest {
     public void testGetCapRestartPOSCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapRestartPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapRestartPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapRestartPOS();
         }
         catch (JposException e) {
@@ -4010,6 +4752,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapShutdownPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapShutdownPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapStandbyPOSFailsOnServiceVersionBeforeAdded() {
@@ -4095,6 +4848,17 @@ public class POSPowerTest {
     public void testGetCapStandbyPOSCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapStandbyPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapStandbyPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapStandbyPOS();
         }
         catch (JposException e) {
@@ -4205,6 +4969,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapStatisticsReportingCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapStatisticsReporting();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapSuspendPOSFailsOnServiceVersionBeforeAdded() {
@@ -4290,6 +5065,17 @@ public class POSPowerTest {
     public void testGetCapSuspendPOSCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapSuspendPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapSuspendPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapSuspendPOS();
         }
         catch (JposException e) {
@@ -4420,6 +5206,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapUPSChargeStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUPSChargeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
@@ -4505,6 +5302,17 @@ public class POSPowerTest {
     public void testGetCapUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapUpdateFirmware();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetCapUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getCapUpdateFirmware();
         }
         catch (JposException e) {
@@ -4615,6 +5423,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapUpdateStatistics();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testGetCapVariableBatteryCriticallyLowThresholdFailsOnServiceVersionBeforeAdded() {
@@ -4707,6 +5526,44 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCapVariableBatteryCriticallyLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapVariableBatteryCriticallyLowThreshold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapVariableBatteryCriticallyLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapVariableBatteryCriticallyLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapVariableBatteryCriticallyLowThresholdInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
     
     @Test
     public void testGetCapVariableBatteryLowThresholdFailsOnServiceVersionBeforeAdded() {
@@ -4798,6 +5655,71 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
+    
+    @Test
+    public void testGetCapVariableBatteryLowThresholdCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapVariableBatteryLowThreshold();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapVariableBatteryLowThresholdInSecondsFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getCapVariableBatteryLowThresholdInSeconds();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetCapVariableBatteryLowThresholdInSecondsCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCapVariableBatteryLowThresholdInSeconds();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testGetChargeTimeFailsOnServiceVersionBeforeAdded() {
+        try {
+            this.control.open(OPENNAME_SERVICE_115);
+            this.control.getChargeTime();
+            fail("NOSERVICE JposException expected but not thrown");
+        }
+        catch (JposException e) {
+            assertThat("NOSERVICE JposException expected but a different was thrown: " + e.getErrorCode(), 
+                    e.getErrorCode(), is(JposConst.JPOS_E_NOSERVICE));
+        }
+    }
+    
+    
+    @Test
+    public void testGetChargeTimeCalledOnServiceVersionWhenAdded() throws Exception {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getChargeTime();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     
@@ -4922,6 +5844,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetCheckHealthTextCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getCheckHealthText();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -5038,6 +5971,17 @@ public class POSPowerTest {
     public void testGetClaimedCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getClaimed();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetClaimedCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getClaimed();
         }
         catch (JposException e) {
@@ -5169,6 +6113,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getDeviceEnabled();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetDeviceEnabledCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -5178,7 +6133,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetDeviceEnabledCalledOnServiceVersion16() {
@@ -5283,6 +6237,17 @@ public class POSPowerTest {
     public void testSetDeviceEnabledCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setDeviceEnabled(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetDeviceEnabledCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setDeviceEnabled(true);
         }
         catch (JposException e) {
@@ -5405,6 +6370,17 @@ public class POSPowerTest {
     public void testGetDeviceServiceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getDeviceServiceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetDeviceServiceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getDeviceServiceDescription();
         }
         catch (JposException e) {
@@ -5536,6 +6512,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetEnforcedShutdownDelayTimeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getEnforcedShutdownDelayTime();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetEnforcedShutdownDelayTimeCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -5545,7 +6532,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetEnforcedShutdownDelayTimeCalledOnServiceVersion16() {
@@ -5650,6 +6636,17 @@ public class POSPowerTest {
     public void testSetEnforcedShutdownDelayTimeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setEnforcedShutdownDelayTime(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetEnforcedShutdownDelayTimeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setEnforcedShutdownDelayTime(0);
         }
         catch (JposException e) {
@@ -5780,6 +6777,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getFreezeEvents();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetFreezeEventsCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_10);
@@ -5789,7 +6797,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetFreezeEventsCalledOnServiceVersion16() {
@@ -5894,6 +6901,17 @@ public class POSPowerTest {
     public void testSetFreezeEventsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.setFreezeEvents(true);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testSetFreezeEventsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.setFreezeEvents(true);
         }
         catch (JposException e) {
@@ -6016,6 +7034,17 @@ public class POSPowerTest {
     public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPhysicalDeviceDescription();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPhysicalDeviceDescriptionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPhysicalDeviceDescription();
         }
         catch (JposException e) {
@@ -6146,6 +7175,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetPhysicalDeviceNameCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPhysicalDeviceName();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6262,6 +7302,17 @@ public class POSPowerTest {
     public void testGetPowerFailDelayTimeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerFailDelayTime();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerFailDelayTimeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPowerFailDelayTime();
         }
         catch (JposException e) {
@@ -6393,6 +7444,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testGetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerNotify();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testSetPowerNotifyCalledOnServiceVersionWhenAdded() throws Exception {
         try {
             this.control.open(OPENNAME_SERVICE_15);
@@ -6402,7 +7464,6 @@ public class POSPowerTest {
             fail(e.getMessage());
         }
     }
-    
     
     @Test
     public void testSetPowerNotifyCalledOnServiceVersion16() {
@@ -6515,6 +7576,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testSetPowerNotifyCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.setPowerNotify(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testGetPowerSourceFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -6598,6 +7670,17 @@ public class POSPowerTest {
     public void testGetPowerSourceCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getPowerSource();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetPowerSourceCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getPowerSource();
         }
         catch (JposException e) {
@@ -6728,6 +7811,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetPowerStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getPowerState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -6844,6 +7938,17 @@ public class POSPowerTest {
     public void testGetQuickChargeModeCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getQuickChargeMode();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetQuickChargeModeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getQuickChargeMode();
         }
         catch (JposException e) {
@@ -6974,6 +8079,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testGetQuickChargeTimeCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.getQuickChargeTime();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     
     @Test
@@ -7090,6 +8206,17 @@ public class POSPowerTest {
     public void testGetUPSChargeStateCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.getUPSChargeState();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testGetUPSChargeStateCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.getUPSChargeState();
         }
         catch (JposException e) {
@@ -7220,6 +8347,17 @@ public class POSPowerTest {
         }
     }
     
+    @Test
+    public void testCheckHealthCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.checkHealth(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
     
     @Test
     public void testClaimCalledOnServiceVersionWhenAdded() throws Exception {
@@ -7335,6 +8473,17 @@ public class POSPowerTest {
     public void testClaimCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.claim(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testClaimCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.claim(0);
         }
         catch (JposException e) {
@@ -7465,6 +8614,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testCloseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.close();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testCompareFirmwareVersionFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -7548,6 +8708,17 @@ public class POSPowerTest {
     public void testCompareFirmwareVersionCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.compareFirmwareVersion("",new int[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCompareFirmwareVersionCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.compareFirmwareVersion("",new int[0]);
         }
         catch (JposException e) {
@@ -7670,6 +8841,17 @@ public class POSPowerTest {
     public void testDirectIOCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.directIO(0,new int[0],new Object());
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testDirectIOCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.directIO(0,new int[0],new Object());
         }
         catch (JposException e) {
@@ -7800,6 +8982,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testReleaseCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.release();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testResetStatisticsFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_17);
@@ -7902,6 +9095,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testResetStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.resetStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testRestartPOSFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -7985,6 +9189,17 @@ public class POSPowerTest {
     public void testRestartPOSCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.restartPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRestartPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.restartPOS();
         }
         catch (JposException e) {
@@ -8087,6 +9302,17 @@ public class POSPowerTest {
     public void testRetrieveStatisticsCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.retrieveStatistics(new String[0]);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testRetrieveStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.retrieveStatistics(new String[0]);
         }
         catch (JposException e) {
@@ -8217,6 +9443,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testShutdownPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.shutdownPOS();
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testStandbyPOSFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -8300,6 +9537,17 @@ public class POSPowerTest {
     public void testStandbyPOSCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.standbyPOS(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testStandbyPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.standbyPOS(0);
         }
         catch (JposException e) {
@@ -8399,6 +9647,17 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testSuspendPOSCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.suspendPOS(0);
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testUpdateFirmwareFailsOnServiceVersionBeforeAdded() {
         try {
             this.control.open(OPENNAME_SERVICE_18);
@@ -8482,6 +9741,17 @@ public class POSPowerTest {
     public void testUpdateFirmwareCalledOnServiceVersion115() {
         try {
             this.control.open(OPENNAME_SERVICE_115);
+            this.control.updateFirmware("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUpdateFirmwareCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
             this.control.updateFirmware("");
         }
         catch (JposException e) {
@@ -8592,13 +9862,24 @@ public class POSPowerTest {
     }
     
     @Test
+    public void testUpdateStatisticsCalledOnServiceVersion116() {
+        try {
+            this.control.open(OPENNAME_SERVICE_116);
+            this.control.updateStatistics("");
+        }
+        catch (JposException e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
     public void testDirectIOEventDelivery() {
         final int numberOfListeners = 5;
         final AtomicInteger remainingEventsToReceive = new AtomicInteger(numberOfListeners); // no concurrency, just boxed decrement is used 
         List<DirectIOListener> listeners = new ArrayList<DirectIOListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 DirectIOListener listener = new DirectIOListener() {
@@ -8631,7 +9912,7 @@ public class POSPowerTest {
         List<StatusUpdateListener> listeners = new ArrayList<StatusUpdateListener>();
         
         try {
-            this.control.open(OPENNAME_SERVICE_115);
+            this.control.open(OPENNAME_SERVICE_116);
             
             for (int i = 0; i < numberOfListeners; i++) {
                 StatusUpdateListener listener = new StatusUpdateListener() {

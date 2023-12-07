@@ -28,18 +28,18 @@ import jpos.loader.JposServiceLoader;
  * JavaPOS Device Service class, intended to be used for testing purposes in MICRTest.
  *
  */
-public final class MICRTestServiceAlwaysThrowingNPE implements jpos.services.MICRService115, JposServiceInstance {
+public final class MICRTestServiceAlwaysThrowingNPE implements jpos.services.MICRService116, JposServiceInstance {
     
     private JposEntry configuration;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1016000;
+            return 1017000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1015000;
+            return 1016000;
     }
     
     @Override

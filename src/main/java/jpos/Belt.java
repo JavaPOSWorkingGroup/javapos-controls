@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// Belt.java - A JavaPOS 1.15.0 device control
+// Belt.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Belt
     extends BaseJposControl
-    implements BeltControl115, JposConst
+    implements BeltControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -41,6 +41,7 @@ public class Belt
     protected BeltService113 service113;
     protected BeltService114 service114;
     protected BeltService115 service115;
+    protected BeltService116 service116;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
     
@@ -53,7 +54,7 @@ public class Belt
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS Belt Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -61,6 +62,7 @@ public class Belt
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
     }
@@ -1294,6 +1296,7 @@ public class Belt
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1348,6 +1351,19 @@ public class Belt
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement BeltService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (BeltService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement BeltService116 interface",
                                             e);
                 }
             }

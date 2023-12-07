@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// ElectronicValueRW.java - A JavaPOS 1.15.0 device control
+// ElectronicValueRW.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class ElectronicValueRW
     extends BaseJposControl
-    implements ElectronicValueRWControl115, JposConst
+    implements ElectronicValueRWControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -41,6 +41,7 @@ public class ElectronicValueRW
     protected ElectronicValueRWService113 service113;
     protected ElectronicValueRWService114 service114;
     protected ElectronicValueRWService115 service115;
+    protected ElectronicValueRWService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<ErrorListener> errorListeners;
@@ -57,7 +58,7 @@ public class ElectronicValueRW
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS ElectronicValueRW Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -65,6 +66,7 @@ public class ElectronicValueRW
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         errorListeners = new ArrayList<ErrorListener>();
@@ -999,7 +1001,6 @@ public class ElectronicValueRW
         }
     }
     
-    
     public boolean CapTrainingMode()
         throws JposException
     {
@@ -1037,6 +1038,7 @@ public class ElectronicValueRW
                                     "Unhandled exception from Device Service", e);
         }
     }
+    
     
     public boolean getCapTransaction()
         throws JposException
@@ -4233,6 +4235,7 @@ public class ElectronicValueRW
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -4287,6 +4290,19 @@ public class ElectronicValueRW
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement ElectronicValueRWService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (ElectronicValueRWService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement ElectronicValueRWService116 interface",
                                             e);
                 }
             }

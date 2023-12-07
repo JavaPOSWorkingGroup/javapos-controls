@@ -28,18 +28,18 @@ import jpos.loader.JposServiceLoader;
  * JavaPOS Device Service class, intended to be used for testing purposes in LightsTest.
  *
  */
-public final class LightsTestServiceAlwaysThrowingNPE implements jpos.services.LightsService115, JposServiceInstance {
+public final class LightsTestServiceAlwaysThrowingNPE implements jpos.services.LightsService116, JposServiceInstance {
     
     private JposEntry configuration;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1016000;
+            return 1017000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1015000;
+            return 1016000;
     }
     
     @Override
@@ -81,6 +81,11 @@ public final class LightsTestServiceAlwaysThrowingNPE implements jpos.services.L
     
     @Override
     public boolean getCapCompareFirmwareVersion() throws JposException {
+        throw new NullPointerException();
+    }
+    
+    @Override
+    public int getCapPattern() throws JposException {
         throw new NullPointerException();
     }
     
@@ -218,7 +223,25 @@ public final class LightsTestServiceAlwaysThrowingNPE implements jpos.services.L
     }
     
     @Override
+    public void switchOffPattern() throws JposException 
+    {
+        throw new NullPointerException();
+    }
+    
+    @Override
     public void switchOn(int lightNumber, int blinkOnCycle, int blinkOffCycle, int color, int alarm) throws JposException 
+    {
+        throw new NullPointerException();
+    }
+    
+    @Override
+    public void switchOnMultiple(String lightNumbers, int blinkOnCycle, int blinkOffCycle, int color, int alarm) throws JposException 
+    {
+        throw new NullPointerException();
+    }
+    
+    @Override
+    public void switchOnPattern(int pattern, int alarm) throws JposException 
     {
         throw new NullPointerException();
     }

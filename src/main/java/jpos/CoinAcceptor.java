@@ -17,7 +17,7 @@
 // software or its derivatives.Permission to use, copy, modify, and distribute
 // the software and its documentation for any purpose is hereby granted.
 //
-// CoinAcceptor.java - A JavaPOS 1.15.0 device control
+// CoinAcceptor.java - A JavaPOS 1.16.0 device control
 //
 //------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class CoinAcceptor
     extends BaseJposControl
-    implements CoinAcceptorControl115, JposConst
+    implements CoinAcceptorControl116, JposConst
 {
     //--------------------------------------------------------------------------
     // Variables
@@ -42,6 +42,7 @@ public class CoinAcceptor
     protected CoinAcceptorService113 service113;
     protected CoinAcceptorService114 service114;
     protected CoinAcceptorService115 service115;
+    protected CoinAcceptorService116 service116;
     protected List<DataListener> dataListeners;
     protected List<DirectIOListener> directIOListeners;
     protected List<StatusUpdateListener> statusUpdateListeners;
@@ -55,7 +56,7 @@ public class CoinAcceptor
     {
         // Initialize base class instance data
         deviceControlDescription = "JavaPOS CoinAcceptor Device Control";
-        deviceControlVersion = deviceVersion115;
+        deviceControlVersion = deviceVersion116;
         
         // Initialize instance data. Initializations are commented out for
         // efficiency if the Java default is correct.
@@ -64,6 +65,7 @@ public class CoinAcceptor
         //service113 = null;
         //service114 = null;
         //service115 = null;
+        //service116 = null;
         dataListeners = new ArrayList<DataListener>();
         directIOListeners = new ArrayList<DirectIOListener>();
         statusUpdateListeners = new ArrayList<StatusUpdateListener>();
@@ -1117,6 +1119,7 @@ public class CoinAcceptor
             service113 = null;
             service114 = null;
             service115 = null;
+            service116 = null;
         }
         else
         {
@@ -1184,6 +1187,19 @@ public class CoinAcceptor
                 {
                     throw new JposException(JPOS_E_NOSERVICE,
                                             "Service does not fully implement CoinAcceptorService115 interface",
+                                            e);
+                }
+            }
+            if(serviceVersion >= deviceVersion116)
+            {
+                try
+                {
+                    service116 = (CoinAcceptorService116)service;
+                }
+                catch(Exception e)
+                {
+                    throw new JposException(JPOS_E_NOSERVICE,
+                                            "Service does not fully implement CoinAcceptorService116 interface",
                                             e);
                 }
             }

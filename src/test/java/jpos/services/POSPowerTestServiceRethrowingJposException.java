@@ -28,18 +28,18 @@ import jpos.loader.JposServiceLoader;
  * JavaPOS Device Service class, intended to be used for testing purposes in POSPowerTest.
  *
  */
-public final class POSPowerTestServiceRethrowingJposException implements jpos.services.POSPowerService115, JposServiceInstance {
+public final class POSPowerTestServiceRethrowingJposException implements jpos.services.POSPowerService116, JposServiceInstance {
     
     private JposEntry configuration;
     
     @Override
     public int getDeviceServiceVersion() throws JposException {
         if (configuration.hasPropertyWithName("returnVersionTooLarge"))
-            return 1016000;
+            return 1017000;
         else if (configuration.hasPropertyWithName("throwingNPEOnGetDSVersion"))
             throw new NullPointerException();
         else
-            return 1015000;
+            return 1016000;
     }
     
     @Override
@@ -70,12 +70,27 @@ public final class POSPowerTestServiceRethrowingJposException implements jpos.se
     }
     
     @Override
+    public int getBatteryCapacityRemainingInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public int getBatteryCriticallyLowThreshold() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
     @Override
     public void setBatteryCriticallyLowThreshold(int threshold) throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public int getBatteryCriticallyLowThresholdInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void setBatteryCriticallyLowThresholdInSeconds(int seconds) throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -90,7 +105,27 @@ public final class POSPowerTestServiceRethrowingJposException implements jpos.se
     }
     
     @Override
+    public int getBatteryLowThresholdInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public void setBatteryLowThresholdInSeconds(int seconds) throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapBatteryCapacityRemaining() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapBatteryCapacityRemainingInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapChargeTime() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
@@ -165,7 +200,22 @@ public final class POSPowerTestServiceRethrowingJposException implements jpos.se
     }
     
     @Override
+    public boolean getCapVariableBatteryCriticallyLowThresholdInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
     public boolean getCapVariableBatteryLowThreshold() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public boolean getCapVariableBatteryLowThresholdInSeconds() throws JposException {
+        throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
+    }
+    
+    @Override
+    public int getChargeTime() throws JposException {
         throw new JposException(JposConst.JPOS_E_NOHARDWARE, Integer.MAX_VALUE, "hardware error");
     }
     
