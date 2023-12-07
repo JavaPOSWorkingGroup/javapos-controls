@@ -11,7 +11,7 @@ plugins {
 	id 'signing'
 	id 'eclipse'
 	id 'maven-publish'
-	id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+	id('io.github.gradle-nexus.publish-plugin') version '1.3.0'
 	id 'project-report'
 //    id 'jacoco'
 }
@@ -28,12 +28,12 @@ wrapper {
 
 def artifactName = 'javapos-controls'
 group = 'org.javapos'
-def uposVersion = '1.16' // if this version is going to be changed, first add "-SNAPSHOT" to version below
-// to the 'version' variable below for publishing to MavenCentral's Snapshot repo first as test
+def uposVersion = '1.16' // if this version is going to be changed, first add "-SNAPSHOT" to
+// the 'version' variable below for publishing to MavenCentral's Snapshot repo first as test
 version="${uposVersion}.0-SNAPSHOT" // the last part after dot is the build/release version
 
 // dependency versions
-def javaposContractsVersion = "$uposVersion.0"
+def javaposContractsVersion = "$uposVersion.0+"
 
 
 ///////////////////////////////////////////////////////////////////////////////
