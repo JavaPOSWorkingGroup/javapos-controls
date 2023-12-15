@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// LightsBeanInfo.java - Bean information for the JavaPOS Lights
+// SpeechSynthesisBeanInfo.java - Bean information for the JavaPOS SpeechSynthesis
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -24,18 +24,18 @@ package jpos;
 
 import java.beans.*;
 
-public class LightsBeanInfo
+public class SpeechSynthesisBeanInfo
   extends SimpleBeanInfo
 {
     public BeanDescriptor getBeanDescriptor()
     {
-        return new BeanDescriptor(jpos.Lights.class);
+        return new BeanDescriptor(jpos.SpeechSynthesis.class);
     }
 
     public PropertyDescriptor makeProperty(String propertyName)
         throws IntrospectionException
     {
-        return new PropertyDescriptor(propertyName, jpos.Lights.class);
+        return new PropertyDescriptor(propertyName, jpos.SpeechSynthesis.class);
     }
 
     public PropertyDescriptor[] getPropertyDescriptors()
@@ -45,20 +45,29 @@ public class LightsBeanInfo
             PropertyDescriptor[] properties =
             {
                 // Capabilities
-                makeProperty("CapAlarm"),
-                makeProperty("CapBlink"),
-                makeProperty("CapColor"),
                 makeProperty("CapCompareFirmwareVersion"),
-                makeProperty("CapPattern"),
+                makeProperty("CapLanguage"),
+                makeProperty("CapPitch"),
                 makeProperty("CapPowerReporting"),
+                makeProperty("CapSpeed"),
                 makeProperty("CapStatisticsReporting"),
                 makeProperty("CapUpdateFirmware"),
                 makeProperty("CapUpdateStatistics"),
+                makeProperty("CapVoice"),
+                makeProperty("CapVolume"),
                 
                 // Properties
-                makeProperty("MaxLights"),
+                makeProperty("Language"),
+                makeProperty("LanguageList"),
+                makeProperty("OutputID"),
+                makeProperty("OutputIDList"),
+                makeProperty("Pitch"),
                 makeProperty("PowerNotify"),
-                makeProperty("PowerState")
+                makeProperty("PowerState"),
+                makeProperty("Speed"),
+                makeProperty("Voice"),
+                makeProperty("VoiceList"),
+                makeProperty("Volume")
             };
 
             return properties;
@@ -73,7 +82,7 @@ public class LightsBeanInfo
         throws IntrospectionException, ClassNotFoundException
     {
         String listener = "jpos.events." + eventName + "Listener";
-        return new EventSetDescriptor(jpos.Lights.class,
+        return new EventSetDescriptor(jpos.SpeechSynthesis.class,
                                       eventName,
                                       Class.forName(listener),
                                       eventName + "Occurred");
@@ -86,6 +95,8 @@ public class LightsBeanInfo
             EventSetDescriptor[] events =
             {
                 makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
                 makeEvent("StatusUpdate")
             };
             

@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// LightsBeanInfo.java - Bean information for the JavaPOS Lights
+// GestureControlBeanInfo.java - Bean information for the JavaPOS GestureControl
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -24,18 +24,18 @@ package jpos;
 
 import java.beans.*;
 
-public class LightsBeanInfo
+public class GestureControlBeanInfo
   extends SimpleBeanInfo
 {
     public BeanDescriptor getBeanDescriptor()
     {
-        return new BeanDescriptor(jpos.Lights.class);
+        return new BeanDescriptor(jpos.GestureControl.class);
     }
 
     public PropertyDescriptor makeProperty(String propertyName)
         throws IntrospectionException
     {
-        return new PropertyDescriptor(propertyName, jpos.Lights.class);
+        return new PropertyDescriptor(propertyName, jpos.GestureControl.class);
     }
 
     public PropertyDescriptor[] getPropertyDescriptors()
@@ -45,20 +45,29 @@ public class LightsBeanInfo
             PropertyDescriptor[] properties =
             {
                 // Capabilities
-                makeProperty("CapAlarm"),
-                makeProperty("CapBlink"),
-                makeProperty("CapColor"),
+                makeProperty("CapAssociatedHardTotalsDevice"),
                 makeProperty("CapCompareFirmwareVersion"),
-                makeProperty("CapPattern"),
+                makeProperty("CapMotion"),
+                makeProperty("CapMotionCreation"),
+                makeProperty("CapPose"),
+                makeProperty("CapPoseCreation"),
                 makeProperty("CapPowerReporting"),
                 makeProperty("CapStatisticsReporting"),
+                makeProperty("CapStorage"),
                 makeProperty("CapUpdateFirmware"),
                 makeProperty("CapUpdateStatistics"),
                 
                 // Properties
-                makeProperty("MaxLights"),
+                makeProperty("AutoMode"),
+                makeProperty("AutoModeList"),
+                makeProperty("JointList"),
+                makeProperty("MotionList"),
+                makeProperty("OutputID"),
+                makeProperty("PoseCreationMode"),
+                makeProperty("PoseList"),
                 makeProperty("PowerNotify"),
-                makeProperty("PowerState")
+                makeProperty("PowerState"),
+                makeProperty("Storage")
             };
 
             return properties;
@@ -73,7 +82,7 @@ public class LightsBeanInfo
         throws IntrospectionException, ClassNotFoundException
     {
         String listener = "jpos.events." + eventName + "Listener";
-        return new EventSetDescriptor(jpos.Lights.class,
+        return new EventSetDescriptor(jpos.GestureControl.class,
                                       eventName,
                                       Class.forName(listener),
                                       eventName + "Occurred");
@@ -86,6 +95,8 @@ public class LightsBeanInfo
             EventSetDescriptor[] events =
             {
                 makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
                 makeEvent("StatusUpdate")
             };
             

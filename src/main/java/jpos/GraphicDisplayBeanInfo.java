@@ -15,7 +15,7 @@
 // WORKING GROUP SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT
 // OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
 //
-// LightsBeanInfo.java - Bean information for the JavaPOS Lights
+// GraphicDisplayBeanInfo.java - Bean information for the JavaPOS GraphicDisplay
 //    device control
 //
 //------------------------------------------------------------------------------
@@ -24,18 +24,18 @@ package jpos;
 
 import java.beans.*;
 
-public class LightsBeanInfo
+public class GraphicDisplayBeanInfo
   extends SimpleBeanInfo
 {
     public BeanDescriptor getBeanDescriptor()
     {
-        return new BeanDescriptor(jpos.Lights.class);
+        return new BeanDescriptor(jpos.GraphicDisplay.class);
     }
 
     public PropertyDescriptor makeProperty(String propertyName)
         throws IntrospectionException
     {
-        return new PropertyDescriptor(propertyName, jpos.Lights.class);
+        return new PropertyDescriptor(propertyName, jpos.GraphicDisplay.class);
     }
 
     public PropertyDescriptor[] getPropertyDescriptors()
@@ -45,20 +45,34 @@ public class LightsBeanInfo
             PropertyDescriptor[] properties =
             {
                 // Capabilities
-                makeProperty("CapAlarm"),
-                makeProperty("CapBlink"),
-                makeProperty("CapColor"),
+                makeProperty("CapAssociatedHardTotalsDevice"),
+                makeProperty("CapBrightness"),
                 makeProperty("CapCompareFirmwareVersion"),
-                makeProperty("CapPattern"),
+                makeProperty("CapImageType"),
                 makeProperty("CapPowerReporting"),
                 makeProperty("CapStatisticsReporting"),
+                makeProperty("CapStorage"),
+                makeProperty("CapURLBack"),
+                makeProperty("CapURLForward"),
                 makeProperty("CapUpdateFirmware"),
                 makeProperty("CapUpdateStatistics"),
+                makeProperty("CapVideoType"),
+                makeProperty("CapVolume"),
                 
                 // Properties
-                makeProperty("MaxLights"),
+                makeProperty("Brightness"),
+                makeProperty("DisplayMode"),
+                makeProperty("ImageType"),
+                makeProperty("ImageTypeList"),
+                makeProperty("LoadStatus"),
+                makeProperty("OutputID"),
                 makeProperty("PowerNotify"),
-                makeProperty("PowerState")
+                makeProperty("PowerState"),
+                makeProperty("Storage"),
+                makeProperty("URL"),
+                makeProperty("VideoType"),
+                makeProperty("VideoTypeList"),
+                makeProperty("Volume")
             };
 
             return properties;
@@ -73,7 +87,7 @@ public class LightsBeanInfo
         throws IntrospectionException, ClassNotFoundException
     {
         String listener = "jpos.events." + eventName + "Listener";
-        return new EventSetDescriptor(jpos.Lights.class,
+        return new EventSetDescriptor(jpos.GraphicDisplay.class,
                                       eventName,
                                       Class.forName(listener),
                                       eventName + "Occurred");
@@ -86,6 +100,8 @@ public class LightsBeanInfo
             EventSetDescriptor[] events =
             {
                 makeEvent("DirectIO"),
+                makeEvent("Error"),
+                makeEvent("OutputComplete"),
                 makeEvent("StatusUpdate")
             };
             

@@ -46,6 +46,8 @@ public class POSPowerBeanInfo
             {
                 // Capabilities
                 makeProperty("CapBatteryCapacityRemaining"),
+                makeProperty("CapBatteryCapacityRemainingInSeconds"),
+                makeProperty("CapChargeTime"),
                 makeProperty("CapCompareFirmwareVersion"),
                 makeProperty("CapFanAlarm"),
                 makeProperty("CapHeatAlarm"),
@@ -60,12 +62,18 @@ public class POSPowerBeanInfo
                 makeProperty("CapUpdateFirmware"),
                 makeProperty("CapUpdateStatistics"),
                 makeProperty("CapVariableBatteryCriticallyLowThreshold"),
+                makeProperty("CapVariableBatteryCriticallyLowThresholdInSeconds"),
                 makeProperty("CapVariableBatteryLowThreshold"),
+                makeProperty("CapVariableBatteryLowThresholdInSeconds"),
                 
                 // Properties
                 makeProperty("BatteryCapacityRemaining"),
+                makeProperty("BatteryCapacityRemainingInSeconds"),
                 makeProperty("BatteryCriticallyLowThreshold"),
+                makeProperty("BatteryCriticallyLowThresholdInSeconds"),
                 makeProperty("BatteryLowThreshold"),
+                makeProperty("BatteryLowThresholdInSeconds"),
+                makeProperty("ChargeTime"),
                 makeProperty("EnforcedShutdownDelayTime"),
                 makeProperty("PowerFailDelayTime"),
                 makeProperty("PowerNotify"),
