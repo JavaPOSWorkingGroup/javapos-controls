@@ -1,5 +1,10 @@
 # Change Log for javapos-controls
 
+## 1.16.0 
+
+- added device categories new in UnifiedPOS 1.16, i.e. DeviceMonitor, GestureControl, GraphicDisplay, IndividualRecognition, SoundPlayer, 
+  SoundRecorder, SpeechSynthesis, VideoCapture, VoiceRecognition
+
 ## 1.15.0 Release
 
 - incorporated outstanding changes from UnifiedPOS version 1.14.1 regarding _Electronic Value Reader/Writer_; solves GH issue #6
