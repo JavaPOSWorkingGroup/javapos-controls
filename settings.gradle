@@ -1,6 +1,6 @@
 // for enabling Gradle scan at GitHub Actions
 plugins {
-    id("com.gradle.enterprise") version("3.15")
+    id("com.gradle.develocity") version "4.3"
 }
 
 rootProject.name = 'javapos-controls'
@@ -26,12 +26,10 @@ def includeBuildProject(projectName) {
 }
 
 // enabling Gradle scan by agreeing to term of service
-gradleEnterprise {
-    if (System.getenv("CI") != null) {
-        buildScan {
-            publishAlways()
-            termsOfServiceUrl = "https://gradle.com/terms-of-service"
-            termsOfServiceAgree = "yes"
-        }
+develocity {
+    buildScan {
+        publishing.onlyIf { isRunningOnBuildServer }
+        termsOfUseUrl = "https://gradle.com/terms-of-service"
+        termsOfUseAgree = "yes"
     }
 }
